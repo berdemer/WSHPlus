@@ -2944,6 +2944,10 @@
     <Content Include="css\patterns\headeryeni.png" />
     <Content Include="css\patterns\isyerihekimleri.png" />
     <Content Include="css\patterns\kapak.png" />
+    <Content Include="Icon\WSHIcon.png" />
+    <Content Include="Icon\WSHIcon24x24.ico" />
+    <Content Include="Icon\WSHIcon32x32.ico" />
+    <Content Include="Icon\WSHIcon48x48.ico" />
     <Content Include="js\filter.js" />
     <Content Include=".bowerrc" />
     <Content Include="bower.json" />
