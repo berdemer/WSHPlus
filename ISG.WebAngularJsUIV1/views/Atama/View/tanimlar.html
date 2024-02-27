@@ -1,0 +1,91 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Genel Tanımlamalar Formu</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="index.html">Ana Sayfa</a>
+            </li>
+            <li>
+                <a>Formlar</a>
+            </li>
+            <li class="active">
+                <strong>Tanımlar</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row" ng-controller="tanimlarCtrl">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>
+                        Tanım Elemanları
+                        <small>Değişimlerin yapılacağı sayfa</small>
+                    </h5>
+                    <div ibox-tools></div>
+                </div>
+                <div class="ibox-content">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Tanım Grubunu Seçiniz</label>
+                            <div class="col-sm-8">
+                                <select class="form-control m-b"
+                                        ng-model="tanimItem"
+                                        ng-options="tanim as tanim for tanim in tanimlarx"></select>
+                            </div>
+                            <input type="number" min="3" max="500" ng-model="viewby" class="m-b-xs" ng-change="setItemsPerPage(viewby)" />
+                        </div>
+                        <table class="table table-striped table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>İfade</th>
+                                    <th>Tanım Adı</th>
+                                    <th>Kısa Tanm</th>
+                                    <th>İfade Bagımlılıgı</th>
+                                    <th>Acıklama</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="tanim in (tanimlar|filter:{tanimAdi:tanimItem}).slice(((currentPage-1)*itemsPerPage),
+                                    ((currentPage)*itemsPerPage))" ng-click="satirBilgisi(tanim)">
+                                    <td ng-bind="tanim.ifade"></td>
+                                    <td ng-bind="tanim.tanimAdi"></td>
+                                    <td ng-bind="tanim.tanimKisaltmasi"></td>
+                                    <td ng-bind="tanim.ifadeBagimliligi"></td>
+                                    <td ng-bind="tanim.aciklama"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <ul uib-pagination class="m-t-xxs" total-items="(tanimlar|filter:{tanimAdi:tanimItem}).length" ng-model="currentPage"
+                            first-text="Birinci" last-text="Sonuncu"
+                            previous-text="Önceki" next-text="Sonraki"
+                            max-size="4" boundary-links="true" rotate="false"
+                            num-pages="numPages" items-per-page="itemsPerPage"></ul>
+
+
+                        <div class="form-group">
+                            <div class="col-sm-2"><label class="control-label">Tanım Adı</label><input type="text" ng-model="tanims.tanimAdi=tanimItem" placeholder="Tanım Adı" class="form-control"></div>
+                            <div class="col-sm-1"><label class="control-label">Kısaltması</label><input type="text" ng-model="tanims.tanimKisaltmasi" placeholder="Kısaltması" class="form-control"></div>
+                            <div class="col-sm-3"><label class="control-label">İfadesi</label><input type="text" ng-model="tanims.ifade" placeholder="İfadesi" class="form-control"></div>
+                            <div class="col-sm-2"><label class="control-label">İfade Bağımlılığı</label><input type="text" ng-model="tanims.ifadeBagimliligi" placeholder="İfade Bağımlılığı" class="form-control"></div>
+                            <div class="col-sm-4"><label class="control-label">Açıklama</label><input type="text" ng-model="tanims.aciklama" placeholder="Açıklama" class="form-control"></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4">
+                                <button class="btn btn-primary" ng-click="saveTanims()" type="submit"><i class="fa fa-save"></i><span class="bold">&nbsp;&nbsp;Kaydet</span></button>
+                                <button class="btn btn-info" ng-click="newTanims()" type="submit"><i class="fa fa-plus-circle"></i><span class="bold">&nbsp;&nbsp;Yeni</span></button>
+                                <button class="btn btn-danger" ng-click="deleteTanims()" type="submit"><i class="fa fa-remove"></i><span class="bold">&nbsp;&nbsp;Sil</span></button>
+                                <p> {{message}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

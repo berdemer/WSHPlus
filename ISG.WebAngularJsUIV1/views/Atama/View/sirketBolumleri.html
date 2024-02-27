@@ -1,0 +1,44 @@
+﻿
+<div class="wrapper wrapper-content animated fadeInRight" ng-controller="sirketBolumleriCrtl">
+    <div class="panel-body" ng-init="cvx=false">
+        <p ng-show="!cvx">
+            İhdâs edilen Şube, Bölüm, Kısım, Makam,Kadro gibi ayrıntılı tanımlar yapınız.
+            İnsan Kaynakları Müdürlüğü/Müdürü, İnsan Kaynakları Müdürlüğü/Memur, Dokuma Bölümü/İşçi vb
+        </p>
+        <h2 ng-show="cvx">Silinen Şubeleri Geri Alabilirsiniz</h2>
+        <button class="btn btn-warning btn-sm" ng-click="getSirketBolumuAllData(false);cvx=!cvx" ng-show="!cvx" tooltip-placement="bottom" tooltip="Silinen kayıtları geri al"><span class="fa fa-recycle"></span></button>
+        <button class="btn btn-danger btn-sm" ng-click="getSirketBolumuAllData(true);cvx=!cvx" ng-show="cvx" tooltip-placement="bottom" tooltip="Genel kayıtları al"><span class="fa fa-close"></span></button>&nbsp;
+        <button type="button" class="btn btn-success btn-sm" ng-click="expandAll2();expCrtl=!expCrtl" ng-init="expCrtl=false" ng-show="expCrtl" tooltip-placement="bottom" tooltip="Satırları Aç"><span class="fa fa-expand"></span></button>
+        <button type="button" class="btn btn-success btn-sm" ng-click="collapseAll2();expCrtl=!expCrtl" ng-show="!expCrtl" tooltip-placement="bottom" tooltip="Satırları Kapat"><span class="fa fa-compress"></span></button>&nbsp;
+        <button type="button" class="btn btn-info btn-sm" ng-click="newSubSirketBolumu()" ng-show="!cvx" tooltip-placement="bottom" tooltip="Yeni Şirket Kaydı"><span class="fa fa-plus"></span></button>
+        <script type="text/ng-template" id="nodes_renderer2.html">
+            <div ui-tree-handle class="tree-node tree-node-content" ng-style="{'background-color':  cvx ? 'bisque' : '#f3f3f4' }">
+                <form editable-form name="editableForm" onaftersave="saveSirketBolumu(this)">
+                    <a class="pull-right btn btn-white btn-xs" data-nodrag ng-click="remove(this);passiveBolumStatus(this);cvx=!cvx" ng-show="!editableForm.$visible"><span ng-class="cvx ? 'fa fa-plus' : 'fa fa-ban'"></span></a>
+                    <a class="pull-right btn btn-white btn-xs" data-nodrag ng-click="newSubItemSirketBolumu(this)" ng-show="!editableForm.$visible && !cvx"><span class="fa fa-plus"></span></a>
+                    <button type="button" class="pull-right btn btn-white btn-xs" data-nodrag ng-click="editableForm.$show()" ng-show="!editableForm.$visible && !cvx"><span class="fa fa-pencil"></span></button>
+                    <button type="button" class="pull-right btn btn-white btn-xs" data-nodrag ng-click="" ng-show="!editableForm.$visible && !cvx"><span class="fa fa-mail-reply"></span></button>
+                    <a class="btn btn-primary btn-xs" data-nodrag ng-click="toggle(this)"><span class="fa" ng-class="{'fa-angle-down': collapsed, 'fa-angle-right': !collapsed}"></span></a>
+                    <span editable-text="nodus.Text" e-name="Text" ng-cloak>{{ nodus.Text || 'empty' }}</span>
+                    <span ng-show="editableForm.$visible">
+                        <button type="submit" class="btn btn-primary" ng-disabled="editableForm.$waiting">
+                            Kaydet
+                        </button>
+                        <button type="button" class="btn btn-default" ng-disabled="editableForm.$waiting" ng-click="editableForm.$cancel()">
+                            Iptal
+                        </button>
+                    </span>
+                </form>
+            </div>
+            <ul ui-tree-nodes="" ng-model="nodus.Children" ng-class="{hidden: collapsed}">
+                <li ng-repeat="nodus in nodus.Children" ui-tree-node ng-include="'nodes_renderer2.html'">
+                </li>
+            </ul>
+        </script>
+        <div ui-tree="treeOptions2" id="tree-root2">
+            <ul ui-tree-nodes ng-model="data2">
+                <li ng-repeat="nodus in data2" ui-tree-node ng-include="'nodes_renderer2.html'" data-collapsed="expCrtl"></li>
+            </ul>
+        </div>
+    </div>
+</div>

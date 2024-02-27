@@ -1,0 +1,66 @@
+﻿<div ng-controller="taCtrl  as taC" style="width:100%">
+    <row>
+        <table datatable="ng" id="ant"  style="cursor:pointer"
+               dt-options="dtOptionstaC" dt-column-defs="dtColumnDefstaC" class="table table-responsive  table-striped table-bordered table-hover dataTables-example row-border hover">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>No</th>
+                    <th>Sağ Kol T.</th>
+                    <th>Sol Kol T.</th>
+                    <th>Nabız</th>
+                    <th>Ritmi</th>
+                    <th>Ateş</th>
+                    <th>Tarih</th>
+                    <th>Protokol</th>
+                    <th>Muayene Türü</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="ta in ANTlari">
+                    <td ng-bind="ta.ANT_Id"></td>
+                    <td ng-bind="ta.$id"></td>
+                    <td ng-bind="Tansiyon(ta.TASagKolSistol,ta.TASagKolDiastol)"></td>
+                    <td ng-bind="Tansiyon(ta.TASolKolSistol,ta.TASolKolDiastol)"></td>
+                    <td ng-bind="Nabiz(ta.Nabiz)"></td>
+                    <td ng-bind="ta.NabizRitmi"></td>
+                    <td ng-bind="Ates(ta.Ates)"></td>
+                    <td ng-bind="ta.Tarih|date:'dd/MM/yyyy  HH:mm'"></td>
+                    <td ng-bind="ta.Protokol"></td>
+                    <td ng-bind="ta.MuayeneTuru"></td>
+                </tr>
+            </tbody>
+        </table>
+    </row>
+    <row>
+        <div uib-collapse="isCollapsed" class="m-t-n-lg">
+            <form ng-submit="taC.onSubmit()" novalidate>
+                <formly-form model="taC.model" fields="taC.fields" form="taC.form">
+                    <button type="submit" class="btn btn-primary submit-button" ng-disabled="taC.form.$invalid">Kaydet</button>
+                    <button type="button" class="btn btn-success" ng-disabled="!taC.form.$valid" ng-click="yenitaC()">Yeni</button>
+                    <button type="button" class="btn btn-danger" ng-disabled="!taC.form.$valid" ng-click="siltaC()">Sil</button>
+                    <button class="btn btn btn-warning" ngf-select="uploadFiles($files)" multiple
+                            accept="image/*,application/pdf,application/msword,application/vnd.ms-excel,
+application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ng-show="fileButtonShow">
+                        Rapor Ekle
+                    </button>
+                    <div class="pull-right">
+                        <label for="slc">Protokol Verilsin mi?</label>
+                        <select class="form-control" style="width:90px" ng-model="taC.protokolGirisi" name="slc" ng-options="opsiyon.adi for opsiyon in opsiyonlar">
+                        </select>
+                    </div>
+                </formly-form>
+            </form>
+        </div>
+    </row>
+    <row>
+        <ul style="list-style-type: none;overflow: hidden;" ng-show="dosyaList">
+            <li style="font:medium;color: mediumvioletred;float: left;margin-left:20px" ng-if="files.length>0?true:false">Eklenen Dosyalar :</li>
+            <li ng-repeat="f in files" style="font:normal;float: left;margin-left:20px">
+                <a ng-click="download(f)" ng-bind="f.FileName" tooltip-placement="bottom" uib-tooltip="İndir" tooltip-popup-delay="2500"></a>
+                <i class="fa fa-remove" ng-click="deleten(f.GenericName , $index)" tooltip-placement="bottom" uib-tooltip="Sil" tooltip-popup-delay="2500"> </i>
+            </li>
+        </ul>
+    </row>
+    <span style="color:red">{{message}}</span>    
+</div>

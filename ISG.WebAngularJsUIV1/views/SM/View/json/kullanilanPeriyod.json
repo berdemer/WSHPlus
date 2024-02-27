@@ -1,0 +1,18 @@
+﻿[
+	{
+		"adi": "Günde",
+		"val": 3
+	},
+	{
+		"adi": "Haftada",
+		"val": 4
+	},
+	{
+		"adi": "Ayda",
+		"val": 5
+	},
+	{
+		"adi": "Yılda",
+		"val": 6
+	}
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "kaza": "0 - Bilgi yok",
+    "alt": [ "0 - Bilgi yok" ]
+  },
+  {
+    "kaza": "10 - Makine işletimi - Belirtilmemiş ",
+    "alt": [ "11 - Makinenin çalıştırılması, makinenin durdurulması ", "12 - Makinenin beslenmesi, makinenin boşaltılması ", "13 - Makinenin izlenmesi, makinenin işletilmesi veya sürülmesi ", "19 - Yukarıda listelenmemiş başka 10 çeşit kaza anında kazazedenin yaptığı faaliyet" ]
+  },
+  {
+    "kaza": "20 - El makineleriyle çalışma - Belirtilmemiş ",
+    "alt": [ "21 - El makineleriyle çalışma - elle ", "22 - El makineleriyle çalışma - motorlu ", "29 - Yukarıda listelenmemiş başka ", "20 çeşit kaza anında kazazedenin yaptığı faaliyet" ]
+  },
+  {
+    "kaza": "30 - Sürücülük/taşıt aracında bulunmak veya donanım kullanımı - Belirtilmemiş ",
+    "alt": [ "31 - Bir taşıt aracını sürmek veya donanımı kullanmak - seyyar ve motorlu ", "32 - Bir taşıt aracını sürmek veya donanımı kullanmak - seyyar ve motorsuz ", "33 - Bir taşıt aracının yolcusu olmak ", "39 - Yukarıda listelenmemiş başka 30 çeşit kaza anında kazazedenin yaptığı faaliyet" ]
+  },
+  {
+    "kaza": "40 - Nesnelerin kullanımı - Belirtilmemiş ",
+    "alt": [ "41 - Ele almak, tutmak, kavramak, yakalamak, yerleştirmek - yatay bir düzeyde ", "42 - Bağlamak, yapıştırmak, ayırmak, sökmek, sıkmak, vidasını açmak, vidalamak,çevirmek ", "43 - Sıkılamak, asmak, yükseltmek, koymak - düşey bir düzeyde ", "44 - Atmak, savurmak ", "45 - Açmak, kapatmak (kutu, paket, parsel) ", "46 - Akıtmak, dökmek, doldurmak, sulamak, püskürtmek, boşaltmak ", "47 - Açmak (çekmeceyi), itmek (depo/büro/dolap kapağını) ", "49 - Yukarıda listelenmemiş başka 40 çeşit kaza anında kazazedenin yaptığı faaliyet" ]
+  },
+  {
+    "kaza": "50 - Elle taşıma - Belirtilmemiş ",
+    "alt": [ "51 - Düşey olarak taşıma - bir nesneyi kaldırma, yükseltme, alçaltma ", "52 - Yatay olarak taşıma - bir nesneyi çekme, iteme, yuvarlama ", "53 - Bir yükü taşıma - bir kişi tarafından taşınması ", "59 - Yukarıda listelenmemiş başka 50 çeşit kaza anında kazazedenin yaptığı faaliyet" ]
+  },
+  {
+    "kaza": "60 - Hareket - Belirtilmemiş ",
+    "alt": [ "61 - Yürüme, koşma, çıkma, inme, vb. ", "62 - Çıkma veya girme ", "63 - Atlama, zıplama, vb. ", "64 - Sürünme, tırmanma, vb. ", "65 - Kalkma, oturma ", "66 - Yüzme, dalma ", "67 - Yerdeki hareketler ", "69 - Yukarıda listelenmemiş başka 60 çeşit kaza anında kazazedenin yaptığı faaliyet" ]
+  },
+  {
+    "kaza": "70 - Bulunma - Belirtilmemiş ",
+    "alt": [ " 70 - Bulunma - Belirtilmemiş" ]
+  },
+  {
+    "kaza": "99 - Bu sınıflandırma listelenmemiş başka kazadan az önceki zamanda kazazedenin yürüttüğü özel faaliyet",
+    "alt": [ "99 - Bu sınıflandırma listelenmemiş başka kazadan az önceki zamanda kazazedenin yürüttüğü özel faaliyet" ]
+  }
+]

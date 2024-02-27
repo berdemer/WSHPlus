@@ -1,0 +1,55 @@
+﻿<div ng-controller="egitimHayatiCtrl  as ehc" style="width:100%">
+    <row>
+        <table datatable="ng" id="egitimHayati"
+               dt-options="dtOptionseh" dt-column-defs="dtColumnDefseh" class="table table-responsive  table-striped table-bordered table-hover dataTables-example row-border hover">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>No</th>
+                    <th>Egitim Seviyesi</th>
+                    <th>Okul Adı</th>
+                    <th>Başlama T.</th>
+                    <th>Bitiş T.</th>
+                    <th>Meslek</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="egitimHayati in EgitimHayatlari">
+                    <td ng-bind="egitimHayati.EgitimHayati_Id"></td>
+                    <td ng-bind="egitimHayati.$id"></td>
+                    <td ng-bind="egitimHayati.Egitim_seviyesi"></td>
+                    <td ng-bind="egitimHayati.Okul_Adi"></td>
+                    <td ng-bind="formatDate(egitimHayati.Baslama_Tarihi)|date:dd/MMMM/yyyy"></td>
+                    <td ng-bind="formatDate(egitimHayati.Bitis_Tarihi)|date:dd/MMMM/yyyy"></td>
+                    <td ng-bind="egitimHayati.Meslek_Tanimi"></td>
+                </tr>
+            </tbody>
+        </table>
+    </row>
+    <row>
+        <div uib-collapse="isCollapsed" class="m-t-n-lg">
+            <form ng-submit="ehc.onSubmit()" novalidate>
+                <formly-form model="ehc.model" fields="ehc.fields" form="ehc.form">
+                    <button type="submit" class="btn btn-primary submit-button" ng-disabled="ehc.form.$invalid">Kaydet</button>
+                    <button type="button" class="btn btn-success" ng-click="yeniEHC()" ng-disabled="!ehc.form.$valid">Yeni</button>
+                    <button type="button" class="btn btn-danger" ng-click="silEHC()" ng-disabled="!ehc.form.$valid">Sil</button>
+                    <button class="btn btn btn-warning" ngf-select="uploadFiles($files)" multiple
+                            accept="image/*,application/pdf,application/msword,application/vnd.ms-excel,
+application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"  ng-if="ehc.model.EgitimHayati_Id!=null">
+                        Dosya Ekle
+                    </button>
+                </formly-form>
+            </form>
+        </div>
+    </row>
+    <row>
+        <ul style="list-style-type: none;overflow: hidden;" ng-show="dosyaList">
+            <li style="font:medium;color: mediumvioletred;float: left;margin-left:20px" ng-if="files.length>0?true:false">Eklenen Dosyalar :</li>
+            <li ng-repeat="f in files" style="font:normal;float: left;margin-left:20px">
+                <a ng-click="download(f)" ng-bind="f.FileName" tooltip-placement="bottom" uib-tooltip="İndir" tooltip-popup-delay="2500"></a>
+                <i class="fa fa-remove" ng-click="deleten(f.GenericName , $index)" tooltip-placement="bottom" uib-tooltip="Sil" tooltip-popup-delay="2500"> </i>
+            </li>
+        </ul>
+    </row>
+</div>
+

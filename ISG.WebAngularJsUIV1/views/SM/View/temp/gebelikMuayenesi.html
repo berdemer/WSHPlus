@@ -1,0 +1,403 @@
+﻿<div class="jumbotron" style="margin-bottom: 0px;margin-bottom: 0px;padding: 5px;z-index:100">
+    <form role="form">
+        <div class="form-group">
+            <label>Son Adet Tarihi:</label>
+            <div class="input-group">
+                <input type="text" class="form-control" uib-datepicker-popup="dd.MMMM.yyyy" ng-model="PmC.Muayene.GebelikMuayenesi.SonAdetTarihi"
+                       is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" ng-click="open1()" alt-input-formats="altInputFormats" />
+                <span class="input-group-btn" style="z-index:100">
+                    <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+            </div>
+            <span ng-if="PmC.Muayene.GebelikMuayenesi.DogumTarihi!=null"><strong>Doğum Tarihi +-3 gün:</strong></span>
+            <span ng-bind="PmC.Muayene.GebelikMuayenesi.DogumTarihi|date:'dd/MM/yyyy'"></span>&nbsp;
+            <span ng-bind="PmC.Muayene.GebelikMuayenesi.HaftaSayisi"></span>&nbsp;
+            <span ng-if="PmC.Muayene.GebelikMuayenesi.DogumTarihi!=null">Haftalık</span>
+            <datetimepicker ng-model="PmC.Muayene.GebelikMuayenesi.SonAdetTarihi" ng-show="false"
+                            date-format="dd-MMM-yyyy" class="form-control"
+                            date-options="dateOptions"
+                            date-disabled="isDisabledDate(date, mode)">
+            </datetimepicker>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <label class="control-label" for="ol">Folic ve Demir Tedavisi:</label>
+                <input class="form-control" type="text" name="name" ng-model="PmC.Muayene.GebelikMuayenesi.FolicAndFerroThreament" id="ol" uppercased />
+            </div>
+            <div class="col-sm-3">
+                <label class="control-label" for="olu">Ağırlık:</label>
+                <input class="form-control" type="number" name="name" ng-model="PmC.Muayene.GebelikMuayenesi.agirlik" id="olu" />
+            </div>
+            <div class="col-sm-3">
+                <label class="control-label" for="olw">G.Sayısı:</label>
+                <input class="form-control" type="number" name="name" ng-model="PmC.Muayene.GebelikMuayenesi.sayisi" id="olw" />
+            </div>
+        </div>
+        <div>
+            <div class="row">
+                <div class="col-sm-10">
+                    <label class="control-label">1-) Gebelik Öncesi Annede Mevcut Sistemik Hastalık Var mı?:</label>
+                </div>
+                <div class="col-sm-2">
+                    <div class="onoffswitch">
+                        <input type="checkbox" name="onoffswitch"
+                               ng-model="PmC.Muayene.GebelikMuayenesi.ifGebelikOncesiHastalik"
+                               ng-change="PmC.Muayene.GebelikMuayenesi.gebelikOncesiHastalik=PmC.Muayene.GebelikMuayenesi.ifGebelikOncesiHastalik==false?'':PmC.Muayene.GebelikMuayenesi.gebelikOncesiHastalik"
+                               class="onoffswitch-checkbox" id="gebelikOncesiHastalik">
+                        <label class="onoffswitch-label" for="gebelikOncesiHastalik">
+                            <span class="onoffswitch-inner"></span>
+                            <span class="onoffswitch-switch"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div ng-if="PmC.Muayene.GebelikMuayenesi.ifGebelikOncesiHastalik">
+                <ui-select multiple tagging tagging-label class="form-control" ng-model="PmC.Muayene.GebelikMuayenesi.gebelikOncesiHastalik" theme="bootstrap">
+                    <ui-select-match placeholder="">{{$item}}</ui-select-match>
+                    <ui-select-choices repeat="item in ['DM II','E. Hypertansiyon','KVS','Astım Broşiale'] | filter: $select.search">
+                        <div ng-bind-html="item | highlight: $select.search"></div>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <div>
+            <div class="row">
+                <div class="col-sm-10">
+                    <label class="control-label">2-) Bir Önceki Gebelikte Hastalığı Var mı?:</label>
+                </div>
+                <div class="col-sm-2">
+                    <div class="onoffswitch">
+                        <input type="checkbox" name="onoffswitch"
+                               ng-model="PmC.Muayene.GebelikMuayenesi.ifOncekiGebelikHastalik"
+                               ng-change="PmC.Muayene.GebelikMuayenesi.oncekiGebelikHastalik=PmC.Muayene.GebelikMuayenesi.ifOncekiGebelikHastalik==false?'':PmC.Muayene.GebelikMuayenesi.oncekiGebelikHastalik"
+                               class="onoffswitch-checkbox" id="oncekiGebelikHastalik">
+                        <label class="onoffswitch-label" for="oncekiGebelikHastalik">
+                            <span class="onoffswitch-inner"></span>
+                            <span class="onoffswitch-switch"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div ng-if="PmC.Muayene.GebelikMuayenesi.ifOncekiGebelikHastalik">
+                <ui-select multiple tagging tagging-label class="form-control" ng-model="PmC.Muayene.GebelikMuayenesi.oncekiGebelikHastalik" theme="bootstrap">
+                    <ui-select-match placeholder="">{{$item}}</ui-select-match>
+                    <ui-select-choices repeat="item in ['Kanama','E. Hypertansiyon','DM','Plesantanın Erken Ayrılması','Eklampsi'] | filter: $select.search">
+                        <div ng-bind-html="item | highlight: $select.search"></div>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <div>
+            <div class="row">
+                <div class="col-sm-10">
+                    <label class="control-label">3-) Çalışanın Koşullarında Gebelik İçin Risk Faktörü Var mı?:</label>
+                </div>
+                <div class="col-sm-2">
+                    <div class="onoffswitch">
+                        <input type="checkbox" name="onoffswitch"
+                               ng-model="PmC.Muayene.GebelikMuayenesi.ifGebelikRiskFaktoru"
+                               ng-change="PmC.Muayene.GebelikMuayenesi.gebelikRiskFaktoru=PmC.Muayene.GebelikMuayenesi.ifGebelikRiskFaktoru==false?'':PmC.Muayene.GebelikMuayenesi.gebelikRiskFaktoru"
+                               class="onoffswitch-checkbox" id="gebelikRiskFaktoru">
+                        <label class="onoffswitch-label" for="gebelikRiskFaktoru">
+                            <span class="onoffswitch-inner"></span>
+                            <span class="onoffswitch-switch"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div ng-if="PmC.Muayene.GebelikMuayenesi.ifGebelikRiskFaktoru">
+                <ui-select multiple tagging tagging-label class="form-control" ng-model="PmC.Muayene.GebelikMuayenesi.gebelikRiskFaktoru" theme="bootstrap">
+                    <ui-select-match placeholder="">{{$item}}</ui-select-match>
+                    <ui-select-choices repeat="item in ['Şok ve titreşim','Gürültü','İyonize radyasyon','İyonizasyona neden olmayan radyasyon','Soğuk, sıcak ve yüksek basınç',
+                                       'Grup 2, grup 3 ve grup 4 biyolojik etkenleri','Kanserojen, mutajen, çok toksik, toksik, zararlı, alerjik, üreme için toksik kimyasal maddeler',
+                                       'Yükleme ve araçsız taşıma','Gece Çalışması','Kişisel koruyucularının uygunsuzluğu','Vardiyalı çalışma','Psikososyal stress faktörleri'] | filter: $select.search">
+                        <div ng-bind-html="item | highlight: $select.search"></div>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <div>
+            <div class="row">
+                <div class="col-sm-10">
+                    <label class="control-label">4-) Sabah Kusmaları Var mı?:</label>
+                </div>
+                <div class="col-sm-2">
+                    <div class="onoffswitch">
+                        <input type="checkbox" name="onoffswitch"
+                               ng-model="PmC.Muayene.GebelikMuayenesi.ifsabahKusmasi"
+                               ng-change="PmC.Muayene.GebelikMuayenesi.sabahKusmasi=PmC.Muayene.GebelikMuayenesi.ifsabahKusmasi==false?'':PmC.Muayene.GebelikMuayenesi.sabahKusmasi"
+                               class="onoffswitch-checkbox" id="sabahKusmasi">
+                        <label class="onoffswitch-label" for="sabahKusmasi">
+                            <span class="onoffswitch-inner"></span>
+                            <span class="onoffswitch-switch"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div ng-if="PmC.Muayene.GebelikMuayenesi.ifsabahKusmasi">
+                <ui-select multiple tagging tagging-label class="form-control" ng-model="PmC.Muayene.GebelikMuayenesi.sabahKusmasi" theme="bootstrap">
+                    <ui-select-match placeholder="">{{$item}}</ui-select-match>
+                    <ui-select-choices repeat="item in ['Erken Çalışma Saatleri','Güçlü Havalandırma','Mide bulantılarına neden olabilecek kokulara veya kötü havalandırmaya maruziyet'] | filter: $select.search">
+                        <div ng-bind-html="item | highlight: $select.search"></div>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <div>
+            <div class="row">
+                <div class="col-sm-10">
+                    <label class="control-label">5-) Sırt Ağrısı Var mı?:</label>
+                </div>
+                <div class="col-sm-2">
+                    <div class="onoffswitch">
+                        <input type="checkbox" name="onoffswitch"
+                               ng-model="PmC.Muayene.GebelikMuayenesi.ifsirtAgrisi"
+                               ng-change="PmC.Muayene.GebelikMuayenesi.sirtAgrisi=PmC.Muayene.GebelikMuayenesi.ifsirtAgrisi==false?'':PmC.Muayene.GebelikMuayenesi.sirtAgrisi"
+                               class="onoffswitch-checkbox" id="sirtAgrisi">
+                        <label class="onoffswitch-label" for="sirtAgrisi">
+                            <span class="onoffswitch-inner"></span>
+                            <span class="onoffswitch-switch"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div ng-if="PmC.Muayene.GebelikMuayenesi.ifsirtAgrisi">
+                <ui-select multiple tagging tagging-label class="form-control" ng-model="PmC.Muayene.GebelikMuayenesi.sirtAgrisi" theme="bootstrap">
+                    <ui-select-match placeholder="">{{$item}}</ui-select-match>
+                    <ui-select-choices repeat="item in ['Sürekli Ayakta durma','Uygunsuz yük taşıma','Duruş Vaziyeti','Ergonomi'] | filter: $select.search">
+                        <div ng-bind-html="item | highlight: $select.search"></div>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <div>
+            <div class="row">
+                <div class="col-sm-10">
+                    <label class="control-label">6-) Varis veya diğer dolaşım problemleri, hemoroid Var mı?:</label>
+                </div>
+                <div class="col-sm-2">
+                    <div class="onoffswitch">
+                        <input type="checkbox" name="onoffswitch"
+                               ng-model="PmC.Muayene.GebelikMuayenesi.ifvarisHemoroid"
+                               ng-change="PmC.Muayene.GebelikMuayenesi.varisHemoroid=PmC.Muayene.GebelikMuayenesi.ifvarisHemoroid==false?'':PmC.Muayene.GebelikMuayenesi.varisHemoroid"
+                               class="onoffswitch-checkbox" id="varisHemoroid">
+                        <label class="onoffswitch-label" for="varisHemoroid">
+                            <span class="onoffswitch-inner"></span>
+                            <span class="onoffswitch-switch"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div ng-if="PmC.Muayene.GebelikMuayenesi.ifvarisHemoroid">
+                <ui-select multiple tagging tagging-label class="form-control" ng-model="PmC.Muayene.GebelikMuayenesi.varisHemoroid" theme="bootstrap">
+                    <ui-select-match placeholder="">{{$item}}</ui-select-match>
+                    <ui-select-choices repeat="item in ['Sürekli Ayakta durma','Sürekli Oturma','Ailesel Öykü','Ergonomi'] | filter: $select.search">
+                        <div ng-bind-html="item | highlight: $select.search"></div>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <div>
+            <div class="row">
+                <div class="col-sm-10">
+                    <label class="control-label">7-) Sık ve ani tuvalet ihtiyacı var mı?:</label>
+                </div>
+                <div class="col-sm-2">
+                    <div class="onoffswitch">
+                        <input type="checkbox" name="onoffswitch"
+                               ng-model="PmC.Muayene.GebelikMuayenesi.iftuvaletIhtiyaci"
+                               ng-change="PmC.Muayene.GebelikMuayenesi.tuvaletIhtiyaci=PmC.Muayene.GebelikMuayenesi.iftuvaletIhtiyaci==false?'':PmC.Muayene.GebelikMuayenesi.tuvaletIhtiyaci"
+                               class="onoffswitch-checkbox" id="tuvaletIhtiyaci">
+                        <label class="onoffswitch-label" for="tuvaletIhtiyaci">
+                            <span class="onoffswitch-inner"></span>
+                            <span class="onoffswitch-switch"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div ng-if="PmC.Muayene.GebelikMuayenesi.iftuvaletIhtiyaci">
+                <ui-select multiple tagging tagging-label class="form-control" ng-model="PmC.Muayene.GebelikMuayenesi.tuvaletIhtiyaci" theme="bootstrap">
+                    <ui-select-match placeholder="">{{$item}}</ui-select-match>
+                    <ui-select-choices repeat="item in ['Düzenli beslenme, yeme, içme imkanları','Tuvaletin yakınlığı, uygunluğu, yıkanma imkanları','Hijyen','İş ve iş mahallini bırakmada zorluk'] | filter: $select.search">
+                        <div ng-bind-html="item | highlight: $select.search"></div>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <div>
+            <div class="row">
+                <div class="col-sm-10">
+                    <label class="control-label">8-) Beden ölçülerinin büyümesinden dolayı beceriklilik,koordinasyon, hareket etme hızı ve uzanmada zorluk var mı?:</label>
+                </div>
+                <div class="col-sm-2">
+                    <div class="onoffswitch">
+                        <input type="checkbox" name="onoffswitch"
+                               ng-model="PmC.Muayene.GebelikMuayenesi.ifbedenOlcusu"
+                               ng-change="PmC.Muayene.GebelikMuayenesi.bedenOlcusu=PmC.Muayene.GebelikMuayenesi.ifbedenOlcusu==false?'':PmC.Muayene.GebelikMuayenesi.bedenOlcusu"
+                               class="onoffswitch-checkbox" id="bedenOlcusu">
+                        <label class="onoffswitch-label" for="bedenOlcusu">
+                            <span class="onoffswitch-inner"></span>
+                            <span class="onoffswitch-switch"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div ng-if="PmC.Muayene.GebelikMuayenesi.ifbedenOlcusu">
+                <ui-select multiple tagging tagging-label class="form-control" ng-model="PmC.Muayene.GebelikMuayenesi.bedenOlcusu" theme="bootstrap">
+                    <ui-select-match placeholder="">{{$item}}</ui-select-match>
+                    <ui-select-choices repeat="item in ['Koruyucu elbise ve ekipmanın kullanılması','Daralan çalışma alanı, yüksekte çalışma','Uzanma ve eğilme gerektiren postürler','Elle taşıma','Dar alanlarda çalışmanın getirdiği problemler'] | filter: $select.search">
+                        <div ng-bind-html="item | highlight: $select.search"></div>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <div>
+            <div class="row">
+                <div class="col-sm-10">
+                    <label class="control-label">9-) Yorgunluk, Stres var mı?:</label>
+                </div>
+                <div class="col-sm-2">
+                    <div class="onoffswitch">
+                        <input type="checkbox" name="onoffswitch"
+                               ng-model="PmC.Muayene.GebelikMuayenesi.ifyorgunlukStress"
+                               ng-change="PmC.Muayene.GebelikMuayenesi.yorgunlukStress=PmC.Muayene.GebelikMuayenesi.ifyorgunlukStress==false?'':PmC.Muayene.GebelikMuayenesi.yorgunlukStress"
+                               class="onoffswitch-checkbox" id="yorgunlukStress">
+                        <label class="onoffswitch-label" for="yorgunlukStress">
+                            <span class="onoffswitch-inner"></span>
+                            <span class="onoffswitch-switch"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div ng-if="PmC.Muayene.GebelikMuayenesi.ifyorgunlukStress">
+                <ui-select multiple tagging tagging-label class="form-control" ng-model="PmC.Muayene.GebelikMuayenesi.yorgunlukStress" theme="bootstrap">
+                    <ui-select-match placeholder="">{{$item}}</ui-select-match>
+                    <ui-select-choices repeat="item in ['Fazla çalışma','Akşam veya gece çalışması','Dinlenme aralarının yetersizliği','Uzun süreli çalışma','İş yoğunluğu'] | filter: $select.search">
+                        <div ng-bind-html="item | highlight: $select.search"></div>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <div>
+            <div class="row">
+                <div class="col-sm-10">
+                    <label class="control-label">10-) Islak ve kaygan zeminlerde yapılan çalışmalar var mı?:</label>
+                </div>
+                <div class="col-sm-2">
+                    <div class="onoffswitch">
+                        <input type="checkbox" name="onoffswitch"
+                               ng-model="PmC.Muayene.GebelikMuayenesi.ifkayganzemin"
+                               class="onoffswitch-checkbox" id="kayganzemin">
+                        <label class="onoffswitch-label" for="kayganzemin">
+                            <span class="onoffswitch-inner"></span>
+                            <span class="onoffswitch-switch"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Muayene Değerlendirmesi:</label>
+            <ui-select multiple tagging tagging-label class="form-control" ng-model="PmC.Muayene.GebelikMuayenesi.degerlendirme" theme="bootstrap">
+                <ui-select-match placeholder="">{{$item}}</ui-select-match>
+                <ui-select-choices repeat="item in ['Yaptığı iş normal bir gebelik süreçine engel değildir.',
+                                   'Yaptığı işin koşullarında uygun değişiklikler yapılarak gebelik süreçinin sağlıklı devamı sağlanabilir.',
+                                   'Yaptığı işin koşulları gebelik için uygun değildir.'] | filter: $select.search">
+                    <div ng-bind-html="item | highlight: $select.search"></div>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <button class="btn btn-danger btn-sm" ng-if="PmC.personelMuayene.Protokol!=null" ng-click="PmC.recete()">Reçete</button>
+            </div>
+            <div class="col-sm-4">
+                <button class="btn btn-odnoklassniki btn-sm" ng-if="PmC.personelMuayene.Protokol!=null&&PmC.Muayene.GebelikMuayenesi!=null" ng-click="PmC.GebelikRaporu()">Gebelik Durum Raporu</button>
+            </div>
+            <div class="col-sm-4">
+                <button class="btn btn-sm pull-right " ng-class="{'btn-success':PmC.Renjk,'btn-primary':!PmC.Renjk,'btn-rounded':PmC.Renjk}" ng-click="PmC.GebelikMuayeneKaydet()"><i class="fa fa-cog fa-spin fa-2x fa-fw" ng-show="PmC.Renjk"></i>{{message}}</button>
+            </div>
+        </div>
+    </form>
+</div>
+<style>
+
+    .onoffswitch {
+        position: relative;
+        width: 40px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+    }
+
+    .onoffswitch-checkbox {
+        display: none;
+    }
+
+    .onoffswitch-label {
+        display: block;
+        overflow: hidden;
+        cursor: pointer;
+        border: 2px solid #999999;
+        border-radius: 4px;
+    }
+
+    .onoffswitch-inner {
+        display: block;
+        width: 200%;
+        margin-left: -100%;
+        transition: margin 0.3s ease-in 0s;
+    }
+
+        .onoffswitch-inner:before, .onoffswitch-inner:after {
+            display: block;
+            float: left;
+            width: 50%;
+            height: 12px;
+            padding: 0;
+            line-height: 12px;
+            font-size: 11px;
+            color: white;
+            font-family: Trebuchet, Arial, sans-serif;
+            font-weight: bold;
+            box-sizing: border-box;
+        }
+
+        .onoffswitch-inner:before {
+            content: "E";
+            padding-left: 7px;
+            background-color: #34A7C1;
+            color: #FFFFFF;
+        }
+
+        .onoffswitch-inner:after {
+            content: "H";
+            padding-right: 7px;
+            background-color: #EEEEEE;
+            color: #999999;
+            text-align: right;
+        }
+
+    .onoffswitch-switch {
+        display: block;
+        width: 14px;
+        margin: -1px;
+        background: #FFFFFF;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 24px;
+        border: 2px solid #999999;
+        border-radius: 4px;
+        transition: all 0.3s ease-in 0s;
+    }
+
+    .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+        margin-left: 0;
+    }
+
+    .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+        right: 0px;
+    }
+
+</style>

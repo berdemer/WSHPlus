@@ -1,0 +1,174 @@
+﻿<h4><b>{{bolum.Text}}</b> Mail Adresi Atama Bölümü</h4>
+<div class="row">
+    <!--<table datatable="ng" id="mail_Onerileri" style="width:100%;cursor:pointer"
+           dt-options="dtOptions" dt-column-defs="dtColumnDefs" class="table table-responsive  table-striped table-bordered table-hover dataTables-example row-border hover">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>No</th>
+                <th>Alan</th>
+                <th>Ad ve Soyadı</th>
+                <th>Email</th>
+                <th>Gönderim</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="mail_Onerileri in Mail_Onerileri">
+                <td ng-bind="mail_Onerileri.Mail_Onerileri_Id"></td>
+                <td ng-bind="mail_Onerileri.$id"></td>
+                <td ng-bind="mail_Onerileri.OneriTanimi"></td>
+                <td ng-bind="mail_Onerileri.MailAdiVeSoyadi"></td>
+                <td ng-bind="mail_Onerileri.MailAdresi"></td>
+                <td ng-bind="mail_Onerileri.gonderimSekli"></td>
+            </tr>
+        </tbody>
+    </table>-->
+    <div class="row">
+        <div class="col-sm-9">
+            <ul class="my-pagination" uib-pagination total-items="totalItems" ng-model="currentPage" first-text="&#xf049;" last-text="&#xf050;"
+                previous-text="&#xf048;" next-text="&#xf051;" style="margin-bottom: 5px;margin-top:5px"
+                max-size="2" boundary-links="true" rotate="false" num-pages="numPages" items-per-page="itemsPerPage"></ul>
+        </div>
+        <div class="col-sm-3">
+            <input type="number" min="2" max="500" ng-model="viewby" ng-change="setItemsPerPage(viewby)" style="margin-top:5px;" />
+        </div>
+
+    </div>
+    <div class="row">
+        <table id="table1" class="table table-bordered table-responsive table table-responsive  table-striped table-bordered table-hover row-border hover" arrow-selector>
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>No</th>
+                    <th>Alan</th>
+                    <th>Ad ve Soyadı</th>
+                    <th>Email</th>
+                    <th>Gönderim</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="mail_Onerileri in Mail_Onerileri.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))" ng-class="{'selected':$index == selectedRow2}" ng-click="satirKligi($index,mail_Onerileri)">
+                    <td ng-bind="mail_Onerileri.Mail_Onerileri_Id"></td>
+                    <td ng-bind="mail_Onerileri.$id"></td>
+                    <td ng-bind="mail_Onerileri.OneriTanimi"></td>
+                    <td ng-bind="mail_Onerileri.MailAdiVeSoyadi"></td>
+                    <td ng-bind="mail_Onerileri.MailAdresi"></td>
+                    <td ng-bind="mail_Onerileri.gonderimSekli"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<form ng-submit="vm.onSubmit()" name="MailBilgisi" novalidate>
+    <input type="hidden" ng-model="vm.mailB.Sirket_Id" value="sirket.id" />
+    <div class="form-group">
+        <label class="control-label m-t-sm col-sm-3">Adı Ve Soyadı:</label>
+        <div class="col-sm-9 m-t-sm">
+            <input type="text" class="form-control" name="MailAdiVeSoyadi" style="text-transform:uppercase" ng-model="vm.mailB.MailAdiVeSoyadi">
+        </div>
+    </div>
+    <div class="form-group m-t-sm" ng-class="{ 'has-error' : MailBilgisi.MailAdresi.$invalid && !MailBilgisi.MailAdresi.$pristine }">
+        <label class="control-label m-t-sm col-sm-3">Email:</label>
+        <div class="col-sm-9 m-t-sm ">
+            <input type="email" name="MailAdresi"
+                   class="form-control" ng-model="vm.mailB.MailAdresi" required>
+            <p ng-show="MailBilgisi.MailAdresi.$invalid && !MailBilgisi.MailAdresi.$pristine" class="help-block error">Mail Adresi Gerekli.</p>
+        </div>
+    </div>
+    <div class="form-group m-t-sm">
+        <label class="control-label col-sm-3 m-t-sm">Kullanlacak Alan:</label>
+        <div class="col-sm-9 m-t-sm">
+            <select class="form-control" ng-model="vm.mailB.OneriTanimi" name="OneriTanimi"
+                    ng-options="z for z in ['İş Başı','İstirahat','İşe Dönüş','Meslek Hastalığı','Sevk','İş Kazası','Periyodik Muayene']" required></select>
+            <span class="error" ng-show="MailBilgisi.OneriTanimi.$error.required">Alanı Seçiniz...</span>
+        </div>
+    </div>
+    <div class="form-group m-t-sm">
+        <label class="control-label col-sm-3 m-t-sm">Gönderim Şekli:</label>
+        <div class="col-sm-9 m-t-sm">
+            <select class="form-control" ng-model="vm.mailB.gonderimSekli" name="gonderimSekli"
+                    ng-options="z for z in ['Kime','Bilgi','Gizli']" required></select>
+            <span class="error" ng-show="MailBilgisi.gonderimSekli.$error.required">Alanı Seçiniz...</span>
+        </div>
+    </div>
+    <div class="form-group m-t-xl">
+        <label class="control-label">Tüm Şirketin Maillerinde Yer Alsın: <input ng-model="vm.mailB.TumSirketteOneriListesinde" type="checkbox"></label>
+    </div>
+
+    <button type="submit" class="btn btn-primary m-t-md submit-button" ng-disabled="MailBilgisi.$invalid">Kaydet</button>
+    <button type="button" class="btn btn-success m-t-md" ng-disabled="!MailBilgisi.$valid" ng-click="vm.yeni()">Yeni</button>
+    <button type="button" class="btn btn-danger m-t-md" ng-disabled="!MailBilgisi.$valid" ng-click="vm.sil()">Sil</button>
+    <p> {{message}}</p>
+</form>
+
+<!--<pre>{{vm.mailB|json}}</pre>-->
+<style>
+    .my-pagination {
+        font-family: Helvetica, FontAwesome;
+    }
+
+    #Pm_wrapper {
+        padding-bottom: 0px;
+    }
+
+    #acc .panel-group {
+        margin-bottom: 5px;
+    }
+
+    .etiket {
+        border-style: ridge;
+        border-width: thin;
+        border-radius: 5px;
+        padding: 3px 5px 3px 3px;
+        margin: 3px;
+    }
+
+    .slide-animate-container {
+        position: relative;
+        background: white;
+        border: 1px solid groove;
+        height: auto;
+        overflow: hidden;
+    }
+
+    .slide-animate {
+        padding: 2px;
+    }
+
+        .slide-animate.ng-enter, .slide-animate.ng-leave {
+            transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.35s;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: block;
+            padding: 10px;
+        }
+
+        .slide-animate.ng-enter {
+            top: -50px;
+        }
+
+            .slide-animate.ng-enter.ng-enter-active {
+                top: 0;
+            }
+
+        .slide-animate.ng-leave {
+            top: 0;
+        }
+
+            .slide-animate.ng-leave.ng-leave-active {
+                top: 50px;
+            }
+
+    .bekle {
+        cursor: wait;
+    }
+
+    .selected {
+        background-color: dodgerblue;
+        color: white;
+        font-weight: bold;
+    }
+</style>

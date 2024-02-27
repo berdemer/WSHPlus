@@ -1,0 +1,81 @@
+﻿<div ng-controller="hemogramCtrl  as HmC" style="width:100%">
+    <div class="col-sm-12">
+            <table datatable="ng" id="hemogram"  style="cursor:pointer"
+                   dt-options="dtOptionsHmC" dt-column-defs="dtColumnDefsHmC" class="table table-responsive  table-striped table-bordered table-hover dataTables-example row-border hover">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>No</th>
+                        <th>Hemogram</th>
+                        <th>Tarih</th>
+                        <th>Protokol</th>
+                        <th>Muayene Türü</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="hemogram in Hemogramlar">
+                        <td ng-bind="hemogram.Hemogram_Id"></td>
+                        <td ng-bind="hemogram.$id"></td>
+                        <td ng-bind="Hem(hemogram.Eritrosit,hemogram.Hematokrit,hemogram.Hemoglobin,hemogram.Lokosit,hemogram.MCV,
+                            hemogram.MCH,hemogram.MCHC,hemogram.Trombosit,hemogram.Platekrit )"></td>
+                        <td ng-bind="hemogram.Tarih|date:'dd/MM/yyyy'"></td>
+                        <td ng-bind="hemogram.Protokol"></td>
+                        <td ng-bind="hemogram.MuayeneTuru"></td>
+                    </tr>
+                </tbody>
+            </table>
+    </div>
+    <div uib-collapse="isCollapsed" class="m-t-n-lg col-sm-12">
+        <form ng-submit="HmC.onSubmit()" novalidate>
+            <formly-form model="HmC.model" fields="HmC.fields" form="HmC.form">
+                <button type="submit" class="btn btn-primary submit-button" ng-disabled="HmC.form.$invalid">Kaydet</button>
+                <button type="button" class="btn btn-success" ng-disabled="!HmC.form.$valid" ng-click="yeniHmC()">Yeni</button>
+                <button type="button" class="btn btn-danger" ng-disabled="!HmC.form.$valid" ng-click="silHmC()">Sil</button>
+                <button class="btn btn btn-warning" ngf-select="uploadFiles($files)" multiple
+                        accept="image/*,application/pdf,application/msword,application/vnd.ms-excel,
+application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ng-if="HmC.model.Hemogram_Id!=null">
+                    Rapor Ekle
+                </button>
+                <div class="pull-right">
+                    <label for="slc">Protokol Verilsin mi?</label>
+                    <select class="form-control" style="width:90px" ng-model="HmC.protokolGirisi" name="slc" ng-options="opsiyon.adi for opsiyon in opsiyonlar"></select>
+                </div>
+            </formly-form>
+        </form>
+    </div>
+    <row>
+        <ul style="list-style-type: none;overflow: hidden;" ng-show="dosyaList">
+            <li style="font:medium;color: mediumvioletred;float: left;margin-left:20px" ng-if="files.length>0?true:false">Eklenen Dosyalar :</li>
+            <li ng-repeat="f in files" style="font:normal;float: left;margin-left:20px">
+                <a ng-click="download(f)" ng-bind="f.FileName" tooltip-placement="bottom" uib-tooltip="İndir" tooltip-popup-delay="2500"></a>
+                <i class="fa fa-remove" ng-click="deleten(f.GenericName , $index)" tooltip-placement="bottom" uib-tooltip="Sil" tooltip-popup-delay="2500"> </i>
+            </li>
+        </ul>
+    </row>
+    <script type="text/ng-template" id="sonucKaydi.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Hemogram</h3>
+        </div>
+        <div class="modal-body">
+            <label>{{sonuc.prt}} Sonucunu Giriniz..</label>
+            <input type="text" ng-model="sonuc.giris" autofocus="autofocus" ng-enter="submittenx()" />
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="submittenx ()">Evet</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">İptal</button>
+        </div>
+    </script>
+    <script type="text/ng-template" id="ui-select-multiplex.html">
+        <ui-select multiple data-ng-model="model[options.key]" data-required="{{to.required}}" data-disabled="{{to.disabled}}" theme="bootstrap">
+            <ui-select-match placeholder="{{to.placeholder}}">{{$item[to.labelProp]}}</ui-select-match>
+            <ui-select-choices data-repeat="{{to.ngOptions}}">
+                <div ng-bind-html="option[to.labelProp] | highlight: $select.search"></div>
+                <small>
+                    {{option[to.labelProp1]}}<br />
+                    <span ng-bind-html="''+option[to.labelProp2]  | highlight: $select.search"></span>
+                </small>
+            </ui-select-choices>
+        </ui-select>
+    </script>
+    <span style="color:red">{{message}}</span>    
+</div>

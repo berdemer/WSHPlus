@@ -1,0 +1,55 @@
+﻿<div ng-controller="gormeCtrl  as GrC" style="width:100%">
+    <div class="col-sm-12">
+        <table datatable="ng" id="gorme"  style="cursor:pointer"
+               dt-options="dtOptionsGrC" dt-column-defs="dtColumnDefsGrC" class="table table-responsive  table-striped table-bordered table-hover dataTables-example row-border hover">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>No</th>
+                    <th>Değerlendirme</th>
+                    <th>Tarih</th>
+                    <th>Protokol</th>
+                    <th>Muayene Türü</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="gorme in Gormeleri">
+                    <td ng-bind="gorme.Gorme_Id"></td>
+                    <td ng-bind="gorme.$id"></td>
+                    <td ng-bind="gorme.Sonuc"></td>
+                    <td ng-bind="gorme.Tarih|date:'dd/MM/yyyy'"></td>
+                    <td ng-bind="gorme.Protokol"></td>
+                    <td ng-bind="gorme.MuayeneTuru"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div uib-collapse="isCollapsed" class="m-t-n-lg col-sm-12">
+        <form ng-submit="GrC.onSubmit()" novalidate>
+            <formly-form model="GrC.model" fields="GrC.fields" form="GrC.form">
+                <button type="submit" class="btn btn-primary submit-button" ng-disabled="GrC.form.$invalid">Kaydet</button>
+                <button type="button" class="btn btn-success" ng-disabled="!GrC.form.$valid" ng-click="yeniGrC()">Yeni</button>
+                <button type="button" class="btn btn-danger" ng-disabled="!GrC.form.$valid" ng-click="silGrC()">Sil</button>
+                <button class="btn btn btn-warning" ngf-select="uploadFiles($files)" multiple
+                        accept="image/*,application/pdf,application/msword,application/vnd.ms-excel,
+application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ng-if="GrC.model.Gorme_Id!=null">
+                    Rapor Ekle
+                </button>
+                <div class="pull-right">
+                    <label for="slc">Protokol Verilsin mi?</label>
+                    <select class="form-control" style="width:90px" ng-model="GrC.protokolGirisi" name="slc" ng-options="opsiyon.adi for opsiyon in opsiyonlar"></select>
+                </div>
+            </formly-form>
+        </form>
+    </div>
+    <row>
+        <ul style="list-style-type: none;overflow: hidden;" ng-show="dosyaList">
+            <li style="font:medium;color: mediumvioletred;float: left;margin-left:20px" ng-if="files.length>0?true:false">Eklenen Dosyalar :</li>
+            <li ng-repeat="f in files" style="font:normal;float: left;margin-left:20px">
+                <a ng-click="download(f)" ng-bind="f.FileName" tooltip-placement="bottom" uib-tooltip="İndir" tooltip-popup-delay="2500"></a>
+                <i class="fa fa-remove" ng-click="deleten(f.GenericName , $index)" tooltip-placement="bottom" uib-tooltip="Sil" tooltip-popup-delay="2500"> </i>
+            </li>
+        </ul>
+    </row>
+    <span style="color:red">{{message}}</span>    
+</div>

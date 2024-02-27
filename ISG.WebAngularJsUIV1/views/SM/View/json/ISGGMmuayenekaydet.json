@@ -1,0 +1,34 @@
+{
+  "isyeriHekimiTcKimlikNo": null,
+  "sgkTescilNo": null,
+  "calisanMuayeneVerisi": [],
+  "calisanTcKimlikNo": null,
+  "raporTuru": null,
+  "calisanMeslegi": {
+    "Kod": null,
+    "MeslekAdi": null
+  },
+  "calismaOrtami": {},
+  "fizikiOrtamSinifi": [],
+  "havaSinifi": [],
+  "gurultuSinifi": [],
+  "elektrikSinifi": [],
+  "tozYonetmeligiSinifi": [],
+  "kimyasalMaddeSinifi": [],
+  "biyolojikEtkenlerSinifi": [],
+  "calismaSekli": null,
+  "calismaPozisyonu": null,
+  "calismaZamani": null,
+  "aracKullanimi": null,
+  "isEkipmanlari": [],
+  "raporTarihi": null,
+  "rontgenYapildiMi": false,
+  "isitmeTestiYapildiMi": false,
+  "solunumFonkTestiYapildiMi": false,
+  "kanTetkikiYapildiMi": false,
+  "idrarTetkikiYapildiMi": false,
+  "raporSonGecerlilikTarihi": null,
+  "sonucVeKanaat": null,
+  "imzaliDeger": null
+}
+

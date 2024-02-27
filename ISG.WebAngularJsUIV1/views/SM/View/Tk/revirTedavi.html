@@ -1,0 +1,131 @@
+﻿<div ng-controller="revirTedaviCtrl  as RtC" style="width:100%">
+    <div class="col-sm-12">
+        <table datatable="ng" id="revirTedavi"  style="cursor:pointer"
+               dt-options="dtOptionsRtC" dt-column-defs="dtColumnDefsRtC" class="table table-responsive  table-striped table-bordered table-hover dataTables-example row-border hover">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>N</th>
+                    <th>Şikayetleri</th>
+                    <th>Tanısı</th>
+                    <th>Tedavi</th>
+                    <th>Tarih-Saat</th>
+                    <th>Prt</th>
+                    <th>Muayene Türü</th>
+                </tr>
+            </thead>
+                <tbody>
+                    <tr ng-repeat="revirTedavi in RevirTedavileri">
+                        <td ng-bind="revirTedavi.RevirTedavi_Id"></td>
+                        <td ng-bind="revirTedavi.$id"></td>
+                        <td ng-bind="tanimla(revirTedavi.Sikayeti)"></td>
+                        <td ng-bind="revirTedavi.Tani"></td>
+                        <td ng-bind="tedavi(revirTedavi.IlacSarfCikislari)"></td>
+                        <td ng-bind="revirTedavi.Tarih|date:'dd/MM/yyyy  HH:mm'"></td>
+                        <td ng-bind="revirTedavi.Protokol"></td>
+                        <td ng-bind="revirTedavi.MuayeneTuru"></td>
+                    </tr>
+                </tbody>
+</table>
+    </div>
+    <div uib-collapse="isCollapsed" class="m-t-n-lg col-sm-12">
+        <div class="col-sm-6">
+            <form ng-submit="RtC.onSubmit()" novalidate>
+                <formly-form model="RtC.model" fields="RtC.fields" form="RtC.form">
+                    <button type="submit" class="btn btn-primary submit-button" ng-disabled="RtC.form.$invalid">Kaydet</button>
+                    <button type="button" class="btn btn-success" ng-disabled="!RtC.form.$valid" ng-click="yeniRtC()">Yeni</button>
+                    <button type="button" class="btn btn-danger" ng-disabled="!RtC.form.$valid" ng-click="silRtC()">Sil</button>
+                    <button class="btn btn btn-warning" ngf-select="uploadFiles($files)" multiple
+                            accept="image/*,application/pdf,application/msword,application/vnd.ms-excel,
+application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"  ng-if="RtC.model.RevirTedavi_Id!=null" >
+                        Rapor Ekle
+                    </button>
+                    <div class="pull-right">
+                        <label for="slc">Protokol Verilsin mi?</label>
+                        <select class="form-control" style="width:90px" ng-model="RtC.protokolGirisi" name="slc" ng-options="opsiyon.adi for opsiyon in opsiyonlar"></select>
+                    </div>
+                </formly-form>
+            </form>
+        </div>  
+        <div class="col-sm-6"  style="border:3px groove rgba(255, 255, 255, 0.15); border-radius: 10px;"  uib-collapse="StokGoster">
+            <row>
+                <table datatable="ng"  id="stokYukleme" style="width:100%;margin-top: 12px;cursor:pointer"
+                       dt-options="dtOptionsRtCx" dt-column-defs="dtColumnDefsRtCx" class="table table-responsive  table-striped table-bordered table-hover dataTables-example row-border hover">
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>StokId</th>
+                            <th>No</th>
+                            <th style="width:70%">Stok Adı</th>
+                            <th style="width:30%">Miktar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="ilac in RtC.model.IlacSarfCikislari">
+                            <td ng-bind="ilac.IlacSarfCikisi_Id"></td>
+                            <td ng-bind="ilac.StokId"></td>
+                            <td ng-bind="ilac.$id"></td>
+                            <td ng-bind="ilac.IlacAdi" style="width:70%"></td>
+                            <td ng-bind="ilac.SarfMiktari" style="width:30%"></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </row>
+            <row>
+                <form role="form" name="StokSarf" novalidate ng-submit="RtC.stokEkle()">
+                    <div class="form-group">
+                        <label>Stok Adı</label>
+                        <ui-select ng-model="RtC.IlacSarfCikisi" theme="bootstrap">
+                            <ui-select-match placeholder="Sağlık Biriminizi Seçtikten Sonra Stoklarınzı Seçebilirsiniz." >{{$select.selected.IlacAdi}}</ui-select-match>
+                            <ui-select-choices repeat="item in IlacStoklari | filter: $select.search">
+                                <div ng-bind-html="item.IlacAdi | highlight: $select.search"></div>
+                                <small>Stok Miktarı:&nbsp;</small>
+                                <span>
+                                <small ng-bind-html="item.StokMiktari"></small>
+                                <small ng-bind-html="item.StokMiktarBirimi"></small></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                    <div class="form-group">
+                        <label>Stok Miktarı</label>
+                        <input type="number" placeholder="" class="form-control" name="SarfMiktari2" ng-model="RtC.IlacSarfCikisi.SarfMiktari" min="1" value="1" required>
+                        <div class="m-t-xs" ng-show="StokSarf.$invalid && StokSarf.SarfMiktari2.$dirty">
+                            <small class="text-danger" ng-show="StokSarf.SarfMiktari2.$error.number">Lütfen Stok Miktarnı Giriniz.</small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-sm btn-primary" type="submit" ng-disabled="StokSarf.$invalid"><strong><i class="glyphicon glyphicon-save"></i>&nbsp; Stokdan Kaydet</strong></button>
+                        <button type="button" class="btn btn-sm btn-danger" ng-disabled="!StokSarf.$valid" ng-click="RtC.stokKaldir()">Stokdan Sil</button>
+                    </div>
+                </form>
+
+            </row>
+        </div>
+             
+    </div>
+    <row>
+        <ul style="list-style-type: none;overflow: hidden;" ng-show="dosyaList">
+            <li style="font:medium;color: mediumvioletred;float: left;margin-left:20px" ng-if="files.length>0?true:false">Eklenen Dosyalar :</li>
+            <li ng-repeat="f in files" style="font:normal;float: left;margin-left:20px">
+                <a ng-click="download(f)" ng-bind="f.FileName" tooltip-placement="bottom" uib-tooltip="İndir" tooltip-popup-delay="2500"></a>
+                <i class="fa fa-remove" ng-click="deleten(f.GenericName , $index)" tooltip-placement="bottom" uib-tooltip="Sil" tooltip-popup-delay="2500"> </i>
+            </li>
+        </ul>
+    </row>
+    <span style="color:red">{{message}}</span> 
+    <script type="text/ng-template" id="ui-select-multiplesample.html">
+        <ui-select multiple  data-ng-model="model[options.key]" data-required="{{to.required}}" data-disabled="{{to.disabled}}" theme="bootstrap">
+            <ui-select-match placeholder="{{to.placeholder}}">{{$item[to.labelProp]}}</ui-select-match>
+            <ui-select-choices data-repeat="{{to.ngOptions}}" data-refresh="to.refresh($select.search, options)" data-refresh-delay="{{to.refreshDelay}}">
+                <div ng-bind-html="option[to.labelProp] | highlight: $select.search"></div>
+            </ui-select-choices>
+        </ui-select>
+    </script>
+ 
+</div>
+<style>
+    #stokYukleme_wrapper{
+       padding-top: 20px;
+    }
+</style>

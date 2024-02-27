@@ -1,0 +1,89 @@
+﻿<div ng-controller="StokTanimlaCtrl">
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <div class="col-sm-1 m-t-lg" style="padding-right:0px;padding-left:15px;">
+            <h4 class="m-t-sm">Sağlık Birimi:</h4>
+        </div>
+        <div class="col-sm-4 m-t-lg" style="padding-left:0px;">
+            <ui-select ng-model="birim.selected" theme="bootstrap" class="koyuMaviFont">
+                <ui-select-match placeholder="Birimi Seç veya Ara..">{{$select.selected.SirketAdi+' '+$select.selected.SaglikBirimiAdi|| $select.selected}}</ui-select-match>
+                <ui-select-choices repeat="item in birimler | filter: $select.search">
+                    <span ng-bind-html="item.SirketAdi | highlight: $select.search"></span><br />
+                    <small ng-bind-html="item.SaglikBirimiAdi "></small>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+        <div class="col-sm-7 m-t-lg">
+            <div class="checkbox checkbox-primary">
+                <input id="checkbox2" type="checkbox" ng-model="dahil" ng-change="dahilinde()">
+                <label for="checkbox2">
+                    {{pasifize}} edilmiş stoklar
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div ng-include="'./views/SM/View/temp/stokTable.html'">
+        </div>
+        <div class="wrapper wrapper-content animated fadeInRight col-lg-4">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>{{birim.selected.SirketAdi}} {{birim.selected.SaglikBirimiAdi}}- Giriş</h5>
+                    <div ibox-tools></div>
+                </div>
+                <div class="ibox-content">
+                    <form name="stokFrom" class="form-horizontal" ng-submit="submitForm()" novalidate>
+                        <div class="form-group"  ng-class="{ 'has-error' : stokFrom.IlacAdiInput.$invalid && !stokFrom.IlacAdiInput.$pristine }">
+                        <label class="col-sm-2 control-label">Stok Adı</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="IlacAdiInput" ng-model="stok.IlacAdi" uib-typeahead="drog.IlacAdi as drog.IlacAdi for drog in getDrog($viewValue)" uppercased class="form-control"  required>
+                            <p ng-show="stokFrom.IlacAdiInput.$invalid && !stokFrom.IlacAdiInput.$pristine" class="help-block">Stok Adını Giriniz..</p>
+                        </div>
+                        </div>
+                        <!--https://codepen.io/sevilayha/pen/xFcdI validasyon-->
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group"  ng-class="{ 'has-error' : stokFrom.StokTuruInput.$invalid && !stokFrom.StokTuruInput.$pristine }">
+                            <label class="col-sm-2 control-label">Stok Türü</label>
+                            <div class="col-sm-10">
+                                <select name="StokTuruInput" class="form-control m-b" ng-options="stokk for stokk in StokTuru" ng-model="stok.StokTuru"  required>
+                                    <option value="">-- Türünü Seçiniz --</option>
+                                </select>
+                                <p ng-show="stokFrom.StokTuruInput.$invalid && !stokFrom.StokTuruInput.$pristine" class="help-block">Stok Türünü Giriniz..</p>
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group"  ng-class="{ 'has-error' : stokFrom.StokMiktarBirimi.$invalid && !stokFrom.StokMiktarBirimi.$pristine }">
+                        <label class="col-sm-2 control-label">Stok Birimi</label>
+                        <div class="col-sm-10">
+                            <select name="StokMiktarBirimi" class="form-control m-b" ng-options="stokb for stokb in StokMiktarBirimi" ng-model="stok.StokMiktarBirimi"  required>
+                                <option value="">-- Birimi Seçiniz --</option>
+                            </select>
+                            <p ng-show="stokFrom.StokMiktarBirimi.$invalid && !stokFrom.StokMiktarBirimi.$pristine " class="help-block">Stok Birimini Giriniz..</p>
+                        </div>
+                    </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Kritik Stok Miktarı</label>
+                            <div class="col-sm-10">
+                                <input type="number" min="0" placeholder="Kritik Stok Uyarısı" ng-model="stok.KritikStokMiktari" class="form-control">
+                                <span class="help-block m-b-none">1 ve üzeri değer girdiğinizde sistem uyarı verir. 0 verildiğinde uyarı almazsınız.</span>
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                                <button class="btn btn-white" ng-disabled="!stokFrom.$valid" type="reset" ng-click="newForm()">Yeni</button>
+                                <button class="btn btn-primary"  ng-disabled="stokFrom.$invalid" type="submit">Kaydet</button>
+                                <button class="btn btn-danger" ng-disabled="!stokFrom.$valid" ng-click="updateForm()" type="button">{{pasifize}}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>font-size
+    .cropArea {
+        overflow: hidden;
+        width: 400px;
+        height: 300px;
+    }
+</style>

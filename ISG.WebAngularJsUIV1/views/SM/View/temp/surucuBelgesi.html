@@ -1,0 +1,233 @@
+﻿<html>
+
+<head>
+    <meta charset="utf-8" />
+    <style type="text/css" media="print">
+        <!--
+        /* Font Definitions */
+
+        @page {
+            size: auto; /* auto, 5.8in 8.3in stile ekleyebilirsin.*/
+            margin: 0mm; /* sayfa margin sıfırla */
+        }
+
+        @font-face { /*font-family:"Cambria Math";
+        panose-1:2 4 5 3 5 4 6 3 2 4;*/
+        }
+
+        @font-face { /*font-family:Calibri;
+        panose-1:2 15 5 2 2 2 4 3 2 4;*/
+        }
+        /* Style Definitions */
+        p.MsoNormal, li.MsoNormal, div.MsoNormal {
+            margin-top: 0cm;
+            margin-right: 0cm;
+            margin-bottom: 8.0pt;
+            margin-left: 0cm;
+            line-height: 107%;
+            font-size: 11.0pt;
+            /*font-family:"Calibri",sans-serif;*/
+        }
+
+        .MsoChpDefault { /*font-family:"Calibri",sans-serif;*/
+        }
+
+        .MsoPapDefault {
+            margin-bottom: 8.0pt;
+            line-height: 107%;
+        }
+
+        @page WordSection1 {
+            size: 590pt 841.9pt;
+            margin: 0pt 50pt 5pt 50pt;
+        }
+
+        div.WordSection1 {
+            page: WordSection1;
+        }
+        -->
+    </style>
+
+</head>
+
+<body lang=TR>
+
+    <div class=WordSection1>
+
+        <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:center;line-height:normal;margin-top:60pt'>
+            <b>
+                <span style='font-size:13.5pt;
+font-family:"Times New Roman",serif;color:black'>
+                    SÜRÜCÜ ADAYLARI VE SÜRÜCÜLER
+                    İÇİN
+                </span>
+            </b>
+        </p>
+
+        <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:center;line-height:normal'>
+            <b>
+                <span style='font-size:13.5pt;
+font-family:"Times New Roman",serif;color:black'>SAĞLIK RAPORU</span>
+            </b>
+        </p>
+
+        <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+text-align:center;line-height:normal'>
+            <span style='font-size:13.5pt;font-family:
+"Times New Roman",serif;color:black'>&nbsp;</span>
+        </p>
+
+        <table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0 width=614
+               style='width:460.55pt;border-collapse:collapse;border:none'>
+            <tr style='height:96.55pt'>
+                <td width=472 valign=top style='width:354.15pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:96.55pt'>
+                    <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b><span style='font-size:13.5pt;color:black'>BAŞVURU SAHİBİNİN</span></b></p>
+                    <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'>
+                        <span style='font-size:13.5pt;font-family:"Times New Roman",serif;
+  color:black'>T.C. Kimlik No        :</span><span ng-bind="patient.tcNo"></span>
+                    </p>
+                    <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'>
+                        <span style='font-size:13.5pt;font-family:"Times New Roman",serif;
+  color:black'>Adı ve Soyadı          :</span><span ng-bind="patient.name"></span>
+                    </p>
+                    <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'>
+                        <span style='font-size:13.5pt;font-family:"Times New Roman",serif;
+  color:black'>Baba Adı                  :</span><span ng-bind="patient.data.PersonelDetayi.baba_adi"></span>
+                    </p>
+                    <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'>
+                        <span style='font-size:13.5pt;font-family:"Times New Roman",serif;
+  color:black'>Doğum Tarihi ve Yeri:</span><span ng-bind="(patient.data.PersonelDetayi.DogumYeri|trim)+' '+(patient.data.PersonelDetayi.DogumTarihi|date:'dd/MM/yyyy')"></span>
+                    </p>
+                    <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'>
+                        <span style='font-size:13.5pt;font-family:"Times New Roman",serif;
+  color:black'>Kan Grubu               :</span><span ng-bind="patient.data.KanGrubu|trim"></span>
+                    </p>
+                    <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><b>&nbsp;</b></p>
+                </td>
+                <td width=142 valign=top style='width:106.4pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt;height:96.55pt'>
+                    <div style="width:100%;height:100%;left:0px;top:0px;z-index:1;">
+                        <img alt="image" class="img-container" ng-cloak ng-src="{{patient.img}}"  on-error="defaultUser.png"  style="width: 100%; height: 100%;margin:2px 2px 5px 2px;background-size:cover;" />
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <p class=MsoNormal align=center style='text-align:center'>
+            <b>
+                <u>
+                    <span style='font-size:13.0pt;line-height:107%;font-family:"Times New Roman",serif'>
+                        <span style='text-decoration:none'>&nbsp;</span>
+                    </span>
+                </u>
+            </b>
+        </p>
+
+        <p class=MsoNormal align=center style='text-align:center'>
+            <b>
+                <u>
+                    <span style='font-size:13.0pt;line-height:107%;font-family:"Times New Roman",serif'>
+                        İşyeri
+                        Hekimi Tarafından Yapılan Muayene
+                    </span>
+                </u>
+            </b>
+        </p>
+
+        <p class=MsoNormal>
+            <span style='font-size:13.0pt;line-height:107%;font-family:
+"Times New Roman",serif'>RAPORU DÜZENLEYEN KURULUŞ:</span><span ng-bind="patient.kurumu"></span>--<span ng-bind="patient.saglikBirimi"></span>
+        </p>
+
+        <p class=MsoNormal>
+            <span style='font-size:13.0pt;line-height:107%;font-family:
+"Times New Roman",serif'>RAPOR TARİH VE NO<b>:</b></span><span ng-bind="patient.date"></span>&nbsp;/&nbsp;<span ng-bind="patient.Protokol"></span>
+        </p>
+
+        <p class=MsoNormal style='text-align:justify'>
+            <span style='font-size:13.0pt;
+line-height:107%;font-family:"Times New Roman",serif'>
+                Karayolları Trafik
+                Kanunu’nun 41 inci maddesine dayanılarak hazırlanan “Sürücü Adayları ve
+                Sürücülerde Aranacak Sağlık Şartları İle Muayenelerine Dair Yönetmelik’te
+                belirtilen hususlara uygun olarak muayenesi yapılmış olup;
+            </span>
+        </p>
+
+        <p class=MsoNormal>
+            <span style='font-size:13.0pt;line-height:107%;font-family:
+"Times New Roman",serif'>Sürücü Olabilir.                                  (X)</span>
+        </p>
+
+        <p class=MsoNormal>
+            <span style='font-size:13.0pt;line-height:107%;font-family:
+"Times New Roman",serif'>Sağlık Kuruluna sevki gerekir.          (  )</span>
+        </p>
+
+        <p class=MsoNormal>
+            <span style='font-size:13.0pt;line-height:107%;font-family:
+"Times New Roman",serif'>&nbsp;</span>
+        </p>
+
+        <p class=MsoNormal>
+            <span style='font-size:13.0pt;line-height:107%;font-family:
+"Times New Roman",serif'>TANI: Normal Fiziki Muayene</span>
+        </p>
+
+        <p class=MsoNormal>
+            <span style='font-size:13.0pt;line-height:107%;font-family:
+"Times New Roman",serif'>&nbsp;</span>
+        </p>
+
+        <p class=MsoNormal>
+            <span style='font-size:13.0pt;line-height:107%;font-family:
+"Times New Roman",serif'>
+                KARAR:   Herhangi bir tıbbi rahatsızlığı olmadığını
+                yazılı olarak beyan eden kişinin {{patient.name}} tarafımca muayenesi yapılmış olup;
+                muayene bulgularım ile FORKLİFT SÜRÜCÜ BELGESİ ALABİLECEĞİ tıbbi kanaatine
+                varılmıştır.
+            </span>
+        </p>
+
+        <p class=MsoNormal>
+            <span style='font-size:13.0pt;line-height:107%;font-family:
+"Times New Roman",serif'>&nbsp;</span>
+        </p>
+
+        <p class=MsoNormal align=right style='text-align:right'>
+            <span style='font-size:
+14.0pt;line-height:107%;font-family:"Times New Roman",serif'>
+                İşyeri Hekiminin
+            </span>
+        </p>
+
+        <p class=MsoNormal align=right style='text-align:right'>
+            <span style='font-size:
+14.0pt;line-height:107%;font-family:"Times New Roman",serif'>Kaşe ve İmza</span>
+        </p>
+
+        <p class=MsoNormal>
+            <span style='font-size:13.0pt;line-height:107%;font-family:
+"Times New Roman",serif'>&nbsp;</span>
+        </p>
+
+        <p class=MsoNormal>
+            <span style='font-size:13.0pt;line-height:107%;font-family:
+"Times New Roman",serif'>&nbsp;</span>
+        </p>
+
+    </div>
+
+</body>
+
+</html>

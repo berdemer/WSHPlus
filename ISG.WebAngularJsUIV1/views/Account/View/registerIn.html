@@ -1,0 +1,56 @@
+﻿<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Kayıt Formu</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+            <li>
+                <a>Kayıt Formları</a>
+            </li>
+            <li class="active">
+                <strong>Kayıt Formu</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">    
+</div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight" ng-controller="registerInController as vm">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>
+                    {{bilgi}}
+                    </h5>
+                    <div ibox-tools></div>
+                </div>
+                <div class="ibox-content">
+                    <form class="form-horizontal" name="vm.form" role="form" novalidate>
+                        <formly-form model="vm.model" fields="vm.fields" options="vm.options" form="vm.form">
+                            <button type="submit" class="btn btn-primary block full-width m-b" data-ng-click="signUp()" ng-disabled="vm.form.$invalid">{{bilgi}}</button>
+                            <div data-ng-hide="message == ''" data-ng-class="(savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
+                                {{message}}
+                            </div>
+                        </formly-form>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/ng-template" id="custom-messages.html">
+        <div class="my-messages" ng-messages="options.formControl.$error" ng-if="options.validation.errorExistsAndShouldBeVisible">
+            <div class="error-message" ng-message="{{::name}}" ng-repeat="(name, message) in ::options.validation.messages">
+                {{message(options.formControl.$viewValue, options.formControl.$modelValue, this)}}
+            </div>
+        </div>
+    </script>
+</div>
+<style>
+    .cropArea {
+        overflow: hidden;
+        width: 400px;
+        height: 300px;
+    }
+</style>

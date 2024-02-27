@@ -1,0 +1,106 @@
+﻿<div ng-controller="yillikRaporCtrl  as yrC">
+    <div class="row wrapper border-bottom white-bg page-heading" style="position:relative;z-index:10">
+        <div class="col-sm-1 m-t-lg" style="padding-right:0px;padding-left:15px;">
+            <h4 class="m-t-sm">Sağlık Birimi:</h4>
+        </div>
+        <div class="col-sm-4 m-t-lg" style="padding-left:0px;">
+            <ui-select ng-model="birim.selected" theme="bootstrap" class="koyuMaviFont">
+                <ui-select-match  class="koyuMaviFont" placeholder="Birimi Seç veya Ara..">{{$select.selected.SirketAdi+' '+$select.selected.SaglikBirimiAdi|| $select.selected}}</ui-select-match>
+                <ui-select-choices repeat="item in birimler | filter: $select.search">
+                    <span  class="maviFont" ng-bind-html="item.SirketAdi | highlight: $select.search"></span><br />
+                    <small  class="maviFont" ng-bind-html="item.SaglikBirimiAdi "></small>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+        <div class="col-sm-1 m-t-lg" style="padding-right:0px;padding-left:15px;">
+            <h4 class="m-t-sm pull-right">Rapor Yılı:</h4>
+        </div>
+        <div class="col-sm-2 m-t-lg">     
+                <select class="form-control koyuMaviFont" ng-model="yrC.year" style="width:55%"
+                        ng-options="z for z in ['2016','2017','2018','2019','2020','2021','2022','2023','2024','2025']"></select>
+        </div>
+        <div class="col-sm-4 m-t-lg" style="padding-right:0px;padding-left:15px;">
+        </div>
+    </div>
+    <div class="animated fadeInRight">
+        <div wrapper wrapper-content>
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>{{birim.selected.SirketAdi}} {{birim.selected.SaglikBirimiAdi}} {{yrC.year}} Yılı Değerlendirme Raporu</h5>
+                    <div ibox-tools></div>
+                </div>
+                <div class="ibox-content">
+                    <table datatable="ng" id="ay" style="cursor:pointer"
+                           dt-options="dtOptions" dt-column-defs="dtColumnDefs" class=" table table-responsive  table-striped table-bordered table-hover dataTables-example row-border hover">
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>İşlem</th>
+                                <th>Ocak</th>
+                                <th>Şubat</th>
+                                <th>Mart</th>
+                                <th>Nisan</th>
+                                <th>Mayıs</th>
+                                <th>Haziran</th>
+                                <th>Temmuz</th>
+                                <th>Ağustos</th>
+                                <th>Eylül</th>
+                                <th>Ekim</th>
+                                <th>Kasım</th>
+                                <th>Aralık</th>
+                                <th>Toplam</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="ay in yrC.aylar">
+                                <td ng-bind="ay.$id"></td>
+                                <td ng-bind="ay.IslemDetayi"></td>
+                                <td ng-bind="ay.Ocak"></td>
+                                <td ng-bind="ay.Subat"></td>
+                                <td ng-bind="ay.Mart"></td>
+                                <td ng-bind="ay.Nisan"></td>
+                                <td ng-bind="ay.Mayis"></td>
+                                <td ng-bind="ay.Haziran"></td>
+                                <td ng-bind="ay.Temmuz"></td>
+                                <td ng-bind="ay.Agustos"></td>
+                                <td ng-bind="ay.Eylul"></td>
+                                <td ng-bind="ay.Ekim"></td>
+                                <td ng-bind="ay.Kasim"></td>
+                                <td ng-bind="ay.Aralik"></td>
+                                <td ng-bind="yrC.toplam(ay)"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="animated fadeInRight">
+        <div wrapper wrapper-content>
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>{{birim.selected.SirketAdi}} {{birim.selected.SaglikBirimiAdi}} {{yrC.year}} Yılı Değerlendirme Grafik Raporu</h5>
+                    <div ibox-tools></div>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <button ng-repeat="bt in  yrC.datasets" ng-init="bt.gui=false" class="btn btn-xs" ng-style="bt.gui?{color:'black','background-color':bt.fillColor}:{color:'blue','background-color':'white'}" ng-click="bt.gui=!bt.gui;yrC.lineAddtem(bt.gui,bt)">{{bt.label}}</button>
+                    </div>
+                    <div class="row">
+                        <div style="width:80%;height:80%;">
+                            <canvas linechart options="yrC.lineOptions" data="yrC.lineData" series="yrC.series" responsive=true></canvas>
+                        </div>                       
+                    </div>                   
+                </div>
+            </div>
+        </div>
+    </div>    
+    </div>
+<style>
+    .cropArea {
+        overflow: hidden;
+        width: 400px;
+        height: 300px;
+    }
+</style>

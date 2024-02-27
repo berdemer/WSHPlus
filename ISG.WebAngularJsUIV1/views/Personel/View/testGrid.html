@@ -1,0 +1,15 @@
+﻿<div style="overflow:auto;width:initial" ng-if="tabloGoster">
+    <input ng-model="z" type="search" placeholder="Arama">
+    <input type="number" min="3" max="100" ng-model="viewby2" class="m-b-xs pull-right" ng-change="setItemsPerPage2(viewby2)" />
+    <table border="1" class="table table-bordered table-striped table-hover table-responsive">
+        <tr>
+            <th ng-repeat="kolon in kolonlar" ng-if="!(kolon=='$id'||kolon=='durum')" ng-bind="kolon">
+            </th>
+        </tr>
+        <tr ng-repeat="satir in (satirlar | filter:z).slice(((currentPage2-1)*itemsPerPage2), ((currentPage2)*itemsPerPage2))">
+            <td ng-repeat="kolon in kolonlar" ng-if="!(kolon=='$id'||kolon=='durum')" ng-bind="satir[kolon]"></td>
+        </tr>
+    </table>
+    <uib-pagination class="m-t-xs" total-items="(satirlar | filter:z).length" ng-model="currentPage2"
+                    max-size="maxSize2" boundary-links="true" rotate="false" num-pages="numPages" items-per-page="itemsPerPage2"></uib-pagination>
+</div>

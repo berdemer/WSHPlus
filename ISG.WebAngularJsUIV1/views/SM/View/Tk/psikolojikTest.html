@@ -1,0 +1,128 @@
+﻿<div ng-controller="psikolojikTestCtrl  as ptC" style="width:100%">
+    <row>
+        <table datatable="ng" id="pst"  style="cursor:pointer"
+               dt-options="dtOptionsptC" dt-column-defs="dtColumnDefsptC" class="table table-responsive  table-striped table-bordered table-hover dataTables-example row-border hover">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>No</th>
+                    <th>Test Adı</th>
+                    <th>Sonuç</th>
+                    <th>Tarih</th>
+                    <th>Protokol</th>
+                    <th>Muayene Türü</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="pt in PsikolojikTestler">
+                    <td ng-bind="pt.PsikolojikTest_Id"></td>
+                    <td ng-bind="pt.$id"></td>
+                    <td ng-bind="ptC.testAdiBul(pt.TestAdi)"></td>
+                    <td ng-bind="pt.Sonuc"></td>
+                    <td ng-bind="pt.Tarih|date:'dd/MM/yyyy'"></td>
+                    <td ng-bind="pt.Protokol"></td>
+                    <td ng-bind="pt.MuayeneTuru"></td>
+                </tr>
+            </tbody>
+        </table>
+    </row>
+    <row>
+        <div uib-collapse="isCollapsed" class="m-t-n-lg">
+            <form ng-submit="ptC.onSubmit()" novalidate>
+                <formly-form model="ptC.model" fields="ptC.fields" form="ptC.form">
+                    <button type="submit" class="btn btn-primary submit-button" ng-disabled="ptC.form.$invalid">Kaydet</button>
+                    <button type="button" class="btn btn-success" ng-disabled="!ptC.form.$valid" ng-click="yeniptC()">Yeni</button>
+                    <button type="button" class="btn btn-danger" ng-disabled="!ptC.form.$valid" ng-click="silptC()">Sil</button>
+                    <button type="button" class="btn btn-reddit" ng-click="ptC.testYap()">Test Yap</button>
+                    <button class="btn btn btn-warning" ngf-select="uploadFiles($files)" multiple
+                            accept="image/*,application/pdf,application/msword,application/vnd.ms-excel,
+application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ng-show="fileButtonShow">
+                        Rapor Ekle
+                    </button>
+                    <div class="pull-right">
+                        <label for="slc">Protokol Verilsin mi?</label>
+                        <select class="form-control" style="width:90px" ng-model="ptC.protokolGirisi" name="slc" ng-options="opsiyon.adi for opsiyon in opsiyonlar">
+                        </select>
+                    </div>
+                </formly-form>
+            </form>
+        </div>
+    </row>
+    <row>
+        <ul style="list-style-type: none;overflow: hidden;" ng-show="dosyaList">
+            <li style="font:medium;color: mediumvioletred;float: left;margin-left:20px" ng-if="files.length>0?true:false">Eklenen Dosyalar :</li>
+            <li ng-repeat="f in files" style="font:normal;float: left;margin-left:20px">
+                <a ng-click="download(f)" ng-bind="f.FileName" tooltip-placement="bottom" uib-tooltip="İndir" tooltip-popup-delay="2500"></a>
+                <i class="fa fa-remove" ng-click="deleten(f.GenericName , $index)" tooltip-placement="bottom" uib-tooltip="Sil" tooltip-popup-delay="2500"> </i>
+            </li>
+        </ul>
+    </row>
+    <span style="color:red">{{message}}</span>    
+</div>
+
+<script type="text/ng-template" id="ModalContent.html">
+    <div class="modal-header">
+        <h3 class="modal-title">{{mC.items}}</h3>
+    </div>
+    <div class="modal-body m-b-n-md">
+        <div ng-if="mC.yorumSayfasi">
+            <div class="row">
+                <h4 ng-bind="mC.test.Soru"></h4>
+            </div>
+            <div class="row m-t-sm">
+                <div class="col-sm-4 radio radio-danger" style="margin:0px" ng-if="mC.test.a.display">
+                    <input type="radio" name="sur{{mC.testSay}}" id="radioa" ng-model="mC.test.a.active" ng-value="true" ng-click="mC.yalin('a')">
+                    <label for="radioa">
+                        {{mC.test.a.ad}}
+                    </label>
+                </div>
+                <div class="col-sm-4 radio radio-danger" style="margin:0px" ng-if="mC.test.b.display">
+                    <input type="radio" name="sur{{mC.testSay}}" id="radiob" ng-model="mC.test.b.active" ng-value="true" ng-click="mC.yalin('b')">
+                    <label for="radiob">
+                        {{mC.test.b.ad}}
+                    </label>
+                </div>
+                <div class="col-sm-4 radio radio-danger" style="margin:0px" ng-if="mC.test.c.display">
+                    <input type="radio" name="sur{{mC.testSay}}" id="radioc" ng-model="mC.test.c.active" ng-value="true" ng-click="mC.yalin('c')">
+                    <label for="radioc">
+                        {{mC.test.c.ad}}
+                    </label>
+                </div>
+            </div>
+            <div class="row m-t-sm">
+                <div class="col-sm-4 radio radio-danger" style="margin:0px" ng-if="mC.test.d.display">
+                    <input type="radio" name="sur{{mC.testSay}}" id="radiod" ng-model="mC.test.d.active" ng-value="true" ng-click="mC.yalin('d')">
+                    <label for="radiod">
+                        {{mC.test.d.ad}}
+                    </label>
+                </div>
+                <div class="col-sm-4 radio radio-danger" style="margin:0px" ng-if="mC.test.e.display">
+                    <input type="radio" name="sur{{mC.testSay}}" id="radioe" ng-model="mC.test.e.active" ng-value="true" ng-click="mC.yalin('e')">
+                    <label for="radioe">
+                        {{mC.test.e.ad}}
+                    </label>
+                </div>
+                <div class="col-sm-4 radio radio-danger" style="margin:0px" ng-if="mC.test.f.display">
+                    <input type="radio" name="sur{{mC.testSay}}" id="radiof" ng-model="mC.test.f.active" ng-value="true" ng-click="mC.yalin('f')">
+                    <label for="radiof">
+                        {{mC.test.f.ad}}
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div ng-if="!mC.yorumSayfasi">
+            <h4>Değerlendirme Sonucu: {{mC.yorum}}</h4>
+        </div>
+        <div class="row m-t-sm">
+            <button class="btn btn-primary btn-sm pull-left" ng-if="mC.leftBtnDisplay" ng-click="mC.leftSend()"><i class="fa fa-arrow-left"></i></button>
+            <button class="btn btn-primary btn-sm pull-right" ng-disabled="!(mC.test.a.active||mC.test.b.active||mC.test.c.active||mC.test.d.active||mC.test.e.active||mC.test.f.active)"
+                     ng-if="mC.rightBtnDisplay"  ng-click="mC.rightSend()"><i class="fa fa-arrow-right"></i></button>
+        </div>
+        <!--<pre>{{mC.testSorulari|json}}</pre>-->
+    </div>
+    <div class="modal-footer">
+        <p style="font-size:20px" ng-class="succsess ? 'text-success' : 'text-danger'" ng-show="message != null">{{message}}</p>
+        <button class="btn btn-primary" type="button" ng-click="ok()">Evet</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">İptal</button>
+    </div>
+</script>

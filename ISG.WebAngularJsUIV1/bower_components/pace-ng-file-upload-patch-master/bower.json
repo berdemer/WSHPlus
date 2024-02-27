@@ -1,0 +1,14 @@
+{
+  "version": "0.0.6",
+  "name": "pace-ng-file-upload-inlinepatch",
+  "main": "pace-ng-file-upload-inlinepatch.js",
+  "dependencies": {
+    "pace": "^1.0.2"
+  },
+  "authors": [
+    "Dufgui <guillame.duff@gmail.com>"
+  ],
+  "description": "patch for PACE and ng-file-upload, see https://github.com/danialfarid/ng-file-upload/issues/832",
+  "ignore": [],
+  "license": "MIT"
+}

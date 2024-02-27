@@ -1,0 +1,57 @@
+﻿<div ng-controller="radyolojiCtrl  as RdC" style="width:100%">
+    <div class="col-sm-12">
+            <table datatable="ng" id="radyoloji"  style="cursor:pointer"
+                   dt-options="dtOptionsRdC" dt-column-defs="dtColumnDefsRdC" class="table table-responsive  table-striped table-bordered table-hover dataTables-example row-border hover">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>No</th>
+                        <th>Radyoloji</th>
+                        <th>Radyolojik Sonuç</th>
+                        <th>Tarih</th>
+                        <th>Protokol</th>
+                        <th>Muayene Türü</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="radyoloji in Radyolojileri">
+                        <td ng-bind="radyoloji.Radyoloji_Id"></td>
+                        <td ng-bind="radyoloji.$id"></td>
+                        <td ng-bind="radyoloji.RadyolojikIslem"></td>
+                        <td ng-bind="radyoloji.RadyolojikSonuc"></td>
+                        <td ng-bind="radyoloji.Tarih|date:'dd/MM/yyyy'"></td>
+                        <td ng-bind="radyoloji.Protokol"></td>
+                        <td ng-bind="radyoloji.MuayeneTuru"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    <div uib-collapse="isCollapsed" class="m-t-n-lg col-sm-12">
+        <form ng-submit="RdC.onSubmit()" novalidate>
+            <formly-form model="RdC.model" fields="RdC.fields" form="RdC.form">
+                <button type="submit" class="btn btn-primary submit-button" ng-disabled="RdC.form.$invalid">Kaydet</button>
+                <button type="button" class="btn btn-success" ng-disabled="!RdC.form.$valid" ng-click="yeniRdC()">Yeni</button>
+                <button type="button" class="btn btn-danger" ng-disabled="!RdC.form.$valid" ng-click="silRdC()">Sil</button>
+                <button class="btn btn btn-warning" ngf-select="uploadFiles($files)" multiple
+                        accept="image/*,application/pdf,application/msword,application/vnd.ms-excel,
+application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ng-show="fileButtonShow">
+                    Rapor Ekle
+                </button>
+                <div class="pull-right">
+                    <label for="slc">Protokol Verilsin mi?</label>
+                    <select class="form-control" style="width:90px" ng-model="RdC.protokolGirisi" name="slc" ng-options="opsiyon.adi for opsiyon in opsiyonlar"></select>
+                </div>
+            </formly-form>
+        </form>
+    </div>
+    <row>
+        <ul style="list-style-type: none;overflow: hidden;" ng-show="dosyaList">
+            <li style="font:medium;color: mediumvioletred;float: left;margin-left:20px" ng-if="files.length>0?true:false">Eklenen Dosyalar :</li>
+            <li ng-repeat="f in files" style="font:normal;float: left;margin-left:20px">
+                <a ng-click="download(f)" ng-bind="f.FileName" tooltip-placement="bottom" uib-tooltip="İndir" tooltip-popup-delay="2500"></a>
+                <i class="fa fa-remove" ng-click="deleten(f.GenericName , $index)" tooltip-placement="bottom" uib-tooltip="Sil" tooltip-popup-delay="2500"> </i>
+            </li>
+        </ul>
+    </row>
+    <span style="color:red">{{message}}</span>    
+</div>

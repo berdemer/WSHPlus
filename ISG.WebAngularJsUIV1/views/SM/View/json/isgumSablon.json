@@ -1,0 +1,36 @@
+{
+  "calisanMeslegi": {
+    "Kod": null,
+    "MeslekAdi": null
+  },
+  "calismaPozisyonu": {
+    "No": null,
+    "pozisyon": null
+  },
+  "calismaZamani": {
+    "No": null,
+    "zamanDilimi": null
+  },
+  "aracKullanimi": {
+    "No": null,
+    "kullanimSekli": null
+  },
+  "calismaSekli": {
+    "firmaKodu": null,
+    "parola": null
+  },
+  "calismaOrtami": {
+    "turKodu": 0,
+    "turAdi": "",
+    "firmaKodu": "",
+    "parola": ""
+  },
+  "fizikiOrtamSinifi": [],
+  "havaSinifi": [],
+  "gurultuSinifi": [],
+  "elektrikSinifi": [],
+  "tozYonetmeligiSinifi": [],
+  "kimyasalMaddeSinifi": [],
+  "biyolojikEtkenlerSinifi": [],
+  "isEkipmanlari": []
+}

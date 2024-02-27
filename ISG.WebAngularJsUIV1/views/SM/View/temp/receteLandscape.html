@@ -1,0 +1,214 @@
+﻿<style type="text/css" media="print">
+    @page {
+        size: A5 landscape; /* auto,A5stile ekleyebilirsin.*/
+        margin: 0mm; /* sayfa margin sıfırla */
+    }
+
+    @media print {
+        body * {
+            visibility: hidden;
+        }
+
+        .yaz * {
+            visibility: visible;
+        }
+
+        .yaz {
+            position: absolute;
+            display: block !important;
+            width: auto;
+            height: 99%;
+            left: 0;
+            top: 0;
+        }
+    }
+
+
+    html {
+        background-color: #FFFFFF;
+        margin: 0px; /* this affects the margin on the html before sending to printer */
+    }
+
+    body {
+        visibility: hidden;
+        font-family: Garamond'Times New Roman', serif;
+        background-color: #FFFFFF;
+        /*border: solid 1px black;*/
+        margin: 0px; /* the margin on the content before printing */
+        padding: 0px;
+        -ms-filter: none;
+        line-height: 1.45;
+        word-spacing: 1px;
+        letter-spacing: 0.2px;
+        -webkit-transform: rotate(90deg);
+        -moz-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        transform: rotate(90deg);
+        filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+    }
+
+    .tablo_Sitili_1 {
+        height: 64pt;
+        border-style: solid;
+        border-width: 1px;
+        width: 266pt;
+        max-width: 266pt;
+        vertical-align: top;
+    }
+
+    .tablo_Sitili_2 {
+        border-style: solid;
+        border-width: 1px;
+        padding: 1px 4px;
+        font-size: 8pt;
+        text-align: center;
+        vertical-align: top;
+    }
+
+    .tablo_Sitili_3 {
+        border-style: solid;
+        border-width: 1px;
+        padding: 1px 4px;
+        height: 21pt;
+        text-align: center;
+    }
+
+    .tablo_Sitili_4 {
+        border-style: solid;
+        border-width: 1px;
+        padding: 1px 4px;
+        height: 20pt;
+        font-size: 12pt;
+        width: 266pt;
+        max-width: 266pt;
+    }
+
+    .tablo_Sitili_5 {
+        border-style: solid;
+        border-width: 1px;
+        padding: 1px 4px;
+        height: 20pt;
+        text-align: left;
+        font-size: 12pt;
+        width: 266pt;
+        max-width: 266pt;
+    }
+
+    .tablo_Sitili_6 {
+        border-style: solid;
+        border-width: 1px;
+        padding: 1px 4px;
+        height: 352pt;
+        max-height: 352pt;
+        text-align: left;
+        vertical-align: top;
+    }
+
+    .tablo_Sitili_7 {
+        width: 420pt;
+        max-width: 420pt;
+        height: 594pt;
+        max-height: 594pt;
+        float: none !important;
+        visibility: visible;
+        padding: 0;
+        margin: 0;
+        margin-top: -300pt;
+        margin-left: 300pt;
+    }
+
+    .tablo_Sitili_8 {
+        width: 89%;
+        max-width: 89%;
+        margin: auto;
+        border-style: double;
+        border-color: black;
+        height: 555pt;
+        max-height: 555pt;
+        overflow: inherit;
+    }
+
+    .tablo_Sitili_9 {
+        border-style: solid;
+        border-width: 1px;
+        font-size: 12pt;
+        height: 20pt;
+    }
+
+    .tablo_Sitili_10 {
+        font-size: 16pt;
+        margin-top: 7pt;
+    }
+
+    .tablo_Sitili_11 {
+        text-align: center;
+    }
+
+    .tablo_Sitili_12 {
+        padding-left: 15pt;
+        width: 70%;
+    }
+</style>
+
+<div class="tablo_Sitili_7 yaz">
+    <table style="" class="tablo_Sitili_8">
+        <caption class="tablo_Sitili_10">
+            <strong>REÇETE</strong>
+        </caption>
+        <tr>
+            <td class="tablo_Sitili_4"><strong>H. Adı Soyadı:</strong><span ng-bind="patient.name"></span></td>
+            <td class="tablo_Sitili_9"><strong>Tarih:</strong><span ng-bind="patient.date"></span></td>
+        </tr>
+        <tr>
+            <td class="tablo_Sitili_5"><strong>T.C. Numarası:</strong><span ng-bind="patient.tcNo"></span></td>
+            <td class="tablo_Sitili_9"><strong>Protokol:</strong><span ng-bind="patient.Protokol"></span></td>
+        </tr>
+        <tr>
+            <td class="tablo_Sitili_5"><strong>H. Kurumu:</strong><span ng-bind="patient.kurumu"></span></td>
+            <td class="tablo_Sitili_2" rowspan="2">Dr.Dip. No Adı Soyadı İmza Kaşe</td>
+        </tr>
+        <tr>
+            <td class="tablo_Sitili_1">
+                <strong>TANI:</strong><span ng-bind="patient.tani"></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="tablo_Sitili_3" colspan="2"><strong>İLAÇLAR</strong></td>
+        </tr>
+        <tr>
+            <td class="tablo_Sitili_6" colspan="2">
+                <table style="width:100%">
+                    <tr>
+                        <td><strong><span style="font-weight:700;font-family:'Lucida Handwriting'">Rp</span></strong> </td>
+                    </tr>
+                    <tr>
+                    <tr ng-repeat="ilac in patient.Ilaclar">
+                        <td>
+                            <table style="width:100%;display:inline-table">
+                                <tr style="vertical-align:sub">
+                                    <td style="text-align:right" ng-bind="$index|romanRakami"></td>
+                                    <td class="tablo_Sitili_12" ng-bind="ilac.IlacAdi | uppercase"></td>
+                                    <td style="text-align: right">
+                                        <span class="text-navy" ng-bind="ilac.KutuAdeti|romanRakamiYaz"></span>&nbsp;
+                                        <span class="text-navy" ng-bind="ilac.KutuAdeti|sayiYaz"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tablo_Sitili_11" colspan="3">
+                                        <span style="font-weight:700;font-family:'Lucida Handwriting'">S:</span>
+                                        <span ng-bind="ilac.GunSayisi"></span>
+                                        <span style="font-weight:bold">X</span>
+                                        <span ng-bind="ilac.KullanimSayisi"></span>&nbsp;&nbsp;
+                                        <span ng-bind="ilac.KullanimSekli"></span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <span style="font-size:5px;margin-left:50px">WSH+ &copy; 2017</span>
+</div>

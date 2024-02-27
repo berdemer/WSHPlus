@@ -1,0 +1,38 @@
+[
+  {
+    "kaza": "0 - Yaranın vücuttaki yeri belirtilmemiş",
+    "alt": ["0 - Yaranın vücuttaki yeri belirtilmemiş"]
+  },
+  {
+    "kaza": "10 - Kafada meydana gelen belirtilmemiş alanlar",
+    "alt": ["11 - Kafa, beyin ve beyine bağlı sinir ve damarları ","12 - Yüz bölgesi ","13 - Göz(ler) ","14 - Kulak(lar) ","15 - Dişler ","18 - Kafa; çeşitli bölgeleri etkilenmiş ","19 - Kafa; yukarıda belirtilmemiş diğer bölgeler"]
+  },
+  {
+    "kaza": "20 - Boyun; boyundaki omurilik ve omur dahil",
+    "alt": ["21 - Boyun; boyundaki omurilik ve omur dahil ","29 - Boyun; yukarıda belirtilmeyen diğer bölgeleri"]
+  },
+  {
+    "kaza": "30 - Sırt; sırttaki omurilik ve omur dahil",
+    "alt": ["31 - Sırt; sırttaki omurilik ve omur dahil ","39 - Sırt; yukarıda belirtilmeyen diğer bölgeleri"]
+  },
+  {
+    "kaza": "40 - Gövde ve organlar; belirtilmemiş alanlar",
+    "alt": ["41 - Göğüs kafesi (kaburga), eklem ve kürek kemikleri dahil olmak üzere kaburgalar ","42 - Organlarıyla birlikte göğüs bölgesi ","43 - Organlarıyla birlikte karınla ilgili ve sırtın alt bölümü (kalça kısmı) ","48 - Gövde; çeşitli bölgeleri etkilenmiş ","49 - Gövde; yukarıda belirtilmeyen diğer bölgeleri"]
+  },
+  {
+    "kaza": "50 - Kollar; belirtilmemiş alanlar",
+    "alt": ["51 - Omuz ve omuz eklemleri ","52 - Dirsek dahil kol ","53 - El ","54 - Parmak(lar) ","55 - Bilek ","58 - Kollar; çeşitli bölgeleri etkilenmiş ","59 - Kollar; yukarıda belirtilmemiş diğer bölgeleri"]
+  },
+  {
+    "kaza": "60 - Bacaklar; belirtilmemiş alanlar",
+    "alt": ["61 - Kalça ve kalça eklemleri ","62 - Diz dahil bacak ","63 - Ayak bileği ","64 - Ayak ","65 - Ayak parmak(lar)ı ","68 - Bacaklar; çeşitli bölgeleri etkilenmiş ","69 - Bacaklar; yukarıda belirtilmemiş diğer bölgeleri"]
+  },
+  {
+    "kaza": "70 - Tüm beden ve çeşitli bölgeler; belirlenmemiş alanlar",
+    "alt": ["71 - Tüm beden (bütün vücuda tesir eden etkiler) ","78 - Bedenin, etkilenmiş çeşitli bölgeleri"]
+  },
+  {
+    "kaza": " 99 - Vücudun yaralanmış diğer bölgelerinden yukarıda belirtilmemiş alanlar",
+    "alt": [" 99 - Vücudun yaralanmış diğer bölgelerinden yukarıda belirtilmemiş alanlar"]
+  }
+]

@@ -1,0 +1,115 @@
+﻿<div class="jumbotron" style="margin-bottom: 0px;margin-bottom: 0px;padding: 5px;z-index:100">
+    <form role="form">
+        <div class="form-group">
+            <label>Kaza Tarihi ve Saati</label>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="input-group">
+                        <input type="text" class="form-control" uib-datepicker-popup="dd.MMMM.yyyy" ng-model="PmC.Muayene.Ikbilgisi.Zamani.OlusTarihi"
+                               is-open="popup3.opened" datepicker-options="dateOptions" ng-required="false" close-text="Close" ng-click="open3()" alt-input-formats="altInputFormats" />
+                        <span class="input-group-btn" style="z-index:100">
+                            <button type="button" class="btn btn-default" ng-click="open3()"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="input-group " clock-picker data-autoclose="false">
+                        <input type="text" class="form-control" value="00:00" ng-model="PmC.Muayene.Ikbilgisi.Zamani.Saati">
+                        <span class="input-group-addon">
+                            <span class="fa fa-clock-o"></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="ol">Kazanın Oluş Şekli ve Sebebini Açıklayınız:</label>
+            <textarea class="form-control" style="text-transform:uppercase" id="ol" rows="2" maxlength="345" ng-model="PmC.Muayene.Ikbilgisi.kBilgi.aciklama" cols="20"></textarea>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="ol1">Yaralanmaya Neden Olan Olay:</label>
+            <div class="row">
+                <div class="col-sm-6">
+                    <select class="form-control" ng-model="PmC.Muayene.Ikbilgisi.yaralanma.olay"
+                            ng-options="z.kaza as z.kaza for z in PmC.yaralanmaOlaylari"></select>
+                </div>
+                <div class="col-sm-6">
+                    <select class="form-control" ng-model="PmC.Muayene.Ikbilgisi.yaralanma.olayAlt"
+                            ng-options="z for z in PmC.yaralanmaOlaylariAlt"></select>
+                </div>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="ol2">Yaralanmaya Neden Araç/Gereç:</label>
+            <div class="row">
+                <div class="col-sm-6">
+                    <select class="form-control" ng-model="PmC.Muayene.Ikbilgisi.yaralanma.arac"
+                            ng-options="z.kaza as z.kaza for z in PmC.yaralanmaAraclari"></select>
+                </div>
+                <div class="col-sm-6">
+                    <select class="form-control" ng-model="PmC.Muayene.Ikbilgisi.yaralanma.aracAlt"
+                            ng-options="z for z in PmC.yaralanmaAraclariAlt"></select>
+                </div>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="ol2">Yaranın Türü:</label>
+            <div class="row">
+                <div class="col-sm-6">
+                    <select class="form-control" ng-model="PmC.Muayene.Ikbilgisi.yaralanma.turu"
+                            ng-options="z.kaza as z.kaza for z in PmC.yaralanmaTurleri"></select>
+                </div>
+                <div class="col-sm-6">
+                    <select class="form-control" ng-model="PmC.Muayene.Ikbilgisi.yaralanma.turuAlt"
+                            ng-options="z for z in PmC.yaralanmaTurleriAlt"></select>
+                </div>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="ol2">Yaranın Vucuttaki Yeri:</label>
+            <div class="row">
+                <div class="col-sm-6">
+                    <select class="form-control" ng-model="PmC.Muayene.Ikbilgisi.yaralanma.yeri"
+                            ng-options="z.kaza as z.kaza for z in PmC.yaralanmaYerleri"></select>
+                </div>
+                <div class="col-sm-6">
+                    <select class="form-control" ng-model="PmC.Muayene.Ikbilgisi.yaralanma.yeriAlt"
+                            ng-options="z for z in PmC.yaralanmaYerleriAlt"></select>
+                </div>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="ol">Yaralı Hakkında Ayrıntılı Açıklama:</label>
+            <textarea class="form-control" style="text-transform:uppercase;max-width:initial" id="ol" rows="2" maxlength="345" ng-model="PmC.Muayene.Ikbilgisi.yaralanma.ayrintiliAciklama" cols="20"></textarea>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Kaza İnceleme Ekibi Kurulması:</label>
+                    <select class="form-control" ng-model="PmC.Muayene.Ikbilgisi.IncelemeEkibi"
+                            ng-options="z for z in ['Süreçte Değerlendirilmeli','Çok Riskli Kaza İnceleme Ekibi Kurulmalı']"></select>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-4">
+                <label class="m-t -xs pull-right">Muayene Sonrası:</label>
+            </div>
+            <div class="col-sm-8">
+                <select class="form-control" ng-model="PmC.Muayene.Ikbilgisi.yaralanma.kazadanSonra"
+                        ng-options="z.name for z in [{name:'İş Başı',url:'./views/SM/View/temp/isBasi.html'},
+                        {name:'Sevk',url:'./views/SM/View/temp/sevk.html'},
+                        {name:'İstirahat',url:'./views/SM/View/temp/istirahat.html'}]"></select>
+            </div>           
+        </div>
+        <div class="row" ng-include="PmC.Muayene.Ikbilgisi.yaralanma.kazadanSonra.url"
+             style="margin-left: 20px;margin-right: 20px;">
+        </div>
+
+    </form>
+</div>
+<datetimepicker ng-model="PmC.Muayene.Ikbilgisi.Zamani.OlusTarihi" ng-show="false"
+                date-format="dd-MMM-yyyy" class="form-control"
+                date-options="dateOptions"
+                date-disabled="isDisabledDate(date, mode)">
+</datetimepicker>

@@ -1,0 +1,62 @@
+﻿<div ng-controller="StokHareketiCtrl  as sh">
+    <div class="row wrapper border-bottom white-bg page-heading" style="position:relative;z-index:10">
+        <div class="col-sm-1 m-t-lg" style="padding-right:0px;padding-left:15px;">
+            <h4 class="m-t-sm">Sağlık Birimi:</h4>
+        </div>
+        <div class="col-sm-4 m-t-lg" style="padding-left:0px;">
+            <ui-select ng-model="birim.selected" theme="bootstrap" class="koyuMaviFont">
+                <ui-select-match placeholder="Birimi Seç veya Ara..">{{$select.selected.SirketAdi+' '+$select.selected.SaglikBirimiAdi|| $select.selected}}</ui-select-match>
+                <ui-select-choices repeat="item in birimler | filter: $select.search">
+                    <span ng-bind-html="item.SirketAdi | highlight: $select.search"></span><br />
+                    <small ng-bind-html="item.SaglikBirimiAdi "></small>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+        <div class="col-sm-7 m-t-lg">
+            <div class="checkbox checkbox-primary">
+                <input id="checkbox2" type="checkbox" ng-model="dahil" ng-change="dahilinde()">
+                <label for="checkbox2">
+                    {{pasifize}} edilmiş stoklar
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper wrapper-content animated fadeInRight" style="position:relative;z-index:9">
+        <div class="ibox-content m-b-sm border-bottom">
+            <h4>{{birim.selected.SirketAdi}} {{birim.selected.SaglikBirimiAdi}}-Stok Girişi <span style="color:orangered">--{{Bilgi}}</span></h4>
+            <form ng-submit="sh.onSubmit()" novalidate>
+                <formly-form model="sh.model" fields="sh.fields" form="sh.form">
+                    <button type="submit" class="btn btn-primary submit-button" ng-disabled="sh.form.$invalid">Kaydet</button>
+                    <button type="button" class="btn btn-success" ng-disabled="!sh.form.$valid"  ng-click="yeni()">Yeni</button>
+                    <button type="button" class="btn btn-danger" ng-disabled="!sh.form.$valid"  ng-click="activ()">{{pasifizen}}</button>
+                    <button class="btn btn btn-warning" ngf-select="uploadFiles($files)" multiple
+                            accept="image/*,application/pdf,application/msword,application/vnd.ms-excel,
+application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"  ng-if="sh.model.Id!=null" >
+                        Dosya Ekle
+                    </button>
+                </formly-form>
+            </form>
+            <row>
+                <ul style="list-style-type: none;overflow: hidden;" ng-show="dosyaList">
+                    <li style="font:medium;color: mediumvioletred;float: left;margin-left:20px" ng-if="files.length>0?true:false">Eklenen Dosyalar :</li>
+                    <li ng-repeat="f in files" style="font:normal;float: left;margin-left:20px">
+                        <a ng-click="download(f)" ng-bind="f.FileName" tooltip-placement="bottom" uib-tooltip="İndir" tooltip-popup-delay="2500"></a>
+                        <i class="fa fa-remove" ng-click="deleten(f.GenericName , $index)" tooltip-placement="bottom" uib-tooltip="Sil" tooltip-popup-delay="2500"> </i>
+                    </li>
+                </ul>
+            </row>
+        </div>
+    </div>
+    <div style="margin-top: -50px;" ng-include="'./views/SM/View/temp/stokGirisTable.html'">
+    </div>
+    <div style="margin-top: -50px;" ng-include="'./views/SM/View/temp/stokTable.html'">
+    </div>
+
+</div>
+<style>
+    .cropArea {
+        overflow: hidden;
+        width: 400px;
+        height: 300px;
+    }
+</style>

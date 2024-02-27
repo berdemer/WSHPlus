@@ -1,0 +1,14 @@
+[
+  {
+    "outputFileName": "views/SM/Service/OgSvc.min.js",
+    "inputFiles": [
+      "views/SM/Service/OgSvc.js"
+    ]
+  },
+  {
+    "outputFileName": "bower_components/angular-datatables/dist/angular-datatables.min.js",
+    "inputFiles": [
+      "bower_components/angular-datatables/dist/angular-datatables.js"
+    ]
+  }
+]

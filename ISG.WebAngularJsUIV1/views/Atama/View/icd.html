@@ -1,0 +1,164 @@
+﻿
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>ICD10 Listesi</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+            <li>
+                <a>ICD10</a>
+            </li>
+            <li class="active">
+                <strong>ICD10 Kod Listelerinin Yüklenmesi</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight" data-ng-controller="icdCtrl as df">
+    <script type="text/ng-template" id="group-template.html">
+        <div class="panel {{panelClass || 'panel-default'}}">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a href="" tabindex="0" class="accordion-toggle" ng-click="toggleOpen()" uib-accordion-transclude="heading">
+                        <span ng-class="{'text-muted': isDisabled}" ng-bind="heading"></span>
+                    </a>
+                </h4>
+            </div>
+            <div class="panel-collapse collapse" uib-collapse="!isOpen">
+                <div class="panel-body" style="background-color: #555;" ng-transclude></div>
+            </div>
+        </div>
+    </script>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <a href="https://skrs.saglik.gov.tr/" target="_blank">SKRS</a> ICD-10 excel dosyasından(I Harfi) güncelleme alabilirsiniz.
+                </div>
+                <div class="ibox-content">
+                    <div class="fileUpload btn btn-primary">
+                        <i class="fa fa-upload"></i>&nbsp;&nbsp;<span>Excel Dosyasını Yükle</span>
+                        <input type="file" class="upload" ngf-select="uploadPic(picFile)" ng-model="picFile" name="file" ng-click="isCollapsed = !isCollapsed;isCollapsed2 =true"
+                               accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" required>
+                    </div>
+                    <span class="m-t-n-md" style="color:blue;font-size:x-small;font-style:italic" ng-show="picFile.result">Excel Dosyası Başarılı Yüklendi</span>
+                    <span class="err" ng-show="errorMsg" ng-bind="errorMsg"></span>
+                    <br>
+                    <div uib-collapse="isCollapsed" class="m-t-xs">
+                        <ui-select ng-model="SheetInfo.sheet" class="col-lg-5" ng-if="isAzure">
+                            <ui-select-match placeholder="Sayfa adını seçiniz..">{{$select.selected.sheetName}}</ui-select-match>
+                            <ui-select-choices repeat="sheetName in SheetNames | filter: $select.search">
+                                <div ng-bind-html="sheetName.sheetName | highlight: $select.search"></div>
+                            </ui-select-choices>
+                        </ui-select>
+                        <ui-select ng-model="SheetInfo.sheet" class="col-lg-5" ng-if="!isAzure">
+                            <ui-select-match placeholder="Sayfa adını seçiniz..">{{$select.selected}}</ui-select-match>
+                            <ui-select-choices repeat="sheetName in SheetNames | filter: $select.search">
+                                <div ng-bind-html="sheetName | highlight: $select.search"></div>
+                            </ui-select-choices>
+                        </ui-select>
+                        <label>
+                            <input icheck type="checkbox" ng-model="SheetInfo.HDR">
+                            İlk sıra tablo başlıkları
+                        </label>
+                        <button type="submit" class="btn btn-primary m-l-md" ng-click="isCollapsed2 = false;getAllExcelData(SheetInfo);Karsilastima=true"><i class="fa fa-download"></i><span class="bold">&nbsp;&nbsp;Veri Al</span></button>
+                    </div>
+                    <div uib-collapse="isCollapsed2">
+                        <div class="well well-lg" style="padding-bottom: 60px;">
+                            <p>Kodları seçerek gönderebilirsiniz.</p>
+                            <div class="col-sm-12">
+                                <button class="btn btn-success" ng-click="Send()"><i class="glyphicon glyphicon-send"></i><span class="bold">&nbsp;&nbsp;Sisteme Kaydet</span></button>&nbsp;
+                                <button class="btn btn-warning" ng-click="Extract()"><i class="glyphicon glyphicon-retweet"></i><span class="bold">&nbsp;&nbsp;ICD10 Göre Ayıklama</span></button>
+                                <button class="btn btn-danger" ng-click="Update()"><i class="glyphicon glyphicon-transfer"></i><span class="bold">&nbsp;&nbsp;Koda Göre Tanım Güncellenmesi</span></button>
+                                &nbsp;&nbsp;<span ng-bind="surecBilgisi"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+
+                    <div style="overflow:auto;width:initial" ng-show="tabloGoster">
+                        <div class="btn-group m-b-xs pull-left" style="z-index:1">
+                            <input ng-model="q" id="searchinput" type="search" ng-change="getData(rows, q)" ng-mouseup="pageStartUp()" placeholder="Detaylarda Arama">
+                            <span id="searchclear" class="glyphicon glyphicon-remove-circle" ng-click="clearInput()"></span>
+                        </div>
+                        &nbsp;&nbsp;<span class="text-primary" ng-bind="totalItems"></span>&nbsp;&nbsp;Tanı bulundu.&nbsp;&nbsp;
+                        <span class="text-primary" ng-bind="selectTotalItems"></span>
+                        <span class="bg-warning text-danger" ng-bind="aramaSonlandir"></span>
+                        <input type="number" min="3" max="100" ng-model="viewby" class="m-b-xs pull-right" ng-change="setItemsPerPage(viewby)" />
+                        <table border="1" class="table table-bordered table-striped table-hover table-responsive">
+                            <tr>
+                                <td>
+                                    <input type="checkbox" ng-model="selectedAll" ng-change="checkboxClick(selectedAll)">
+                                </td>
+                                <th ng-repeat="column in cols" ng-if="!(column=='$id'||column=='durum')">
+                                    <a href="#" editable-select="sx" ng-init="controlData=$data" onbeforesave="GeneralIcd10DataEkle($data, column)" e-ng-options="sx as sx for sx in GPDkey" ng-bind="sx || column">
+                                    </a>
+                                </th>
+                            </tr>
+                            <tr ng-repeat="row in (rows | filter:q) .slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage)) ">
+                                <td><input type="checkbox" ng-model="row.durum"></td>
+                                <td ng-repeat="column in cols" ng-if="!(column=='$id'||column=='durum')" ng-bind="row[column]"></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <ul uib-pagination ng-show="tabloGoster" class="m-t-xs" total-items="(rows | filter:q).length" ng-model="currentPage" first-text="Birinci" last-text="Sonuncu"
+                                    previous-text="Önceki" next-text="Sonraki"
+                                    max-size="4" boundary-links="true" rotate="false" num-pages="numPages" items-per-page="itemsPerPage"></ul>
+                </div>
+                <pre ng-if="Karsilastima">{{GeneralIcd10Data | json}}</pre>
+                <div ng-if="KayitGoster" ng-include="'./views/Personel/View/testGrid.html'">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .cropArea {
+        overflow: hidden;
+        width: 400px;
+        height: 300px;
+    }
+
+    .fileUpload {
+        position: relative;
+        overflow: hidden;
+        margin: 10px;
+    }
+
+    .fileUpload input.upload {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 0;
+        padding: 0;
+        font-size: 20px;
+        cursor: pointer;
+        opacity: 0;
+        filter: alpha(opacity=0);
+    }
+
+    #searchinput {
+        width: 200px;
+    }
+
+    #searchclear {
+        position: absolute;
+        right: 5px;
+        top: 0;
+        bottom: 0;
+        height: 14px;
+        margin: auto;
+        font-size: 14px;
+        cursor: pointer;
+        color: #ccc;
+    }
+</style>
+<!--https://github.com/l-lin/angular-datatables/issues/22
+<!--https://github.com/l-lin/angular-datatables/issues/149-->
+<!--https://github.com/matjas/angular-nested-combobox-->
+<!--http://plnkr.co/edit/Wtkv71LIqUR4OhzhgpqL?p=preview dir-pagination-->
+<!--http://plnkr.co/edit/Q26WPjLqcOtS8p0mGF6b?p=preview-->

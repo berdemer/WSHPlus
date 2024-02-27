@@ -1,0 +1,215 @@
+﻿<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Şirketler</h2>
+        <ul class="breadcrumb">
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+            <li>
+                <a>Atamalar</a>
+            </li>
+            <li class="active">
+                <strong>Şirketler Listesi</strong>
+            </li>
+        </ul>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight" ng-controller="sirketlerCrtl as vm">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h5>
+                        Şirketler Listesi
+                    </h5>
+                </div>
+                <div class="ibox-content" ng-init="cv=false">
+                    <p ng-show="!cv">
+                        Ana şirketlerinizin altına satırı sağa kaydırarak tali şirketi oluşturabilirsiniz.
+                        Aynı hizaya satır kaydırılırsa ana şirket haline getirebilirsiniz.Not: Düzeltme işlemlerine girdikten sonra
+                        kayıt için enter ile işlem yapınız. 
+                    </p>
+                    <h2 ng-show="cv">Silinen Şirketleri Geri Alabilirsiniz</h2>
+                    <button class="btn btn-warning btn-sm" ng-click="getRemoteAllData(false);cv=!cv" ng-show="!cv" tooltip-placement="bottom" tooltip="Silinen kayıtları geri al"><span class="fa fa-recycle"></span></button>
+                    <button class="btn btn-danger btn-sm" ng-click="getRemoteAllData(true);cv=!cv" ng-show="cv" tooltip-placement="bottom" tooltip="Genel kayıtları al"><span class="fa fa-close"></span></button>&nbsp;
+                    <button type="button" class="btn btn-success btn-sm" ng-click="expandAll();sari=!sari" ng-init="sari=true" ng-show="sari" tooltip-placement="bottom" tooltip="Satırları Aç"><span class="fa fa-expand"></span></button>
+                    <button type="button" class="btn btn-success btn-sm" ng-click="collapseAll();sari=!sari" ng-show="!sari" tooltip-placement="bottom" tooltip="Satırları Kapat"><span class="fa fa-compress"></span></button>&nbsp;
+                    <button type="button" class="btn btn-info btn-sm" ng-click="newSubSirket()" ng-show="!cv" tooltip-placement="bottom" tooltip="Yeni Şirket Kaydı"><span class="fa fa-plus"></span></button>
+                    <script type="text/ng-template" id="nodes_renderer.html">
+                        <div ui-tree-handle class="tree-node tree-node-content" ng-style="{'background-color':  cv ? 'bisque' : '#f3f3f4' }">
+                            <form editable-form name="editableForm" onaftersave="saveUser(this)">
+                                <a class="pull-right btn btn-white btn-xs" data-nodrag ng-click="remove(this);passiveStatus(this);cv=!cv" ng-show="!editableForm.$visible"><span ng-class="cv ? 'fa fa-plus' : 'fa fa-ban'"></span></a>
+                                <a class="pull-right btn btn-white btn-xs" data-nodrag ng-click="newSubItem(this)" ng-show="!editableForm.$visible && !cv"><span class="fa fa-plus"></span></a>
+                                <button type="button" class="pull-right btn btn-white btn-xs" data-nodrag ng-click="editableForm.$show()" ng-show="!editableForm.$visible && !cv"><span class="fa fa-pencil"></span></button>
+                                <button type="button" class="pull-right btn btn-white btn-xs" data-nodrag 
+                                        ng-click="SirketAtama(this);getSirketBolumuAllData(true);getSirketAtamaAllData();getSirketDetayiAllData();getSaglikBirimi();getMailListesi();getSirketIcon();"
+                                         ng-show="!editableForm.$visible && !cv"><span class="fa fa-sitemap"></span></button>
+                                <a class="btn btn-primary btn-xs" data-nodrag ng-click="toggle(this)"><span class="fa" ng-class="{'fa-angle-down': collapsed, 'fa-angle-right': !collapsed}"></span></a>
+                                <span editable-text="node.Text" e-name="Text" ng-cloak>{{ node.Text || 'empty' }}</span>
+                                <span ng-show="editableForm.$visible">
+                                    <!--<button type="submit" class="btn btn-primary" ng-disabled="editableForm.$waiting">
+                                        Kaydet
+                                    </button>-->
+                                    <button type="button" class="btn btn-default" ng-disabled="editableForm.$waiting" ng-click="editableForm.$cancel()">
+                                        Iptal.
+                                    </button>
+                                </span>
+                            </form>
+                        </div>
+                        <ul ui-tree-nodes="" ng-model="node.Children" ng-class="{hidden: collapsed}">
+                            <li ng-repeat="node in node.Children" ui-tree-node ng-include="'nodes_renderer.html'">
+                            </li>
+                        </ul>
+                    </script>
+                    <div ui-tree="treeOptions" id="tree-root">
+                        <ul ui-tree-nodes ng-model="data">
+                            <li ng-repeat="node in data" ui-tree-node ng-include="'nodes_renderer.html'" data-collapsed="sari"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h3 ng-cloak ng-if="sirket.sirketAdi!=null"><b>{{sirket.sirketAdi}}</b> Atama Bölümü</h3>
+                </div>
+                <div class="ibox-content">
+                    <uib-tabset active="active" ng-if="sirket.sirketAdi!=null">
+                        <uib-tab heading="Şube/Bölüm" index="0" select="sel(0);">
+                            <div class="panel-body" ng-init="cvx=false">
+                                <p ng-show="!cvx">
+                                    İhdâs edilen Şube, Bölüm, Kısım, Makam,Kadro gibi ayrıntılı tanımlar yapınız.
+                                    İnsan Kaynakları Müdürlüğü/Müdürü, İnsan Kaynakları Müdürlüğü/Memur, Dokuma Bölümü/İşçi vb
+                                </p>
+                                <h2 ng-show="cvx">Silinen Şubeleri Geri Alabilirsiniz</h2>
+                                <button class="btn btn-warning btn-sm" ng-click="getSirketBolumuAllData(false);cvx=!cvx" ng-show="!cvx" tooltip-placement="bottom" tooltip="Silinen kayıtları geri al"><span class="fa fa-recycle"></span></button>
+                                <button class="btn btn-danger btn-sm" ng-click="getSirketBolumuAllData(true);cvx=!cvx" ng-show="cvx" tooltip-placement="bottom" tooltip="Genel kayıtları al"><span class="fa fa-close"></span></button>&nbsp;
+                                <button type="button" class="btn btn-success btn-sm" ng-click="expandAll2();expCrtl=!expCrtl" ng-init="expCrtl=false" ng-show="expCrtl" tooltip-placement="bottom" tooltip="Satırları Aç"><span class="fa fa-expand"></span></button>
+                                <button type="button" class="btn btn-success btn-sm" ng-click="collapseAll2();expCrtl=!expCrtl" ng-show="!expCrtl" tooltip-placement="bottom" tooltip="Satırları Kapat"><span class="fa fa-compress"></span></button>&nbsp;
+                                <button type="button" class="btn btn-info btn-sm" ng-click="newSubSirketBolumu()" ng-show="!cvx" tooltip-placement="bottom" tooltip="Yeni Şirket Kaydı"><span class="fa fa-plus"></span></button>
+                                <script type="text/ng-template" id="nodes_renderer2.html">
+                                    <div ui-tree-handle class="tree-node tree-node-content" ng-style="{'background-color':  cvx ? 'bisque' : '#f3f3f4' }">
+                                        <form editable-form name="editableForm" onaftersave="saveSirketBolumu(this)">
+                                            <a class="pull-right btn btn-white btn-xs" data-nodrag ng-click="remove(this);passiveBolumStatus(this);cvx=!cvx" ng-show="!editableForm.$visible"><span ng-class="cvx ? 'fa fa-plus' : 'fa fa-ban'"></span></a>
+                                            <a class="pull-right btn btn-white btn-xs" data-nodrag ng-click="newSubItemSirketBolumu(this)" ng-show="!editableForm.$visible && !cvx"><span class="fa fa-plus"></span></a>
+                                            <button type="button" class="pull-right btn btn-white btn-xs" data-nodrag ng-click="editableForm.$show()" ng-show="!editableForm.$visible && !cvx"><span class="fa fa-pencil"></span></button>
+                                            <button type="button" class="pull-right btn btn-white btn-xs" data-nodrag ng-click="sel(4);mailBilsisi(this);mailAc=false;getMailListesi()" ng-show="!editableForm.$visible && !cvx"><span class="glyphicon glyphicon-envelope"></span></button>
+                                            <a class="btn btn-primary btn-xs" data-nodrag ng-click="toggle(this)"><span class="fa" ng-class="{'fa-angle-down': collapsed, 'fa-angle-right': !collapsed}"></span></a>
+                                            <span editable-text="nodus.Text" e-name="Text" ng-cloak>{{ nodus.Text || 'empty' }}</span>
+                                            <span ng-show="editableForm.$visible">
+                                                <!--<button type="submit" class="btn btn-primary" ng-disabled="editableForm.$waiting">
+                                Kaydet
+                            </button>-->
+                                                <button type="button" class="btn btn-default" ng-disabled="editableForm.$waiting" ng-click="editableForm.$cancel()">
+                                                    Iptal
+                                                </button>
+                                            </span>
+                                        </form>
+                                    </div>
+                                    <ul ui-tree-nodes="" ng-model="nodus.Children" ng-class="{hidden: collapsed}">
+                                        <li ng-repeat="nodus in nodus.Children" ui-tree-node ng-include="'nodes_renderer2.html'">
+                                        </li>
+                                    </ul>
+                                </script>
+                                <div ui-tree="treeOptions2" id="tree-root2">
+                                    <ul ui-tree-nodes ng-model="data2">
+                                        <li ng-repeat="nodus in data2" ui-tree-node ng-include="'nodes_renderer2.html'" data-collapsed="expCrtl"></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </uib-tab>
+                        <uib-tab heading="Uzman Personel" index="1" select="sel(1);">
+                            <div class="panel-body" ng-include="'./views/Atama/View/sirketAtamalari.html'">
+                            </div>
+                        </uib-tab>
+                        <uib-tab heading="Şirket Detayı" index="2" select="sel(2);">
+                            <div class="panel-body" ng-include="'./views/Atama/View/sirketDetayi.html'">
+                            </div>
+                        </uib-tab>
+                        <uib-tab heading="Sağlık Birimleri" index="3" select="sel(3);">
+                            <div class="panel-body" ng-include="'./views/Atama/View/saglikBirimleri.html'">
+                            </div>
+                        </uib-tab>
+                        <uib-tab heading="Mail Listesi" index="4" select="sel(4);" ng-show="mailAc">
+                            <div class="panel-body" ng-include="'./views/Atama/View/mailListesi.html'">
+                            </div>
+                        </uib-tab>
+                        <uib-tab heading="Logo Yükleme" index="5" select="sel(5);">
+                            <div class="panel-body" ng-include="'./views/Atama/View/sirketIkonu.html'">
+                            </div>
+                        </uib-tab>
+                    </uib-tabset>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .formly-field {
+  margin-bottom:16px;
+}
+    .angular-ui-tree-handle {
+        background: none repeat scroll 0 0 #f3f3f4;
+        border: 1px dashed #e7eaec;
+        color: inherit;
+        padding: 10px;
+        font-weight: normal;
+    }
+
+        .angular-ui-tree-handle:hover {
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+    .angular-ui-tree-placeholder {
+        background: #f0f9ff;
+        border: 1px dashed #bed2db;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    .group-title {
+        background-color: #687074 !important;
+        color: #FFF !important;
+    }
+
+    .tree-node {
+        background: none repeat scroll 0 0 #f3f3f4;
+        border: 1px dashed #e7eaec;
+        color: inherit;
+        padding: 10px;
+        border-radius: 3px;
+    }
+
+        .tree-node .btn {
+            min-width: 22px;
+            margin-right: 4px;
+        }
+
+    .tree-node-content {
+        margin: 5px 5px 5px 0;
+    }
+
+    .tree-handle {
+        background: none repeat scroll 0 0 #f3f3f4;
+        border: 1px dashed #e7eaec;
+        color: inherit;
+        padding: 10px;
+    }
+
+    .angular-ui-tree-handle:hover {
+    }
+
+    .angular-ui-tree-placeholder {
+        background: #f0f9ff;
+        border: 1px dashed #bed2db;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+</style>

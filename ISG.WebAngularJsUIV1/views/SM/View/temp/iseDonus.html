@@ -1,0 +1,62 @@
+﻿<div class="jumbotron" style="margin-bottom: 0px;margin-bottom: 0px;padding: 5px;z-index:100">
+    <form role="form">
+        <div class="form-group">
+            <label class="control-label" for="Hastane">Hastane/Sağlık Birimi</label>
+            <textarea class="form-control" ng-model="PmC.Muayene.iseDonus.saglikBirimiAdi" id="Hastane" placeholder="Hastane Adını Giriniz" ng-required="true" uppercased></textarea>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="sevkBolumu">Bölüm</label>
+            <select class="form-control" ng-model="PmC.Muayene.iseDonus.bolumu" ng-init="PmC.Muayene.iseDonus.bolumu=PmC.HastaneBolumleri[0]" ng-options="t for t in PmC.HastaneBolumleri" id="sevkBolumu"></select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="veren">Raporu Veren Hekim</label>
+            <input class="form-control" type="text" name="name" ng-model="PmC.Muayene.iseDonus.verenHekim" id="veren" />
+        </div>
+        <div class="form-group">
+            <label>İstirahata Başlama Tarihi</label>
+            <div class="input-group">
+                <input type="text" class="form-control" uib-datepicker-popup="dd.MMMM.yyyy" ng-init="PmC.Muayene.iseDonus.BaslamaTarihi=PmC.Muayene.iseDonus.BaslamaTarihi==null?PmC.dateNow:PmC.Muayene.iseDonus.BaslamaTarihi" ng-model="PmC.Muayene.iseDonus.BaslamaTarihi"
+                       is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" ng-click="open1()" alt-input-formats="altInputFormats" />
+                <span class="input-group-btn" style="z-index:100">
+                    <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Bitiş Tarihi</label>
+            <div class="input-group">
+                <input type="text" class="form-control" uib-datepicker-popup="dd.MMMM.yyyy" ng-model="PmC.Muayene.iseDonus.BitisTarihi" is-open="popup2.opened" datepicker-options="dateOptions3" ng-required="true" close-text="Close2" ng-click="open2()" alt-input-formats="altInputFormats" />
+                <span class="input-group-btn" style="z-index:100">
+                    <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="sevkNedeni">Rapor Günü</label>
+            <input class="form-control"  type="number" name="name" ng-model="PmC.Muayene.iseDonus.gunSayisi" id="sevkNedeni" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="sonucu">İşe Dönüş Sonucu</label>
+            <select class="form-control" ng-model="PmC.Muayene.iseDonus.sonucu" ng-init="PmC.Muayene.iseDonus.sonucu='İşe Başlaması Uygundur'" ng-options="t for t in ['İşe Başlaması Uygundur','İşe Başlaması Hafif Bir İşle Uygundur','İşe Başlaması Uygun Değildir','Tekrar Kontrol Edilmek Şartıyla İşe Başlaması Uygundur']" id="sonucu"></select>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <button class="btn btn-success btn-sm" ng-if="PmC.personelMuayene.Protokol!=null" ng-click="PmC.iseDonusRaporu()">İşe Dönüş Belgesi</button>
+            </div>
+            <div class="col-sm-3"></div>
+            <div class="col-sm-5">
+                <button class="btn btn-sm pull-right" ng-class="{'btn-success':PmC.Renjk,'btn-primary':!PmC.Renjk,'btn-rounded':PmC.Renjk}" ng-click="PmC.iseDonusMuayeneKaydet()"><i class="fa fa-cog fa-spin fa-2x fa-fw" ng-show="PmC.Renjk"></i>{{message}}</button>
+            </div>
+        </div>
+    </form>
+</div>
+<datetimepicker ng-init="PmC.Muayene.iseDonus.BaslamaTarihi=PmC.Muayene.iseDonus.BaslamaTarihi==null?PmC.dateNow:PmC.Muayene.iseDonus.BaslamaTarihi" ng-model="PmC.Muayene.iseDonus.BaslamaTarihi" ng-show="false"
+                date-format="dd-MMM-yyyy" class="form-control"
+                date-options="dateOptions"
+                date-disabled="isDisabledDate(date, mode)">
+</datetimepicker>
+<datetimepicker ng-model="PmC.Muayene.iseDonus.BitisTarihi" ng-show="false"
+                date-format="dd-MMM-yyyy" class="form-control"
+                date-options="dateOptions"
+                date-disabled="isDisabledDate(date, mode)">
+</datetimepicker>

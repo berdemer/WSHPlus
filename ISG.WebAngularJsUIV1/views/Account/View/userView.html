@@ -1,0 +1,96 @@
+﻿<div class="wrapper wrapper-content animated rotateInUpRight" style="padding-bottom:0;padding-top:0">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="ibox product-detail">
+                <div class="ibox-content" style="padding-bottom:10px">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <slick infinite="true" dots="false" arrows="true" adaptiveheight="true" variablewidth="true" data="listImage" init-onload="true">
+                                <div ng-repeat="img in listImage">
+                                    <img data-lazy="{{img.LocalFilePath}}" class="img-rounded">
+                                </div>
+                            </slick>
+                            <div class="form-group">
+                                <label class="control-label" for="form-group-input">Şifre Güncelle</label>
+                                <input type="text" class="form-control" ng-model="sifrex" id="form-group-input" placeholder="Şifre">
+                                <button class="btn btn-success btn-sm m-t-sm" ng-click="passwordUpdate(idl.Id,sifrex)"><i class="fa fa-crosshairs"></i> Şifre Değiştir</button>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <h2 class="font-bold m-b-xs">
+                                <span ng-bind="idl.FullName"></span>
+                            </h2>
+                            <small>
+                                <b>Kullanıcı ID:</b><span ng-bind="idl.Id"></span>
+                            </small>
+                            <div class="m-t-md">
+                                <h2 class="product-main-price">
+                                    <b>Görevi:</b><span ng-bind="idl.Gorevi"></span><br />
+                                    <small class="text-muted"><b>Mesleği:</b><span ng-bind="idl.Meslek"></span></small><br />
+                                    <small class="text-muted"><b>Mail Adresi:</b><span ng-bind="idl.Email"></span></small><br />
+                                    <small class="text-muted"><b>Kullanıcı Adı:</b><span ng-bind="idl.UserName"></span></small><br />
+                                </h2>
+
+                            </div>
+                            <hr>
+                            <h4><b>Kullanıcı Yetkileri</b></h4>
+                            <ul class="small m-t-md" style="list-style-type:decimal;display:block;">
+                                <li ng-repeat="rols in Roller">{{rols}}</li>
+                            </ul>
+                            <hr>
+                            <div>
+
+                                <!--<div class="btn-group">
+                                    <button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Yetki Kaydı</button>
+                                    <button class="btn btn-white btn-sm"><i class="fa fa-th"></i> Yetki Kaydı Sil </button>
+                                    <button class="btn btn-warning btn-sm"><i class="fa fa-eraser"></i> Askıya Al </button>
+                                </div>-->
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="ibox-footer">
+                    <span class="pull-right">
+                        Kayıt Tarihi - <i class="fa fa-clock-o"></i><span ng-bind="idl.JoinDate|date:'dd/MM/yyyy'"></span>
+                    </span>
+                    Resimleri boyutlu izleyebilirsiniz.
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="ibox product-detail">
+                <div class="ibox-content" style="padding-bottom:0;padding-top:4px">
+                    <br /><h2>Kullanıcı Yetkileri</h2>
+                    <div class="form-group">
+                        <uib-accordion close-others="oneAtATime">
+                            <div uib-accordion-group class="panel-default" ng-repeat="role in Roller" heading="{{role}}" panel-class="panel-warning">
+                                <p><span ng-bind="role"></span> yetkisini kaldırmak istiyorsanız. Sırasıyla Sil ve Kaydet Butonuna Basınız.</p>
+                                <button class="btn btn-danger" ng-click="delete(role)">Sil</button>
+                            </div>
+                        </uib-accordion>
+                    </div> <!--akordiyon-->
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Yetkiler</label>
+                        <div class="col-sm-10">
+                            <select class="form-control m-b" ng-model="rolex" ng-options="option.Name for option in rols  track by option.Id"></select>
+                        </div>
+                    </div> <!--Seçim-->
+                    <div class="form-group">
+                        <button class="btn btn-default" ng-click="add(rolex.Name)" type="button">Ekle</button>
+                        <button class="btn btn-primary" ng-click="assignRolesToUser()" type="button">Kaydet</button>
+                    </div>
+                    <div class="ibox-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .cropArea {
+        overflow: hidden;
+        width: 400px;
+        height: 300px;
+    }
+</style>

@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+	<span>İşyeri sicil no su</span>&nbsp;<span ng-bind="calismaBilgisi.sicilNo|trim"></span>&nbsp;olan &nbsp;<span ng-bind="(data.Adi|trim)+' '+(data.Soyadi|trim)"></span>&nbsp;<span ng-bind="Tarih|date:'dd/MM/yyyy'"></span>&nbsp;<span>tarihinde yapılan <span ng-bind="MuayeneTuru|lowercase"></span> sonuç olarak:</span>
+	<span ng-if="!pM.Kanaat.Kosullari.length>0"><span ng-bind="bolumAdi|trim"></span>&nbsp;işinde/işyerinde bedenen çalışmaya elverişlidir.</span>
+	<div ng-if="pM.Kanaat.Kosullari.length>0">
+		<span>aşağıdaki hususlara dikkat etmek koşuluyla&nbsp;<span ng-bind="bolumAdi|trim"></span>&nbsp;işyerinde <span ng-bind="calismaBilgisi.gorevi|trim|lowercase"></span> işinde bedenen ve ruhen çalışmaya elverişlidir.</span>
+		<ol style="list-style-type: upper-roman">
+			<li ng-repeat="kosul in pM.Kanaat.Kosullari"><span ng-bind="kosul.id"></span></li>
+		</ol>
+	</div>
+	<p>
+		<span ng-if="pM.Kanaat.Aciklama.length>0"><strong>Açıklama:</strong></span> <span ng-bind="pM.Kanaat.Aciklama"></span>
+	</p>
+	<p><strong>	Personelin Çalışma Analizi </strong></p>
+	<p><strong>	ISCO08 SGK Tanımlı Mesleği:</strong>&nbsp;<span ng-bind="pM.CalismaAnalizi.calisanMeslegi.MeslekAdi"></span></p>
+	<p><strong>	Çalışma Zamanı:</strong>&nbsp;<span ng-bind="pM.CalismaAnalizi.calismaZamani.zamanDilimi"></span></p>
+	<p><strong>	Çalışma Pozisyonu:</strong>&nbsp;<span ng-bind="pM.CalismaAnalizi.calismaPozisyonu.pozisyon"></span></p>
+	<p><strong>	Araç Kullanımı:</strong>&nbsp;<span ng-bind="pM.CalismaAnalizi.aracKullanimi.kullanimSekli"></span></p>
+	<p><strong>	Fiziki Ortamı:</strong></p>
+	<ol style="list-style-type: circle">
+		<li ng-repeat="kosul in pM.CalismaAnalizi.fizikiOrtamSinifi"><span ng-bind="kosul.fizikiOrtam"></span></li>
+	</ol>
+	<p><strong>	Hava Sınıfı:</strong></p>
+	<ol style="list-style-type: circle">
+		<li ng-repeat="kosul in pM.CalismaAnalizi.havaSinifi"><span ng-bind="kosul.havaDurumu"></span></li>
+	</ol>
+	<p><strong>	Gürültü Sınıfı:</strong></p>
+	<ol style="list-style-type: circle">
+		<li ng-repeat="kosul in pM.CalismaAnalizi.gurultuSinifi"><span ng-bind="kosul.gurultuOrtami"></span></li>
+	</ol>
+	<p><strong>	Elektrik Sınıfı:</strong></p>
+	<ol style="list-style-type: circle">
+		<li ng-repeat="kosul in pM.CalismaAnalizi.elektrikSinifi"><span ng-bind="kosul.ElektrikOrtami"></span></li>
+	</ol>
+	<p><strong>	Toz Yönetmeliği:</strong></p>
+	<ol style="list-style-type: circle">
+		<li ng-repeat="kosul in pM.CalismaAnalizi.tozYonetmeligiSinifi"><span ng-bind="kosul.tozOrtami"></span></li>
+	</ol>
+	<p><strong>	Kimyasal Madde:</strong></p>
+	<ol style="list-style-type: circle">
+		<li ng-repeat="kosul in pM.CalismaAnalizi.kimyasalMaddeSinifi"><span ng-bind="kosul.kimyasalOrtami"></span></li>
+	</ol>
+	<p><strong>	Biyolojik Etkenler:</strong></p>
+	<ol style="list-style-type: circle">
+		<li ng-repeat="kosul in pM.CalismaAnalizi.biyolojikEtkenlerSinifi"><span ng-bind="kosul.biyolojikOrtam"></span></li>
+	</ol>
+	<p><strong>	İş Ekipmanları:</strong></p>
+	<ol style="list-style-type: circle">
+		<li ng-repeat="kosul in pM.CalismaAnalizi.isEkipmanlari"><span ng-bind="kosul.EkipmanTuru"></span></li>
+	</ol>
+	<p><span>Çalışma koşullarına uymayan analizleri sağlık birimine bildirmeniz rica olunur.	</span></p>
+	<p><span ng-bind="sirketAdi"></span></p>
+	<p><span ng-bind="saglikBirimi"></span></p>
+</body>
+</html>

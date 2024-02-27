@@ -1,0 +1,1004 @@
+﻿<div ng-controller="IkCtrl as IkC">
+    <div class="row wrapper border-bottom white-bg page-heading" resize onResize>
+        <div class="col-sm-4">
+            <a ui-sref="SM.SMCards({id:IkC.guid})">
+                <img alt="image" class="img-thumbnail" ng-cloak ng-src="{{IkC.fileImgPath}}{{IkC.img}}" on-error="defaultUser.png" style="width: auto; height: auto;max-width: 75px;max-height: 90px;margin-left:-20px;margin-right:10px;float:left" />
+            </a>
+            <a ui-sref="SM.SMCards({id:IkC.guid})">
+                <h3 style="color:yellow" ng-bind="IkC.AdSoyad"></h3>
+            </a>
+            <address class="m-t-n-sm m-b-n-lg">
+                <strong ng-bind="IkC.IkB.sirketAdi"></strong>=><span ng-bind="IkB.bolumAdi"></span><br>
+                <span ng-bind="IkC.IkB.data.Gorevi|degerYok"></span>=>
+                <span ng-bind="IkC.IkB.data.KadroDurumu|degerYok"></span><br>
+                <label> Sicil No:</label>{{IkC.IkB.data.SicilNo}}<label>Tc No :</label>{{IkC.IkB.data.TcNo}}<br>
+            </address>
+        </div>
+        <div class="col-sm-4 m-t-md  m-b-n-lg">
+            <label style="margin-bottom: 0px;">Kan Grubu :</label>{{IkC.IkB.data.KanGrubu}}
+            <label style="margin-bottom: 0px;">Yaşı :</label><span ng-bind="IkC.IkB.data.PersonelDetayi.DogumTarihi | getAge"></span><br>
+            <label style="margin-bottom: 0px;">Egitim Seviyesi :</label><span ng-bind="IkC.IkB.data.PersonelDetayi.EgitimSeviyesi|degerYok"></span><br>
+            <label style="margin-bottom: 0px;">Telefon :</label><a style="color:yellow" href="tel:0{{IkC.IkB.data.Telefon}}" ng-bind="IkC.IkB.data.Telefon|tel"></a><br>
+            <label style="margin-bottom: 0px;">Mail :</label><a style="color:yellow" href="mailto:{{IkC.IkB.data.Mail}}" ng-bind="IkC.IkB.data.Mail|degerYok"></a>
+        </div>
+        <div class="col-sm-4">
+            <address class="m-t-md  m-b-n-lg pull-left">
+
+            </address>
+        </div>
+    </div>
+    <div class="animated fadeInRight">
+        <div class="ibox float-e-margins collapsed">
+            <div class="ibox-title">
+                <div class="col-sm-3">
+                    <h5 ng-click="showhide()" style="color:darkblue">İş Kazası Kayıtları</h5>
+                </div>
+                <div class="col-sm-7">
+                    <a href="#" editable-select="nbv" e-ng-options="sx as sx.SirketAdi+' '+sx.SaglikBirimiAdi for sx in birimler" ng-bind="nbv.SirketAdi+' '+nbv.SaglikBirimiAdi||'Sağlık Birimini Seçiniz'"></a>
+                </div>
+                <div class="col-sm-1">
+                </div>
+                <div class="col-sm-1">
+                    <div id="cv" class="ibox-tools" uib-dropdown>
+                        <a ng-click="showhide()"> <i class="fa fa-chevron-up"></i></a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="ibox-content" style="padding-bottom: 0em">
+                <table datatable="ng" id="Ik" style="width:100%;cursor:pointer"
+                       dt-options="dtOptionsIkC" dt-column-defs="dtColumnDefsIkC" class="table table-responsive  table-striped table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>Prt</th>
+                            <th>Tarih</th>
+                            <th>Muayene Türü</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="pm in IkC.Iklari" ng-class="{'selected':pm.IsKazasi_Id===IkC.selectedRow}">
+                            <td ng-bind="pm.IsKazasi_Id"></td>
+                            <td ng-bind="pm.Protokol"></td>
+                            <td ng-bind="pm.Tarih|date:'dd/MM/yyyy  HH:mm'"></td>
+                            <td ng-bind="pm.MuayeneTuru"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div id="ana" class="animated fadeInUp m-t-n-md">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <div class="col-sm-2">
+                    <h5>İş Kazası Bilgileri</h5>
+                </div>
+                <div class="col-sm-6">
+                    <button ng-if="IkC.ik.Protokol!=null" class="btn btn-xs btn-success active" style="margin-left:10px;" ng-click="IkC.NewSubmit()"><i class="glyphicon glyphicon-plus"></i>&nbsp;Yeni İş Kazası Kaydı</button>
+                    <button class="btn btn-danger btn-xs" ng-if="IkC.ik.Protokol!=null" ng-click="IkC.pIsKazasi()">Rapor</button>
+                    <button class="btn btn-primary btn-xs" ng-if="IkC.ik.Protokol!=null" ng-click="IkC.ResimGit()">Resimler</button>
+                </div>
+                <div class="col-sm-4">
+                    <div ibox-tools></div>
+                </div>
+            </div>
+            <div class="ibox-content">
+                <form name="wz" class="form-horizontal" novalidate>
+                    <wizard Edit-mode="IkC.ik.Protokol!=null" hide-indicators="IkC.gecerliAdim<1000" current-step="adim">
+                        <wz-step wz-title="İş Yeri Bilgileri" canexit="exitValidation1">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-4">Bağlı Bulunduğu İl:</label>
+                                            <div class="col-sm-8">
+                                                <select class="form-control" ng-model="IkC.Ikbilgisi.bagliBulunduguIl" placeholder="Bağlı Bulunduğu İl"
+                                                        ng-options="z.val as z.val for z in IkC.il"></select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">İş Yeri Sicil No:</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" style="text-transform:uppercase" ng-model="IkC.Ikbilgisi.isYeriSicilNo" id="isYeriSicilNo" placeholder="İş Yeri Sicil No:">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Vergi Dairesi Adı:</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" style="text-transform:uppercase" ng-model="IkC.Ikbilgisi.vergiDairesiAdi" placeholder="Vergi Dairesi Adı">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">İş Yeri Tel:</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" ng-model="IkC.Ikbilgisi.isYeriTel" placeholder="İş Yeri Faks">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">İş Yeri Faks:</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" ng-model="IkC.Ikbilgisi.isYeriFaks" placeholder="İş Yeri Faks">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">İş Yeri Ünvanı:</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" style="text-transform:uppercase" ng-model="IkC.Ikbilgisi.isYeriUnvani" placeholder="İş Yeri Ünvanı">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">İş Yeri Adresi:</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" style="text-transform:uppercase" ng-model="IkC.Ikbilgisi.isYeriAdresi" placeholder="İş Yeri Adresi">
+                                    </div>
+                                </div>
+                            </div>
+                            <p style="text-align:center;border-bottom:1px dotted;"><strong>İŞÇİ SAYILARI</strong></p>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3">Erkek:</label>
+                                        <div class="col-sm-9">
+                                            <input type="number" class="form-control" ng-model="IkC.Ikbilgisi.erkekIsciSayisi" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3">Kadın:</label>
+                                        <div class="col-sm-9">
+                                            <input type="number" class="form-control" ng-model="IkC.Ikbilgisi.kadinIsciSayisi" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3">Çocuk:</label>
+                                        <div class="col-sm-9">
+                                            <input type="number" class="form-control" ng-model="IkC.Ikbilgisi.cocukIsciSayisi" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3">Stajer-Çırak:</label>
+                                        <div class="col-sm-9">
+                                            <input type="number" class="form-control" ng-model="IkC.Ikbilgisi.stajerIsciSayisi" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3">Özürlü:</label>
+                                        <div class="col-sm-9">
+                                            <input type="number" class="form-control" ng-model="IkC.Ikbilgisi.ozurluIsciSayisi" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3">Hükümlü:</label>
+                                        <div class="col-sm-9">
+                                            <input type="number" class="form-control" ng-model="IkC.Ikbilgisi.hukumluIsciSayisi" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3">Terör Mağduru:</label>
+                                        <div class="col-sm-9">
+                                            <input type="number" class="form-control" ng-model="IkC.Ikbilgisi.magdurIsciSayisi" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3">Eski Hükümlü:</label>
+                                        <div class="col-sm-9">
+                                            <input type="number" class="form-control" ng-model="IkC.Ikbilgisi.eskiHukumluIsciSayisi" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-7">Kaza Günü İşyeri Vardiya Başlangıç Saati:</label>
+                                        <div class="col-sm-5">
+                                            <div class="input-group " clock-picker data-autoclose="true">
+                                                <input type="text" class="form-control" value="00:00" ng-model="IkC.Ikbilgisi.vardiyaBaslamaSaati">
+                                                <span class="input-group-addon">
+                                                    <span class="fa fa-clock-o"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-7">Kaza Günü İşyeri Vardiya Bitiş Saati:</label>
+                                        <div class="col-sm-5">
+                                            <div class="input-group " clock-picker data-autoclose="true">
+                                                <input type="text" class="form-control" value="00:00" ng-model="IkC.Ikbilgisi.vardiyaBitisSaati">
+                                                <span class="input-group-addon">
+                                                    <span class="fa fa-clock-o"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-5">Kaza Sonrası İş Yerinin Durumu:</label>
+                                        <div class="col-sm-7">
+                                            <select class="form-control" ng-model="IkC.Ikbilgisi.isYeriDurumu"
+                                                    ng-options="z for z in ['Kapatıldı','Faaliyetini durdurdu','Faaliyetine Devam Etti']"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <span style="margin-left:20px;color:red;font-size:large" ng-bind="IkC.ValidationInfo"></span>
+                                <button wz-next="IkC.adim=1" class="pull-right btn btn-outline btn-warning m-r-xl">Devam Et &nbsp; <i class="fa fa-angle-double-right"></i></button>
+                            </div>
+
+                        </wz-step>
+                        <wz-step wz-title="Bildirim Yapan" canexit="exitValidation2">
+                            <h4>Bildirim Yapanın Bilgileri</h4>
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Bildirimi Hazırlayan:</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control" ng-model="IkC.Ikbilgisi.bildirimiHazirlayan.bilgisi"
+                                                    ng-options="z for z in ['İşveren','İşveren Vekili','Kendisi(Bağkurlu)','İş Yeri Hekimi','İş Güvenliği Uzmanı']"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-7">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Adı Soyadı</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" style="text-transform:uppercase" ng-model="IkC.Ikbilgisi.bildirimiHazirlayan.adSoyad" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-5">Tc Kimlik No:</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control" ng-model="IkC.Ikbilgisi.bildirimiHazirlayan.tcNo" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-5">Telefon:</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control" ng-model="IkC.Ikbilgisi.bildirimiHazirlayan.telefon" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-5">Faks:</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control" ng-model="IkC.Ikbilgisi.bildirimiHazirlayan.faks" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-5">e-posta:</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control" ng-model="IkC.Ikbilgisi.bildirimiHazirlayan.mail" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <button wz-previous class="btn btn-outline btn-warning m-l-xl"> <i class="fa fa-angle-double-left">&nbsp; Geri Dön</i></button>
+                                <span style="margin-left:20px;color:red;font-size:large" ng-bind="IkC.ValidationInfo"></span>
+                                <button wz-next="IkC.adim=2" class="pull-right btn btn-outline btn-warning m-r-xl">Devam Et &nbsp; <i class="fa fa-angle-double-right"></i></button>
+                            </div>
+                        </wz-step>
+                        <wz-step wz-title="Kaza Adresi" canexit="exitValidation3">
+                            <p>Kaza Adres Bilgilerini Giriniz.</p>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Kaza Ülke</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" ng-model="IkC.Ikbilgisi.kaza.ulke" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Kaza İl</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control" ng-model="IkC.Ikbilgisi.kaza.il"
+                                                    ng-options="z.val as z.val for z in IkC.il"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Kaza İlçe</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control" ng-model="IkC.Ikbilgisi.kaza.ilce"
+                                                    ng-options="z.val as z.val for z in IkC.ilceler"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Kaza Tarihi</label>
+                                        <div class="col-sm-8">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" uib-datepicker-popup="dd.MMMM.yyyy" ng-model="IkC.Ikbilgisi.kaza.tarihi" is-open="popup2.opened" datepicker-options="dateOptions2" ng-required="true" close-text="Close2" ng-click="open2()" alt-input-formats="altInputFormats" />
+                                                <span class="input-group-btn" style="z-index:100">
+                                                    <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Kaza Saati</label>
+                                        <div class="col-sm-8">
+                                            <div class="input-group " clock-picker data-autoclose="true">
+                                                <input type="text" class="form-control" value="00:00" ng-model="IkC.Ikbilgisi.kaza.saati">
+                                                <span class="input-group-addon">
+                                                    <span class="fa fa-clock-o"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-1">Kaza Adresi</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" style="text-transform:uppercase" ng-model="IkC.Ikbilgisi.kaza.adresi" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <button wz-previous class="btn btn-outline btn-warning m-l-xl"> <i class="fa fa-angle-double-left">&nbsp; Geri Dön</i></button>
+                                <span style="margin-left:20px;color:red;font-size:large" ng-bind="IkC.ValidationInfo"></span>
+                                <button wz-next class="pull-right btn btn-outline btn-warning m-r-xl">Devam Et &nbsp; <i class="fa fa-angle-double-right"></i></button>
+                            </div>
+                        </wz-step>
+                        <wz-step wz-title="Kaza Bilgisi" canexit="exitValidation4">
+                            <p>Kaza Bilgilerini Giriniz.</p>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Kazaya Sebeb Olan Olay:</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" ng-model="IkC.Ikbilgisi.kBilgi.sebebOlayi"
+                                                ng-options="z.kaza as z.kaza for z in IkC.sebebOlaylari"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Kazaya Sebeb Olan Olay Alt Grubu:</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" ng-model="IkC.Ikbilgisi.kBilgi.sebebOlayiAlt"
+                                                ng-options="z for z in IkC.sebebAltOlaylari"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Kazaya Sebeb Olan Olay Araç/Gereç:</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" ng-model="IkC.Ikbilgisi.kBilgi.sebebArac"
+                                                ng-options="z.kaza as z.kaza for z in IkC.sebebAraclari"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Kazaya Sebeb Olan Olay Araç/Gereç Alt Grubu:</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" ng-model="IkC.Ikbilgisi.kBilgi.sebebAracAlt"
+                                                ng-options="z for z in IkC.sebebAltAraclari"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">İş Kazasının Gerçekleştiği Yer/Bölüm:</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" ng-model="IkC.Ikbilgisi.kBilgi.yeri"
+                                                ng-options="z.kaza as z.kaza for z in IkC.yerleri"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">İş Kazasının Gerçekleştiği Yer/Bölüm Alt Grubu:</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" ng-model="IkC.Ikbilgisi.kBilgi.yeriAlt"
+                                                ng-options="z for z in IkC.yerleriAlt"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Kazanın Oluş Şekli ve Sebebini Açıklayınız:</label>
+                                    <div class="col-sm-8">
+                                        <textarea class="form-control" style="text-transform:uppercase" rows="2" maxlength="345" ng-model="IkC.Ikbilgisi.kBilgi.aciklama" cols="20"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Kazaya Uğrayan Kişi Sayısı:</label>
+                                    <div class="col-sm-8">
+                                        <input type="number" class="form-control" ng-model="IkC.Ikbilgisi.kBilgi.kazaKisiSayisi" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-6">
+                                    <label class="control-label col-sm-8">Mesleki Eğitim Almış mı?:</label>
+                                    <div class="col-sm-4">
+                                        <select class="form-control" ng-model="IkC.Ikbilgisi.meslekiEgitim"
+                                                ng-options="z for z in ['Evet','Hayır']"></select>
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label class="control-label col-sm-8">İş Sağlığı ve Güvenliği Eğitimi Almış mı?:</label>
+                                    <div class="col-sm-4">
+                                        <select class="form-control" ng-model="IkC.Ikbilgisi.isgEgitim"
+                                                ng-options="z for z in ['Evet','Hayır']"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Yakının Adı ve Soyadı</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" ng-model="IkC.Ikbilgisi.yakini.adSoyad" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Yakının Tc No:</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" ng-model="IkC.Ikbilgisi.yakini.tcNo" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Yakının Adresi</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" ng-model="IkC.Ikbilgisi.yakini.adresi" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <button wz-previous class="btn btn-outline btn-warning m-l-xl"> <i class="fa fa-angle-double-left">&nbsp; Geri Dön</i></button>
+                                <span style="margin-left:20px;color:red;font-size:large" ng-bind="IkC.ValidationInfo"></span>
+                                <button wz-next class="pull-right btn btn-outline btn-warning m-r-xl">Devam Et &nbsp; <i class="fa fa-angle-double-right"></i></button>
+                            </div>
+                        </wz-step>
+                        <wz-step wz-title="Kaza Şahidi" canexit="exitValidation5">
+                            <p>Şahit Bilgilerini Giriniz.</p>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Kazayı Gören:</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" ng-model="IkC.Ikbilgisi.kBilgi.goren"
+                                                ng-options="z for z in ['Kazayı Gören Var','Kazayı Gören Yok']"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-repeat="sahit in IkC.Ikbilgisi.kBilgi.sahitler" ng-if="IkC.sahidiGoren" class="etiket">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-4">Tc Kimlik No:</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" ng-model="sahit.tcNo" placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-4">Telefon:</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" ng-model="sahit.tel" placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-4">İl</label>
+                                            <div class="col-sm-8">
+                                                <select class="form-control" ng-model="sahit.il" ng-change="IkC.ilDegisimi(sahit)"
+                                                        ng-options="z.val as z.val for z in IkC.il"></select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-4">Adı Ve Soyadı:</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" style="text-transform:uppercase" class="form-control" ng-model="sahit.adSoyad" placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-4">e-posta</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" ng-model="sahit.mail" placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-4">İlçe</label>
+                                            <div class="col-sm-8">
+                                                <select class="form-control" ng-model="sahit.ilce"
+                                                        ng-options="z.val as z.val for z in IkC.ilceler[{{$index}}]"></select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2">Adres:</label>
+                                        <div class="col-sm-10">
+                                            <textarea ng-model="sahit.adres" rows="2" cols="20" style="width:100%;max-width:100%;text-transform:uppercase"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn btn-outline btn-info btn-xs" ng-click="IkC.addSahit()">Şahit Ekle</button>
+                                <button class="btn btn-outline btn-danger btn-xs" ng-click="IkC.deleteSahit(sahit)">Şahit Sil</button>
+                                <hr />
+                            </div>
+                            <div class="row">
+                                <button wz-previous class="btn btn-outline btn-warning m-l-xl"> <i class="fa fa-angle-double-left">&nbsp; Geri Dön</i></button>
+                                <span style="margin-left:20px;color:red;font-size:large" ng-bind="IkC.ValidationInfo"></span>
+                                <button wz-next class="pull-right btn btn-outline btn-warning m-r-xl">Devam Et &nbsp; <i class="fa fa-angle-double-right"></i></button>
+                            </div>
+                        </wz-step>
+                        <wz-step wz-title="Kazadaki Faaliyeti" canexit="exitValidation6">
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-6">
+                                        Kaza Anında Kazazedenin Yürütmekte Olduğu
+                                        Genel Faaliyet:
+                                    </label>
+                                    <div class="col-sm-6">
+                                        <select class="form-control" ng-model="IkC.Ikbilgisi.faaliyet.genel"
+                                                ng-options="z.kaza as z.kaza for z in IkC.genelFaaliyetleri"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-6">
+                                        Kaza Anında Kazazedenin Yürütmekte Olduğu
+                                        Genel Faaliyet Alt Grubu:
+                                    </label>
+                                    <div class="col-sm-6">
+                                        <select class="form-control" ng-model="IkC.Ikbilgisi.faaliyet.genelAlt"
+                                                ng-options="z for z in IkC.genelFaaliyetleriAlt"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-6">Kazadan Az Önceki Zamandan Kazazedenin Yürüttüğü Özel Faaliyet:</label>
+                                    <div class="col-sm-6">
+                                        <select class="form-control" ng-model="IkC.Ikbilgisi.faaliyet.ozel"
+                                                ng-options="z.kaza as z.kaza for z in IkC.ozelFaaliyetleri"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-6">Kazadan Az Önceki Zamandan Kazazedenin Yürüttüğü Özel Faaliyet Alt Grubu:</label>
+                                    <div class="col-sm-6">
+                                        <select class="form-control" ng-model="IkC.Ikbilgisi.faaliyet.ozelAlt"
+                                                ng-options="z for z in IkC.ozelFaaliyetleriAlt"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-6">Özel Faaliyet Sırasında Kullandığı Araç/Gereç:</label>
+                                    <div class="col-sm-6">
+                                        <select class="form-control" ng-model="IkC.Ikbilgisi.faaliyet.arac"
+                                                ng-options="z.kaza as z.kaza for z in IkC.aracFaaliyetleri"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-6">Özel Faaliyet Sırasında Kullandığı Araç/Gereç Alt Grubu:</label>
+                                    <div class="col-sm-6">
+                                        <select class="form-control" ng-model="IkC.Ikbilgisi.faaliyet.aracAlt"
+                                                ng-options="z for z in IkC.aracFaaliyetleriAlt"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <button wz-previous class="btn btn-outline btn-warning m-l-xl"> <i class="fa fa-angle-double-left">&nbsp; Geri Dön</i></button>
+                                <span style="margin-left:20px;color:red;font-size:large" ng-bind="IkC.ValidationInfo"></span>
+                                <button wz-next class="pull-right btn btn-outline btn-warning m-r-xl">Devam Et &nbsp; <i class="fa fa-angle-double-right"></i></button>
+                            </div>
+                        </wz-step>
+                        <wz-step wz-title="Yaralanma Bilgisi" canexit="exitValidation7">
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Yaralanmaya Neden Olan Olay:</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" ng-model="IkC.Ikbilgisi.yaralanma.olay"
+                                                ng-options="z.kaza as z.kaza for z in IkC.yaralanmaOlaylari"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Yaralanmaya Neden Olan Olay Alt Grubu:</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" ng-model="IkC.Ikbilgisi.yaralanma.olayAlt"
+                                                ng-options="z for z in IkC.yaralanmaOlaylariAlt"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Yaralanmaya Neden Araç/Gereç:</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" ng-model="IkC.Ikbilgisi.yaralanma.arac"
+                                                ng-options="z.kaza as z.kaza for z in IkC.yaralanmaAraclari"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Yaralanmaya Neden Araç/Gereç Alt Grubu:</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" ng-model="IkC.Ikbilgisi.yaralanma.aracAlt"
+                                                ng-options="z for z in IkC.yaralanmaAraclariAlt"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Yaranın Türü:</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" ng-model="IkC.Ikbilgisi.yaralanma.turu"
+                                                ng-options="z.kaza as z.kaza for z in IkC.yaralanmaTurleri"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Yaranın Türü Alt Grubu:</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" ng-model="IkC.Ikbilgisi.yaralanma.turuAlt"
+                                                ng-options="z for z in IkC.yaralanmaTurleriAlt"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Yaranın Vucuttaki Yeri:</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" ng-model="IkC.Ikbilgisi.yaralanma.yeri"
+                                                ng-options="z.kaza as z.kaza for z in IkC.yaralanmaYerleri"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Yaranın Vucuttaki Yeri Alt Grubu:</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" ng-model="IkC.Ikbilgisi.yaralanma.yeriAlt"
+                                                ng-options="z for z in IkC.yaralanmaYerleriAlt"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <button wz-previous class="btn btn-outline btn-warning m-l-xl"> <i class="fa fa-angle-double-left">&nbsp; Geri Dön</i></button>
+                                <span style="margin-left:20px;color:red;font-size:large" ng-bind="IkC.ValidationInfo"></span>
+                                <button wz-next class="pull-right btn btn-outline btn-warning m-r-xl">Devam Et &nbsp; <i class="fa fa-angle-double-right"></i></button>
+                            </div>
+                        </wz-step>
+                        <wz-step wz-title="Ortam">
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Çalışılan Ortam:</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" ng-model="IkC.Ikbilgisi.calisilan.ortam"
+                                                ng-options="z for z in IkC.calisilanOrtamlar"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Çalışılan Çevre:</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" ng-model="IkC.Ikbilgisi.calisilan.cevre"
+                                                ng-options="z.kaza as z.kaza for z in IkC.calisilanCevreler"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Çalışılan Çevre Alt Grup:</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" ng-model="IkC.Ikbilgisi.calisilan.cevreAlt"
+                                                ng-options="z for z in IkC.calisilanCevrelerAlt"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Kaza Gününde İşbaşı Saati:</label>
+                                    <div class="col-sm-8">
+                                        <div class="input-group " clock-picker data-autoclose="true">
+                                            <input type="text" class="form-control" value="00:00" ng-model="IkC.Ikbilgisi.calisilan.isbasiSaati">
+                                            <span class="input-group-addon">
+                                                <span class="fa fa-clock-o"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Kazadan Sonra Sigortalı Ne Yaptı:</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" ng-model="IkC.Ikbilgisi.calisilan.kazadanSonra"
+                                                ng-options="z for z in ['Çalışmaya Devam Etti',' Çalışmayı Derhal Bıraktı','Çalışmayı Bir Süre Sonra Bıraktı']"></select>
+                                    </div>
+                                </div>
+                                <div class="row" ng-if="IkC.Ikbilgisi.calisilan.kazadanSonra=='Çalışmayı Bir Süre Sonra Bıraktı'">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-4">Çalışmayı Bıraktığı Tarih</label>
+                                            <div class="col-sm-8">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" uib-datepicker-popup="dd.MMMM.yyyy" ng-model="IkC.Ikbilgisi.calisilan.calismayiBiraktigiTarihi" is-open="popup3.opened" datepicker-options="dateOptions3" close-text="Close3" ng-click="open3()" alt-input-formats="altInputFormats" />
+                                                    <span class="input-group-btn" style="z-index:100">
+                                                        <button type="button" class="btn btn-default" ng-click="open3()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-4">Çalışmayı Bıraktığı Saat:</label>
+                                            <div class="col-sm-8">
+                                                <div class="input-group " clock-picker data-autoclose="true">
+                                                    <input type="text" class="form-control" value="00:00" ng-model="IkC.Ikbilgisi.calisilan.calismayiBiraktigiSaati">
+                                                    <span class="input-group-addon">
+                                                        <span class="fa fa-clock-o"></span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Kazanın Gerçekleştiği Yer:</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" ng-model="IkC.Ikbilgisi.calisilan.kazaninGerceklestigiYer"
+                                                ng-options="z for z in ['İşyerinde','İşyeri Dışında']"></select>
+                                    </div>
+                                </div>
+                                <div class="row" ng-if="IkC.Ikbilgisi.calisilan.kazaninGerceklestigiYer=='İşyerinde'">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Gerçekleştiği Ortam:</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control" ng-model="IkC.Ikbilgisi.calisilan.kazaninIsyerindeGerceklestigiOrtam"
+                                                    ng-options="z for z in ['Çalışırken','Ara Dinlenmesinde']"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" ng-if="IkC.Ikbilgisi.calisilan.kazaninGerceklestigiYer=='İşyeri Dışında'">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Gerçekleştiği Bölüm:</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control" ng-model="IkC.Ikbilgisi.calisilan.kazaninIsyeriHaricindeGerceklestigiBolum"
+                                                    ng-options="z for z in ['Süt Izni Esnasında','İşten Eve Kendi Arabasıyla Gelirken','Evden İşe Kendi Arabasıyla Giderken','İşten Eve Servisle Gelirken','Evden İşe Servisle Giderken','Mesleki Faaliyetle Meşgulken']"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Kaza Sonucu İş Göremezliği:</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" ng-model="IkC.Ikbilgisi.calisilan.isgoremezligi"
+                                                ng-options="z for z in ['Var','Yok','Derhal Ölüm']"></select>
+                                    </div>
+                                </div>
+                                <div class="row" ng-if="IkC.Ikbilgisi.calisilan.isgoremezligi=='Var'">
+                                    <div class="form-group col-sm-6">
+                                        <label class="control-label col-sm-7">Kaza Sonucu İş Göremezliği Sonucu:</label>
+                                        <div class="col-sm-5">
+                                            <select class="form-control" ng-model="IkC.Ikbilgisi.calisilan.isgoremezligiSonucu"
+                                                    ng-options="z for z in ['Ölüm','Yaralanma','Uzuv Kaybı','Diğer']"></select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                        <label class="control-label col-sm-7">Kazadan Dolayı Sigortalının İş Günü Kaybı:</label>
+                                        <div class="col-sm-5">
+                                            <input class="form-control" type="number" ng-model="IkC.Ikbilgisi.calisilan.isgoremezligiSuresi" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Tıbbi Müdahale Yapıldımı:</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" ng-model="IkC.Ikbilgisi.calisilan.tibbiMudahale"
+                                                ng-options="z for z in ['Yapılmadı', 'Derhal Yapıldı','Daha Sonra Yapıldı']"></select>
+                                    </div>
+                                </div>
+                                <div class="row form-group" ng-if="IkC.Ikbilgisi.calisilan.tibbiMudahale=='Derhal Yapıldı'">
+                                    <label class="control-label col-sm-4">Tıbbi Müdahale Yapan Kişinin Adı Soyadı:</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="text" style="text-transform:uppercase" ng-model="IkC.Ikbilgisi.calisilan.tibbiMudahaleYapanAdSoyad" />
+                                    </div>
+                                </div>
+                                <div class="row" ng-if="IkC.Ikbilgisi.calisilan.tibbiMudahale=='Daha Sonra Yapıldı'">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-6">Tıbbi Müdahalenin Yapıldığı İl:</label>
+                                            <div class="col-sm-6">
+                                                <select class="form-control" ng-model="IkC.Ikbilgisi.calisilan.tibbiSonrasi.il"
+                                                        ng-options="z.val as z.val for z in IkC.il"></select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-4">Tıbbi Müdahale Tarihi</label>
+                                            <div class="col-sm-8">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" uib-datepicker-popup="dd.MMMM.yyyy" ng-model="IkC.Ikbilgisi.calisilan.tibbiSonrasi.tarih" is-open="popup4.opened" datepicker-options="dateOptions4" close-text="Close4" ng-click="open4()" alt-input-formats="altInputFormats" />
+                                                    <span class="input-group-btn" style="z-index:100">
+                                                        <button type="button" class="btn btn-default" ng-click="open4()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-6">Tıbbi Müdahale Yapan Kişinin Adı Soyadı:</label>
+                                            <div class="col-sm-6">
+                                                <input class="form-control" type="text" style="text-transform:uppercase" ng-model="IkC.Ikbilgisi.calisilan.tibbiSonrasi.adSoyad" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-6">Tıbbi Müdahalenin Yapıldığı İlçe:</label>
+                                            <div class="col-sm-6">
+                                                <select class="form-control" ng-model="IkC.Ikbilgisi.calisilan.tibbiSonrasi.ilce"
+                                                        ng-options="z.val as z.val for z in IkC.ilcelerS"></select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-6">Tıbbi Müdahale Saati:</label>
+                                            <div class="col-sm-6">
+                                                <div class="input-group " clock-picker data-autoclose="true">
+                                                    <input type="text" class="form-control" value="00:00" ng-model="IkC.Ikbilgisi.calisilan.tibbiSonrasi.saat">
+                                                    <span class="input-group-addon">
+                                                        <span class="fa fa-clock-o"></span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-6">Tıbbi Müdahale Yapan Kişinin Adresi:</label>
+                                            <div class="col-sm-6">
+                                                <textarea class="form-control" rows="2" cols="20" style="text-transform:uppercase;width:100%;max-width:100%" ng-model="IkC.Ikbilgisi.calisilan.tibbiSonrasi.adresi"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <button wz-previous class="btn btn-outline btn-warning m-l-xl"> <i class="fa fa-angle-double-left">&nbsp; Geri Dön</i></button>
+                                <span style="margin-left:20px;color:red;font-size:large" ng-bind="IkC.ValidationInfo"></span>
+                                <button wz-next class="pull-right btn btn-outline btn-warning m-r-xl">Olay Resimleri &nbsp; <i class="fa fa-angle-double-right"></i></button>
+                                <button type="button" ng-click="IkC.Kayit()" ng-class="{'pull-right btn btn-outline m-r-xl btn-warning':!IkC.Renjk,'pull-right btn btn-outline m-r-xl btn-danger':IkC.Renjk}"><i ng-class="{'fa fa-cog fa-spin fa-2x fa-fw':IkC.Renjk,'fa fa-save':!IkC.Renjk}"></i> &nbsp;{{message}} </button>
+                            </div>
+                        </wz-step>
+                        <wz-step wz-title="Resimler" ng-if="IkC.ik.Protokol!=null">
+                            <div class="row">
+                                <button wz-previous class="btn btn-outline btn-warning m-l-xl"> <i class="fa fa-angle-double-left">&nbsp; Geri Dön</i></button>
+                                <button class="btn btn btn-warning" ngf-select="uploadFiles($files)" multiple accept="image/*">
+                                    Resim Ekle
+                                </button>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 thumbnail" style="position: relative" ng-repeat="nx in IkC.listImage">
+                                    <img ng-src="{{nx.LocalFilePath}}" class="img-thumbnail">
+                                    <button class="btn btn-danger btn-xs" ng-click="deleten(nx.GenericName , $index)" style="position: absolute; top: 4px; right: 5px">
+                                        <i class="fa fa-remove"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </wz-step>
+                    </wizard>
+                </form>
+            </div>
+        </div>
+    </div>
+    <pre>{{IkC.Ikbilgisi |json}}</pre>
+    <div ng-if="IkC.ik.Protokol!=null && adim=='Resimler'" class="m-t-n-md">
+        <div class="ibox collapsed">
+            <div class="ibox-title">
+                <h5>İş Kazasının Resimler Slayt Paneli</h5>
+                <div ibox-tools></div>
+            </div>
+            <div class="ibox-content">
+                <div>
+                    <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+                        <div uib-slide ng-repeat="slide in  IkC.listImage track by $index" index="$index">
+                            <img ng-src="{{slide.LocalFilePath}}" style="margin:auto;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <datetimepicker ng-init="IkC.Ikbilgisi.kaza.tarihi=IkC.Ikbilgisi.kaza.tarihi==null?PmC.dateNow:IkC.Ikbilgisi.kaza.tarihi" ng-model="IkC.Ikbilgisi.kaza.tarihi" ng-show="false"
+                    date-format="dd-MMM-yyyy" class="form-control"
+                    date-options="dateOptions"
+                    date-disabled="isDisabledDate(date, mode)">
+    </datetimepicker>
+    <datetimepicker ng-model="IkC.Ikbilgisi.calisilan.tibbiSonrasi.tarih" ng-show="false"
+                    date-format="dd-MMM-yyyy" class="form-control"
+                    date-options="dateOptions"
+                    date-disabled="isDisabledDate(date, mode)">
+    </datetimepicker>
+    <datetimepicker ng-model="IkC.Ikbilgisi.calisilan.calismayiBiraktigiTarihi" ng-show="false"
+                    date-format="dd-MMM-yyyy" class="form-control"
+                    date-options="dateOptions"
+                    date-disabled="isDisabledDate(date, mode)">
+    </datetimepicker>
+    <!--<div ng-init="IkC.yukleme()">   </div>-->
+</div>
+<style>
+    #Ik_wrapper {
+        padding-bottom: 0px;
+    }
+</style>

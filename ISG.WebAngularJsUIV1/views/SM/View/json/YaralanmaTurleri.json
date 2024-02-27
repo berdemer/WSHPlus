@@ -1,0 +1,58 @@
+[
+  {
+    "kaza": "0 - Yaranın türü bilinmeyen veya belirtilmemiş ",
+    "alt": ["0 - Yaranın türü bilinmeyen veya belirtilmemiş "]
+  },
+  {
+    "kaza": "10 - Yaralar ve yüzeysel yaralanmalar",
+    "alt": ["11 - Yüzeysel yaralanmalar"," 12 - Açık yaralar ","19 - Diğer tür yaralar ve yüzeysel yaralanmalar"]
+  },
+  {
+    "kaza": "20 - Kemik kırıkları ",
+    "alt": ["21 - Kapalı kırıklar ","22 - Açık kırıklar ","29 - Diğer tür kemik kırıkları"]
+  },
+  {
+    "kaza": "30 - Çıkıklar, burkulmalar ve incinmeler ",
+    "alt": ["31 - Çıkıklar ve yarı çıkıklar ","32 - Burkulmalar ve incinmeler ","39 - Diğer tür çıkık, burkulma ve incinmeler"]
+  },
+  {
+    "kaza": "40 - Travma sonucu organ kaybı (bedenin bir parçasının kaybı) ",
+    "alt": ["40 - Travma sonucu organ kaybı (bedenin bir parçasının kaybı) "]
+  },
+  {
+    "kaza": "50 - Beyin sarsıntısı ve iç yaralanmalar ",
+    "alt": ["51 - Beyin sarsıntısı ve kafatası yaralanmaları ","52 - İç yaralanmalar ","59 - Diğer tür beyin sarsıntısı ve iç yaralanmalar"]
+  },
+  {
+    "kaza": "60 - Yanıklar, kaynar su ile kavrulma ve donmalar ",
+    "alt": ["61 - Yanıklar ve kaynar su ile kavrulmalar (termal) ","62 - Kimyasal yanıklar (korozyon) ","63 - Donmalar ","69 - Diğer tür yanıklar, kaynar su ile kavrulma ve donmalar"]
+  },
+  {
+    "kaza": "70 - Zehirlenme ve enfeksiyonlar ",
+    "alt": ["71 - Akut zehirlenmeler ","72 - Akut enfeksiyonlar ","79 - Diğer tür zehirlenme ve enfeksiyonlar"]
+  },
+  {
+    "kaza": "80 - Suda boğulma ve nefesin kesilmesi ",
+    "alt": ["81 - Nefesin kesilmesi ","82 - Suda boğulma ve ölümle sonuçlanmayan boğulma ","89 - Diğer tür boğulma ve nefesin kesilmesi"]
+  },
+  {
+    "kaza": "90 - Ses, titreşim ve basınç etkileri ",
+    "alt": ["91 - Akut işitme kaybı ","92 - Basınç etkileri (yüksek basınca bağlı) ","99 - Diğer tür ses, titreşim ve basınç etkileri"]
+  },
+  {
+    "kaza": "100 - Aşırı ısı, ışık ve radyasyon etkileri",
+    "alt": ["101 - Sıcaklık ve güneş çarpması ","102 - Radyasyon etkileri (termal olmayan) ","103 - İndirgenmiş ısı etkileri ","109 - Diğer tür aşırı ısı, ışık ve radyasyon etkileri"]
+  },
+  {
+    "kaza": "110 - Şok",
+    "alt": ["111 - Saldırı ve tehdit (korkutma) sonrası şoklar ","112 - Travma şokları ","119 - Diğer tür şoklar"]
+  },
+  {
+    "kaza": "120 - Birden fazla sayıda yaralanmalar",
+    "alt": ["120 - Birden fazla sayıda yaralanmalar"]
+  },
+  {
+    "kaza": "999 - Diğer başlıklar altında içerilmeyen diğer belirtilmiş yaralanmalar",
+    "alt": [ "999 - Diğer başlıklar altında içerilmeyen diğer belirtilmiş yaralanmalar"]
+  }
+]

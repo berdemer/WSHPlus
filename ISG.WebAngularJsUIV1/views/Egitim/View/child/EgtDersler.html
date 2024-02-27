@@ -1,0 +1,39 @@
+﻿<div ng-controller="egtDerslerCtrl  as EgDC" style="width:100%">
+    <div wrapper wrapper-content>
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <label ng-if="messageIcoEkle" style="color:brown">Sistem Yükleniyor..Bırakın Balık Yüzsün...</label>
+                <span ng-if="messageIcoEkle" style="color:brown" class="loading fish"></span>
+            </div>
+            <div class="ibox-content">
+                <table datatable="ng" dt-column-defs="dtColumnDefs"
+                       dt-options="dtOptions" class="table table-striped table-bordered table-hover dataTables-example">
+                    <thead>
+                        <tr>
+                            <th>Eğitim Verenin Adı</th>
+                            <th>Eğitim Tarihi</th>
+                            <th>Belge Tipi</th>
+                            <th>Silme</th>
+                            <th>Ayrıntılı İncele</th>
+                            <th>Kayıt Durumu</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="s in EgDC.egitimler">
+                            <td style="font-size:large;font-weight:bold" ng-bind="s.AdiSoyadi"></td>
+                            <td style="font-size: large; font-weight: bold" ng-bind="s.Tarih|date:'dd.MM.yyyy'"></td>
+                            <td style="font-size: large; font-weight: bold" ng-bind="s.BelgeTipi"></td>
+                            <td>
+                                <a class="btn btn-danger btn-sm" ng-click="EgDC.TopluEgitimSil(s.Id)">Sil</a>
+                            </td>
+                            <td>
+                                <a class="btn btn-yahoo btn-sm" ng-click="EgDC.TopluEgitimDetaylari(s.Id)">Detayları</a>
+                            </td>
+                            <td style="font-size: large; font-weight: bold" ng-bind="s.KayitDurumu"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

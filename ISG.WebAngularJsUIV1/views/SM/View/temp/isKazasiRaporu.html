@@ -1,0 +1,206 @@
+﻿
+<style type="text/css">
+    @page {
+        size: A5;
+        margin: 0mm;
+    }
+
+    html {
+        background-color: #FFFFFF;
+        margin: 0px;
+    }
+
+    body {
+        font-family: GaGaramond'Times New Roman', serif;
+        background-color: #FFFFFF;
+        border: solid 1px black;
+        margin: 0px;
+        padding: 0px;
+        -ms-filter: none;
+        line-height: 1.45;
+        word-spacing: 1px;
+        letter-spacing: 0.2px;
+        height: 210mm;
+        width: 148.5mm;
+        font-size: x-small;
+    }
+
+    table.normal {
+        table-layout: fixed;
+        width: 100%;
+        border: solid 3px #000000;
+        padding: 0;
+        border-collapse: collapse;
+        border-spacing: 0;
+        overflow: inherit;
+        table-layout: fixed;
+    }
+
+        table.normal th {
+            border: solid 1px #000000;
+            word-wrap: break-word;
+        }
+
+        table.normal td {
+            border: solid 1px #000000;
+            vertical-align: top;
+            word-wrap: break-word;
+            padding-left: 6px;
+        }
+
+
+    .auto-style1 {
+        text-align: center;
+    }
+
+
+    .auto-style3 {
+        font-size: medium;
+    }
+
+    .auto-style6 {
+        width: 125pt;
+        text-align: right;
+    }
+</style>
+
+<div style="margin: 20pt; border-style: none; overflow: inherit;">
+    <div class="auto-style1">
+        <strong class="auto-style1"><span class="auto-style3">İş Kazası Bilgi Formu</span></strong>
+    </div>
+    <table style="width:100%;margin-top:10px;" class="normal">
+        <tr>
+            <td class="auto-style6">
+                <p>İş Yeri:</p>
+            </td>
+            <td><p><span ng-bind="patient.kurumu"></span></p></td>
+        </tr>
+        <tr>
+            <td class="auto-style6">
+                <p>Sağlık Birimi:</p>
+            </td>
+            <td><p> <span ng-bind="patient.saglikBirimi"></span>   </p></td>
+        </tr>
+        <tr>
+            <td class="auto-style6">
+                <p>Tarih / Protokol:</p>
+            </td>
+            <td><p> <span ng-bind="patient.date"></span>&nbsp;/&nbsp;<span ng-bind="patient.Protokol"></span>   </p></td>
+        </tr>
+    </table>
+    <table style="width:100%;margin-top:5px" class="normal">
+        <tr>
+            <td class="auto-style6">
+                <p> Adı-Soyadı: </p>
+            </td>
+            <td><p>   <span ng-bind="patient.name"></span> </p></td>
+        </tr>
+        <tr>
+            <td class="auto-style6">
+                <p> T.C. No:</p>
+            </td>
+            <td><p><span ng-bind="patient.tcNo"></span></p></td>
+        </tr>
+        <tr>
+            <td class="auto-style6">
+                <p> Telefonu:</p>
+            </td>
+            <td><p><span ng-bind="patient.tel|tel"></span></p></td>
+        </tr>
+        <tr>
+            <td class="auto-style6">
+                <p>Tanı:</p>
+            </td>
+            <td><p>  <span ng-bind="patient.tani"></span>   </p></td>
+        </tr>
+        <tr>
+            <td class="auto-style6">
+                Kazanın Olma Tarihi ve Saati:
+            </td>
+            <td>
+                <span ng-bind="patient.Ikbilgisi.Zamani.OlusTarihi|date:'dd/MM/yyyy'"></span>
+                <span ng-bind="patient.Ikbilgisi.Zamani.Saati"></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-style6">
+                Kazanın Olma Şekli ve Sebebi:
+            </td>
+            <td><span ng-bind="patient.Ikbilgisi.kBilgi.aciklama"></span></td>
+        </tr>
+        <tr>
+            <td class="auto-style6">
+                Yaralanmaya Neden Olan Olay:
+            </td>
+            <td>
+                <span ng-bind="patient.Ikbilgisi.yaralanma.olay"></span>&nbsp;
+                <span ng-bind="patient.Ikbilgisi.yaralanma.olayAlt"></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-style6">
+                Yaralanmaya Neden Araç/Gereç:
+            </td>
+            <td>
+                <span ng-bind="patient.Ikbilgisi.yaralanma.arac"></span>&nbsp;
+                <span ng-bind="patient.Ikbilgisi.yaralanma.aracAlt"></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-style6">
+                Yaranın Türü:
+            </td>
+            <td>
+                <span ng-bind="patient.Ikbilgisi.yaralanma.turu"></span>&nbsp;
+                <span ng-bind="patient.Ikbilgisi.yaralanma.turuAlt"></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-style6">
+                Yaranın Vucuttaki Yeri:
+            </td>
+            <td>
+                <span ng-bind="patient.Ikbilgisi.yaralanma.yeri"></span>&nbsp;
+                <span ng-bind="patient.Ikbilgisi.yaralanma.yeriAlt"></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-style6">
+                Yaralı Hakkında Ayrıntılı Açıklama:
+            </td>
+            <td>
+                <span ng-bind="patient.Ikbilgisi.yaralanma.ayrintiliAciklama"></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-style6">
+                <p> İnceleme Ekibi:</p>
+            </td>
+            <td><p><span ng-bind="patient.Ikbilgisi.IncelemeEkibi"></span></p></td>
+        </tr>
+        <tr>
+            <td class="auto-style6">
+                Muayene Sonrası:
+            </td>
+            <td>
+                <span ng-bind="patient.Ikbilgisi.yaralanma.kazadanSonra.name"></span>
+                <span ng-if="patient.Istirahat!=null" ng-bind="patient.Istirahat.GunSayisi"></span>
+                <span ng-if="patient.Istirahat!=null">Gün</span>
+            </td>
+        </tr>
+    </table>
+    <!--<div>
+        <p>
+            <strong>DÜZENLEYEN HEKİMİN</strong>
+        </p>
+        <span style="float: left;"><strong>ADI SOYADI :</strong></span>
+        <span style="float: right; margin-right: 45px;"><strong>İMZASI</strong></span>
+        <div style="clear: both;"></div>
+        <strong>SİCİL NO :</strong><br />
+        <strong>DİPLOMA :</strong><br />
+        <strong>
+            TESCİL NO :
+        </strong>
+    </div>-->
+    <span style="font-size:5px">WSH+ &copy; 2017</span>
+</div>

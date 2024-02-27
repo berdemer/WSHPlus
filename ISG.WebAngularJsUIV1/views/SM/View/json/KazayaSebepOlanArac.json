@@ -1,0 +1,90 @@
+[
+  {
+    "kaza": "00.00 - Materyal araç veya bilgi yok",
+    "alt": ["00.01 - Materyal araç yok ","00.02 - Bilgi yok ","00.99 - 00 grubunda, yukarıda listelenmemiş başka bilinen durum ."]
+  },
+  {
+    "kaza": "01.00 - Binalar, yapılar, yüzeyler- yer düzeyinde (kapalı veya açık, sabit veya seyyar, geçici veya kalıcı) belirtilmemiş",
+    "alt": ["01.01 - Bina parçaları, yapısal parçalar- kapı, duvar, bölme, vb. ve kasıtlı engeller (pencere, vb.) ","01.02 - Yer düzeyindeki yüzeyler - yer ve tabanlar (kapalı veya açık, çiftlik toprağı, spor alanı, kaygan zemin, dağınık zemin, çivili kereste) ","01.03 - Yer düzeyindeki yüzeyler -hareketli ","01.99 - 01 numaralı grup içinde, yukarıda listelenmemiş başka bilinen bina, yapı ve yüzeyler- aynı düzeyde"]
+  },
+  {
+    "kaza": " 02.00 - Binalar, yapılar, yüzeyler - yer düzeyinin üstünde (kapalı veya açık) - belirtilmemiş ",
+    "alt": ["02.01 - Yer düzeyinden yukarıdaki bina parçaları - sabit (çatı, teras, kapı ve pencereler, merdiven, iskele) ","02.02 - Yer düzeyinden yukarıdaki yapılar, yüzeyler - sabit (geçit, sabit merdiven, pilonlar da dahil olmak üzere) ","02.03 - Yer düzeyinden yukarıdaki yapılar, yüzeyler - seyyar (yapı iskelesi, seyyar merdiven, beşik, yükseltme platformları da dahil olmak üzere) ","02.04 - Yer düzeyinden yukarıdaki yapılar, yüzeyler - geçici (geçici yapı iskelesi, bağlar, salıncaklar da dahil olmak üzere) ","02.05 - Yer düzeyinden yukarıdaki yapılar, yüzeyler - yüzer (arama platformları, mavna iskeleleri de dahil olmak üzere) ","02.99 - 02 numaralı grup içinde yukarıda listelenmemiş başka bilinen yer düzeyinden yukarıdaki bina, yapı, yüzeyler"]
+  },
+  {
+    "kaza": "03.00 - Binalar, yapılar, yüzeyler - yer düzeyinin altında - (kapalı veya açık) - belirtilmemiş ",
+    "alt": ["03.01 - Hafriyat, hendek, kuyu, ocak, eğik yüzey, dehliz ","03.02 - Yeraltı alanlar, tüneller ","03.03 - Sualtı ortamlar ","03.99 - 03 numaralı grup içinde yukarıda listelenmemiş başka bilinen yer düzeyinin altındaki bina, yapı, yüzeyler"]
+  },
+  {
+    "kaza": "04.00 - Malzeme temini ve dağıtımı sistemleri boru hatları - belirtilmemiş ",
+    "alt": ["04.01 - Gaz, hava, sıvı, katı malzeme temini ve dağıtımı sistemleri, boru ağları - sabit-aksaklıklar da dahil olmak üzere ","04.02 - Malzeme temini ve dağıtımı sistemleri, boru ağları - seyyar ","04.03 - Kanalizasyon, lağım ","04.99 - 04 numaralı grup içinde yukarıda listelenmemiş başka bilinen malzeme temini ve dağıtım sistemleri, boru ağları"]
+  },
+  {
+    "kaza": "05.00 - Motorlar, enerji iletimi ve depolama sistemleri - belirtilmemiş ",
+    "alt": ["05.01 - Motorlar, jeneratörler (termal, elektrik, radyasyon)"," 05.02 - Enerji iletim ve depolama sistemleri (mekanik, basınçlı, hidrolik, elektrik, pil ve akümülatörler de dahil olmak üzere) ","05.99 - 05 numaralı grup içinde yukarıda listelenmemiş başka bilinen motor, enerji iletimi ve depolama sistemleri"]
+  },
+  {
+    "kaza": "06.00 - El aletleri, motorsuz - belirtilmemiş ",
+    "alt": ["06.01 - El aletleri, motorsuz - bıçkıcılık için ","06.02 - El aletleri, motorsuz - kesmek, ayırmak için (makas, budama makasları da dahil olmak üzere) ","06.03 - El aletleri, motorsuz - oymak, yiv açmak, yontmak, tıraşlamak, yontmak, kesmek için ","06.04 - El aletleri, motorsuz - kazımak, parlatmak, ovmak için ","06.05 - El aletleri, motorsuz - delmek, çevirmek, vidalamak için ","06.06 - El aletleri, motorsuz - çakmak, perçinlemek, zımbalamak için ","06.07 - El aletleri, motorsuz - dikmek, örmek için ","06.08 - El aletleri, motorsuz - kaynatmak, yapıştırmak için ","06.09 - El aletleri, motorsuz - toprağı işlemek ve malzeme çıkarmak için (çiftçilik aletleri de dahil olmak üzere) ","06.10 - El aletleri, motorsuz - cilalamak, yağlamak, yıkamak, temizlemek için ","06.11 - El aletleri, motorsuz - boyamak için ","06.12 - El aletleri, motorsuz - yerinde tutmak, kavramak için ","06.13 - El aletleri, motorsuz - mutfak işleri için (bıçaklar dışında) ","06.14 - El aletleri, motorsuz - ameliyat ve tıbbi işler için - keskin, kesme ","06.15 - El aletleri, motorsuz - ameliyat ve tıbbi işler için - kesme olmadan, diğerleri ","06.99 - 06 numaralı grup içinde yukarıda listelenmemiş başka bilinen motorsuz el aletleri"]
+  },
+  {
+    "kaza": "07.00 - El makineleri veya elle yönlendirilen aletler, makineli - belirtilmemiş ",
+    "alt": ["07.01 - Makineli el aletleri - bıçkıcılık için ","07.02 - Makineli el aletleri - kesmek, ayırmak için (makas, budama makasları da dahil olmak üzere) ","07.03 - Makineli el aletleri - oymak, yiv açmak, yontmak, (çim biçmek, 09.02'ye bakın) tıraşlamak, yontmak, kesmek için ","07.04 - Makineli el aletleri - kazımak, parlatmak, ovmak için ","07.05 - Makineli el aletleri - delmek, çevirmek, vidalamak için ","07.06 - Makineli el aletleri - çakmak, perçinlemek, zımbalamak için ","07.07 - Makineli el aletleri - dikmek, örmek için ","07.08 - Makineli el aletleri - kaynatmak, yapıştırmak için ","07.09 - Makineli el aletleri - toprağı işlemek ve malzeme çıkarmak için (çiftçilik aletleri, beton kırıcılar da dahil olmak üzere) ","07.10 - Makineli el aletleri - cilalamak, nemlendirmek, yıkamak, temizlemek için (yüksek basınçlı elektrik süpürgeleri de dahil olmak üzere) ","07.11 - Makineli el aletleri - boyamak için ","07.12 - Makineli el aletleri - yerinde tutmak, kavramak için ","07.13 - Makineli el aletleri - mutfak işleri için (bıçaklar dışında) ","07.14 - Makineli el aletleri - ısıtmak için (kurutucular, alev tabancaları, ütüler de dahil olmak üzere) ","07.15 - Makineli el aletleri - ameliyat ve tıbbi işler için -sivri; kesici ","07.16 - Makineli el aletleri - ameliyat ve tıbbi işler için -kesici olmadan, diğerleri ","07.17 - Basınçlı tabancalar (alet belirtilmeden) ","07.99 - 07 numaralı grup içinde, yukarıda listelenmemiş başka bilinen el makineleri veya elle yönlendirilen aletler"]
+  },
+  {
+    "kaza": "08.00 - El aletleri - güç kaynağı belirtilmemiş - belirtilmemiş",
+    "alt": ["08.01 - Güç kaynağı belirtilmeyen el aletleri - bıçkıcılık için ","08.02 - Güç kaynağı belirtilmeyen el aletleri - kesmek, ayırmak için (makas, budama makasları da dahil olmak üzere) ","08.03 - Güç kaynağı belirtilmeyen el aletleri - oymak, yiv açmak, yontmak, tıraşlamak, yontmak, kesmek için ","08.04 - Güç kaynağı belirtilmeyen el aletleri - kazımak, parlatmak, ovmak için ","08.05 - Güç kaynağı belirtilmeyen el aletleri - delmek, çevirmek, vidalamak için ","08.06 - Güç kaynağı belirtilmeyen el aletleri - çakmak, perçinlemek, zımbalamak için ","08.07 - Güç kaynağı belirtilmeyen el aletleri - dikmek, örmek için ","08.08 - Güç kaynağı belirtilmeyen el aletleri - kaynatmak, yapıştırmak için ","08.09 - Güç kaynağı belirtilmeyen el aletleri - toprağı işlemek ve malzeme çıkarmak için (çiftçilik aletleri de dahil olmak üzere) ","08.10 - Güç kaynağı belirtilmeyen el aletleri - cilalamak, yağlamak, yıkamak, temizlemek için ","08.11 - Güç kaynağı belirtilmeyen el aletleri - boyamak için ","08.12 - Güç kaynağı belirtilmeyen el aletleri - yerinde tutmak, kavramak için ","08.13 - Güç kaynağı belirtilmeyen el aletleri - mutfak işleri için (bıçaklar dışında) ","08.14 - Güç kaynağı belirtilmeyen el aletleri - ameliyat ve tıbbi işler için - keskin, kesme ","08.15 - Güç kaynağı belirtilmeyen el aletleri - ameliyat ve tıbbi işler için - kesme olmadan, diğerleri ","08.99 - 08 numaralı grup içinde, yukarıda listelenmemiş başka bilinen güç kaynağı belirtilmeyen el aletleri"]
+  },
+  {
+    "kaza": "09.00 - Makine ve ekipmanlar - taşınabilir veya seyyar - belirtilmemiş",
+    "alt": ["09.01 - Taşınabilir veya seyyar makineler - toprağı işlemek ve malzeme çıkarmak için - bina yapımı ve inşaat mühendisliği işleri için maden, taşocağı ve fabrika ","09.02 - Taşınabilir veya seyyar makineler-toprağı işlemek, çiftçilik için"," 09.03 - Taşınabilir veya seyyar makineler (toprağın işlenmesi için olmayan) - inşaat şantiyeleri için ","09.04 - Seyyar yer temizleme makineleri 09.99 - 09 numaralı grup içinde, yukarıda listelenmemiş başka bilinen taşınabilir veya seyyar makine ve ekipmanlar"]
+  },
+  {
+    "kaza": "10.00 - Makine ve ekipmanlar - sabit - belirtilmemiş",
+    "alt": ["10.01 - Toprağı işlemek ve malzeme çıkarmak için sabit makineler ","10.02 - Malzemeleri hazırlamak, ezmek, tozlaştırmak, filtrelemek, ayırmak, karıştırmak, harmanlamak için makineler ","10.03 - Malzemeleri işlemek için makineler - kimyasal işlemler (reaktif, mayalama işlemleri) ","10.04 - Malzemeleri işlemek için makineler- sıcak işlemler (fırın, kurutucu, ocaklar) ","10.05 - Malzemeleri işlemek için makineler - soğuk işlemler (soğukluk üretilmesi) ","10.06 - Malzemeleri işlemek için makineler - diğer işlemler ","10.07 - Biçimlendirme makineleri - basmak, ezmek yoluyla ","10.08 - Biçimlendirme makineleri - perdahlamak, yuvarlamak, silindir baskılar yoluyla (kağıt baskıları da dahil olmak üzere) ","10.09 - Biçimlendirme makineleri - enjeksiyon, itip çıkarma, üfleme, eğirme, kalıplama, eritme, dökme yoluyla ","10.10 - Metal işleme makineleri - rendelemek, öğütmek, yüzey bakımı, çekmek, cilalamak, tornalamak, delmek için ","10.11 - Metal işleme makineleri - bıçkıcılık için ","10.12 - Metal işleme makineleri - kesmek, ayırmak, yontmak için (kalıp kesici, biçki makineleri, kırpma makasları, oksijen tabancalı ekipmanlar dahil olmak üzere) ","10.13 - Yüzey işleme makineleri - temizlik, yıkama, kurulama, boyama, baskı ","10.14 - Yüzey işleme makineleri - galvaniz, elektrolit yüzey bakımı ","10.15 - Montaj makineleri (kaynatma, yapıştırma, çakma, vidalama, perçinleme, eğirme, telleme, dikme, zımbalama) ","10.16 - Paketleme makineleri, sarma makineleri (doldurma, etiketleme, kapatma...) ","10.17 - Özel sanayiler için diğer makineler (çeşitli izleme ve sınama makineleri) ","10.18 - Çiftçilikte kullanılan ve yukarıdaki makineler arasına dahil olmayan özel makineler ","10.99 - 10 numaralı grup içinde, yukarıda listelenmemiş başka bilinen sabit ve makine ve ekipmanlar"]
+  },
+  {
+    "kaza": "11.00 - Aktarma, taşıma ve depolama sistemleri - belirtilmemiş",
+    "alt": ["11.01 - Sabit taşıyıcı kayış, sürekli işleme ekipman ve sistemleri - kayış, yürüyen merdiven, teleferik, taşıyıcı kayış, vb.) ","11.02 - Asansörler- ağır yük asansörü, vinç, kriko, vb. ","11.03 - Sabit vinç, seyyar vinç, araç tarafından taşınan vinç, üst raylarda çalışan vinç, asılı yükü olan kaldırma aygıtları ","11.04 - Seyyar işleme aygıtı, işleme kamyonları (motorlu veya motorsuz) - el arabası, paletli kamyonlar, vb. ","11.05 - Kaldırma ekipmanı, sabitleştirme, kavrama ve çeşitli işleme aygıtları (askı, çengel, halat, vb. dahil olmak üzere) ","11.06 - Depolama sistemleri, paketleme ekipmanı, kaplar (silo, tanklar) - sabit - tank, fıçı, kap, vb. ","11.07 - Depolama sistemleri, paketleme ekipmanı, kaplar - seyyar ","11.08 - Depolama aksamı, raf, paletli raf, paletler ","11.09 - Çeşitli paketleme, küçük ve orta boy, seyyar (dekovil, çeşitli kap, şişe, sandık, söndürücüler...) ","11.99 - 11 numaralı grup içinde, yukarıda listelenmemiş başka bilinen aktarma, taşıma ve depolama sistemleri"]
+  },
+  {
+    "kaza": "12.00 - Kara taşıtları - belirtilmemiş",
+    "alt": ["12.01 - Taşıtlar - ağır: kamyon/otobüsler (yolcu taşıması) ","12.02 - Taşıtlar - hafif: eşya veya yolcu ","12.03 - Taşıtlar - iki veya üç tekerlekli, motorlu veya motorsuz ","12.04 - Diğer kara taşıtları: kayak, patenler ","12.99 - 12 numaralı grup içinde, yukarıda listelenmemiş başka bilinen kara taşıtları"]
+  },
+  {
+    "kaza": "13.00 - Diğer taşıt araçları - belirtilmemiş",
+    "alt": ["13.01 - Taşıtlar - rayda, asılı monoraylar dahil: eşya ","13.02 - Taşıtlar - rayda, asılı monoraylar dahil: yolcu ","13.03 - Taşıtlar - deniz: eşya ","13.04 - Taşıtlar - deniz: yolcu ","13.05 - Taşıtlar - deniz: balıkçılık ","13.06 - Taşıtlar - hava: eşya ","13.07 - Taşıtlar-hava: yolcu ","13.99 - 13 numaralı grup içinde, yukarıda listelenmemiş başka bilinen diğer taşıt araçları"]
+  },
+  {
+    "kaza": "14.00 - Malzeme, nesne, ürün, makine aksamı, enkaz, toz - belirtilmemiş",
+    "alt": ["14.01 - Yapı malzemeleri - büyük ve küçük: prefabrike kabuk, kalıp, kiriş, hatıl, tuğla, kiremit, vb. ","14.02 - Makine parçaları, taşıt parçaları: şasi, dirsekli mahfaza, manivela, tekerlek, vb. ","14.03 - Makine parça veya bileşikleri, metal işleme makineleri (işbu maddi araçlardan kopan parça ve yongalar da dahil olmak üzere) ","14.04 - Birleştirme aygıtları: somun, cıvata, vida, çivi, vb. ","14.05 - Zerrecik, toz, kıymık, parçacık, zifos, kırık çömlek parçaları, diğer enkaz ","14.06 - Çiftlik ürünleri (tohum, saman, diğer çiftlik ürünleri de dahil olmak üzere) ","14.07 - Çiftçilik ve yetiştiricilikte kullanılan ürünler (gübre, yemler de dahil olmak üzere) ","14.08 - Depolanmış ürünler - depolama alanındaki nesne ve paketler de dahil olmak üzere ","14.09 - Depolanmış ürünler- rulo, makara olarak ","14.10 - Yükler - makineli işleme veya aktarma aygıtı tarafından taşınan ","14.11 - Yükler- bir kaldırma aygıtı, vinçte asılı olan ","14.12 - Yükler - elle işlenen ","14.99 - 14 numaralı grup içinde, yukarıda listelenmemiş başka bilinen malzeme, nesne, ürün, makine parçaları"]
+  },
+  {
+    "kaza": "15.00 - Kimyasal, patlayıcı, radyoaktif, biyolojik maddeler - belirtilmemiş",
+    "alt": ["15.01 - Maddeler - yakıcı, çürütücü (katı, sıvı veya gaz) ","15.02 - Maddeler - zararlı, zehirli (katı, sıvı veya gaz) ","15.03 - Maddeler - alevlenebilir (katı, sıvı veya gaz) ","15.04 - Maddeler - patlayıcı, reaktif (katı, sıvı veya gaz) ","15.05 - Belirgin etkisi olmayan gaz, buharlar (yaşam biçimleri için atıl, havasız bırakan) ","15.06 - Maddeler - radyoaktif ","15.07 - Maddeler - biyolojik ","15.08 - Maddeler, malzemeler - özel bir rizikosu olmayan (su, atıl maddeler...) ","15.99 - 15 numaralı grup içinde, yukarıda listelenmemiş başka bilinen kimyasal, patlayıcı, radyoaktif, biyolojik maddeler"]
+  },
+  {
+    "kaza": "16.00 - Güvenlik aygıt ve ekipmanı - belirtilmemiş",
+    "alt": ["16.01 - Güvenlik aygıtları - makinelerde ","16.02 - Koruyucu aygıtlar - münferit ","16.03 - Alarm aygıt ve ekipmanı ","16.99 - 16 numaralı grup içinde, yukarıda listelenmemiş başka bilinen güvenlik aygıt ve ekipmanı"]
+  },
+  {
+    "kaza": "17.00 - Büro ekipmanı, kişisel ekipman, spor ekipmanı, silahlar, ev eşyaları - belirtilmemiş",
+    "alt": ["17.01 - Mobilya ","17.02 - Ekipman - bilgisayar, büro otomasyonu, röprodüksiyon, iletişim ","17.03 - Ekipman - öğretim, yazma, çizme için - daktilo, otomatik pullama makinesi, agrandizör, zaman kaydediciler de dahil olmak üzere ","17.04 - Spor ve oyunlar için eşya ve ekipman ","17.05 - Silahlar ","17.06 - Kişisel eşya, giysi ","17.07 - Müzik aletleri ","17.08 - Ev eşyası türü ekipman, alet, nesne, çamaşır (mesleki kullanım) ","17.99 - 17 numaralı grup içinde, yukarıda listelenmemiş başka bilinen büro ekipmanı, kişisel ekipman, spor ekipmanı, silahlar, ev eşyaları"]
+  },
+  {
+    "kaza": "18.00 - Yaşayan organizmalar ve insanlar - belirtilmemiş",
+    "alt": ["18.01 - Ağaç, bitki, mahsul ","18.02 - Hayvan - evcil ve yetiştirme amaçlı ","18.03 - Hayvan - vahşi hayvanlar, böcek, yılanlar ","18.04 - Mikroorganizmalar ","18.05 - Bulaşıcı mikroplu amiller ","18.06 - İnsanlar ","18.99 - 18 numaralı grup içinde, yukarıda listelenmemiş başka bilinen canlılar ve insanlar"]
+  },
+  {
+    "kaza": "19.00 - Kütle atık - belirtilmemiş",
+    "alt": ["19.01 - Kütle atık - hammadde, ürün madde, nesnelerden ","19.02 - Kütle atık - kimyasallardan ","19.03 - Kütle atık - biyolojik madde, bitki, hayvanlardan ","19.99 - 19 numaralı grup içinde, yukarıda listelenmemiş başka bilinen kütle atık"]
+  },
+  {
+    "kaza": "20.00 - Fiziki olgu ve doğal unsurlar - belirtilmemiş",
+    "alt": ["20.01 - Fiziki olgu - gürültü, doğal radyasyon, ışık, ışık huzmesi, basınç yükseltme, basınç düşürme, basınç ","20.02 - Doğal ve atmosfer unsurları (akarsu, çamur, yağmur, dolu, kar, buz, rüzgar, vb. de dahil olmak üzere) ","20.03 - Doğal afetler (sel, yanardağ infilakı, deprem, tsunami, yangın da dahil olmak üzere) ","20.99 - 20 numaralı grup içinde, yukarıda listelenmemiş başka bilinen fiziki olgu ve unsurlar"]
+  },
+  {
+    "kaza": "99.00 - Bu sınıflandırmada listelenmemiş başka maddi araç",
+    "alt": ["99.00 - Bu sınıflandırmada listelenmemiş başka maddi araç"]
+  }
+]

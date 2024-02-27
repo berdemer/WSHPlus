@@ -1,0 +1,8 @@
+Kurulum;
+\WshPlus\ISG.WebAngularJsUIV1\js\config.js
+Satýr 2313;
+var uploadApi = 'api/Img/';
+var serviceBase = 'http://api.adresin.com/';
+var storageLink = 'https://adresin.com/';
+var IsAzureProject = false;//azurda çalýþmak istiyorsan....
+var eimzaLink = 'http://localhost:8085/';//E-imza yazýlýmý ile sistem trayda baðlantý kurar.

@@ -1,0 +1,1117 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <style type="text/css">
+        @page {
+            size: A4 landscape; /* auto,   media="print"  stile ekleyebilirsin.*/
+            margin: 0mm; /* sayfa margin sıfırla */
+        }
+
+        @media all {
+            .pagebreak {
+                display: none;
+            }
+        }
+
+        @media print {
+            .pagebreak {
+                display: block;
+                page-break-before: always;
+            }
+
+        }
+
+        html {
+            background-color: #FFFFFF;
+            margin: 0px; /* this affects the margin on the html before sending to printer */
+        }
+
+        body {
+            height: 590pt;
+            width: 840pt;
+            font-family: GaGaramond'Times New Roman', serif;
+            background-color: #FFFFFF;
+            margin: 0px; /* the margin on the content before printing */
+            padding: 0px;
+            -ms-filter: none;
+            line-height: 1.45;
+            word-spacing: 1px;
+            letter-spacing: 0.2px;
+            font-size: xx-small;
+            /*border: solid 1px;*/
+        }
+
+            table.normal {
+            table-layout: fixed;
+            width: 100%;
+            border: solid 3px #000000;
+            padding: 0;
+            border-collapse: collapse;
+            border-spacing: 0;
+            overflow: inherit;
+            table-layout: fixed;
+        }
+
+            table.normal th {
+                border: solid 1px #000000;
+                word-wrap: break-word;
+            }
+
+            table.normal td {
+                border: solid 1px #000000;
+                vertical-align: top;
+                word-wrap: break-word;
+                padding-left: 3px;
+            }
+
+        .tablo {
+            border: solid 1px black;
+            margin: 20pt 20pt 10pt 20pt;
+        }
+
+        .sutunAyirma {
+            width: 49%;
+            max-width: 49%;
+            height: 49%;
+            max-height: 49%;
+            padding: 0;
+            margin: 0;
+        }
+
+        .auto-style1 {
+            width: 100%;
+            overflow: inherit;
+            margin: 0;
+            padding: 0;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+
+        table.auto-style1 {
+            overflow: hidden;
+        }
+
+        table.auto-style1 td {
+            word-wrap: break-word;
+            padding-left: 3px;
+        }
+
+        .auto-style14 {
+            width: 49%;
+            max-width: 49%;
+            height: 49%;
+            max-height: 49%;
+            padding: 0;
+            margin: 0;
+            vertical-align: top;
+        }
+
+        .auto-style15 {
+            width: 800pt;
+            max-width: 800pt;
+            height: 560pt;
+            max-height: 560pt;
+            /*border: solid 1px black;*/
+            margin: 20pt 20pt 10pt 20pt;
+        }
+
+        .auto-style16 {
+            border-left-style: solid !important;
+            border-left-width: 1px !important;
+            border-right-style: solid !important;
+            border-right-width: 1px !important;
+            border-top-style: solid !important;
+            border-top-width: 1px !important;
+            padding: 0px;
+        }
+
+
+
+        .auto-style17 {
+            border-left-style: solid !important;
+            border-left-width: 1px !important;
+            border-right-style: solid !important;
+            border-right-width: 1px !important;
+            padding: 0px;
+        }
+
+        .auto-style18 {
+            border-left-style: solid !important;
+            border-left-width: 1px !important;
+            border-right-style: solid !important;
+            border-right-width: 1px !important;
+            border-bottom-style: solid !important;
+            border-bottom-width: 1px !important;
+            padding: 0px;
+        }
+
+        .auto-style20 {
+            border-style: solid !important;
+            border-width: 1px !important;
+            padding: 0px;
+            text-align: center;
+        }
+
+        .auto-style21 {
+            border-left-style: solid !important;
+            border-left-width: 1px !important;
+            border-right-style: solid !important;
+            border-right-width: 1px !important;
+            border-top-style: solid !important;
+            border-top-width: 1px !important;
+            padding: 1px 0px;
+        }
+
+        .auto-style23 {
+            border-bottom-style: dashed;
+            border-bottom-width: 1px;
+            padding: 0px;
+        }
+
+        .auto-style24 {
+            border-right-style: none;
+        }
+
+        .auto-style25 {
+            border-right-style: solid;
+            border-right-width: 1px;
+            border-bottom-style: solid;
+            border-bottom-width: 1px;
+            padding: 0px;
+        }
+
+        .auto-style26 {
+            border-left-style: solid !important;
+            border-left-width: 1px !important;
+            border-bottom-style: solid !important;
+            border-bottom-width: 1px !important;
+            padding: 0px;
+        }
+        .auto-style27 {
+            border-style: solid !important;
+            border-width: 1px !important;
+            padding: 0px;
+            height: 27pt;
+        }
+
+        .comma::after {
+            content: ' , ';
+        }
+        ol {
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+            list-style: upper-roman;
+        }
+            ol li {
+                display: inline;
+            }
+    </style>
+</head>
+<body>
+    <div>
+        <table class="auto-style15">
+            <tr>
+                <td class="auto-style14">
+                    <table class="auto-style1" style="border: 1px solid">
+                        <tr ng-if="logo">
+                            <td class="auto-style27" colspan="3" rowspan="3" style="position:center">
+                                <img alt="logo" ng-cloak ng-src="{{logo}}" style="width: 85%; background-size: cover; display: block; margin-left: auto; margin-right: auto;" />
+                            </td>
+                            <td class="auto-style20" colspan="4" rowspan="3"><strong ng-bind="MuayeneTuru|uppercase"></strong><strong> FORMU</strong></td>
+                            <td class="auto-style16" colspan="3"><strong ng-bind="sirketAdi|uppercase"></strong></td>
+                        </tr>
+                        <tr ng-if="logo">
+                            <td class="auto-style17" colspan="3"><strong>TEKNİK OPERASYON DRK.</strong></td>
+                        </tr>
+                        <tr ng-if="logo">
+                            <td class="auto-style18" colspan="3"><strong>İŞ GÜV.,ÇEV. ve İŞ SAĞ. MD.</strong></td>
+                        </tr>
+
+                        <tr ng-if="!logo">
+                            <td class="auto-style16" colspan="3"><strong ng-bind="sirketAdi|uppercase"></strong></td>
+                            <td class="auto-style20" colspan="4" rowspan="3"><strong ng-bind="MuayeneTuru|uppercase"></strong><strong> FORMU</strong></td>
+                            <td class="auto-style16" colspan="3">&nbsp; <strong>DÖKUMAN NO:&nbsp;&nbsp;&nbsp;&nbsp; </strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        </tr>
+                        <tr ng-if="!logo">
+                            <td class="auto-style17" colspan="3"><strong>TEKNİK OPERASYON DRK.</strong></td>
+                            <td class="auto-style17" colspan="3">&nbsp; <strong>YÜRÜRLÜLÜK TAR:&nbsp;&nbsp;&nbsp;&nbsp;</strong></td>
+                        </tr>
+                        <tr ng-if="!logo">
+                            <td class="auto-style18" colspan="3"><strong>İŞ GÜV.,ÇEV. ve İŞ SAĞ. MD.</strong></td>
+                            <td class="auto-style18" colspan="3">&nbsp; <strong>REV Tar/No:&nbsp;&nbsp;&nbsp;&nbsp;</strong>S:4/4</td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="10" class="auto-style25" style="text-align: center"><strong>KANAAT VE SONUÇ</strong></td>
+                        </tr>
+                        <tr>
+                            <td colspan="10"><strong> A.)</strong>&nbsp;<span ng-bind="bolumAdi|trim"></span>&nbsp;işyerinde <span ng-bind="calismaBilgisi.gorevi|trim|lowercase"></span>&nbsp;işinde bedenen ve ruhen çalışmaya elverişlidir.</td>
+                        </tr>
+                        <tr>
+                            <td colspan="10"><span ng-if="pM.Kanaat.Kosullari.length>0"> <strong> B.)&nbsp;</strong>Formda ifade edilen maddelere dikkat etmek koşuluyla çalışmaya elverişlidir.</span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="10" style="height:90px;max-height:90px;vertical-align:top;text-align:left">
+                                <ol>
+                                    <li ng-repeat="kosul in pM.Kanaat.Kosullari|limitTo:15 ">&nbsp;<span ng-bind="$index+1"></span>.)&nbsp;<span ng-bind="kosul.id"></span></li>
+                                </ol>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="10" style="height:20px;max-height:20px;vertical-align:top;text-align:left">
+                                <span ng-if="pM.Kanaat.Aciklama.length>0"><strong>Açıklama:</strong></span> <span ng-bind="pM.Kanaat.Aciklama|limitTo:200"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="10" style="height: 10px;max-height: 10px;border: 1px solid #000000;text-align: center;"><strong>ÇALIŞMA ANALİZİ</strong></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" class="auto-style23" style="height: 24px;max-height: 24px;;text-align:left; vertical-align:top;"><strong>Çalışma Zamanı:</strong> <span ng-bind="pM.CalismaAnalizi.calismaZamani.zamanDilimi|trim"></span> </td>
+                            <td colspan="4" class="auto-style23" style="height: 24px;max-height: 24px;;text-align:left; vertical-align:top;"><strong>Çalışma Pozisyonu:</strong> <span ng-bind="pM.CalismaAnalizi.calismaPozisyonu.pozisyon|trim"></span>  </td>
+                            <td colspan="3" class="auto-style23" style="height: 24px;max-height: 24px;;text-align:left; vertical-align:top;"><strong>Araç Kullanımı:</strong> <span ng-bind="pM.CalismaAnalizi.aracKullanimi.kullanimSekli|trim"></span>  </td>
+                        </tr>
+                        <tr>
+                            <td colspan="10" class="auto-style23" style="height:27px;max-height:27px;text-align:left; vertical-align:top;">
+                                <ol>
+                                    <li><strong>Fiziki Ortamı:</strong></li>
+                                    <li ng-repeat="kosul in pM.CalismaAnalizi.fizikiOrtamSinifi|limitTo:7 ">&nbsp;<span ng-bind="$index+1"></span>.)&nbsp;<span ng-bind="kosul.fizikiOrtam"></span></li>
+                                </ol>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="10" class="auto-style23" style="height:12px;max-height:12px">
+                                <ol>
+                                    <li><strong>Hava Sınıfı:</strong></li>
+                                    <li ng-repeat="kosul in pM.CalismaAnalizi.havaSinifi|limitTo:5 ">&nbsp;<span ng-bind="$index+1"></span>.)&nbsp;<span ng-bind="kosul.havaDurumu"></span></li>
+                                </ol>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="10" class="auto-style23" style="height:12px;max-height:12px">
+                                <ol>
+                                    <li><strong>Gürültü Sınıfı:</strong></li>
+                                    <li ng-repeat="kosul in pM.CalismaAnalizi.gurultuSinifi|limitTo:5 ">&nbsp;<span ng-bind="$index+1"></span>.)&nbsp;<span ng-bind="kosul.gurultuOrtami"></span></li>
+                                </ol>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="10" class="auto-style23" style="height:27px;max-height:27px;text-align:left; vertical-align:top;">
+                                <ol>
+                                    <li><strong>Elektrik  Sınıfı:</strong></li>
+                                    <li ng-repeat="kosul in pM.CalismaAnalizi.elektrikSinifi|limitTo:5 ">&nbsp;<span ng-bind="$index+1"></span>.)&nbsp;<span ng-bind="kosul.ElektrikOrtami"></span></li>
+                                </ol>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="10" class="auto-style23" style="height:27px;max-height:27px;text-align:left; vertical-align:top;">
+                                <ol>
+                                    <li><strong>Toz Yönetmeliği:</strong></li>
+                                    <li ng-repeat="kosul in pM.CalismaAnalizi.tozYonetmeligiSinifi|limitTo:8 ">&nbsp;<span ng-bind="$index+1"></span>.)&nbsp;<span ng-bind="kosul.tozOrtami"></span></li>
+                                </ol>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="10" class="auto-style23" style="height:12px;max-height:12px">
+                                <ol>
+                                    <li><strong>Biyolojik Etkenler:</strong></li>
+                                    <li ng-repeat="kosul in pM.CalismaAnalizi.biyolojikEtkenlerSinifi">&nbsp;<span ng-bind="$index+1"></span>.)&nbsp;<span ng-bind="kosul.biyolojikOrtam"></span></li>
+                                </ol>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="10" class="auto-style23" style="height:27px;max-height:27px;text-align:left; vertical-align:top;">
+                                <ol>
+                                    <li><strong>Kimyasal Madde:</strong></li>
+                                    <li ng-repeat="kosul in pM.CalismaAnalizi.kimyasalMaddeSinifi|limitTo:8 ">&nbsp;<span ng-bind="$index+1"></span>.)&nbsp;<span ng-bind="kosul.kimyasalOrtami"></span></li>
+                                </ol>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="10" class="auto-style23" style="height:176px;max-height:176px;text-align:left; vertical-align:top;">
+                                <ol>
+                                    <li><strong>İş Ekipmanları:</strong></li>
+                                    <li ng-repeat="kosul in pM.CalismaAnalizi.isEkipmanlari|limitTo:65">&nbsp;<span ng-bind="$index+1"></span>.)&nbsp;<span ng-bind="kosul.EkipmanTuru"></span></li>
+                                </ol>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" class="auto-style16"><strong>Muayene olan</strong>  </td>
+                            <td colspan="5" class="auto-style17 auto-style21"> </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5">&nbsp;  &nbsp;  &nbsp;  &nbsp;  </td>
+                            <td colspan="5" class="auto-style17" style="text-align:center"> <strong>İş Yeri Hekiminin:</strong>  </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5">Adı&nbsp;&nbsp; :................................................</td>
+                            <td colspan="5" class="auto-style17">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td colspan="5">Soyadı: ............................................</td>
+                            <td colspan="5" class="auto-style17">Adı Soyadı&nbsp; :......................................................................</td>
+                        </tr>
+                        <tr>
+                            <td colspan="5">Tarih:<span ng-bind="Tarih|date:'dd/MM/yyyy'"></span></td>
+                            <td colspan="5" class="auto-style17">Diploma Tarih ve No&nbsp; :.......................................................</td>
+                        </tr>
+                        <tr>
+                            <td colspan="5">Protokol:<span ng-bind="Protokol"></span></td>
+                            <td colspan="5" class="auto-style17">Diploma Tescil Tarihi ve No&nbsp; :..........................................&nbsp;  </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5"><span ng-bind="saglikBirimi"></span></td>
+                            <td colspan="5" class="auto-style17">İş Yeri Hekimliği Bel. Tarih ve No :.....................................</td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style38" style="text-align: center;" colspan="5">&nbsp;<strong>İMZA  &nbsp;  </strong>&nbsp;  </td>
+                            <td colspan="5" class="auto-style17">&nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5">&nbsp;  &nbsp;  &nbsp;  &nbsp;  </td>
+                            <td colspan="5" class="auto-style17" style="text-align: center;"><strong>(İmza, Kaşe)</strong></td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" style="height:28px;max-height:28px"></td>
+                            <td colspan="5" class="auto-style17" style="height:28px;max-height:28px"></td>
+                        </tr>
+                    </table>
+                    <span style="font-size:5px">WSH++ &copy; 2022 Çevre için Kağıt Boyutundan Tasarruf Edilmiştir.</span>
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+                <td class="auto-style14">
+                    <table class="auto-style1" style="border: 1px solid">
+                        <tr ng-if="logo">
+                            <td class="auto-style27" colspan="3" rowspan="3">
+                                <img alt="logo" ng-cloak ng-src="{{logo}}" style="width: 85%; background-size: cover; display: block; margin-left: auto; margin-right: auto;" />
+                            </td>
+                            <td class="auto-style20" colspan="4" rowspan="3"><strong ng-bind="MuayeneTuru|uppercase"></strong><strong> FORMU</strong></td>
+                            <td class="auto-style16" colspan="3"><strong ng-bind="sirketAdi|uppercase"></strong></td>
+                        </tr>
+                        <tr ng-if="logo">
+                            <td class="auto-style17" colspan="3"><strong>TEKNİK OPERASYON DRK.</strong></td>
+                        </tr>
+                        <tr ng-if="logo">
+                            <td class="auto-style18" colspan="3"><strong>İŞ GÜV.,ÇEV. ve İŞ SAĞ. MD.</strong></td>
+                        </tr>
+
+                        <tr ng-if="!logo">
+                            <td class="auto-style16" colspan="3"><strong ng-bind="sirketAdi|uppercase"></strong></td>
+                            <td class="auto-style20" colspan="4" rowspan="3"><strong><strong ng-bind="MuayeneTuru|uppercase"></strong><strong> FORMU - EK2</strong></strong></td>
+                            <td class="auto-style16" colspan="3">&nbsp;<strong> DÖKUMAN NO: </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :</td>
+                        </tr>
+                        <tr ng-if="!logo">
+                            <td class="auto-style17" colspan="3"><strong>TEKNİK OPERASYON DRK.</strong>.</td>
+                            <td class="auto-style17" colspan="3">&nbsp; <strong>YÜRÜRLÜLÜK TAR:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong></td>
+                        </tr>
+                        <tr ng-if="!logo">
+                            <td class="auto-style18" colspan="3"><strong>İŞ GÜV.,ÇEV. ve İŞ SAĞ. MD.</strong></td>
+                            <td class="auto-style18" colspan="3">&nbsp; <strong>REV Tar/No:</strong>S:1/4</td>
+                        </tr>
+
+
+                        <tr>
+                            <td colspan="10"><strong>İŞYERİNİN :</strong></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">Ünvanı</td>
+                            <td colspan="7" class="auto-style23">:<span ng-bind="sirketAdi"></span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">SGK Sicil No</td>
+                            <td colspan="7" class="auto-style23">:<span ng-bind="sirketDetayi.SGKSicilNo"></span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">Adresi</td>
+                            <td colspan="7" class="auto-style23">:<span ng-bind="sirketDetayi.Adres"></span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">Tel No</td>
+                            <td colspan="7" class="auto-style23">:<span ng-bind="sirketDetayi.Telefon"></span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">Faks No</td>
+                            <td colspan="7" class="auto-style23"> :<span ng-bind="sirketDetayi.Faks"></span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" class="auto-style26">E-Posta</td>
+                            <td colspan="7" class="auto-style25">:<span ng-bind="sirketDetayi.Mail"></span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="7"><strong>İŞÇİNİN</strong></td>
+                            <td colspan="3" rowspan="10" style="vertical-align:middle">
+                                <div style="width:100%;height:100%;left:0px;top:0px;z-index:1;">
+                                    <img alt="image" class="img-container" ng-cloak ng-src="{{img}}" on-error="defaultUser.png" style="width: 100%; height: 100%;max-width: 110px;max-height: 125px;margin-left:20px;background-size:cover;" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">Adı ve Soyadı</td>
+                            <td colspan="5" class="auto-style23">:<span ng-bind="(data.Adi|trim)+' '+(data.Soyadi|trim)"></span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">T.C Kimlik No</td>
+                            <td colspan="5" class="auto-style23">:<span ng-bind="data.TcNo|trim"></span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">İşe Giriş Tarihi</td>
+                            <td colspan="5" class="auto-style23">:<span ng-bind="calismaBilgisi.tarih|date:'dd/MM/yyyy'"></span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">İş Yeri Sicil No</td>
+                            <td colspan="5" class="auto-style23">:<span ng-bind="calismaBilgisi.sicilNo|trim"></span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">Doğum Yeri ve Tarihi</td>
+                            <td colspan="5" class="auto-style23">:<span ng-bind="(data.PersonelDetayi.DogumYeri|trim)+' '+(data.PersonelDetayi.DogumTarihi|date:'dd/MM/yyyy')"></span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">Cinsiyeti</td>
+                            <td colspan="5" class="auto-style23">:<span ng-init="cinsiyet=data.PersonelDetayi.Cinsiyet==true?'Erkek':'Kadın'" ng-bind="cinsiyet"></span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">Eğitim Durumu</td>
+                            <td colspan="5" class="auto-style23">:<span ng-bind="data.PersonelDetayi.EgitimSeviyesi|trim"></span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">Medeni Durumu</td>
+                            <td colspan="2" class="auto-style23">:<span ng-bind="data.PersonelDetayi.MedeniHali|trim"></span></td>
+                            <td colspan="2">Çocuk Sayısı</td>
+                            <td class="auto-style23">:<span ng-bind="data.PersonelDetayi.CocukSayisi"></span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">Telefon No</td>
+                            <td colspan="5" class="auto-style23">:<span ng-bind="data.Telefon|tel"></span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">Ev Adresi</td>
+                            <td colspan="8" class="auto-style23">:<span ng-bind="adres"></span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">Yaptığı İş</td>
+                            <td colspan="4" class="auto-style23">:<span ng-bind="calismaBilgisi.gorevi|trim"></span></td>
+                            <td colspan="1">Kadro</td>
+                            <td colspan="3" class="auto-style23">:<span ng-bind="calismaBilgisi.kadroDurumu|trim"></span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">ISCO08 Mesleği</td>
+                            <td colspan="8" class="auto-style23">:<span ng-bind="pM.CalismaAnalizi.calisanMeslegi.MeslekAdi|trim"></span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">Çalıştığı bölüm</td>
+                            <td colspan="8" class="auto-style23">:<span ng-bind="bolumAdi"></span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="10">Daha önce çalıştığı yerler :</td>
+                        </tr>
+                        <tr>
+                            <td colspan="10" style="height:60px;max-height:60px;vertical-align:top;text-align:left">
+                                <table>
+                                    <tr ng-repeat="yeri in data.Calisma_Gecmisi |limitTo:3 ">
+                                        <td ng-bind="yeri.Calistigi_Yer_Adi|trim"></td>
+                                        <td ng-bind="yeri.Gorevi|trim"></td>
+                                        <td ng-bind="(yeri.Ise_Baslama_Tarihi|date:'dd/MM/yyyy')+' / '+(yeri.Isden_Cikis_Tarihi|date:'dd/MM/yyyy')"></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="10" class="auto-style16"><strong>Özgeçmişi</strong></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="text-decoration: underline;">Kan Grubu</td>
+                            <td colspan="2">:<span ng-bind="data.KanGrubu|trim"></span></td>
+                            <td colspan="6"><strong ng-if="data.Ozurlulukler.length>0">ENGELLİ ÇALIŞAN KADROSUNDA</strong></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" style="text-decoration: underline;">Kronik Hastalık</td>
+                            <td colspan="6"><span max-length="40" ng-if="data.Ozurlulukler.length>0" ng-bind="data.Ozurlulukler[0].HastalikTanimi"></span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="10" style="height:60px;max-height:60px;vertical-align:top;text-align:left">
+                                <table>
+                                    <tr ng-repeat="hast in data.KronikHastaliklar|limitTo:3 ">
+                                        <td ng-bind="hast.HastalikAdi"></td>
+                                        <td ng-bind="hast.HastalikYilSuresi +' yıl'"></td>
+                                        <td ng-init="ozur=hast.HastalikOzurDurumu==true?'Engellilik Mevcut':''" ng-bind="ozur"></td>
+                                    </tr>
+                                </table>
+                                <strong></strong>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="text-decoration: underline;">Aşıları</td>
+                            <td>:</td>
+                            <td colspan="7">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td colspan="10" style="height:88px;max-height:88px;vertical-align:top;text-align:left">
+                                <table>
+                                    <tr ng-repeat="asi in data.Asilar|limitTo:4">
+                                        <td ng-bind="asi.Asi_Tanimi|trim"></td>
+                                        <td ng-bind="asi.Yapilma_Tarihi|date:'dd/MM/yyyy'"></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="10" class="auto-style16"><strong>Soygeçmişi :</strong></td>
+                        </tr>
+                        <tr>
+                            <td colspan="10" style="height:74px;max-height:74px;vertical-align:top;text-align:left">
+                                <table>
+                                    <tr ng-repeat="soy in data.SoyGecmisleri|limitTo:4">
+                                        <td ng-bind="soy.AkrabalikDurumi|trim"></td>
+                                        <td ng-bind="soy.HastalikAdi|trim"></td>
+                                        <td ng-bind="' Yaşı:'+soy.AkrabaninYasi|trim"></td>
+                                        <td ng-bind="'Ölüm Yaşı:'+soy.OlumYasi|trim"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid black;">Anne:</td>
+                                        <td style="border: 1px solid black;">Baba:</td>
+                                        <td style="border: 1px solid black;">Kardeş:</td>
+                                        <td style="border: 1px solid black;">Çocuk:</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid black;">
+                                            <span ng-bind="data.PersonelDetayi.anne_adi|uppercase"></span>/
+                                            <span ng-init="saglik=data.PersonelDetayi.anne_sag==true ? 'Sağ':'Vefat'" ng-bind="saglik"></span>
+                                            <span ng-bind="data.PersonelDetayi.anne_sag_bilgisi"></span>
+                                        </td>
+                                        <td style="border: 1px solid black;">
+                                            <span ng-bind="data.PersonelDetayi.baba_adi|uppercase"></span>/
+                                            <span ng-init="saglik2=data.PersonelDetayi.baba_sag==true ? 'Sağ':'Vefat'" ng-bind="saglik2"></span>
+                                            <span ng-bind="data.PersonelDetayi.baba_sag_bilgisi"></span>
+                                        </td>
+                                        <td style="border: 1px solid black;">
+                                            {{data.PersonelDetayi.KardesSayisi}}/
+                                            <span ng-bind="data.PersonelDetayi.Kardes_Sag_Bilgisi"></span>
+                                        </td>
+                                        <td style="border: 1px solid black;">
+                                            {{data.PersonelDetayi.CocukSayisi}}
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <span style="font-size:5px">WSH+ &copy; 2019</span>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="pagebreak"></div>
+    <div style="padding-top:1px;">
+        <table class="auto-style15">
+            <tr>
+                <td class="auto-style14">
+                    <table class="auto-style1" style="border: 1px solid !important ">
+                        <tr ng-if="logo">
+                            <td class="auto-style16" colspan="3">
+                                <img alt="logo" ng-cloak ng-src="{{logo}}" style="width: 85%; background-size: cover;max-width: 120px; max-height: 25px;position:absolute" />
+                            </td>
+                            <td class="auto-style20" colspan="3" rowspan="3"><strong><strong ng-bind="MuayeneTuru|uppercase"></strong><strong> FORMU</strong></strong></td>
+                            <td class="auto-style16" colspan="2"><strong ng-bind="sirketAdi|uppercase|limitTo:20"></strong></td>
+                        </tr>
+                        <tr ng-if="logo">
+                            <td class="auto-style17" colspan="3">
+                               
+                            </td>
+                            <td class="auto-style17" colspan="2"><strong>TEKNİK OP.DRK.</strong></td>
+                        </tr>
+                        <tr ng-if="logo">
+                            <td class="auto-style18" colspan="3">
+                                
+                            </td>
+                            <td class="auto-style18" colspan="2"><strong>SEÇ-G.MD.</strong></td>
+                        </tr>
+
+                        <tr ng-if="!logo">
+                            <td class="auto-style16" colspan="3"><strong ng-bind="sirketAdi|uppercase"></strong></td>
+                            <td class="auto-style20" colspan="3" rowspan="3"><strong><strong ng-bind="MuayeneTuru|uppercase"></strong><strong> FORMU</strong></strong></td>
+                            <td class="auto-style16" colspan="2">&nbsp; <strong>DÖKUMAN NO:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong></td>
+                        </tr>
+                        <tr ng-if="!logo">
+                            <td class="auto-style17" colspan="3"><strong>TEKNİK OPERASYON DRK.</strong></td>
+                            <td class="auto-style17" colspan="2">&nbsp; <strong>YÜRÜRLÜLÜK TAR:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong></td>
+                        </tr>
+                        <tr ng-if="!logo">
+                            <td class="auto-style18" colspan="3"><strong>İŞ GÜV.,ÇEV. ve İŞ SAĞ. MD.</strong></td>
+                            <td class="auto-style18" colspan="2">&nbsp; <strong>REV Tar/No:</strong>S:2/4</td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="7"><strong>TIBBİ ANAMNEZ</strong></td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td colspan="8"><strong>1.Son bir yıl içinde aşağıdaki yakınmalardan herhangi birini geçirdiniz mi?</strong></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">-Balgamlı öksürük</td>
+                            <td>:<span ng-init="balgam=pM.Yakinmalar['01']==true?'Var':'Yok'" ng-bind="balgam"></span></td>
+                            <td colspan="5" rowspan="2" style="vertical-align:top;text-align:left">
+                                <span ng-bind="pM.Yakinmalar['01aciklama']"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">-Nefes darlığı</td>
+                            <td>:<span ng-init="darlik=pM.Yakinmalar['02']==true?'Var':'Yok'" ng-bind="darlik"></span></td>
+                            <td colspan="5" rowspan="2" style="vertical-align:top;text-align:left"><span ng-bind="pM.Yakinmalar['02aciklama']"></span></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">-Göğüs ağrısı</td>
+                            <td>:<span ng-init="gogus=pM.Yakinmalar['03']==false||pM.Yakinmalar['03']==null?'Yok':'Var'" ng-bind="gogus"></span></td>
+                            <td colspan="5" rowspan="2" style="vertical-align:top;text-align:left"><span ng-bind="pM.Yakinmalar['03aciklama']"></span></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">-Çarpıntı</td>
+                            <td>:<span ng-init="carpinti=pM.Yakinmalar['04']==true?'Var':'Yok'" ng-bind="carpinti"></span></td>
+                            <td colspan="5" rowspan="2" style="vertical-align:top;text-align:left"><span ng-bind="pM.Yakinmalar['04aciklama']"></span></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">-Sırt Ağrısı</td>
+                            <td>:<span ng-init="sirt=pM.Yakinmalar['05']==true?'Var':'Yok'" ng-bind="sirt"></span></td>
+                            <td colspan="5" rowspan="2" style="vertical-align:top;text-align:left"><span ng-bind="pM.Yakinmalar['05aciklama']"></span></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">-İshal ve kabızlık</td>
+                            <td>:<span ng-init="ishal=pM.Yakinmalar['06']==true?'Var':'Yok'" ng-bind="ishal"></span></td>
+                            <td colspan="5" rowspan="2" style="vertical-align:top;text-align:left"><span ng-bind="pM.Yakinmalar['06aciklama']"></span></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">-Eklemlerde ağrı</td>
+                            <td>:<span ng-init="eklem=pM.Yakinmalar['07']==true?'Var':'Yok'" ng-bind="eklem"></span></td>
+                            <td colspan="5" rowspan="2" style="vertical-align:top;text-align:left"><span ng-bind="pM.Yakinmalar['07aciklama']"></span></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td colspan="8"><strong>2.Son bir yıl içinde aşağıdaki hastalıklardan herhangi birini geçirdiniz mi?</strong></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">-Kalp hastalığı</td>
+                            <td>:<span ng-init="Kalp=pM.Hastaliklar['01']==true?'Evet':'Hayır'" ng-bind="Kalp"></span></td>
+                            <td colspan="4" rowspan="2" style="vertical-align:top;text-align:left"><span ng-bind="pM.Hastaliklar['01aciklama']"></span></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">-Şeker hastalığı</td>
+                            <td>:<span ng-init="seker=pM.Hastaliklar['02']==true?'Evet':'Hayır'" ng-bind="seker"></span></td>
+                            <td colspan="4" rowspan="2" style="vertical-align:top;text-align:left"><span ng-bind="pM.Hastaliklar['02aciklama']"></span></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">-Böbrek rahatsızlığı</td>
+                            <td>:<span ng-init="bobrek=pM.Hastaliklar['03']==true?'Evet':'Hayır'" ng-bind="bobrek"></span></td>
+                            <td colspan="4" rowspan="2" style="vertical-align:top;text-align:left"><span ng-bind="pM.Hastaliklar['03aciklama']"></span></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">-Sarılık</td>
+                            <td>:<span ng-init="sarilik=pM.Hastaliklar['04']==true?'Evet':'Hayır'" ng-bind="sarilik"></span></td>
+                            <td colspan="4" rowspan="2" style="vertical-align:top;text-align:left"><span ng-bind="pM.Hastaliklar['04aciklama']"></span></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">-Mide ve oniki parmak ülseri</td>
+                            <td>:<span ng-init="mide=pM.Hastaliklar['05']==true?'Evet':'Hayır'" ng-bind="mide"></span></td>
+                            <td colspan="4" rowspan="2" style="vertical-align:top;text-align:left"><span ng-bind="pM.Hastaliklar['05aciklama']"></span></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">-İşitme kaybı</td>
+                            <td>:<span ng-init="isitme=pM.Hastaliklar['06']==true?'Evet':'Hayır'" ng-bind="isitme"></span></td>
+                            <td colspan="4" rowspan="2" style="vertical-align:top;text-align:left"><span ng-bind="pM.Hastaliklar['06aciklama']"></span></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">-Görme bozukluğu</td>
+                            <td>:<span ng-init="gorme=pM.Hastaliklar['07']==true?'Evet':'Hayır'" ng-bind="gorme"></span></td>
+                            <td colspan="4" rowspan="2" style="vertical-align:top;text-align:left"><span ng-bind="pM.Hastaliklar['07aciklama']"></span></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">-Sinir sistemi hastalığı</td>
+                            <td>:<span ng-init="sinir=pM.Hastaliklar['08']==true?'Evet':'Hayır'" ng-bind="sinir"></span></td>
+                            <td colspan="4" rowspan="2" style="vertical-align:top;text-align:left"><span ng-bind="pM.Hastaliklar['08aciklama']"></span></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">-Deri hastalığı</td>
+                            <td>:<span ng-init="deri=pM.Hastaliklar['09']==true?'Evet':'Hayır'" ng-bind="deri"></span></td>
+                            <td colspan="4" rowspan="2" style="vertical-align:top;text-align:left"><span ng-bind="pM.Hastaliklar['09aciklama']"></span></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">-Besin zehirlenmesi</td>
+                            <td>:<span ng-init="besin=pM.Hastaliklar['10']==true?'Evet':'Hayır'" ng-bind="besin"></span></td>
+                            <td colspan="4" rowspan="2" style="vertical-align:top;text-align:left"><span ng-bind="pM.Hastaliklar['10aciklama']"></span></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td colspan="8"><strong>3. Son bir yıl içinde hastanede yattınız mı?</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span ng-init="hastane=pM.OzelSorular['01']==true?'Evet':'Hayır'" ng-bind="hastane"></span></td>
+                            <td>&nbsp;</td>
+                            <td colspan="6" style="text-align:left"><span ng-bind="pM.OzelSorular['01aciklama']"></span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="8"><strong>4.Son bir yıl içinde önemli bir ameliyat geçirdiniz mi?</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span ng-init="ameliyat=pM.OzelSorular['02']==true?'Evet':'Hayır'" ng-bind="ameliyat"></span></td>
+                            <td>&nbsp;</td>
+                            <td colspan="6" style="text-align:left"><span ng-bind="pM.OzelSorular['02aciklama']"></span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="8"><strong>5.Son bir yıl içinde iş kazası geçirdiniz mi?</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span ng-init="kaza=pM.OzelSorular['03']==true?'Evet':'Hayır'" ng-bind="kaza"></span></td>
+                            <td>&nbsp;</td>
+                            <td colspan="6" style="text-align:left"><span ng-bind="pM.OzelSorular['03aciklama']"></span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="8"><strong>6.Son bir yıl içinde Meslek Hastalıkları Şüphesi ile ilgili muayaneye tabi tutuldunuz mu ?</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span ng-init="meslek=pM.OzelSorular['04']==true?'Evet':'Hayır'" ng-bind="meslek"></span></td>
+                            <td>&nbsp;</td>
+                            <td colspan="6" style="text-align:left"><span ng-bind="pM.OzelSorular['04aciklama']"></span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="5"><strong>7.Son bir yıl içinde Maluliyet aldınız mı? varsa Oranı?</strong></td>
+                            <td><span ng-init="maluliyet=pM.OzelSorular['05']==true?'Evet':'Hayır'" ng-bind="maluliyet"></span></td>
+                            <td colspan="2" style="text-align:left"><span ng-bind="pM.OzelSorular['05aciklama']"></span></td>
+                        </tr>
+                    </table>
+                    <span style="font-size:5px">WSH++ &copy; 2022 Çevre için Kağıt Boyutundan Tasarruf Edilmiştir.</span>
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+                <td class="auto-style14">
+                    <table class="auto-style1" style="border: 1px solid">
+                        <tr ng-if="logo">
+                            <td class="auto-style27" colspan="3" rowspan="3"><img alt="logo" ng-cloak ng-src="{{logo}}" style="width: 85%; background-size: cover; display: block; margin-left: auto; margin-right: auto;" /></td>
+                            <td class="auto-style20" colspan="4" rowspan="3"><strong ng-bind="MuayeneTuru|uppercase"></strong><strong> FORMU</strong></td>
+                            <td class="auto-style16" colspan="3"><strong ng-bind="sirketAdi|uppercase"></strong></td>
+                        </tr>
+                        <tr ng-if="logo">
+                            <td class="auto-style17" colspan="3"><strong>TEKNİK OPERASYON DRK.</strong></td>
+                        </tr>
+                        <tr ng-if="logo">
+                            <td class="auto-style18" colspan="3"><strong>İŞ GÜV.,ÇEV. ve İŞ SAĞ. MD.</strong></td>
+                        </tr>
+
+                        <tr ng-if="!logo">
+                            <td class="auto-style16" colspan="3"><strong ng-bind="sirketAdi|uppercase"></strong></td>
+                            <td class="auto-style20" colspan="4" rowspan="3"><strong><strong ng-bind="MuayeneTuru|uppercase"></strong><strong> FORMU</strong></strong></td>
+                            <td class="auto-style16" colspan="3">&nbsp; <strong>DÖKUMAN NO:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :</td>
+                        </tr>
+                        <tr ng-if="!logo">
+                            <td class="auto-style17" colspan="3"><strong>TEKNİK OPERASYON DRK.</strong></td>
+                            <td class="auto-style17" colspan="3">&nbsp;<strong>YÜRÜRLÜLÜK TAR:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong></td>
+                        </tr>
+                        <tr ng-if="!logo">
+                            <td class="auto-style18" colspan="3"><strong>İŞ GÜV.,ÇEV. ve İŞ SAĞ. MD</strong>.</td>
+                            <td class="auto-style18" colspan="3">&nbsp; <strong>REV Tar/No:</strong>S:3/4</td>
+                        </tr>
+
+
+                        <tr>
+                            <td colspan="7"><strong>8.Şu anda herhangi bir tedavi görüyor musunuz?</strong></td>
+                            <td colspan="3"><span ng-init="tedavi=pM.OzelSorular['06']==true?'Evet':'Hayır'" ng-bind="tedavi"></span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="10" style="height:15px;max-height:15px;vertical-align:top;text-align:left;"><span ng-bind="pM.OzelSorular['06aciklama']"></span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="10" style="height:25px;max-height:25px;vertical-align:top;text-align:left;">
+                                <strong>9.Alışkanlıkları :</strong><br />
+                                <table>
+                                    <tr ng-repeat="aliskanlik in data.Aliskanliklar|limitTo:2">
+                                        <td ng-bind="aliskanlik.Madde"></td>
+                                        <td ng-bind="aliskanlik.BaslamaTarihi|date:'dd/MM/yyyy'"></td>
+                                        <td ng-bind="aliskanlik.BitisTarihi|date:'dd/MM/yyyy'"></td>
+                                        <td ng-bind="aliskanlik.SiklikDurumu"></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="10"><strong>FİZİK MUAYENE SONUÇLARI</strong></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">a) Duyu organları</td>
+                            <td colspan="6"></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>Göz</td>
+                            <td colspan="8" rowspan="2" style="vertical-align:top">
+                                :
+                                <span ng-repeat="g in pM.FM.goz" ng-class="{comma:!$last}">{{g}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>KBB</td>
+                            <td colspan="8" rowspan="2" style="vertical-align:top">
+                                :
+                                <span ng-repeat="g in pM.FM.kbb" ng-class="{comma:!$last}">{{g}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>Deri</td>
+                            <td colspan="8" rowspan="2" style="vertical-align:top">
+                                :
+                                <span ng-repeat="g in pM.FM.deri" ng-class="{comma:!$last}">{{g}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td colspan="10" style="vertical-align:top;max-height:25px;height:25px">
+                                b)Kardiyovasküler muayenesi:
+                                <span ng-repeat="g in pM.FM.kardiyoloji" ng-class="{comma:!$last}">{{g}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="10" style="vertical-align:top;max-height:25px;height:25px">
+                                c)Solunum muayenesi:
+                                <span ng-repeat="g in pM.FM.solunum" ng-class="{comma:!$last}">{{g}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="10" style="vertical-align:top;max-height:25px;height:25px">
+                                d)Sindirim muayenesi:
+                                <span ng-repeat="g in pM.FM.sindirim" ng-class="{comma:!$last}">{{g}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="10" style="vertical-align:top;max-height:25px;height:25px">
+                                e)Ürogenital muayenesi:
+                                <span ng-repeat="g in pM.FM.uroloji" ng-class="{comma:!$last}">{{g}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="10" style="vertical-align:top;max-height:25px;height:25px">
+                                f)Kas-iskelet muayenesi:
+                                <span ng-repeat="g in pM.FM.ortopedi" ng-class="{comma:!$last}">{{g}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="10" style="vertical-align:top;max-height:25px;height:25px">
+                                g)Nörolojik muayene:
+                                <span ng-repeat="g in pM.FM.noroloji" ng-class="{comma:!$last}">{{g}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="10" style="vertical-align:top;max-height:25px;height:25px">
+                                ğ)Psikiyatrik muayene:
+                                <span ng-repeat="g in pM.FM.psikiatri" ng-class="{comma:!$last}">{{g}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">TA / Nabız</td>
+                            <td colspan="8">:<span ng-bind="pM.TA"></span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">Boy/Kilo BMI</td>
+                            <td colspan="8">:<span ng-bind="pM.BoyKilo"></span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="10"><strong>LABORATUVAR BULGULARI:</strong></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="text-decoration:underline">Biyokimya</td>
+                            <td colspan="8" rowspan="3" style="vertical-align:top">
+                                :
+                                <span ng-bind="pM.Laboratuar | limitTo: 280 ">  </span>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td style="text-decoration:underline">Hemogram</td>
+                            <td colspan="9" rowspan="2" style="vertical-align:top">
+                                :
+                                <span ng-bind="pM.Hemogram|limitTo:150 ">  </span>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td style="text-decoration:underline">Radyoloji</td>
+                            <td colspan="9" rowspan="2" style="vertical-align:top">
+                                :
+                                <span ng-bind="pM.Radyoloji|limitTo:100 "> </span>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td style="text-decoration:underline">Odyometre</td>
+                            <td colspan="9" rowspan="2" style="vertical-align:top">
+                                :<span ng-bind="pM.Odio"></span>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td style="text-decoration:underline">SFT</td>
+                            <td colspan="9" rowspan="2" style="vertical-align:top">
+                                :<span ng-bind="pM.Sft|limitTo:100 "></span>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td style="text-decoration:underline">Psikolojik </td>
+                            <td colspan="9" rowspan="2" style="vertical-align:top">Testler:<span ng-bind="pM.Psikoloji"></span></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td style="text-decoration:underline">EKG</td>
+                            <td colspan="9" rowspan="2" style="vertical-align:top">:<span ng-bind="pM.EKG"></span></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td style="text-decoration:underline">İdrar Testi</td>
+                            <td colspan="9" rowspan="2" style="vertical-align:top">:<span ng-bind="pM.IdrarTesti"></span></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td style="text-decoration:underline;vertical-align:top">Portör Testi</td>
+                            <td colspan="9" rowspan="2" style="vertical-align:top">:<span ng-bind="pM.PortorMuayenesi"></span></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </table>
+                    <span style="font-size:5px">WSH+ &copy; 2022  Çevre için Kağıt Boyutundan Tasarruf Edilmiştir.</span>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
+

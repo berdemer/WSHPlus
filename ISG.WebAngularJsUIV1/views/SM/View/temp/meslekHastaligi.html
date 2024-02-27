@@ -1,0 +1,33 @@
+﻿<div class="jumbotron" style="margin-bottom: 0px;margin-bottom: 0px;padding: 5px;z-index:100">
+    <form role="form">
+        <div class="form-group">
+            <label class="control-label" for="Hastane">Çalışılan Ortam:</label>
+            <textarea class="form-control" ng-model="PmC.Muayene.mHastalik.ortam" id="Hastane" uppercased></textarea>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="veren">Meslek Hastalığı Saptanma Şekli:</label>
+            <textarea class="form-control" name="name" ng-model="PmC.Muayene.mHastalik.sekli" id="veren" uppercased/>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="verenx">Meslek Hastalığı Etkeni:</label>
+            <textarea class="form-control" type="text" name="name" ng-model="PmC.Muayene.mHastalik.etkeni" id="verenx"uppercased />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="sevkNedeni">Meslek Hastalığı Etken Süresi:</label>
+            <input class="form-control" type="text" name="name" ng-model="PmC.Muayene.mHastalik.etkenSuresi" id="sevkNedeni" uppercased/>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="sevkNedenix">İş Göremezlik Seviyesi:</label>
+            <textarea class="form-control" type="text" name="name" ng-model="PmC.Muayene.mHastalik.seviyesi" id="sevkNedenix" uppercased/>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <button class="btn btn-success btn-sm" ng-if="PmC.personelMuayene.Protokol!=null" ng-click="PmC.mHastalikRaporu()">Meslek H. Belgesi</button>
+            </div>
+            <div class="col-sm-3"></div>
+            <div class="col-sm-5">
+                <button class="btn btn-sm pull-right" ng-class="{'btn-success':PmC.Renjk,'btn-primary':!PmC.Renjk,'btn-rounded':PmC.Renjk}" ng-click="PmC.mHastalikMuayeneKaydet()"><i class="fa fa-cog fa-spin fa-2x fa-fw" ng-show="PmC.Renjk"></i>{{message}}</button>
+            </div>
+        </div>
+    </form>
+</div>

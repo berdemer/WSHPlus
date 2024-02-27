@@ -1,0 +1,34 @@
+[
+  {
+    "kaza": "0 - Bilgi yok",
+    "alt": [ "0 - Bilgi yok" ]
+  },
+  {
+    "kaza": "10 - Üretim, imalat, işleme, depolama - Tüm türler - Belirtilmemiş",
+    "alt": [ "11 - Üretim, imalat, işleme - tüm türler ", "12 - Depolama - tüm türler ", "19 - Yukarıda listelenmemiş diğer başka10 tür Kaza anında kazazedenin yürütmekte olduğu genel faaliyet" ]
+  },
+  {
+    "kaza": "20 - Kazı, İnşaat, Onarım, Yıkım - Belirtilmemiş",
+    "alt": [ "21 - Kazı 22 - Yeni inşaat - bina ", "23 - Yeni inşaat - inşaat mühendisliği, altyapı, yol, köprü, baraj ve limanlar 24 - Yeniden modelleme, onarım, genişletme, bina bakımı - her tür inşaat", " 25 - Yıkım - her tür inşaat", " 29 - Yukarıda listelenmemiş diğer başka 20 çeşit kaza anında kazazedenin yaptığı faaliyet" ]
+  },
+  {
+    "kaza": "30 - Tarımla ilgili meslek türü, ormancılık, bahçecilik, balık çiftçiliği, canlı hayvanlarla çalışma-Belirtilmemiş",
+    "alt": [ "31 - Tarımla ilgili meslek türü - toprağın işlenmesi", " 32 - Tarımla ilgili meslek türü - sebzelerle, bahçecilik", " 33 - Tarımla ilgili meslek türü - canlı hayvanlarla", " 34 - Ormancılıkla ilgili meslek türü 35 - Balık çiftçiliği, balıkçılık", " 39 - Yukarıda listelenmemiş diğer başka 30 çeşit kaza anında kazazedenin yaptığı faaliyet" ]
+  },
+  {
+    "kaza": "40 - İşletmelere ve/veya kamuya sunulan hizmet; zihinsel faaliyet - Belirtilmemiş",
+    "alt": [ "41 - Kamu hizmeti, bakım, yardım, servis", " 42 - Zihinsel çalışma - öğretmenlik, eğitim, bilgi işlem, büro işi, organizasyon, yönetim", " 43 - Ticari faaliyet - alım, satım ve ilgili hizmetler", " 49 - Yukarıda listelenmemiş başka 40 çeşit kaza anında kazazedenin yaptığı faaliyet" ]
+  },
+  {
+    "kaza": "50 - 10, 20, 30 ve 40 altında kodlanmış işlerle ilgili görevler - Belirtilmemiş ",
+    "alt": [ "51 - Kurulum, hazırlama, montaj, yükleme, sökme, parçalama ", "52 - Bakım, onarım, ayar, akort", " 53 - İş alanının temizlenmesi, makine sanayi veya elle ", "54 - Atık yönetimi, kontrol, her tür atık işleme", " 55 - İzleme, donanımları olsun veya olmasın imalat süreçlerinin, çalışma alanlarının, taşıt araçlarının izlenmesi, teftişi ", "59 - Yukarıda listelenmemiş başka 50 çeşit kaza anında kazazedenin yaptığı faaliyet" ]
+  },
+  {
+    "kaza": "60 - Hareket, spor, sanatsal faaliyet - Belirtilmemiş",
+    "alt": [ "61 - Taşıt araçlarıyla olanı da dahil olmak üzere hareket ;", " 62 - Spor, sanatsal faaliyet ", "69 - Yukarıda listelenmemiş başka 60 çeşit kaza anında kazazedenin yaptığı faaliyet" ]
+  },
+  {
+    "kaza": "99 - Sınıflandırmada listelenmemiş başka kaza anında kazazedenin yaptığı faaliyet",
+    "alt": [ " 99 - Sınıflandırmada listelenmemiş başka kaza anında kazazedenin yaptığı faaliyet" ]
+  }
+]

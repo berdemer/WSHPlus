@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{98A14294-369B-4483-AAA4-EA54C8C8EBC0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ISG.Entities</RootNamespace>
+    <AssemblyName>ISG.Entities</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Abstract\IEntity.cs" />
+    <Compile Include="ComplexType\embededList.cs" />
+    <Compile Include="ComplexType\MailListesi.cs" />
+    <Compile Include="ComplexType\M_Message.cs" />
+    <Compile Include="ComplexType\M_Client.cs" />
+    <Compile Include="ComplexType\BasicTreeview.cs" />
+    <Compile Include="ComplexType\icd.cs" />
+    <Compile Include="ComplexType\ICD10Table.cs" />
+    <Compile Include="ComplexType\IlacStoku.cs" />
+    <Compile Include="ComplexType\imageUploadFilter.cs" />
+    <Compile Include="ComplexType\personelCard.cs" />
+    <Compile Include="ComplexType\personelCardView.cs" />
+    <Compile Include="ComplexType\PersonelView.cs" />
+    <Compile Include="ComplexType\RevirDonusu.cs" />
+    <Compile Include="ComplexType\SirketFilter.cs" />
+    <Compile Include="ComplexType\sirketW.cs" />
+    <Compile Include="ComplexType\sirketX.cs" />
+    <Compile Include="ComplexType\tasima.cs" />
+    <Compile Include="ComplexType\Treeview.cs" />
+    <Compile Include="Concrete\SirketUpload.cs" />
+    <Compile Include="Concrete\ISG_TopluEgitimSablonlari.cs" />
+    <Compile Include="Concrete\CalismaAnalizi.cs" />
+    <Compile Include="Concrete\Ikaz.cs" />
+    <Compile Include="Concrete\Gorev.cs" />
+    <Compile Include="Concrete\IsgTopluEgitimi.cs" />
+    <Compile Include="Concrete\KtubKt.cs" />
+    <Compile Include="Concrete\PsikolojikTest.cs" />
+    <Compile Include="Concrete\BolumRiski.cs" />
+    <Compile Include="Concrete\TehlikeliIsler.cs" />
+    <Compile Include="Concrete\MeslekHastaliklari.cs" />
+    <Compile Include="Concrete\Mail_Onerileri.cs" />
+    <Compile Include="Concrete\Adres.cs" />
+    <Compile Include="Concrete\Aliskanlik.cs" />
+    <Compile Include="Concrete\Allerji.cs" />
+    <Compile Include="Concrete\Kkd.cs" />
+    <Compile Include="Concrete\ICDSablonu.cs" />
+    <Compile Include="Concrete\IsKazasi.cs" />
+    <Compile Include="Concrete\PeriyodikMuayene.cs" />
+    <Compile Include="Concrete\PersonelMuayene.cs" />
+    <Compile Include="Concrete\RevirTedavi.cs" />
+    <Compile Include="Concrete\ANT.cs" />
+    <Compile Include="Concrete\Asi.cs" />
+    <Compile Include="Concrete\EKG.cs" />
+    <Compile Include="Concrete\Calisma_Durumu.cs" />
+    <Compile Include="Concrete\Calisma_Gecmisi.cs" />
+    <Compile Include="Concrete\DisRapor.cs" />
+    <Compile Include="Concrete\EgitimHayati.cs" />
+    <Compile Include="Concrete\ICD10.cs" />
+    <Compile Include="Concrete\IcRapor.cs" />
+    <Compile Include="Concrete\Ilac.cs" />
+    <Compile Include="Concrete\IlacSarfCikisi.cs" />
+    <Compile Include="Concrete\IlacStok.cs" />
+    <Compile Include="Concrete\IlacStokGirisi.cs" />
+    <Compile Include="Concrete\IlacStokGirisiView.cs" />
+    <Compile Include="Concrete\imageUpload.cs" />
+    <Compile Include="Concrete\IsgEgitimi.cs" />
+    <Compile Include="Concrete\KronikHastalik.cs" />
+    <Compile Include="Concrete\Laboratuar.cs" />
+    <Compile Include="Concrete\Meslek.cs" />
+    <Compile Include="Concrete\Hemogram.cs" />
+    <Compile Include="Concrete\BoyKilo.cs" />
+    <Compile Include="Concrete\Gorme.cs" />
+    <Compile Include="Concrete\Radyoloji.cs" />
+    <Compile Include="Concrete\Odio.cs" />
+    <Compile Include="Concrete\Ozurluluk.cs" />
+    <Compile Include="Concrete\Pansuman.cs" />
+    <Compile Include="Concrete\Personel.cs" />
+    <Compile Include="Concrete\PersonelDetayi.cs" />
+    <Compile Include="Concrete\RevirIslem.cs" />
+    <Compile Include="Concrete\SaglikBirimi.cs" />
+    <Compile Include="Concrete\SFT.cs" />
+    <Compile Include="Concrete\Sirket.cs" />
+    <Compile Include="Concrete\SirketAtama.cs" />
+    <Compile Include="Concrete\SirketBolumu.cs" />
+    <Compile Include="Concrete\SirketDetayi.cs" />
+    <Compile Include="Concrete\SoyGecmisi.cs" />
+    <Compile Include="Concrete\Tanim.cs" />
+    <Compile Include="Concrete\Tetkik.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Oku.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

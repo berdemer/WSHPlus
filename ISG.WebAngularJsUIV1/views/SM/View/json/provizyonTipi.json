@@ -1,0 +1,30 @@
+﻿[
+	{
+		"adi": "Normal",
+		"val": 1
+	},
+	{
+		"adi": "Trafik",
+		"val": 2
+	},
+	{
+		"adi": "Doğal Afet",
+		"val": 3
+	},
+	{
+		"adi": "Adli Vaka",
+		"val": 4
+	},
+	{
+		"adi": "İş Kazası",
+		"val": 5
+	},
+	{
+		"adi": "Meslek Hastalığı",
+		"val": 6
+	},
+	{
+		"adi": "Analık Hali",
+		"val": 7
+	}
+]

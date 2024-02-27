@@ -1,0 +1,25 @@
+{
+  "calisanMeslegi": null, //ISCO 08 meslek kodlarý listesi kodu
+  "calismaOrtami": {
+    "turKodu": 0,
+    "turAdi": "",
+    "firmaKodu": "",
+    "parola": ""
+  }, //ÝSGGM tarafýndan belirlenmiþ çalýþma ortamý bildirim formatý
+  "fizikiOrtamSinifi": [], //Çalýþma Ortamý Listesinde “Fiziki Ortam” int
+  "havaSinifi": [], //Çalýþma Ortamý Listesinde “Hava” türint
+  "gurultuSinifi": [], //Çalýþma Ortamý Listesinde “Gürültü”int
+  "elektrikSinifi": [], //Çalýþma Ortamý Listesinde “Elektrik”int
+  "tozYonetmeligiSinifi": [], //Çalýþma Ortamý Listesinde “Toz Yönetmeliði”int
+  "kimyasalMaddeSinifi": [], //Çalýþma Ortamý Listesinde “Kimyasal Madde”int
+  "biyolojikEtkenlerSinifi": [], //Çalýþma Ortamý Listesinde “Biyolojik Etkenler”int
+  "calismaSekli": {
+    "firmaKodu": null,
+    "parola": null
+  }, //ÝSGGM tarafýndan belirlenmiþ çalýþma þekli bildirim formatý
+  "calismaPozisyonu": null, //Çalýþma þekli listesi metodunda 100-199 kod aralýðý arasýnda dönen çalýþma pozisyonu grubu seçeneði belirtilmelidir.
+  "calismaZamani": null, //Çalýþma þekli listesi metodunda 200-299 kod aralýðý
+  "aracKullanimi": null, //Çalýþma þekli listesi metodunda 300-399 kod aralýðý
+  "isEkipmanlari": [] //ÝSGGM tarafýndan belirlenmiþ iþ ekipmanlari listesi
+}
+

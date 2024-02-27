@@ -1,0 +1,70 @@
+﻿<div ng-controller="RamazziniCtrl as rmzC">
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <script type="text/ng-template" id="group-template.html">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a href="javascript:void(0)" tabindex="0" class="accordion-toggle" ng-click="toggleOpen()" uib-accordion-transclude="heading">
+                        <span uib-accordion-header ng-class="{'text-muted': isDisabled}">
+                            {{heading}}
+                        </span>
+                    </a>
+                </h4>
+            </div>
+            <div class="panel-collapse collapse" uib-collapse="!isOpen">
+                <div class="panel-body" style="background-color: #555;" ng-transclude></div>
+            </div>
+        </script>
+        <div class="col-lg-12">
+            <div class="col-sm-4 m-t-md">
+                <uib-accordion close-others="true">
+                    <div uib-accordion-group class="panel-default" is-open="status.open">
+                        <uib-accordion-heading>
+                            <span   class="maviFont" ng-bind="SirketBasligi.name"></span>&nbsp;&nbsp;&nbsp;&nbsp;<i class="pull-right" ng-class="{'fa fa-chevron-down': status.open, 'fa fa-chevron-right': !status.open}"></i>
+                        </uib-accordion-heading>
+                        <treecontrol class="tree-light"
+                                     tree-model="collectionSirket"
+                                     options="treeOptions"
+                                     expanded-nodes="expandList"
+                                     on-selection="showSelected(node)">
+                            <span   class="maviFont" ng-bind="node.name"></span>
+                        </treecontrol>
+                    </div>
+                </uib-accordion>
+            </div>
+            <div class="col-sm-4 m-t-md">
+                <uib-accordion close-others="true">
+                    <div uib-accordion-group class="panel-default" is-open="status.open2" template-url="group-template.html">
+                        <uib-accordion-heading>
+                            <span   class="maviFont" ng-bind="BolumBasligi.name"></span>&nbsp;&nbsp;&nbsp;&nbsp;<i class="pull-right" ng-class="{'fa fa-chevron-down': status.open2, 'fa fa-chevron-right': !status.open2}"></i>
+                        </uib-accordion-heading>
+                        <div style="background-color: #555;">
+                            <treecontrol class="tree-dark"
+                                         tree-model="collectionBolum"
+                                         options="treeOptions"
+                                         on-selection="showSelectedBolum(node)">
+                                <span ng-bind="node.name"></span>
+                            </treecontrol>
+                        </div>
+                    </div>
+                </uib-accordion>
+            </div>
+            <div class="col-sm-4">
+                <img width="75" height="75" style="padding-top:2px" class="pull-right" ng-src="{{rmzC.fileImgPath}}" />
+            </div>
+        </div>
+    </div>
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div style="margin-top: -35px;" ng-include="'./views/Analiz/View/temp/ramaAnalizi.html'">
+        </div>
+        <div style="margin-top: -35px;"  ng-include="'./views/Analiz/View/temp/bolumRiskleri.html'">
+        </div>
+    </div>
+</div>
+
+<style>
+    .cropArea {
+        overflow: hidden;
+        width: 400px;
+        height: 300px;
+    }
+</style>

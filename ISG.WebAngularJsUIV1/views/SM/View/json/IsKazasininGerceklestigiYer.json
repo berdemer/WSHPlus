@@ -1,0 +1,60 @@
+[
+  {
+    "kaza": "0 - Bilgi yok",
+    "alt": ["0 - Bilgi yok"]
+  },
+  {
+    "kaza": "10 - Sanayi (Endüstri) mevkii- Belirtilmemiş",
+    "alt": ["11 - Üretim alanı, fabrika, atölye ","12 - Bakım alanı, onarım atölyesi ","13 - Temelde depo, yükleme, boşaltma için kullanılan alan ","19 - Yukarıda listelenmemiş diğer başka 010 tür çalışılan çevre"]
+  },
+    {
+    "kaza": "20 - İnşaat mevkii, inşaat, açık hava taşocağı, açık hava madeni - Belirtilmem iş",
+    "alt": ["21 - İnşaat mevkii - yeni inşa edilen bina ","22 - İnşaat mevkii - yıkılan, onarılan, bakımı yapılan bina ","23 - Açık hava taşocağı, açık hava madeni, kazı, çukur (açık hava madenciliği ve çalışan taş ocakları dahil) ","24 - İnşaat mevkii - yeraltı ","25 - nşaat mevkii - su üstü veya üzerinde ","26 - İnşaat mevkii - yüksek basınçlı ortamda ","29 - Yukarıda listelenmemiş diğer başka 020 tür çalışılan çevre"]
+  },
+    {
+    "kaza": "30 - Çiftçilik, yetiştirmecilik, balık çiftçiliği, orman alanı - Belirtilmemiş",
+    "alt": ["31 - Yetiştirme alanı ","32 - Çiftlik alanı - toprak ürünleri ","33 - Çiftlik alanı - ağaç veya çalı ürünleri ","34 - Ormancılık alanı ","35 - Balık çiftçiliği alanı, balıkçılık, deniz ürünleri (gemi veya tekne üzerinden olmayan) ","36 - Bahçe, park, botanik bahçe, hayvanat bahçesi 39 - Yukarıda listelenmemiş diğer başka 030 tür çalışılan çevre"]
+  },
+    {
+    "kaza": "40 - Üçüncü faaliyet alanı, büro, eğlence alanı, muhtelif - Belirtilmemiş",
+    "alt": ["41 - Büro, toplantı salonu, kütüphane, vb. ","42 - Öğretim Kurumu, okul, lise, yüksek okul, üniversite, kreş, anaokulu ","43 - Küçük veya büyük satış alanı (sokak satışları dahil) ","44 - Lokanta, dinlenme alanı, geçici konaklama (müze, oditoryum, stadyum, fuar, vb. dahil) ","49 - Yukarıda listelenmemiş diğer başka 040 tür çalışılan çevre"]
+  },
+    {
+    "kaza": "50 - Sağlık Kurumu - Belirtilmemiş",
+    "alt": ["51 - Sağlık Kurumu, özel hastane, hastane, bakım evi"," 59 - Yukarıda listelenmemiş diğer başka 050 tür çalışılan çevre"]
+  },
+    {
+    "kaza": "60 - Kamu alanı - Belirtilmemiş",
+    "alt": ["61 - Sürekli olarak kamu geçişine açık alan (karayolları, yan yollar, park alanları, istasyon veya havaalanı bekleme salonları, vb.) ","62 - Ulaşım araçları - kara veya demiryolu ile- özel veya kamu (her tür: tren,otobüs, araba, vb.) ","63 - Kamu alanlarına bağlı alanlar olmakla birlikte sadece yetkili kimselerin erişimine izin verilen alanlar: demiryolu hattı, havaalanı pisti, karayolu banketi ","69 - Yukarıda listelenmemiş diğer başka 060 tür-çalışılan çevre"]
+  },
+    {
+    "kaza": "70 - Evde - Belirtilmemiş",
+    "alt": ["71 - Kişisel ev ","72 - Bir binanın ortak alanı, ekleri, kişisel aile bahçesi ","79 - Yukarıda listelenmemiş diğer başka 070 tür-çalışılan çevre"]
+  },
+    {
+    "kaza": "80 - Spor alanı - Belirtilmemiş",
+    "alt": ["81 - Kapalı spor alanı - spor salonu, jimnastik salonu, kapalı yüzme havuzu"," 82 - Açık spor alanı - spor sahası, açık yüzme havuzu, kayak parkuru ","89 - Yukarıda listelenmemiş diğer başka 080 tür çalışılan çevre"]
+  },
+    {
+    "kaza": "90 - Havada, yükseltme esnasında, inşaat mevkii dışında - Belirtilmemiş",
+    "alt": ["91 - Yükseltme esnasında - sabit bir düzeyde (çatı, teras, vb.) ","92 - Yükseltme esnasında-direk, pilon, asılı platform ","93 - Havada - uçakta ","99 - Yukarıda listelenmemiş başka 090 türü Çalışılan çevre, inşaat şantiyesi dışında"]
+  },
+    {
+    "kaza": "100 - Yeraltında, inşaat şantiyesi dışında - Belirtilmemiş",
+    "alt": ["101 - Yeraltında - tünel (yol, ten, tüp) ","102 - Yeraltında - maden ","103 - Yeraltında - kanalizasyon,lağım ","109 - Yukarıda listelenmemiş diğer başka 100 tür çalışılan çevre, inşaat mevkii dışında"]
+  },
+    {
+    "kaza": "110 - Su üstünde/üzerinde, inşaat mevkii dışında - Belirtilmemiş",
+    "alt": ["111 - Deniz veya okyanus - her tür tekne, platform, gemi, sandal, mavnada ","112 - Göl, nehir, liman - her tür tekne, platform, gemi, sandal, mavnada ","119 - Yukarıda listelenmemiş diğer başka 110 tür çalışılan çevre, inşaat mevkii dışında"]
+  },
+    {
+    "kaza": "120 - Yüksek basınç ortamlarında, inşaat mevkii dışında - Belirtilmemiş",
+    "alt": ["121 - Yüksek basınç ortamlarında - sualtı (örneğin, dalma) ","122 - Yüksek basınç ortamlarında - kamara ","129 - Yukarıda listelenmemiş başka 120 türü çalışılan çevre, inşaat şantiyesi dışında"]
+  },
+    {
+    "kaza": "999 - Sınıflandırmada listelenmemiş başka çalışma ortamları",
+    "alt": ["999 - Sınıflandırmada listelenmemiş başka çalışma ortamları"]
+  }
+]
+
+       

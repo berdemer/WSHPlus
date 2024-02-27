@@ -1,0 +1,835 @@
+{
+  "aracKullanimi": [
+    {
+      "No": 301,
+      "kullanimSekli": "Otomobil(Gündelik)",
+      "not": "Çalışanın çalışma saatlerinin yüzde ellisinden fazlasının #şehir içi veya şehirlerarası trafikte geçtiği durumlarda kullanılır."
+    },
+    {
+      "No": 302,
+      "kullanimSekli": "Otomobil(İşyeri İçi)",
+      "not": "Çalışanın çalışma saatlerinin yüzde ellisinden fazlasının #işyeri içi trafikte geçtiği durumlarda kullanılır."
+    },
+    {
+      "No": 311,
+      "kullanimSekli": "Ağır Vasıta(Gündelik)",
+      "not": "Çalışanın çalışma saatlerinin yüzde ellisinden fazlasının #şehir içi veya şehirlerarası trafikte ağır vasıta kullanarak geçtiği durumlarda kullanılır."
+    },
+    {
+      "No": 312,
+      "kullanimSekli": "Ağır Vasıta(İşyeri İçi)",
+      "not": "Çalışanın çalışma saatlerinin yüzde ellisinden fazlasının #işyeri içi trafikte ağır vasıta kullanarak geçtiği durumlarda kullanılır."
+    },
+    {
+      "No": 321,
+      "kullanimSekli": "Tehlikeli Madde Taşımacılığı",
+      "not": "Çalışanın çalışma saatlerinin yüzde ellisinden fazlasının #tehlikeli madde taşımacılığında geçtiği durumlarda kullanılır."
+    },
+    {
+      "No": 399,
+      "kullanimSekli": "Hiçbiri",
+      "not": ""
+    }
+  ],
+  "calismaZamani": [
+    {
+      "No": 201,
+      "zamanDilimi": "Vardiyalı Çalışma ",
+      "not": "Bir işyerinde, gece ve gündüz vardiyalarının her #ikisinde de görev aldığı durumlarda kullanılır."
+    },
+    {
+      "No": 202,
+      "zamanDilimi": "Sürekli Gece",
+      "not": "Çalışanın vardiyalı bir işyerinde, yalnız gece #vardiyalarında görev aldığı durumlarda kullanılır."
+    },
+    {
+      "No": 203,
+      "zamanDilimi": "Sürekli Gündüz",
+      "not": "Çalışanın vardiyalı bir işyerinde, yalnız gündüz #vardiyalarında görev aldıı durumlarda kullanılır."
+    },
+    {
+      "No": 211,
+      "zamanDilimi": "Esnek Çalışma",
+      "not": "Çalışanın esnek çalışma saatlerinde çalıştığı #durumlarda kullanılır."
+    },
+    {
+      "No": 221,
+      "zamanDilimi": "Evden Çalışma",
+      "not": "Çalışanın evden çalıştığı durumlarda #kullanılır."
+    },
+    {
+      "No": 299,
+      "zamanDilimi": "Hiçbiri",
+      "not": ""
+    }
+  ],
+  "calismaPozisyonu": [
+    {
+      "No": 101,
+      "pozisyon": "Ayakta Çalışma",
+      "not": "Çalışma saatlerinin yüzde ellisinden fazlasının #ayakta geçirildiği durumlar için kullanılır."
+    },
+    {
+      "No": 102,
+      "pozisyon": "Oturarak Çalışma",
+      "not": "Çalışma saatlerinin yüzde ellisinden fazlasının #oturarak geçirildiği durumlar için kullanılır."
+    },
+    {
+      "No": 103,
+      "pozisyon": "Yatarak Çalışma",
+      "not": "Çalışma saatlerinin yüzde ellisinden fazlasının #yatay pozisyonda geçirildiği durumlar için kullanılır."
+    },
+    {
+      "No": 199,
+      "pozisyon": "Hiçbiri",
+      "not": ""
+    }
+  ],
+  "isEkipmanlari": [
+    {
+      "Kodu": 0,
+      "EkipmanTuru": "Listedeki Ekipman Türlerinden Birini Kullanmıyor",
+      "EkipmanSinifi": ""
+    },
+    {
+      "Kodu": 1000,
+      "EkipmanTuru": "Buhar Kazanı",
+      "EkipmanSinifi": "BASINÇLI EKİPMANLAR"
+    },
+    {
+      "Kodu": 1010,
+      "EkipmanTuru": "Kalorifer Kazanı",
+      "EkipmanSinifi": "BASINÇLI EKİPMANLAR"
+    },
+    {
+      "Kodu": 1020,
+      "EkipmanTuru": "Taşınabilir Gaz Tüpü",
+      "EkipmanSinifi": "BASINÇLI EKİPMANLAR"
+    },
+    {
+      "Kodu": 1030,
+      "EkipmanTuru": "Taşınabilir Asetilen Tüpü",
+      "EkipmanSinifi": "BASINÇLI EKİPMANLAR"
+    },
+    {
+      "Kodu": 1040,
+      "EkipmanTuru": "Sıvılaştırılmış Gaz Tankı",
+      "EkipmanSinifi": "BASINÇLI EKİPMANLAR"
+    },
+    {
+      "Kodu": 1050,
+      "EkipmanTuru": "Hava Tankı",
+      "EkipmanSinifi": "BASINÇLI EKİPMANLAR"
+    },
+    {
+      "Kodu": 1060,
+      "EkipmanTuru": "Kriyokenik Tank",
+      "EkipmanSinifi": "BASINÇLI EKİPMANLAR"
+    },
+    {
+      "Kodu": 1070,
+      "EkipmanTuru": "Tehlikeli Sıvıların Bulunduğu Depo",
+      "EkipmanSinifi": "BASINÇLI EKİPMANLAR"
+    },
+    {
+      "Kodu": 1080,
+      "EkipmanTuru": "Ütü Kazanı",
+      "EkipmanSinifi": "BASINÇLI EKİPMANLAR"
+    },
+    {
+      "Kodu": 1090,
+      "EkipmanTuru": "Basınçlı Kap Emniyet Cihazı",
+      "EkipmanSinifi": "BASINÇLI EKİPMANLAR"
+    },
+    {
+      "Kodu": 1100,
+      "EkipmanTuru": "Genleşme Tankı",
+      "EkipmanSinifi": "BASINÇLI EKİPMANLAR"
+    },
+    {
+      "Kodu": 1110,
+      "EkipmanTuru": "Buhar Jeneratörü",
+      "EkipmanSinifi": "BASINÇLI EKİPMANLAR"
+    },
+    {
+      "Kodu": 1120,
+      "EkipmanTuru": "Endüstriyel Otoklav",
+      "EkipmanSinifi": "BASINÇLI EKİPMANLAR"
+    },
+    {
+      "Kodu": 1130,
+      "EkipmanTuru": "Boyler/Akümülasyon Tankı",
+      "EkipmanSinifi": "BASINÇLI EKİPMANLAR"
+    },
+    {
+      "Kodu": 1140,
+      "EkipmanTuru": "Atmosferik Depolama Tankı",
+      "EkipmanSinifi": "BASINÇLI EKİPMANLAR"
+    },
+    {
+      "Kodu": 1150,
+      "EkipmanTuru": "Boyama Kazanı",
+      "EkipmanSinifi": "BASINÇLI EKİPMANLAR"
+    },
+    {
+      "Kodu": 1160,
+      "EkipmanTuru": "Kızgın Su Kazanı",
+      "EkipmanSinifi": "BASINÇLI EKİPMANLAR"
+    },
+    {
+      "Kodu": 1170,
+      "EkipmanTuru": "Buharlı Pişirme Kazanı",
+      "EkipmanSinifi": "BASINÇLI EKİPMANLAR"
+    },
+    {
+      "Kodu": 1180,
+      "EkipmanTuru": "Kızgın Yağ Kazanı",
+      "EkipmanSinifi": "BASINÇLI EKİPMANLAR"
+    },
+    {
+      "Kodu": 1190,
+      "EkipmanTuru": "Buhar Kazanı",
+      "EkipmanSinifi": "BASINÇLI EKİPMANLAR"
+    },
+    {
+      "Kodu": 1999,
+      "EkipmanTuru": "Diğer Basınçlı Ekipman",
+      "EkipmanSinifi": "BASINÇLI EKİPMANLAR"
+    },
+    {
+      "Kodu": 2000,
+      "EkipmanTuru": "Değişken Erişimli Araç",
+      "EkipmanSinifi": "KALDIRMA EKİPMANLARI"
+    },
+    {
+      "Kodu": 2010,
+      "EkipmanTuru": "Halatlı Veya Zincirli Çektirme (Hubzug)",
+      "EkipmanSinifi": "KALDIRMA EKİPMANLARI"
+    },
+    {
+      "Kodu": 2020,
+      "EkipmanTuru": "Hidrolik Kazıcı (Ekskavatör İş Makinası)",
+      "EkipmanSinifi": "KALDIRMA EKİPMANLARI"
+    },
+    {
+      "Kodu": 2030,
+      "EkipmanTuru": "Kaldırma İletme Makinası",
+      "EkipmanSinifi": "KALDIRMA EKİPMANLARI"
+    },
+    {
+      "Kodu": 2040,
+      "EkipmanTuru": "Kriko",
+      "EkipmanSinifi": "KALDIRMA EKİPMANLARI"
+    },
+    {
+      "Kodu": 2050,
+      "EkipmanTuru": "Kuyruktan Kaldırıcı",
+      "EkipmanSinifi": "KALDIRMA EKİPMANLARI"
+    },
+    {
+      "Kodu": 2060,
+      "EkipmanTuru": "Park Lifti",
+      "EkipmanSinifi": "KALDIRMA EKİPMANLARI"
+    },
+    {
+      "Kodu": 2070,
+      "EkipmanTuru": "Rampa",
+      "EkipmanSinifi": "KALDIRMA EKİPMANLARI"
+    },
+    {
+      "Kodu": 2080,
+      "EkipmanTuru": "Sapan / Mapa",
+      "EkipmanSinifi": "KALDIRMA EKİPMANLARI"
+    },
+    {
+      "Kodu": 2090,
+      "EkipmanTuru": "Yükleyici (İş Makinası)",
+      "EkipmanSinifi": "KALDIRMA EKİPMANLARI"
+    },
+    {
+      "Kodu": 2100,
+      "EkipmanTuru": "Araç Kaldırma Lifti",
+      "EkipmanSinifi": "KALDIRMA EKİPMANLARI"
+    },
+    {
+      "Kodu": 2110,
+      "EkipmanTuru": "Caraskal",
+      "EkipmanSinifi": "KALDIRMA EKİPMANLARI"
+    },
+    {
+      "Kodu": 2120,
+      "EkipmanTuru": "Cephe Asansörü (İnşaat Vinci)",
+      "EkipmanSinifi": "KALDIRMA EKİPMANLARI"
+    },
+    {
+      "Kodu": 2130,
+      "EkipmanTuru": "Forklift",
+      "EkipmanSinifi": "KALDIRMA EKİPMANLARI"
+    },
+    {
+      "Kodu": 2140,
+      "EkipmanTuru": "Hareket Engelliler İçin Güç Ve Tahrikli Kaldırma",
+      "EkipmanSinifi": "KALDIRMA EKİPMANLARI"
+    },
+    {
+      "Kodu": 2150,
+      "EkipmanTuru": "İstif Makinası (Araçta Ayakta Ve/Veya Yaya Kumandalı)",
+      "EkipmanSinifi": "KALDIRMA EKİPMANLARI"
+    },
+    {
+      "Kodu": 2160,
+      "EkipmanTuru": "Kule Kren",
+      "EkipmanSinifi": "KALDIRMA EKİPMANLARI"
+    },
+    {
+      "Kodu": 2170,
+      "EkipmanTuru": "Mobil Kren",
+      "EkipmanSinifi": "KALDIRMA EKİPMANLARI"
+    },
+    {
+      "Kodu": 2180,
+      "EkipmanTuru": "Platform",
+      "EkipmanSinifi": "KALDIRMA EKİPMANLARI"
+    },
+    {
+      "Kodu": 2190,
+      "EkipmanTuru": "Servis Asansörü",
+      "EkipmanSinifi": "KALDIRMA EKİPMANLARI"
+    },
+    {
+      "Kodu": 2200,
+      "EkipmanTuru": "Transpalet",
+      "EkipmanSinifi": "KALDIRMA EKİPMANLARI"
+    },
+    {
+      "Kodu": 2210,
+      "EkipmanTuru": "Vinç",
+      "EkipmanSinifi": "KALDIRMA EKİPMANLARI"
+    },
+    {
+      "Kodu": 2220,
+      "EkipmanTuru": "Yürüyen Merdiven / Bant",
+      "EkipmanSinifi": "KALDIRMA EKİPMANLARI"
+    },
+    {
+      "Kodu": 2230,
+      "EkipmanTuru": "Yapı İskelesi",
+      "EkipmanSinifi": "KALDIRMA EKİPMANLARI"
+    },
+    {
+      "Kodu": 2240,
+      "EkipmanTuru": "Transpalet",
+      "EkipmanSinifi": "KALDIRMA EKİPMANLARI"
+    },
+    {
+      "Kodu": 2250,
+      "EkipmanTuru": "Teleferik",
+      "EkipmanSinifi": "KALDIRMA EKİPMANLARI"
+    },
+    {
+      "Kodu": 2260,
+      "EkipmanTuru": "Telesiyej",
+      "EkipmanSinifi": "KALDIRMA EKİPMANLARI"
+    },
+    {
+      "Kodu": 2270,
+      "EkipmanTuru": "Mekanik Taşıyıcılar ve Boşaltıcılar",
+      "EkipmanSinifi": "KALDIRMA EKİPMANLARI"
+    },
+    {
+      "Kodu": 2280,
+      "EkipmanTuru": "Değişken Erişimli Araç",
+      "EkipmanSinifi": "KALDIRMA EKİPMANLARI"
+    },
+    {
+      "Kodu": 2999,
+      "EkipmanTuru": "Diğer Kaldırma Ekipmanları",
+      "EkipmanSinifi": "KALDIRMA EKİPMANLARI"
+    },
+    {
+      "Kodu": 3000,
+      "EkipmanTuru": "Elektrik Tesisatı",
+      "EkipmanSinifi": "TESİSAT"
+    },
+    {
+      "Kodu": 3010,
+      "EkipmanTuru": "Topraklama Tesisatı",
+      "EkipmanSinifi": "TESİSAT"
+    },
+    {
+      "Kodu": 3020,
+      "EkipmanTuru": "Paratoner",
+      "EkipmanSinifi": "TESİSAT"
+    },
+    {
+      "Kodu": 3030,
+      "EkipmanTuru": "Akümülatör",
+      "EkipmanSinifi": "TESİSAT"
+    },
+    {
+      "Kodu": 3040,
+      "EkipmanTuru": "Transformatör",
+      "EkipmanSinifi": "TESİSAT"
+    },
+    {
+      "Kodu": 3050,
+      "EkipmanTuru": "Yangın Tesisatı Ve Hortumlar",
+      "EkipmanSinifi": "TESİSAT"
+    },
+    {
+      "Kodu": 3060,
+      "EkipmanTuru": "Motopomplar",
+      "EkipmanSinifi": "TESİSAT"
+    },
+    {
+      "Kodu": 3070,
+      "EkipmanTuru": "Boru Tesisatı",
+      "EkipmanSinifi": "TESİSAT"
+    },
+    {
+      "Kodu": 3080,
+      "EkipmanTuru": "Yangın Söndürme Cihazı",
+      "EkipmanSinifi": "TESİSAT"
+    },
+    {
+      "Kodu": 3090,
+      "EkipmanTuru": "Havalandırma Ve Klima Tesisatı",
+      "EkipmanSinifi": "TESİSAT"
+    },
+    {
+      "Kodu": 3100,
+      "EkipmanTuru": "Su Sprey Sistemi",
+      "EkipmanSinifi": "TESİSAT"
+    },
+    {
+      "Kodu": 3110,
+      "EkipmanTuru": "Elektrik Tesisatı",
+      "EkipmanSinifi": "TESİSAT"
+    },
+    {
+      "Kodu": 3999,
+      "EkipmanTuru": "Diğer Tesisat",
+      "EkipmanSinifi": "TESİSAT"
+    },
+    {
+      "Kodu": 4000,
+      "EkipmanTuru": "Mekanik Pres",
+      "EkipmanSinifi": "TEZGAHLAR (Manuel-NC-CNC)"
+    },
+    {
+      "Kodu": 4010,
+      "EkipmanTuru": "Hidrolik Pres",
+      "EkipmanSinifi": "TEZGAHLAR (Manuel-NC-CNC)"
+    },
+    {
+      "Kodu": 4020,
+      "EkipmanTuru": "Hidrolik Abkant Pres",
+      "EkipmanSinifi": "TEZGAHLAR (Manuel-NC-CNC)"
+    },
+    {
+      "Kodu": 4030,
+      "EkipmanTuru": "Pnömatik Pres",
+      "EkipmanSinifi": "TEZGAHLAR (Manuel-NC-CNC)"
+    },
+    {
+      "Kodu": 4040,
+      "EkipmanTuru": "Ağaç İşleme Tezgahı",
+      "EkipmanSinifi": "TEZGAHLAR (Manuel-NC-CNC)"
+    },
+    {
+      "Kodu": 4050,
+      "EkipmanTuru": "Freze Tezgahı",
+      "EkipmanSinifi": "TEZGAHLAR (Manuel-NC-CNC)"
+    },
+    {
+      "Kodu": 4060,
+      "EkipmanTuru": "Soğuk Metal Testeresi",
+      "EkipmanSinifi": "TEZGAHLAR (Manuel-NC-CNC)"
+    },
+    {
+      "Kodu": 4070,
+      "EkipmanTuru": "Hareketsiz Taşlama Makinesi",
+      "EkipmanSinifi": "TEZGAHLAR (Manuel-NC-CNC)"
+    },
+    {
+      "Kodu": 4080,
+      "EkipmanTuru": "Şerit Testere Makinesi",
+      "EkipmanSinifi": "TEZGAHLAR (Manuel-NC-CNC)"
+    },
+    {
+      "Kodu": 4090,
+      "EkipmanTuru": "Delme Makinesi",
+      "EkipmanSinifi": "TEZGAHLAR (Manuel-NC-CNC)"
+    },
+    {
+      "Kodu": 4100,
+      "EkipmanTuru": "Giyotin Makas",
+      "EkipmanSinifi": "TEZGAHLAR (Manuel-NC-CNC)"
+    },
+    {
+      "Kodu": 4110,
+      "EkipmanTuru": "Transfer Tipi Tezgah",
+      "EkipmanSinifi": "TEZGAHLAR (Manuel-NC-CNC)"
+    },
+    {
+      "Kodu": 4120,
+      "EkipmanTuru": "Mekanik Pres",
+      "EkipmanSinifi": "TEZGAHLAR (Manuel-NC-CNC)"
+    },
+    {
+      "Kodu": 4999,
+      "EkipmanTuru": "Diğer Tezgahlar",
+      "EkipmanSinifi": "TEZGAHLAR (Manuel-NC-CNC)"
+    },
+    {
+      "Kodu": 5000,
+      "EkipmanTuru": "Tav Ocağı",
+      "EkipmanSinifi": "METALURJİ MAKİNALARI"
+    },
+    {
+      "Kodu": 5010,
+      "EkipmanTuru": "Döküm Potası",
+      "EkipmanSinifi": "METALURJİ MAKİNALARI"
+    },
+    {
+      "Kodu": 5020,
+      "EkipmanTuru": "Külçe Kalıp ve Döküm Makinaları",
+      "EkipmanSinifi": "METALURJİ MAKİNALARI"
+    },
+    {
+      "Kodu": 5030,
+      "EkipmanTuru": "Boru İmali Makinaları",
+      "EkipmanSinifi": "METALURJİ MAKİNALARI"
+    },
+    {
+      "Kodu": 5040,
+      "EkipmanTuru": "Sıcak veya Soğuk Hadde",
+      "EkipmanSinifi": "METALURJİ MAKİNALARI"
+    },
+    {
+      "Kodu": 5050,
+      "EkipmanTuru": "Tav Ocağı",
+      "EkipmanSinifi": "METALURJİ MAKİNALARI"
+    },
+    {
+      "Kodu": 5999,
+      "EkipmanTuru": "Diğer Metalurji Makinaları",
+      "EkipmanSinifi": "METALURJİ MAKİNALARI"
+    },
+    {
+      "Kodu": 6000,
+      "EkipmanTuru": "EL ALETLERİ",
+      "EkipmanSinifi": "DİĞERLERİ"
+    },
+    {
+      "Kodu": 7000,
+      "EkipmanTuru": "KALDIRMA AMAÇLI OLMAYAN İŞ MAKİNALARI",
+      "EkipmanSinifi": "DİĞERLERİ"
+    },
+    {
+      "Kodu": 8000,
+      "EkipmanTuru": "TARIM ve ORMAN MAKİNALARI",
+      "EkipmanSinifi": "DİĞERLERİ"
+    },
+    {
+      "Kodu": 9000,
+      "EkipmanTuru": "ÖLÇÜM ALETLERİ",
+      "EkipmanSinifi": "DİĞERLERİ"
+    },
+    {
+      "Kodu": 10000,
+      "EkipmanTuru": "EKRANLI ARAÇLAR",
+      "EkipmanSinifi": "DİĞERLERİ"
+    },
+    {
+      "Kodu": 11000,
+      "EkipmanTuru": "TEKSTİL MAKİNALARI",
+      "EkipmanSinifi": "DİĞERLERİ"
+    },
+    {
+      "Kodu": 12000,
+      "EkipmanTuru": "GIDA MAKİNALARI",
+      "EkipmanSinifi": "DİĞERLERİ"
+    },
+    {
+      "Kodu": 13000,
+      "EkipmanTuru": "AMBALAJ-PAKETLEME   MAKİNALARI",
+      "EkipmanSinifi": "DİĞERLERİ"
+    },
+    {
+      "Kodu": 14000,
+      "EkipmanTuru": "ENDÜSTRİYEL ROBOTLAR",
+      "EkipmanSinifi": "DİĞERLERİ"
+    },
+    {
+      "Kodu": 15000,
+      "EkipmanTuru": "REAKTÖRLER",
+      "EkipmanSinifi": "DİĞERLERİ"
+    },
+    {
+      "Kodu": 16000,
+      "EkipmanTuru": "ENDÜSTRİYEK KURUTMA ve YIKAMA MAKİNALARI",
+      "EkipmanSinifi": "DİĞERLERİ"
+    },
+    {
+      "Kodu": 17000,
+      "EkipmanTuru": "KAĞIT ve KARTON MAKİNALARI",
+      "EkipmanSinifi": "DİĞERLERİ"
+    },
+    {
+      "Kodu": 18000,
+      "EkipmanTuru": "MADEN MAKİNALARI",
+      "EkipmanSinifi": "DİĞERLERİ"
+    }
+  ],
+  "biyolojikEtkenlerSinifi": [
+    {
+      "Kod": 1601,
+      "biyolojikOrtam": "Grup 1 biyolojik etkenler"
+    },
+    {
+      "Kod": 1602,
+      "biyolojikOrtam": "Grup 2 biyolojik etkenler"
+    },
+    {
+      "Kod": 1603,
+      "biyolojikOrtam": "Grup 3 biyolojik etkenler"
+    },
+    {
+      "Kod": 1604,
+      "biyolojikOrtam": "Grup 4 biyolojik etkenler"
+    },
+    {
+      "Kod": 1699,
+      "biyolojikOrtam": "Hiçbiri"
+    }
+  ],
+  "kimyasalMaddeSinifi": [
+    {
+      "Kod": 1501,
+      "kimyasalOrtami": "Alerjik madde"
+    },
+    {
+      "Kod": 1511,
+      "kimyasalOrtami": "Kolay alevlenir madde"
+    },
+    {
+      "Kod": 1512,
+      "kimyasalOrtami": "Alevlenir madde"
+    },
+    {
+      "Kod": 1513,
+      "kimyasalOrtami": "Çok kolay alevlenir madde"
+    },
+    {
+      "Kod": 1521,
+      "kimyasalOrtami": "Aşındırıcı madde"
+    },
+    {
+      "Kod": 1541,
+      "kimyasalOrtami": "Toksik madde"
+    },
+    {
+      "Kod": 1542,
+      "kimyasalOrtami": "Çok toksik madde"
+    },
+    {
+      "Kod": 1543,
+      "kimyasalOrtami": "Üreme için toksik madde"
+    },
+    {
+      "Kod": 1551,
+      "kimyasalOrtami": "Kanserojen madde"
+    },
+    {
+      "Kod": 1571,
+      "kimyasalOrtami": "Mutajen madde"
+    },
+    {
+      "Kod": 1581,
+      "kimyasalOrtami": "Oksitleyici madde"
+    },
+    {
+      "Kod": 1591,
+      "kimyasalOrtami": "Tahriş edici madde"
+    },
+    {
+      "Kod": 1599,
+      "kimyasalOrtami": "Hiçbiri"
+    }
+  ],
+  "tozYonetmeligiSinifi": [
+    {
+      "Kod": 1401,
+      "tozOrtami": "Kristal yapıda SiO2"
+    },
+    {
+      "Kod": 1402,
+      "tozOrtami": "Aktinolit Asbest"
+    },
+    {
+      "Kod": 1403,
+      "tozOrtami": "Antofilit Asbest"
+    },
+    {
+      "Kod": 1404,
+      "tozOrtami": "Grünerit Asbest (Amosit)"
+    },
+    {
+      "Kod": 1405,
+      "tozOrtami": "Krizotil"
+    },
+    {
+      "Kod": 1406,
+      "tozOrtami": "Krosidolit"
+    },
+    {
+      "Kod": 1411,
+      "tozOrtami": "Lifsi tozlar"
+    },
+    {
+      "Kod": 1421,
+      "tozOrtami": "İnert toz"
+    },
+    {
+      "Kod": 1499,
+      "tozOrtami": "Hiçbiri"
+    }
+  ],
+  "elektrikSinifi": [
+    {
+      "Kod": 1301,
+      "ElektrikOrtami": "Elektrik (Yüksek Gerilim)"
+    },
+    {
+      "Kod": 1302,
+      "ElektrikOrtami": "Elektrik (Orta Gerilim)"
+    },
+    {
+      "Kod": 1311,
+      "ElektrikOrtami": "Elektromanyetik Alan"
+    },
+    {
+      "Kod": 1321,
+      "ElektrikOrtami": "Manyetik Alan"
+    },
+    {
+      "Kod": 1399,
+      "ElektrikOrtami": "Hiçbiri"
+    }
+  ],
+  "gurultuSinifi": [
+    {
+      "Kod": 1201,
+      "gurultuOrtami": "Gürültü (Sürekli)"
+    },
+    {
+      "Kod": 1202,
+      "gurultuOrtami": "Gürültü (Seyrek)"
+    },
+    {
+      "Kod": 1203,
+      "gurultuOrtami": "Gürültü (Ani-Yüksek Değerli)"
+    },
+    {
+      "Kod": 1211,
+      "gurultuOrtami": "Titreşim (Bütün Vücut)"
+    },
+    {
+      "Kod": 1212,
+      "gurultuOrtami": "Titreşim (El-Kol)"
+    },
+    {
+      "Kod": 1221,
+      "gurultuOrtami": "Yüksek Aydınlatma"
+    },
+    {
+      "Kod": 1222,
+      "gurultuOrtami": "Düşük Aydınlatma"
+    },
+    {
+      "Kod": 1231,
+      "gurultuOrtami": "Radyasyon"
+    },
+    {
+      "Kod": 1299,
+      "gurultuOrtami": "Hiçbiri"
+    }
+  ],
+  "havaSinifi": [
+    {
+      "Kod": 1101,
+      "havaDurumu": "Yüksek Nem"
+    },
+    {
+      "Kod": 1102,
+      "havaDurumu": "Düşük Nem"
+    },
+    {
+      "Kod": 1111,
+      "havaDurumu": "Yüksek Sıcaklık"
+    },
+    {
+      "Kod": 1112,
+      "havaDurumu": "Düşük Sıcaklık"
+    },
+    {
+      "Kod": 1121,
+      "havaDurumu": "Hava Akımı"
+    },
+    {
+      "Kod": 1199,
+      "havaDurumu": "Hiç Biri"
+    }
+  ],
+  "fizikiOrtamSinifi": [
+    {
+      "Kod": 1001,
+      "fizikiOrtam": "Kapalı Alan (Bina İçi)"
+    },
+    {
+      "Kod": 1002,
+      "fizikiOrtam": "Kapalı Alan (Tank içi veya Tünel)"
+    },
+    {
+      "Kod": 1003,
+      "fizikiOrtam": "Açık Alan (Hava Koşulları)"
+    },
+    {
+      "Kod": 1011,
+      "fizikiOrtam": "Su Altı Faaliyetleri (Vasıtalı)"
+    },
+    {
+      "Kod": 1012,
+      "fizikiOrtam": "Su Altı Faaliyetleri (Vasıtasız)"
+    },
+    {
+      "Kod": 1013,
+      "fizikiOrtam": "Su Üzeri Faaliyetler (Vasıtalı)"
+    },
+    {
+      "Kod": 1014,
+      "fizikiOrtam": "Su Üzeri Faaliyetler (Vasıtasız)"
+    },
+    {
+      "Kod": 1021,
+      "fizikiOrtam": "Havadaki Faaliyetler (Vasıtalı)"
+    },
+    {
+      "Kod": 1022,
+      "fizikiOrtam": "Havadaki Faaliyetler (Vasıtasız)"
+    },
+    {
+      "Kod": 1031,
+      "fizikiOrtam": "Yabani Koşullar (Orman vb.)"
+    },
+    {
+      "Kod": 1041,
+      "fizikiOrtam": "Yüksekte Çalışma"
+    },
+    {
+      "Kod": 1099,
+      "fizikiOrtam": "Hiç Biri"
+    }
+  ]
+}

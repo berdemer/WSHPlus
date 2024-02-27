@@ -1,0 +1,54 @@
+[
+{
+  "kaza": "10 - Elektrik sorunları, patlama, yangın nedeniyle sapma",
+  "alt": ["11 - Elektrik arızası nedeniyle elektrik sorunu - doğrudan temasa yol açan", "12 - Elektrik sorunu - doğrudan temasa yol açan"," 13 - Patlama"," 14 - Yangın, tutuşma"," 19 - Yukarıda listelenmemiş başka 10 çeşit Sapma"]
+},
+{
+  "kaza": "20 - Taşma, devrilme, sızma, buharlaşma, emisyon sapması - Belirtilmemiş",
+  "alt": ["21 - Katı durumunda - taşma, devrilme"," 22 - Sıvı durumunda - sızma, kaçırma, akma, sıçrama, püskürme"," 23 - Gaz durumunda - buharlaşma, aerosol oluşum, gaz oluşumu ","24 - Toz halindeki madde - duman oluşumu, havadaki/yayılmış toz ve zerrecikleri"," 29 - Yukarıda listelenmemiş başka 20 çeşit Sapma"]
+},
+{
+  "kaza": "30 - Maddi aracın kırılma, patlama, ayrılma, kayma, düşme, çökmesi - Belirtilmemiş",
+  "alt": [ "31 - Maddenin kırılması - eklemlerde, birleşme noktalarında"," 32 - Kırılma, patlama - kıymık oluşumu (tahta, cam, metal, taş, plastik, diğerleri) ","33 - Maddi aracın kayma, düşme, çökmesi - yukarıdan (kazazedenin üstüne düşerek) ","34 - Maddi aracın kayma, düşme, çökmesi - aşağıdan (kazazedeyi aşağı çekerek) ","35 - Maddi aracın kayma, düşme, çökmesi - aynı düzeyde ","39 - Yukarıda listelenmemiş başka 30 türü-çeşit Sapma"]
+},
+{
+  "kaza": "40 - Bir makinenin, taşıma aracının veya işleme ekipmanının, elle kullanılan alet, nesne, hayvanın denetimden çıkması (tam veya kısmi) - Belirtilmemiş",
+  "alt": ["41 - Denetim kaybı (tam veya kısmi) - makine (istenmeyen başlama da dahil olmak üzere) veya maddi araç"," 42 - Denetim kaybı (tam veya kısmi) - taşıt aracı veya ekipman kullanımının (motorlu olsun veya olmasın)"," 43 - Denetim kaybı (tam veya kısmi) - el aleti (motorlu olsun veya olmasın) veya alet tarafından kullanılan maddi aracın"," 44 - Denetim kaybı (tam veya kısmi) - nesnenin (taşınan, oynatılan, kullanılan, vb.) ","45 - Denetim kaybı (tam veya kısmi) - hayvanın ","49 - Yukarıda listelenmemiş başka 40 çeşit Sapma"]
+},
+{
+  "kaza": "50 - Kayma veya tökezleme - düşme, kişilerin düşmesi - Belirtilmemiş",
+  "alt": [ "51 - Kişinin düşmesi - alt düzeye"," 52 - Kayma - tökezleme ve düşme - Kişinin düşmesi - aynı düzeyde"," 59 - Yukarıda listelenmemiş başka 50 çeşit Sapma"]
+},
+{
+  "kaza": "60 - Fiziki baskı olmadan beden hareketi (genellikle dış bir yaralanmaya yol açan)",
+  "alt": [" 61 - Keskin bir nesne üzerinde yürüme"," 62 - Diz çökme, oturma, yaslanma"," 63 - Kapılma veya götürülme - bir şey veya ivme tarafından ","64 - İşbirliği olmaksızın yapılan hareket, gereksiz veya zamansız eylemler"," 69 - Yukarıda listelenmemiş başka 60 çeşit Sapma"]
+},
+{
+  "kaza": "70 - Fiziki baskıyla veya fiziki baskı altında beden hareketi (genellikle dış bir yar alanmaya yol açan)-Belirtilmemiş",
+  "alt": ["71 - Kaldırma, taşıma, ayakta durma ","72 - İtme, çekme ","73 - Aşağı bırakma, eğilme ","74 - Bükülme, dönme"," 75 - Çiğnenmek, bacak veya bilek bükülmesi, düşmeden kaymak ","79 - Yukarıda listelenmemiş başka 70 çeşit Sapma"]
+},
+{
+  "kaza": "80 - Şok, korku, vahşet, saldırganlık, tehdit, bulunma -Belirtilmemiş",
+  "alt": ["81 - Şok, korku ","82 - Vahşet, saldırı, tehdit - işverenin otoritesine tabi olan şirket çalışanları arasında ","83 - Vahşet, saldırı, tehdit - işlerini yapmakta olan kazazedeye yönelik şirket dışındaki kişiler tarafından (banka soygunu, otobüs şoförleri, vb.)"," 84 - Saldırı, dürtülme - hayvan tarafından 85 - Üçüncü bir kimsenin veya kişinin kendisinin, kendine ve başkasına da tehlike yaratması ","89 - Yukarıda listelenmemiş başka 80 türü çeşit Sapma"]
+},
+{
+  "kaza": "99 - Bu sınıflandırmada listelenmemiş başka Sapma",
+  "alt": ["99 - Bu sınıflandırmada listelenmemiş başka Sapma"]
+}
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

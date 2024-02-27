@@ -1,0 +1,235 @@
+﻿<div class="row p-xs ustDıv">
+    <div class="col-xs-4">
+        <button title="Mevcutta girilen kaydı sisteme şablon olarak kaydeder.
+Sistemeden bölüm ve meslek olarak örneklem alabilirsiniz."  ng-class="PrmC.CalismaAnaliziModeli.CalismaAnalizi_Id==null?'btn-primary':'btn-defaut'"   class="btn  btn-rounded btn-sm"
+                ng-click="PrmC.SablonKayit()">
+            {{PrmC.BolumeKaydetBilgisi}}
+        </button>
+    </div>
+    <div class="col-xs-8">
+        <ui-select ng-model="PrmC.meslekDurumu" theme="bootstrap">
+            <ui-select-match placeholder="Mesleklerden Seçiniz veya Arayınız..">{{$select.selected.MeslekAdi}}</ui-select-match>
+            <ui-select-choices repeat="item in PrmC.MeslekListesi | filter: $select.search">
+                <div ng-bind-html="item.MeslekAdi | highlight: $select.search"></div>
+            </ui-select-choices>
+        </ui-select>
+    </div>
+</div>
+
+<div class="row m-b-xs">
+    <div class="col-sm-2">
+        <label class="control-label pull-right m-t-sm" for="sd">ISCO08 Mesleği:</label>
+    </div>
+    <div class="col-sm-8">
+        <input class="form-control" placeholder="ISCO 08 Kodunu dikkate alınarak mesleğini giriniz." 
+               type="text" name="Meslek" ng-model="PrmC.mSablonu.calisanMeslegi.MeslekAdi" 
+               typeahead-on-select="selectTypeAhead($item)" 
+               uib-typeahead="meslek.MeslekAdi for meslek in PrmC.Meslekler | filter:{MeslekAdi:$viewValue}" 
+               typeahead-loading="loading" typeahead-no-results="noResults" autocomplete="off">
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-2">
+        <label class="control-label pull-right m-t-sm">
+            Çalışma Zamanı*:
+        </label>
+    </div>
+    <div class="col-sm-4">
+        <ui-select ng-model="PrmC.mSablonu.calismaZamani" theme="bootstrap">
+            <ui-select-match placeholder="Seçiniz...">{{$select.selected.zamanDilimi}}</ui-select-match>
+            <ui-select-choices repeat="item in PrmC.calismaDatalari.calismaZamani | filter: $select.search">
+                <div ng-bind-html="item.zamanDilimi | highlight: $select.search"></div>
+                <small style="display: flex; flex-direction: column;">
+                    {{item.not.substring( 0, item.not.indexOf( '#' ))}}
+                    <span>{{item.not.substring( item.not.indexOf( '#' )+1,500)}}</span>
+                </small>
+            </ui-select-choices>
+        </ui-select>
+    </div>
+    <div class="col-sm-2">
+        <label class="control-label pull-right m-t-sm">
+            Çalışma Pozisyonu*:
+        </label>
+    </div>
+    <div class="col-sm-4">
+        <ui-select ng-model="PrmC.mSablonu.calismaPozisyonu" theme="bootstrap">
+            <ui-select-match placeholder="Seçiniz...">{{$select.selected.pozisyon}}</ui-select-match>
+            <ui-select-choices repeat="item in PrmC.calismaDatalari.calismaPozisyonu | filter: $select.search">
+                <div ng-bind-html="item.pozisyon | highlight: $select.search"></div>
+                <small style="display: flex; flex-direction: column;">
+                    {{item.not.substring( 0, item.not.indexOf( '#' ))}}
+                    <span>{{item.not.substring( item.not.indexOf( '#' )+1,500)}}</span>
+                </small>
+            </ui-select-choices>
+        </ui-select>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-2">
+        <label class="control-label pull-right m-t-sm">
+            Araç Kullanımı *:
+        </label>
+    </div>
+    <div class="col-sm-4">
+        <ui-select ng-model="PrmC.mSablonu.aracKullanimi" theme="bootstrap">
+            <ui-select-match placeholder="Seçiniz...">{{$select.selected.kullanimSekli}}</ui-select-match>
+            <ui-select-choices repeat="item in PrmC.calismaDatalari.aracKullanimi | filter: $select.search">
+                <div ng-bind-html="item.kullanimSekli | highlight: $select.search"></div>
+                <small style="display: flex; flex-direction: column;">
+                    {{item.not.substring( 0, item.not.indexOf( '#' ))}}
+                    <span>{{item.not.substring( item.not.indexOf( '#' )+1,500)}}</span>
+                </small>
+            </ui-select-choices>
+        </ui-select>
+    </div>
+    <div class="col-sm-2">
+        <label class="control-label pull-right m-t-sm">
+            Fiziki Ortamı*:
+        </label>
+    </div>
+    <div class="col-sm-4">
+        <ui-select multiple ng-model="PrmC.mSablonu.fizikiOrtamSinifi"
+                   theme="bootstrap" ng-disabled="PrmC.disabled" close-on-select="false"
+                   title="Seçiniz..!">
+            <ui-select-match placeholder="Seçiniz...">{{$item.fizikiOrtam}}</ui-select-match>
+            <ui-select-choices repeat="fz as fz in PrmC.calismaDatalari.fizikiOrtamSinifi| propsFilter: {fizikiOrtam: $select.search}">
+                <div ng-bind-html="fz.fizikiOrtam | highlight: $select.search"></div>
+            </ui-select-choices>
+        </ui-select>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-2">
+        <label class="control-label pull-right m-t-sm">
+            Hava Sınıfı*:
+        </label>
+    </div>
+    <div class="col-sm-4">
+        <ui-select multiple ng-model="PrmC.mSablonu.havaSinifi"
+                   theme="bootstrap" ng-disabled="PrmC.disabled" close-on-select="false"
+                   title="İŞYERİ BİNA VE EKLENTİLERİNDE ALINACAK SAĞLIK VE GÜVENLİK ÖNLEMLERİNE İLİŞKİN YÖNETMELİK ve Uluslararası standartlar referans alınacaktır.">
+            <ui-select-match placeholder="Seçiniz...">{{$item.havaDurumu}}</ui-select-match>
+            <ui-select-choices repeat="fz as fz in PrmC.calismaDatalari.havaSinifi | propsFilter: {havaDurumu: $select.search}">
+                <div ng-bind-html="fz.havaDurumu | highlight: $select.search"></div>
+            </ui-select-choices>
+        </ui-select>
+    </div>
+    <div class="col-sm-2">
+        <label class="control-label pull-right m-t-sm">
+            Gürültü Sınıfı*:
+        </label>
+    </div>
+    <div class="col-sm-4">
+        <ui-select multiple ng-model="PrmC.mSablonu.gurultuSinifi"
+                   theme="bootstrap" ng-disabled="PrmC.disabled" close-on-select="false"
+                   title="ÇALIŞANLARIN GÜRÜLTÜ İLE İLGİLİ RİSKLERDEN KORUNMALARINA DAİR YÖNETMELİK, 
+ÇALIŞANLARIN TİTREŞİMLE İLGİLİ RİSKLERDEN KORUNMALARINA DAİR YÖNETMELİK,
+İŞYERİ BİNA VE EKLENTİLERİNDE ALINACAK SAĞLIK VE GÜVENLİK ÖNLEMLERİNE İLİŞKİN YÖNETMELİK, TAEK'e ait ilgili Yönetmelikler ve Uluslararası standartlar referans alınacaktır.">
+            <ui-select-match placeholder="Seçiniz...">{{$item.gurultuOrtami}}</ui-select-match>
+            <ui-select-choices repeat="fz as fz in PrmC.calismaDatalari.gurultuSinifi | propsFilter: {gurultuOrtami: $select.search}">
+                <div ng-bind-html="fz.gurultuOrtami | highlight: $select.search"></div>
+            </ui-select-choices>
+        </ui-select>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-2">
+        <label class="control-label pull-right m-t-sm">
+            Elektrik Sınıfı*:
+        </label>
+    </div>
+    <div class="col-sm-4">
+        <ui-select multiple ng-model="PrmC.mSablonu.elektrikSinifi"
+                   theme="bootstrap" ng-disabled="PrmC.disabled" close-on-select="false"
+                   title="ELEKTRİK KUVVETLİ AKIM TESİSLERİ YÖNETMELİĞİ kapsamında yapılan sınıflandırma ve Uluslararası standartlar referans alınacaktır.  Bknz. İlgili Yönetmelik Md.4 ">
+            <ui-select-match placeholder="Seçiniz...">{{$item.ElektrikOrtami}}</ui-select-match>
+            <ui-select-choices repeat="fz as fz in PrmC.calismaDatalari.elektrikSinifi | propsFilter: {ElektrikOrtami: $select.search}">
+                <div ng-bind-html="fz.ElektrikOrtami | highlight: $select.search"></div>
+            </ui-select-choices>
+        </ui-select>
+    </div>
+    <div class="col-sm-2">
+        <label class="control-label pull-right m-t-sm">
+            Toz Yönetmeliği*:
+        </label>
+    </div>
+    <div class="col-sm-4">
+        <ui-select multiple ng-model="PrmC.mSablonu.tozYonetmeligiSinifi"
+                   theme="bootstrap" ng-disabled="PrmC.disabled" close-on-select="false"
+                   title="TOZLA MÜCADELE YÖNETMELİĞİ kapsamında yapılan sınıflandırma ve Uluslararası standartlar referans alınacaktır. Bknz. İlgili Yönetmelik Md.4 ">
+            <ui-select-match placeholder="Seçiniz...">{{$item.tozOrtami}}</ui-select-match>
+            <ui-select-choices repeat="fz as fz in PrmC.calismaDatalari.tozYonetmeligiSinifi | propsFilter: {tozOrtami: $select.search}">
+                <div ng-bind-html="fz.tozOrtami | highlight: $select.search"></div>
+            </ui-select-choices>
+        </ui-select>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-2">
+        <label class="control-label pull-right m-t-sm">
+            Kimyasal Madde*:
+        </label>
+    </div>
+    <div class="col-sm-4">
+        <ui-select multiple ng-model="PrmC.mSablonu.kimyasalMaddeSinifi"
+                   theme="bootstrap" ng-disabled="PrmC.disabled" close-on-select="false"
+                   title="KİMYASAL MADDELERLE ÇALIŞMALARDA SAĞLIK VE GÜVENLİK ÖNLEMLERİ HAKKINDA YÖNETMELİK kapsamında yapılan sınıflandırma ve Uluslararası standartlar referans alınacaktır. Bknz. İlgili Yönetmelik Md. 4">
+            <ui-select-match placeholder="Seçiniz...">{{$item.kimyasalOrtami}}</ui-select-match>
+            <ui-select-choices repeat="fz as fz in PrmC.calismaDatalari.kimyasalMaddeSinifi | propsFilter: {kimyasalOrtami: $select.search}">
+                <div ng-bind-html="fz.kimyasalOrtami | highlight: $select.search"></div>
+            </ui-select-choices>
+        </ui-select>
+    </div>
+    <div class="col-sm-2">
+        <label class="control-label pull-right m-t-sm">
+            Biyolojik Etkenler*:
+        </label>
+    </div>
+    <div class="col-sm-4">
+        <ui-select multiple ng-model="PrmC.mSablonu.biyolojikEtkenlerSinifi"
+                   theme="bootstrap" ng-disabled="PrmC.disabled" close-on-select="false"
+                   title="BİYOLOJİK ETKENLERE MARUZİYET RİSKLERİNİN ÖNLENMESİ HAKKINDA YÖNETMELİK kapsamında yapılan sınıflandırma ve Uluslararası standartlar referans alınacaktır. Bknz. İlgili Yönetmelik Md. 5">
+            <ui-select-match placeholder="Seçiniz...">{{$item.biyolojikOrtam}}</ui-select-match>
+            <ui-select-choices repeat="fz as fz in PrmC.calismaDatalari.biyolojikEtkenlerSinifi | propsFilter: {biyolojikOrtam: $select.search}">
+                <div ng-bind-html="fz.biyolojikOrtam | highlight: $select.search"></div>
+            </ui-select-choices>
+        </ui-select>
+    </div>
+</div>
+<div class="row" style="padding-left:10px;padding-right:10px">
+    <div class="col-sm-2">     <label for="vbn"  class="control-label pull-right m-t-sm">İş Ekipmanları*:</label>  </div>
+    <div class="col-sm-10">
+        <ui-select multiple ng-model="PrmC.mSablonu.isEkipmanlari"
+                   theme="bootstrap" ng-disabled="PrmC.disabled" close-on-select="false" title="Seçiniz..!">
+            <ui-select-match placeholder="İş Ekipmanlarını Seçiniz....">{{$item.EkipmanTuru}}</ui-select-match>
+            <ui-select-choices group-by="'EkipmanSinifi'" repeat="fz as fz in PrmC.calismaDatalari.isEkipmanlari | propsFilter: {EkipmanTuru: $select.search}">
+                <div ng-bind-html="fz.EkipmanTuru | highlight: $select.search"></div>
+            </ui-select-choices>
+        </ui-select>
+    </div>
+</div>
+<style>
+    li {
+        cursor: pointer;
+    }
+
+        li:hover {
+            background-color: #f9f9f9;
+        }
+
+    .ui-autocomplete {
+        z-index: 1050;
+    }
+
+    .divyapisi {
+        width: 100%;
+        display: inline-table;
+        vertical-align: sub;
+    }
+    .ustDıv
+   { border-bottom-style: dashed;
+    border-bottom-color: lightslategrey;
+    border-bottom-width: thin;
+    margin-bottom: 10px;
+    }
+</style>

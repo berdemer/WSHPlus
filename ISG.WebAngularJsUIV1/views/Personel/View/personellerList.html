@@ -1,0 +1,215 @@
+﻿<div class="row wrapper border-bottom white-bg page-heading" ng-controller="personellerHeadListCtrl">
+    <script type="text/ng-template" id="group-template.html">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a  href="javascript:void(0)" tabindex="0" class="accordion-toggle" ng-click="toggleOpen()" uib-accordion-transclude="heading">
+                    <span uib-accordion-header ng-class="{'text-muted': isDisabled}">
+                        {{heading}}
+                    </span>
+                </a>
+            </h4>
+        </div>
+        <div class="panel-collapse collapse" uib-collapse="!isOpen">
+            <div class="panel-body" style="background-color: #555;" ng-transclude></div>
+        </div>
+    </script>
+    <div class="col-lg-12">
+        <div class="col-sm-4 m-t-md">
+            <uib-accordion close-others="true">
+                <div uib-accordion-group class="panel-default" is-open="status.open">
+                    <uib-accordion-heading>
+                        <span   class="maviFont" ng-bind="SirketBasligi.name"></span>&nbsp;&nbsp;&nbsp;&nbsp;<i class="pull-right maviFont" ng-class="{'fa fa-chevron-down': status.open, 'fa fa-chevron-right': !status.open}"></i>
+                    </uib-accordion-heading>
+                    <treecontrol class="tree-light"
+                                 tree-model="collectionSirket"
+                                 options="treeOptions"
+                                 expanded-nodes="expandList"
+                                 on-selection="showSelected(node)">
+                        <span   class="maviFont" ng-bind="node.name"></span>
+                    </treecontrol>
+                </div>
+            </uib-accordion>
+        </div>
+        <div class="col-sm-4 m-t-md">
+            <uib-accordion close-others="true">
+                <div uib-accordion-group class="panel-default" is-open="status.open2" template-url="group-template.html">
+                    <uib-accordion-heading>
+                        <span   class="maviFont" ng-bind="BolumBasligi.name"></span>&nbsp;&nbsp;&nbsp;&nbsp;<i class="pull-right maviFont" ng-class="{'fa fa-chevron-down': status.open2, 'fa fa-chevron-right': !status.open2}"></i>
+                    </uib-accordion-heading>
+                    <div style="background-color: #555;">
+                        <treecontrol class="tree-dark"
+                                     tree-model="collectionBolum"
+                                     options="treeOptions"
+                                     on-selection="showSelectedBolum(node)">
+                            <span ng-bind="node.name"></span>
+                        </treecontrol>
+                    </div>
+                </div>
+            </uib-accordion>
+        </div>
+        <div class="col-sm-2 m-t-md">
+            <div class="checkbox checkbox-primary">
+                <input id="checkbox2" type="checkbox" ng-model="dahil" ng-change="dahilinde()">
+                <label for="checkbox2">
+                    Alt şirket ve bölümleri dahilinde
+                </label>
+            </div>
+        </div>
+        <div class="col-sm-1 m-t-md">
+            <div class="checkbox checkbox-primary" ng-init="mera='Tüm Aktif Liste'">
+                <input id="checkbox3" type="checkbox" ng-model="aktif" ng-change="aktifOl();mera=aktif?'Tüm Aktif Liste':'Tüm Pasif Liste'">
+                <label for="checkbox3">
+                    Aktivasyon
+                </label>
+            </div>
+        </div>
+        <div class="col-sm-1 m-t-md">
+            <button class="btn btn-success" ng-click="tumListe()">
+                <i class="fa fa-list"></i>&nbsp;{{mera}}
+            </button>
+        </div>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight" ng-controller="personellerBodyListCtrl as pBLCtrl">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>
+                        Personel Listesi - Satır Detayı&nbsp;&nbsp;&nbsp;
+                    </h5>
+                    <h5 ng-if="Bekle" style="color: dodgerblue" class="m-l-xl m-r-lg">
+                        <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
+                        Lütfen Bekleyiniz!&nbsp;&nbsp;&nbsp;
+                    </h5>                   
+                    <span ng-if="Bekle" style="color: dodgerblue" class="loading fish"></span>
+                    <div ibox-tools></div>
+                </div>
+                <div class="ibox-content">
+                    <table datatable="ng" dt-column-defs="dtColumnDefs"
+                           dt-options="dtOptions" class="table table-striped table-bordered table-hover dataTables-example">
+                        <thead>
+                            <tr>
+                                <th>İşlem</th>
+                                <th>Adı Soyadı</th>
+                                <th>Sicil No</th>
+                                <th>Şirket</th>
+                                <th>Bölümü</th>
+                                <th>Görevi</th>
+                                <th>Tc No</th>
+                                <th>Kadro</th>
+                                <th>Telefon</th>
+                                <th>Kan Grubu</th>
+                                <th>Mail</th>
+                                <th>SGK No</th>
+                                <th>Dogum Tarihi</th>
+                                <th>Egitim Seviyesi</th>
+                                <th>Ilk Ise Baslama Tarihi</th>
+                                <th>MedeniHali</th>
+                                <th>Yaşı</th>
+                                <th>Çalışma Şekli</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="person in persons">
+                                <td>
+                                    <button class="btn btn-primary" id="{{person.PerGuid}}" onclick="angular.element(this).scope().xedit(this)" tooltip-placement="bottom" uib-tooltip="Düzenle">
+                                        <i class="fa fa-edit"></i>
+                                    </button><!--&nbsp;
+                                    <button class="btn btn-danger" id="{{person.PerGuid}}" onclick="angular.element(this).scope().xdelete(this)" tooltip-placement="bottom" uib-tooltip="Sil">
+                                        <i class="fa fa-trash-o"></i>
+                                    </button>-->
+                                    &nbsp;
+                                    <button class="btn btn-warning" id="{{person.PerGuid}}" onclick="angular.element(this).scope().xActive(this)" tooltip-placement="bottom" uib-tooltip="Pasifize Et">
+                                        <i class="fa fa-pause"></i>
+                                    </button>
+                                    &nbsp;
+                                    <button class="btn btn-info" id="{{person.PerGuid}}" onclick="angular.element(this).scope().xpicture(this)" tooltip-placement="bottom" uib-tooltip="Fotograf yükleme">
+                                        <i class="fa fa-file-picture-o"></i>
+                                    </button>
+                                </td>
+                                <td><a ui-sref="SM.SMCards({id:person.TcNo})">{{person.Adi+' '+ person.Soyadi}}</a></td>
+                                <td ng-bind="person.SicilNo"></td>
+                                <td ng-bind="person.sirketAdi"></td>
+                                <td ng-bind="person.bolumAdi"></td>
+                                <td ng-bind="person.Gorevi"></td>
+                                <td ng-bind="person.TcNo"></td>
+                                <td ng-bind="person.KadroDurumu"></td>
+                                <td ng-bind="person.Telefon|tel"></td>
+                                <td ng-bind="person.KanGrubu"></td>
+                                <td ng-bind="person.Mail"></td>
+                                <td ng-bind="person.SgkNo"></td>
+                                <td ng-bind="person.DogumTarihi|date:'dd/MM/yyyy'"></td>
+                                <td ng-bind="person.EgitimSeviyesi"></td>
+                                <td ng-bind="person.IlkIseBaslamaTarihi|date:'dd/MM/yyyy'"></td>
+                                <td ng-bind="person.MedeniHali"></td>
+                                <td ng-bind="person.DogumTarihi| getAge"></td>
+                                <td ng-bind="person.CalismaSekli"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .cropArea {
+        overflow: hidden;
+        width: 400px;
+        height: 300px;
+    }
+    .glyphicon-refresh-animate {
+        -moz-animation: spin-moz .7s infinite linear;
+        -webkit-animation: spin-webkit .7s infinite linear;
+        animation: spin .7s infinite linear;
+    }
+
+    @-moz-keyframes spin-moz {
+        from {
+            -moz-transform: rotate(0deg);
+        }
+
+        to {
+            -moz-transform: rotate(360deg);
+        }
+    }
+
+    @-webkit-keyframes spin-webkit {
+        from {
+            -webkit-transform: rotate(0deg);
+        }
+
+        to {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+
+    @keyframes spin {
+        from {
+            transform: scale(1) rotate(0deg);
+        }
+
+        to {
+            transform: scale(1) rotate(360deg);
+        }
+    }
+
+    #Prm_wrapper {
+        padding-bottom: 0px;
+    }
+
+    .zop {
+        position: absolute;
+        top: 40px;
+        width: 90%;
+    }
+
+    .fikset {
+        position: fixed;
+        top: 230px;
+        width: 20%;
+        right: 2%;
+    }
+</style>

@@ -1,0 +1,78 @@
+{
+  "Nedeni": "Periyodik Muayene",
+  "Kanaat": {
+    "Kosullari": [],
+    "Sonucu": "Çalışması Elverişlidir"
+  },
+  "FM": {
+    "goz": [
+      "Görme Keskinliği Normal",
+      "Renk Körlüğü Yok"
+    ],
+    "kbb": [
+      "Normal"
+    ],
+    "deri": [
+      "Turgor Tonus Normal"
+    ],
+    "kardiyoloji": [
+      "Kalp Sesleri Normal",
+      "Üfürüm Yok"
+    ],
+    "solunum": [
+      "Solunum Sesleri Normal",
+      "Göğüs Kafesi solunuma eşit katılıyor ve Düzgün"
+    ],
+    "sindirim": [
+      "Batın Normal",
+      "Organamegali Saptanmadı"
+    ],
+    "uroloji": [
+      "Muayene Normal"
+    ],
+    "ortopedi": [
+      "Muayene Normal",
+      "Kontraktür Yok",
+      "Kas Gücü Normal"
+    ],
+    "noroloji": [
+      "Muayene Normal",
+      "Refleksler Normal",
+      "Hareket ve Koordinasyon Normal"
+    ],
+    "psikiatri": [
+      "Duygulanım Normal",
+      "Depresif bulgu saptanmadı"
+    ]
+  },
+  "Yakinmalar": {
+    "01": false,
+    "02": false,
+    "03": false,
+    "04": false,
+    "05": false,
+    "06": false,
+    "07": false
+  },
+  "OzelSorular": {
+    "01": false,
+    "02": false,
+    "03": false,
+    "04": false,
+    "05": false,
+    "06": false
+  },
+  "Hastaliklar": {
+    "10": false,
+    "04": false,
+    "05": false,
+    "06": false,
+    "07": false,
+    "08": false,
+    "03": false,
+    "02": false,
+    "01": false,
+    "09": false
+  },
+  "CalismaAnalizi": null
+}

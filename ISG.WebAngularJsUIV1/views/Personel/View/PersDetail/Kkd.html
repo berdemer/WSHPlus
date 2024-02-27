@@ -1,0 +1,53 @@
+﻿<div ng-controller="kkdCtrl  as kkdC" style="width:100%">
+    <row>
+        <table datatable="ng" id="kkd"
+               dt-options="dtOptionskkdC" dt-column-defs="dtColumnDefskkdC" class="table table-responsive  table-striped table-bordered table-hover dataTables-example row-border hover">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>No</th>
+                    <th>Tanimi</th>
+                    <th>Tarih</th>
+                    <th>Maruziyet</th>
+                    <th>Süresi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="Kkd in Kkdleri">
+                    <td ng-bind="Kkd.Kkd_Id"></td>
+                    <td ng-bind="Kkd.$id"></td>
+                    <td ng-bind="Kkd.Kkd_Tanimi"></td>
+                    <td ng-bind="Kkd.Alinma_Tarihi|date:'dd/MM/yyyy'"></td>
+                    <td ng-bind="Kkd.Maruziyet"></td>
+                    <td ng-bind="Kkd.Guncelleme_Suresi_Ay"></td>
+                </tr>
+            </tbody>
+        </table>
+    </row>
+    <row>
+        <div uib-collapse="isCollapsed" class="m-t-n-lg">
+            <form ng-submit="kkdC.onSubmit()" novalidate>
+                <formly-form model="kkdC.model" fields="kkdC.fields" form="kkdC.form">
+                    <button type="submit" class="btn btn-primary submit-button" ng-disabled="kkdC.form.$invalid">Kaydet</button>
+                    <button type="button" class="btn btn-success" ng-click="yenikkdC()" ng-disabled="!kkdC.form.$valid">Yeni</button>
+                    <button type="button" class="btn btn-danger" ng-click="silkkdC()" ng-disabled="!kkdC.form.$valid">Sil</button>
+                    <button class="btn btn btn-warning" ngf-select="uploadFiles($files)" multiple
+                            accept="image/*,application/pdf,application/msword,application/vnd.ms-excel,
+application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ng-show="fileButtonShow">
+                        Dosya Ekle
+                    </button>
+                </formly-form>
+            </form>
+        </div>
+    </row>
+    <row>
+        <ul style="list-style-type: none;overflow: hidden;" ng-show="dosyaList">
+            <li style="font:medium;color: mediumvioletred;float: left;margin-left:20px" ng-if="files.length>0?true:false">Eklenen Dosyalar :</li>
+            <li ng-repeat="f in files" style="font:normal;float: left;margin-left:20px">
+                <a ng-click="download(f)" ng-bind="f.FileName" tooltip-placement="bottom" uib-tooltip="İndir" tooltip-popup-delay="2500"></a>
+                <i class="fa fa-remove" ng-click="deleten(f.GenericName , $index)" tooltip-placement="bottom" uib-tooltip="Sil" tooltip-popup-delay="2500"> </i>
+            </li>
+        </ul>
+    </row>
+</div>
+

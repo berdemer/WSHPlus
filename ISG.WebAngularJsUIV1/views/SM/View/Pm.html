@@ -1,0 +1,853 @@
+﻿<div ng-controller="PmCtrl as PmC" ng-class="{'bekle':PmC.Bekle}">
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <div class="col-xs-4">
+            <a ui-sref="SM.SMCards({id:PmC.guid})">
+                <img alt="image" class="img-thumbnail" ng-cloak ng-src="{{PmC.fileImgPath}}{{PmC.img}}"  on-error="defaultUser.png" style="width: auto; height: auto;max-width: 75px;max-height: 90px;margin-left:-20px;margin-right:10px;float:left" />
+            </a>
+            <a ui-sref="SM.SMCards({id:PmC.guid})">
+                <h3 style="color:yellow" ng-bind="PmC.AdSoyad"></h3>
+            </a>
+            <address class="m-t-n-sm m-b-n-lg">
+                <strong ng-bind="PmC.PMB.sirketAdi"></strong>=><span ng-bind="PMB.bolumAdi"></span><br>
+                <span ng-bind="PmC.PMB.data.Gorevi|degerYok"></span>=>
+                <span ng-bind="PmC.PMB.data.KadroDurumu|degerYok"></span><br>
+                <label> Sicil No:</label>{{PmC.PMB.data.SicilNo}}<label>Tc No :</label>{{PmC.PMB.data.TcNo}}<br>
+            </address>
+        </div>
+        <div class="col-xs-4 m-t-md  m-b-n-lg">
+            <label style="margin-bottom: 0px;">Kan Grubu :</label>{{PmC.PMB.data.KanGrubu}}
+            <label style="margin-bottom: 0px;">Yaşı :</label><span ng-bind="PmC.PMB.data.PersonelDetayi.DogumTarihi | getAge"></span><br>
+            <label style="margin-bottom: 0px;">Egitim Seviyesi :</label><span ng-bind="PmC.PMB.data.PersonelDetayi.EgitimSeviyesi|degerYok"></span><br>
+            <label style="margin-bottom: 0px;">Telefon :</label><a  style="color:yellow" href="tel:0{{PmC.PMB.data.Telefon | tel}}" ng-bind="PmC.PMB.data.Telefon | tel"></a><br>
+            <label style="margin-bottom: 0px;">Mail :</label><a  style="color:yellow" href="mailto:{{PmC.PMB.data.Mail}}" ng-bind="PmC.PMB.data.Mail|degerYok"></a>
+        </div>
+        <div class="col-xs-4">
+            <div class="col-xs-6">
+                <address class="m-t-md  m-b-n-lg pull-left">
+                    <div class="row">
+                        <a class="btn btn-xs btn-instagram" ui-sref="Analiz.Ramazzinis({sti:PmC.PMB.sirketId,blm:PmC.PMB.bolumId,sAdi:PmC.PMB.sirketAdi,bAdi:PmC.PMB.bolumAdi})"><i class="fa fa-deviantart"></i> Ramazzini </a>
+                    </div>
+                    <div class="row">
+                        <a class="btn btn-xs btn-warning" ng-click="PmC.Ikaz(true)" ng-if="!PmC.warning"><i class="fa fa-exclamation"></i>&nbsp;Uyarılarımız</a>
+                    </div>
+                </address>
+            </div>
+            <div class="col-xs-6">
+                <span class="fa-stack fa-2x" ng-click="PmC.Ikaz(false)" style="cursor: pointer" ng-if="PmC.warning" tooltip-placement="right" uib-tooltip="{{PmC.warningLength}} Adet Uyarınız Var.">
+                    <i class="fa fa-circle fa-stack-2x" style="color: #f7ef07;"></i>
+                    <i class="fa fa-exclamation fa-stack-1x"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="animated fadeInRight">
+        <div class="ibox float-e-margins" ng-class="{collapsed:PmC.acKapa}">
+            <div class="ibox-title">
+                <div class="col-sm-2">
+                    <h5 ng-click="PmC.acKapa=!PmC.acKapa" style="color:darkblue">Muayene Kayıtları</h5>
+                </div>
+                <div class="col-sm-9">
+                    <a href="#" editable-select="nbv" e-ng-options="sx as sx.SirketAdi+' '+sx.SaglikBirimiAdi for sx in birimler" ng-bind="nbv.SirketAdi+' '+nbv.SaglikBirimiAdi||'Sağlık Birimini Seçiniz'"></a>
+                </div>
+                <div class="col-sm-1">
+                    <div ibox-tools></div>
+                </div>
+
+            </div>
+            <div class="ibox-content" style="padding-bottom: 0em">
+                <table datatable="ng" id="Pm" style="width:100%;cursor:pointer"
+                       dt-options="dtOptionsPmC" dt-column-defs="dtColumnDefsPmC" class="table table-responsive  table-striped table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>Prt</th>
+                            <th>Tanıları</th>
+                            <th>İlaçları</th>
+                            <th>Tarih</th>
+                            <th>Sonucu</th>
+                            <th>ERecete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="pm in PmC.PMleri" ng-class="{'selected':pm.PersonelMuayene_Id===PmC.selectedRow}">
+                            <td ng-bind="pm.PersonelMuayene_Id"></td>
+                            <td ng-bind="pm.Protokol" style="width:5%"></td>
+                            <td ng-bind="PmC.Tanilar(pm.PMJson.Tanilar)" style="width:25%"></td>
+                            <td ng-bind="PmC.Ilaclar(pm.PMJson.Ilaclar)" style="width:49%"></td>
+                            <td ng-bind="pm.Tarih|date:'dd/MM/yyyy  HH:mm'" style="width:11%"></td>
+                            <td ng-bind="PmC.Sonuc(pm.PMJson)" style="width:5%"></td>
+                            <td style="color:orangered;font-weight:bold;width:10%"><b ng-bind="pm.PMJson.imzaliEreceteGirisReturn.ereceteDVOField.ereceteNoField"></b></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row ibox float-e-margins animated fadeInUp">
+        <div class="col-sm-4">
+            <label>
+                <input icheck type="checkbox" ng-model="oneAtATime">
+                Bir Dilimde Açın
+            </label>
+            <uib-accordion id="acc" close-others="oneAtATime">
+                <div uib-accordion-group class="panel-default" is-open="status.open">
+                    <uib-accordion-heading>
+                        <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+                        Şikayetleri <!--status open ng-show {{PmC.Muayene.Sikayetler}}-->
+                    </uib-accordion-heading>
+                    <ui-select multiple tagging tagging-label="false" ng-model="PmC.Muayene.Sikayetler" theme="bootstrap">
+                        r"
+                        <ui-select-match placeholder="Şikayetleri Seç veya Ara..↓┘Ent">{{$item}}</ui-select-match>
+                        <ui-select-choices refresh="PmC.refreshSikayet($select)"
+                                           refresh-delay="300"
+                                           repeat="item in PmC.items | filter: $select.search">
+                            <div ng-bind-html="item | highlight: $select.search"></div>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+                <div uib-accordion-group class="panel-default" is-open="status.open2">
+                    <uib-accordion-heading>
+                        FM Bulguları <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open2, 'glyphicon-chevron-right': !status.open2}"></i>
+                    </uib-accordion-heading>
+                    <ui-select multiple tagging tagging-label="false" ng-model="PmC.Muayene.Bulgulari" theme="bootstrap">
+                        <ui-select-match placeholder="Fizik Muayene Bulgularınızı Seçiniz..↓┘">{{$item}}</ui-select-match>
+                        <ui-select-choices refresh="PmC.refreshBulgu($select)"
+                                           refresh-delay="300"
+                                           repeat="item in PmC.items | filter: $select.search">
+                            <div ng-bind-html="item | highlight: $select.search"></div>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+                <div uib-accordion-group class="panel-default" is-open="status.open5">
+                    <uib-accordion-heading>
+                        EKG <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open5, 'glyphicon-chevron-right': !status.open5}"></i>
+                    </uib-accordion-heading>
+                    <textarea rows="3" cols="54" ng-model="PmC.Muayene.EKG.Sonuc" placeholder="EKG değerlendirmenizi giriniz."></textarea>
+                </div>
+                <div uib-accordion-group class="panel-default" is-open="status.open3">
+                    <uib-accordion-heading>
+                        Ateş-Nabız-Tansiyon <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open3, 'glyphicon-chevron-right': !status.open3}"></i>
+                    </uib-accordion-heading>
+                    <div class="row">
+                        <div class="col-sm-6" style="padding-right: 0px;">
+                            <div class="input-group">
+                                <span class="input-group-addon">Sol Sistol&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                <input type="number" min="0" ng-model="PmC.Muayene.ANT.TASolKolSistol" class="form-control">
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon">Sol Diastol&nbsp;</span>
+                                <input type="number" min="0" ng-model="PmC.Muayene.ANT.TASolKolDiastol" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-sm-6" style="padding-left: 0px;">
+                            <div class="input-group">
+                                <span class="input-group-addon">Sağ Sistol&nbsp;&nbsp;&nbsp;</span>
+                                <input type="number" ng-model="PmC.Muayene.ANT.TASagKolSistol" min="0" class="form-control">
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon">Sağ Diastol</span>
+                                <input type="number" min="0" ng-model="PmC.Muayene.ANT.TASagKolDiastol" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6" style="padding-right: 0px;">
+                            <div class="input-group">
+                                <span class="input-group-addon">Ateş</span>
+                                <input type="text" ng-model="PmC.Muayene.ANT.Ates" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-sm-6" style="padding-left: 0px;">
+                            <div class="input-group">
+                                <span class="input-group-addon">Nabız Sayısı/dk</span>
+                                <input type="number" min="0" ng-model="PmC.Muayene.ANT.Nabiz" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">Nabız Ritmi</span>
+                        <input type="text" ng-model="PmC.Muayene.ANT.NabizRitmi" class="form-control">
+                    </div>
+                </div>
+                <div uib-accordion-group class="panel-default" is-open="status.open4">
+                    <uib-accordion-heading>
+                        Laboratuvar <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open4, 'glyphicon-chevron-right': !status.open4}"></i>
+                    </uib-accordion-heading>
+                    <label>Genel Laboratuvar </label>
+                    <ui-select multiple tagging tagging-label="false" ng-model="PmC.Muayene.Lab" theme="bootstrap">
+                        <ui-select-match placeholder="Tetkiklerinizi Seçiniz..↓┘">{{$item}}</ui-select-match>
+                        <ui-select-choices refresh="PmC.refreshLaboratuvar($select)"
+                                           refresh-delay="1000"
+                                           repeat="item in PmC.items | filter: $select.search">
+                            <div ng-bind-html="item | highlight: $select.search"></div>
+                        </ui-select-choices>
+                    </ui-select>
+                    <label>Hemogram</label>
+                    <ui-select multiple ng-model="PmC.Muayene.LabHemogram" sortable="true" close-on-select="false" theme="bootstrap">
+                        <ui-select-match placeholder="Hemogramları Seçiniz..↓┘">{{$item.prt}}</ui-select-match>
+                        <ui-select-choices repeat="item in PmC.hmgPrms | propsFilter: {prt: $select.search, kst: $select.search}">
+                            <div ng-bind-html="item.prt | highlight: $select.search"></div>
+                            <small>
+                                <span ng-bind-html="''+item.kst | highlight: $select.search"></span>
+                            </small>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+                <div uib-accordion-group class="panel-default" is-open="status.open6">
+                    <uib-accordion-heading>
+                        Radyoloji <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open6, 'glyphicon-chevron-right': !status.open6}"></i>
+                    </uib-accordion-heading>
+                    <div ng-repeat="rad in PmC.Muayene.Radyoloji" class="etiket">
+                        <label>İşlem</label>
+                        <ui-select ng-model="rad.RadyolojikIslem" theme="bootstrap" style="margin-left:2px;margin-left:2px">
+                            <ui-select-match placeholder="Radyolojik İşlemi Seçiniz! ↓┘">{{$select.selected.Grafiler}}</ui-select-match>
+                            <ui-select-choices repeat="item in PmC.RadyolojikIslemler | filter: $select.search">
+                                <div ng-bind-html="item.Grafiler | highlight: $select.search"></div>
+                            </ui-select-choices>
+                        </ui-select>
+                        <label>Sonuç</label>
+                        <textarea rows="2" cols="50" ng-model="rad.RadyolojikSonuc"></textarea>
+                        <button class="btn btn-outline btn-info btn-xs" ng-click="PmC.addRad()">Radyolojik Tetkik Ekle</button>
+                        <button class="btn btn-outline btn-danger btn-xs" ng-click="PmC.deleteRad(rad)">Sil</button>
+                    </div>
+                </div>
+                <div uib-accordion-group class="panel-default" is-open="status.open7" ng-show="fileButtonShow">
+                    <uib-accordion-heading>
+                        Dosya İşlemleri <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open7, 'glyphicon-chevron-right': !status.open7}"></i>
+                    </uib-accordion-heading>
+                    <button class="btn btn btn-warning" ngf-select="uploadFiles($files)" multiple
+                            accept="image/*,application/pdf,application/msword,application/vnd.ms-excel,
+                      application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+                        Belge Ekle
+                    </button>
+                    <row>
+                        <ul style="list-style-type: upper-roman;" ng-show="dosyaList">
+                            <li ng-repeat="f in files" style="font:normal;margin-left:20px">
+                                <a ng-click="download(f)" ng-bind="f.FileName" tooltip-placement="bottom" uib-tooltip="İndir" tooltip-popup-delay="2500"></a>
+                                <i class="fa fa-remove" ng-click="deleten(f.GenericName , $index)" tooltip-placement="bottom" uib-tooltip="Sil" tooltip-popup-delay="2500"> </i>
+                            </li>
+                        </ul>
+                    </row>
+                </div>
+                <div uib-accordion-group class="panel-default" is-open="status.open8">
+                    <uib-accordion-heading>
+                        Danışma Kaydı<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open7, 'glyphicon-chevron-right': !status.open7}"></i>
+                    </uib-accordion-heading>
+                    <textarea rows="5" cols="50" ng-model="PmC.Muayene.Danisma"></textarea>
+                </div>
+                <div uib-accordion-group class="panel-default" is-open="status.open9">
+                    <uib-accordion-heading>
+                        SMS/Mail Gönder<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open7, 'glyphicon-chevron-right': !status.open7}"></i>
+                    </uib-accordion-heading>
+                    <textarea rows="5" cols="50" ng-model="PmC.Muayene.MailBilgisi"></textarea>
+                    <button class="btn btn-outline btn-info btn-xs" ng-click="PmC.perSMS()">SMS gönder</button>
+                    <button class="btn btn-outline btn-danger btn-xs" ng-click="PmC.perMail()">Mail gönder</button>
+                    <span>Karakter Sayısı:{{PmC.Muayene.MailBilgisi.trim().length}}</span>
+                </div>
+
+            </uib-accordion>
+
+            <div id="stok" class="ibox collapsed">
+                <div class="ibox-title">
+                    <h5>Gözlem Tedavileri</h5>
+                    <div ibox-tools></div>
+                </div>
+                <div class="ibox-content" style="padding-top:0px;padding-bottom:0px">
+                    <table class="table table-responsive table-hover issue-tracker row m-t-n-xxs m-b-n-xs" style="width:100%;cursor:pointer">
+                        <tbody>
+                            <tr ng-repeat="ilac in PmC.Muayene.Tedaviler" style="border-bottom:1px solid #e7eaec;" ng-click="rowHighilited($index,ilac)" ng-class="{active:$index==selectedRow}">
+                                <td ng-bind="ilac.IlacAdi"></td>
+                                <td ng-bind="ilac.SarfMiktari"></td>
+                                <td><a class="btn btn-xs btn-white" ng-click="PmC.stokKaldir(ilac)"><i class="fa fa-remove"></i> Sil </a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="row m-t-sm">
+                        <form role="form" name="StokSarf" novalidate ng-submit="PmC.stokEkle()">
+                            <div class="form-group">
+                                <label>Stok Adı</label>
+                                <ui-select ng-model="PmC.IlacSarfCikisi" theme="bootstrap">
+                                    <ui-select-match placeholder="Sağlık Biriminizi Seçtikten Sonra Stoklarınzı Seçebilirsiniz.">{{$select.selected.IlacAdi}}</ui-select-match>
+                                    <ui-select-choices repeat="item in IlacStoklari | filter: $select.search">
+                                        <div ng-bind-html="item.IlacAdi | highlight: $select.search"></div>
+                                        <small>Stok Miktarı:&nbsp;</small>
+                                        <span>
+                                            <small ng-bind-html="item.StokMiktari"></small>
+                                            <small ng-bind-html="item.StokMiktarBirimi"></small>
+                                        </span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-6">
+                                    <label>Stok Miktarı</label>
+                                    <input type="number" placeholder="" class="form-control" name="SarfMiktari2" ng-model="PmC.IlacSarfCikisi.SarfMiktari" min="1" value="1" required>
+                                    <div class="m-t-xs" ng-show="StokSarf.$invalid && StokSarf.SarfMiktari2.$dirty">
+                                        <small class="text-danger" ng-show="StokSarf.SarfMiktari2.$error.number">Lütfen Stok Miktarnı Giriniz.</small>
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6" style="padding-top: 25px;">
+                                    <label>&nbsp;</label>
+                                    <button class="btn btn-sm btn-primary" type="submit" ng-disabled="StokSarf.$invalid"><strong><i class="glyphicon glyphicon-save"></i>&nbsp; Stokdan Kaydet</strong></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <div class="ibox float-e-margins" id="ilaclar" style="margin-bottom:5px">
+                <div class="ibox-title">
+                    <div class="col-sm-2">
+                        <h5>İlaçlar</h5>
+                    </div>
+                    <div class="col-sm-4">
+                        <button type="button" class="btn btn-xs btn-success" ng-if="PmC.personelMuayene.Protokol!=null" ng-click="PmC.IlacRpt()"><i class="glyphicon glyphicon-repeat"></i>&nbsp;İlaç Rpt Yeni Kaydı</button>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="ibox-tools">
+                            <span ng-init="PmC.Say = PmC.Muayene.Ilaclar.length;" class="label label-warning-light pull-right">{{PmC.Say}} Kalem İlaç</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div ibox-tools></div>
+                    </div>
+                </div>
+                <div class="ibox-content" style="padding-bottom:0px">
+                    <div>
+                        <div class="feed-activity-list">
+                            <div class="feed-element" ng-repeat="ilac in PmC.Muayene.Ilaclar">
+                                <div class="row media-body ">
+                                    <div class="col-sm-9" ng-click="PmC.IlaciSec(ilac)">
+                                        <div class="pull-right">
+                                            <span class="text-navy" ng-bind="ilac.KutuAdeti | romanRakamiYaz"></span>&nbsp;
+                                            <span class="text-navy" ng-bind="ilac.KutuAdeti | sayiYaz"></span>
+                                        </div>
+
+                                        <strong style="color:black" ng-bind="ilac.IlacAdi | uppercase"></strong> <br>
+                                        <p style="margin-bottom: 2px;">
+                                            &nbsp;
+                                            <span ng-bind="ilac.kullanimPeriyot | sayiYaz"></span>
+                                            <span ng-bind="ilac.kullanimPeriyotBirimi | kullanimPeriyod"></span>&nbsp;
+                                            <span>Bir</span>&nbsp;
+                                            <span style="font-weight:700;font-family:'Lucida Handwriting'">S:</span>
+                                            <span ng-bind="ilac.GunSayisi"></span>
+                                            <span style="font-weight:bold">X</span>
+                                            <span ng-bind="ilac.KullanimSayisi"></span>&nbsp;&nbsp;
+                                            <span ng-bind="ilac.kullanimSekli | kullanimSekli"></span>
+                                        </p>
+                                        <ul ng-if="ilac.ereceteIlacAciklamaListesi.length>0">
+                                            <li ng-repeat="ac in ilac.ereceteIlacAciklamaListesi">{{ac.aciklama}}</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-3 btn-group">
+                                        <a class="btn btn-xs btn-danger btn-rounded" ng-click="PmC.deleteIlac(ilac)" tooltip-placement="right" uib-tooltip="İlaçı Sil"><i class="fa fa-remove"></i> Sil </a>
+                                        <a class="btn btn-xs btn-info  btn-rounded" ng-click="PmC.KubIlac(ilac)" tooltip-placement="left" uib-tooltip="Kısa Ürün Bilgisi(KÜB)">KÜB</a>
+                                        <a class="btn btn-xs btn-warning  btn-rounded" ng-click="PmC.KtIlac(ilac)" tooltip-placement="left" uib-tooltip="Kullanma Talimatı(KT)">KT</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <form name="receteFrom" ng-submit="PmC.ekleIlac()" novalidate>
+                            <div class="row m-t-xxs">
+                                <div class="col-sm-7 form-group" ng-class="{ 'has-error' : receteForm.IlacAdiInput.$invalid && !receteForm.IlacAdiInput.$pristine }" style="padding-left: 1px;padding-right: 1px;margin-bottom:0px">
+                                    <label for="ilAdi">İlaç Adı </label>
+                                    <input type="text" id="ilAdi" name="IlacAdiInput" ng-model="PmC.Ilacx.IlacAdi" placeholder="İlaçları Arayabilirsiniz" uppercased
+                                           uib-typeahead="Ilac.IlacAdi as Ilac.IlacAdi for Ilac in PmC.getIlac($viewValue)" typeahead-on-select='PmC.onSelect($item, $model, $label)'
+                                           typeahead-loading="loadingLocations" typeahead-no-results="noResults" autocomplete="off"
+                                           typeahead-wait-ms="750" class="form-control" typeahead-template-url="customTemplate.html" autofocus="autofocus" required>
+                                    <p ng-show="receteForm.IlacAdiInput.$invalid && !receteForm.IlacAdiInput.$pristine" class="help-block">İlaç Adını Giriniz..↓┘Ent</p>
+                                    <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+                                    <div ng-show="noResults">
+                                        <i class="glyphicon glyphicon-remove"></i> Sonuç Bulunamadı.!
+                                    </div>
+                                </div>
+                                <div class="col-sm-3 form-group" style="padding-left: 4px;padding-right: 4px;">
+                                    <label for="kul">Kullanım Şekli</label>
+                                    <select ng-model="PmC.Ilacx.kullanimSekli" ng-options="t.val as t.verilis for t in PmC.kullanimSeklis" ng-init="PmC.Ilacx.kullanimSekli=1" class="form-control" style="padding-left: 2px;padding-right: 6px;"></select>
+                                </div>
+                                <div class="col-sm-2 form-group">
+                                    <label>Kutu</label>
+                                    <input type="number" min="1" ng-model="PmC.Ilacx.KutuAdeti" style="padding-left: 4px;padding-right: 4px;"
+                                           step="1" ng-init="PmC.Ilacx.KutuAdeti=1" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row m-t-xxs">
+                                <div class="col-sm-2 form-group">
+                                    <label>Periyot</label>
+                                    <input type="number" min="1" ng-init="PmC.Ilacx.kullanimPeriyot=1" step="1"
+                                           ng-model="PmC.Ilacx.kullanimPeriyot" class="form-control">
+                                </div>
+                                <div class="col-sm-2 form-group" style="padding-left: 1px;padding-right: 1px;">
+                                    <label>Birimi</label>
+                                    <select ng-model="PmC.Ilacx.kullanimPeriyotBirimi" ng-options="t.val as t.adi for t in PmC.kullanilanPeriyods" ng-init="PmC.Ilacx.kullanimPeriyotBirimi=3" class="form-control" style="padding-left: 2px;padding-right: 2px;"></select>
+                                </div>
+                                <div class="col-sm-2 form-group">
+                                    <label>Defa</label>
+                                    <input type="number" min="1" ng-init="PmC.Ilacx.GunSayisi=1" step="1"
+                                           ng-model="PmC.Ilacx.GunSayisi" class="form-control">
+                                </div>
+                                <div class="col-sm-1 form-group">
+                                    <label class="m-t-sm">&nbsp;</label>
+                                    <span class="m-t-xl" style="font-weight:bold">X</span>
+                                </div>
+                                <div class="col-sm-2 form-group">
+                                    <label>Doz</label>
+                                    <input type="number" ng-init="PmC.Ilacx.KullanimSayisi=1"
+                                           min="1" ng-model="PmC.Ilacx.KullanimSayisi" style="padding-left: 5px; padding-right: 5px;"
+                                           class="form-control">
+                                </div>
+                                <div class="col-sm-1">
+                                    <button class="btn btn-success btn-sm m-t-md m-l-n-md" ng-disabled="receteForm.$invalid" type="submit"
+                                            style="margin-bottom: 4px;margin-top: 24px;" tooltip-placement="bottom" uib-tooltip="İlaçı Ekle">
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                </div>
+                                <div class="col-sm-1">
+                                    <button class="btn btn-twitter btn-sm m-t-md m-l-n-md" type="button" ng-click="ilAc=!ilAc"
+                                            style="margin-bottom: 4px;margin-top: 24px;" tooltip-placement="bottom" uib-tooltip="İlaçın Açıklama Bölümünü Açar">
+                                        <i class="fa fa-info"></i>
+                                    </button>
+                                </div>
+                                <div class="col-sm-1">
+                                    <button class="btn btn-warning btn-sm m-t-md m-l-n-md" type="button" ng-click="PmC.kapnir()"
+                                            style="margin-bottom: 4px;margin-top: 24px;" tooltip-placement="bottom" uib-tooltip="Reçete Açıklama Bölümünü Açar">
+                                        <i class="fa fa-angellist"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row m-t-xxs" style="margin-top: 3px;border-bottom: 1px solid #e7eaec;" uib-collapse="!ilAc">
+                                <div class="row" style="margin-left:0px;margin-right:0px;">
+                                    <div class="col-sm-8 form-group" style="padding-left: 4px;padding-right: 4px;">
+                                        <label for="kul">İlaç Açıklaması </label>
+                                        <input type="text" id="kul" ng-model="PmC.ereceteIlacAciklama.aciklama" placeholder="Kullanımları Arayabilirsiniz"
+                                               uib-typeahead="Kullanim for Kullanim in PmC.Kullanimlar | filter:$viewValue | limitTo:8" class="form-control">
+                                    </div>
+                                    <div class="col-sm-3 form-group">
+                                        <label for="kul">Türü</label>
+                                        <select ng-model="PmC.ereceteIlacAciklama.aciklamaTuru" ng-disabled="PmC.ereceteIlacAciklama.aciklama==null"
+                                                ng-init="PmC.ereceteIlacAciklamaListesi.aciklamaTuru=2"
+                                                ng-options="t.val as t.adi for t in PmC.aciklamaTurus" class="form-control"></select>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <button class="btn btn-twitter btn-sm m-t-md m-l-n-md" type="button" ng-click="PmC.ilacAciklamaEkle(PmC.ereceteIlacAciklama)"
+                                                style="margin-bottom: 4px;margin-top: 24px;" tooltip-placement="bottom" uib-tooltip="İlaç Açıklamasını Ekle">
+                                            <i class="fa fa-plus-square-o"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="row m-t-xxs">
+                                    <ol>
+                                        <li ng-repeat="item in PmC.IlacAciklamaListesi">
+                                            <span class="text-navy" ng-bind="item.aciklama"></span>&nbsp;&nbsp;
+                                            <a class="btn btn-xs btn-white" ng-click="PmC.deleteIlacAciklama(item)" tooltip-placement="bottom" uib-tooltip="İlaç Açıklamasını Sil"><i class="fa fa-remove"></i> Sil </a>
+                                        </li>
+                                    </ol>
+                                </div>
+
+                            </div>
+                            <div class="row" uib-collapse="isCollapsed">
+                                <div class="row" style="margin-top: 3px;border-bottom: 1px solid #e7eaec;">
+                                    <div class="row" style="margin-left:0px;margin-right:0px;">
+                                        <div class="col-sm-8 form-group">
+                                            <label for="kul">Reçete Açıklaması </label>
+                                            <input type="text" id="kul" ng-model="PmC.ereceteAciklama.aciklama" placeholder="Kullanımları Arayabilirsiniz"
+                                                   uib-typeahead="Kullanim for Kullanim in PmC.Kullanimlar | filter:$viewValue | limitTo:8" class="form-control">
+                                        </div>
+                                        <div class="col-sm-3 form-group">
+                                            <label for="kul">Türü</label>
+                                            <select ng-model="PmC.ereceteAciklama.aciklamaTuru" ng-disabled="PmC.ereceteAciklama.aciklama==null"
+                                                    ng-options="t.val as t.adi for t in PmC.aciklamaTurus" class="form-control"></select>
+                                        </div>
+                                        <div class="col-sm-1">
+                                            <button class="btn btn-twitter btn-sm m-t-md m-l-n-md" type="button" ng-click="PmC.aciklamaEkle(PmC.ereceteAciklama)"
+                                                    style="margin-bottom: 4px;margin-top: 24px;" tooltip-placement="bottom" uib-tooltip="Reçete Açıklamasını Ekle">
+                                                <i class="fa fa-plus-square-o"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="row m-t-xxs">
+                                        <ol>
+                                            <li ng-repeat="item in PmC.Muayene.Erecete.ereceteAciklamaBilgisi">
+                                                <span class="text-navy" ng-bind="item.aciklama"></span>&nbsp;&nbsp;
+                                                <a class="btn btn-xs btn-white" ng-click="PmC.deleteAciklama(item)" tooltip-placement="bottom" uib-tooltip="Reçete Açıklamasını Sil"><i class="fa fa-remove"></i> Sil </a>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-3 form-group">
+                                        <label for="kul">Provizyon</label>
+                                        <select ng-model="PmC.Muayene.Erecete.provizyonTipi"
+                                                ng-options="t.val as t.adi for t in PmC.provizyonTipis" class="form-control"></select>
+                                    </div>
+                                    <div class="col-sm-3 form-group">
+                                        <label for="kul">Reçete Türü</label>
+                                        <select ng-model="PmC.Muayene.Erecete.receteTuru"
+                                                ng-options="t.val as t.adi for t in  PmC.receteTurus " class="form-control"></select>
+                                    </div>
+                                    <div class="col-sm-4 form-group">
+                                        <label for="kul">Reçete Alt Türü</label>
+                                        <select ng-model="PmC.Muayene.Erecete.receteAltTuru"
+                                                ng-options="t.val as t.adi for t in  PmC.receteAltTurus" class="form-control"></select>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ibox" ng-if="sonuc== PmC.sonuclar[5]||sonuc== PmC.sonuclar[7]&&PmC.sonuclar[7]!=undefined" style="margin-bottom: 5px">
+                <div class="ibox-title">
+                    <h5 ng-if="sonuc== PmC.sonuclar[5]">İş Kazası </h5>
+                    <h5 ng-if="sonuc== PmC.sonuclar[7]">Gebelik Muayenesi</h5>
+                    <div ibox-tools></div>
+                </div>
+                <div class="ibox-content" style="padding-top: 4px;padding-bottom: 4px;">
+                    <div class="row" ng-include="sonuc.url"></div>
+                </div>
+            </div>
+            <div class="ibox collapsed" ng-show="fileButtonShow">
+                <div class="ibox-title">
+                    <h5>Mail Gönder</h5>
+                    <div ibox-tools></div>
+                </div>
+                <div class="ibox-content" style="padding-top: 2px;">
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <ul class="my-pagination" uib-pagination total-items="totalItems" ng-model="currentPage" first-text="&#xf049;" last-text="&#xf050;"
+                                previous-text="&#xf048;" next-text="&#xf051;" style="margin-bottom: 5px;margin-top:5px"
+                                max-size="2" boundary-links="true" rotate="false" num-pages="numPages" items-per-page="itemsPerPage"></ul>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="number" min="2" max="500" ng-model="viewby" ng-change="setItemsPerPage(viewby)" style="margin-top:5px;" />
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <table id="table1" class="table table-bordered table-responsive" arrow-selector style="margin-bottom:2px;">
+                            <thead>
+                                <tr>
+                                    <th tooltip-placement="bottom" uib-tooltip="Gönderme Onayı">O</th>
+                                    <th tooltip-placement="bottom" uib-tooltip="Kime">TO</th>
+                                    <th tooltip-placement="bottom" uib-tooltip="Bilgi">CC</th>
+                                    <th tooltip-placement="bottom" uib-tooltip="Gizli">BC</th>
+                                    <th>Ad ve Soyadı</th>
+                                    <th>Email</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="mail in PmC.mailListesi.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))"
+                                    ng-class="{'selected':$index == selectedRow2}">
+                                    <td style="width:2%;cursor:pointer">
+                                        <input type="checkbox" ng-model="mail.o" name="ax">
+                                    </td>
+                                    <td style="width:2%;cursor:pointer">
+                                        <input type="radio" ng-model="mail.to" value="Kime">
+                                    </td>
+                                    <td style="width:2%;cursor:pointer">
+                                        <input type="radio" ng-model="mail.to" value="Bilgi">
+                                    </td>
+                                    <td style="width:2%;cursor:pointer">
+                                        <input type="radio" ng-model="mail.to" value="Gizli">
+                                    </td>
+                                    <td style="width:50%;text-transform:uppercase" ng-bind="mail.ad" ng-click="setClickedRow($index,mail)"></td>
+                                    <td style="width:42%" ng-bind="mail.email" ng-click="setClickedRow($index,mail)"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3 form-group">
+                            <label>Şekli</label>
+                            <select class="form-control" ng-model="PmC.sendMail.to"
+                                    ng-options="z for z in ['Kime','Bilgi','Gizli']"></select>
+                        </div>
+                        <div class="col-sm-4 form-group">
+                            <label>Adı ve Soyadı</label>
+                            <input type="text" ng-model="PmC.sendMail.ad"
+                                   placeholder=""
+                                   class="form-control">
+                        </div>
+                        <div class="col-sm-5 form-group">
+                            <label>Mail</label>
+                            <input type="email" ng-model="PmC.sendMail.email"
+                                   placeholder=""
+                                   class="form-control">
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <button class="btn btn-danger btn-sm" ng-click="PmC.deleteMail(PmC.sendMail)"><i class="glyphicon glyphicon-trash"></i>&nbsp;Sil</button>
+                            <button class="btn btn-primary btn-sm" ng-click="PmC.addMail(PmC.sendMail)"><i class="glyphicon glyphicon-plus"></i>&nbsp;Ekle</button>
+                            <button class="btn btn-warning btn-sm" ng-click="PmC.newMail()"><i class="glyphicon glyphicon-new-window"></i>&nbsp;Yeni</button>
+                        </div>
+                        <div class="col-sm-6">
+                            <button class="btn btn-sm pull-right" ng-disabled="PmC.MailBilgisi==='Gönderiliyor!'" ng-class="{'btn-info':PmC.MailBilgisi==='Gönder','btn-danger':PmC.MailBilgisi==='Gönderiliyor!'}" ng-click="PmC.sendMaili()"><i class="glyphicon glyphicon-envelope"></i>&nbsp; {{PmC.MailBilgisi}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ibox collapsed" ng-if="PmC.Muayene.imzaliEreceteGirisReturn.ereceteDVOField.ereceteNoField!=null">
+                <div class="ibox-title">
+                    <h5 style="font-weight:bold">E-Reçete:{{PmC.Muayene.imzaliEreceteGirisReturn.ereceteDVOField.ereceteNoField}}</h5>
+                    <div ibox-tools></div>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <span style="font-weight:700;font-size:x-large">Sn. {{PmC.Muayene.imzaliEreceteGirisReturn.ereceteDVOField.kisiDVOField.adiField}} {{PmC.Muayene.imzaliEreceteGirisReturn.ereceteDVOField.kisiDVOField.soyadiField}}</span>
+                    </div>
+                    <div class="row">
+                        <span style="font-weight:900;font-size:xx-large">TC No:{{PmC.Muayene.imzaliEreceteGirisReturn.ereceteDVOField.tcKimlikNoField}}</span>
+                    </div>
+                    <div class="row">
+                        <span style="font-weight:900;font-size:xx-large">E-Reçete No:{{PmC.Muayene.imzaliEreceteGirisReturn.ereceteDVOField.ereceteNoField}}</span>
+                    </div>
+                    <div class="row">
+                        <span style="font-weight:700;font-size:x-large">Dr {{PmC.Muayene.imzaliEreceteGirisReturn.ereceteDVOField.doktorAdiField}} {{PmC.Muayene.imzaliEreceteGirisReturn.ereceteDVOField.doktorSoyadiField}} {{PmC.Muayene.imzaliEreceteGirisReturn.ereceteDVOField.receteTarihiField}} </span>
+                    </div>
+                </div>
+                <div class="ibox-footer">
+                    <button class="btn btn-primary" type="button" ng-click="PmC.sendEreceteBilgiMaili()">Personele Mail Gönder</button>
+                    <button class="btn btn-success" type="button" ng-click="PmC.sendEreceteBilgiSMS()">Personele SMS Gönder</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="ibox" style="margin-bottom: 5px;">
+                <div class="ibox-title">
+                    <h5>Tanılar</h5>
+                    <div ibox-tools></div>
+                </div>
+                <div class="ibox-content" style="padding-top: 6px;padding-bottom: 4px;">
+                    <ul class="todo-list m-t small-list">
+                        <li ng-repeat="tani in PmC.Muayene.Tanilar">
+                            <button class="btn btn-xs pull-right btn-danger" ng-click="PmC.taniDelete(tani)"><i class="fa fa-remove" tooltip-placement="bottom" uib-tooltip="Tanıyı Sil"></i>&nbsp;</button>
+                            <button class="btn btn-xs pull-right btn-primary" ng-click="PmC.taniSablonuEkle(tani.ad)" ng-if="PmC.Muayene.Tanilar.length<2" tooltip-placement="bottom" uib-tooltip="Tanı Şablonu Ekle"><i class="fa fa-plus"></i>&nbsp;</button>
+                            <button class="btn btn-xs pull-right btn-warning" ng-if="tani.kullanaciID>0" ng-click="PmC.taniSablonu(tani.kullanaciID)" tooltip-placement="bottom" uib-tooltip="Kendinize Ait Tanı Şablonunuzdan Verilerinizi Ekleyin"><i class="fa fa-check"></i>&nbsp;</button>
+                            <button class="btn btn-xs pull-right btn-info" ng-if="tani.genelID>0" ng-click="PmC.taniSablonu(tani.genelID)" tooltip-placement="bottom" uib-tooltip="Genel Bir Tanı Şablonundan Verilerinizi Ekleyin"><i class="fa fa-check"></i>&nbsp;</button>
+                            <span class="m-l-xs" ng-bind="tani.ad"></span>
+                        </li>
+                    </ul>
+                    <div class="row m-t-sm">
+                        <form name="taniFrom" ng-submit="PmC.ekleTani(PmC.Tani)" novalidate>
+                            <div class="form-group" ng-class="{ 'has-error' : taniFrom.taniAdiInput.$invalid && !taniFrom.taniAdiInput.$pristine }">
+                                <input type="text" name="taniAdiInput" id="taniAdiInput" ng-model="PmC.Tani" placeholder="Tanıyı Giriniz.↓┘Ent" uib-typeahead="tani as tani for tani in PmC.HastalikTanimiList($viewValue)"
+                                       class="form-control" autocomplete="off" typeahead-wait-ms="750" required>
+                                <!--<p ng-show="taniFrom.taniAdiInput.$invalid && !taniFrom.taniAdiInput.$pristine" class="help-block">Tanıyı Boş Bırakmayın.</p>-->
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5 ng-if="PmC.personelMuayene.Protokol==null">Muayene Sonucu</h5>
+                    <h5 ng-if="PmC.personelMuayene.Protokol!=null">Prt: {{PmC.personelMuayene.Protokol}}</h5>
+                    <button type="button" ng-if="PmC.personelMuayene.Protokol!=null" class="btn btn-xs btn-danger active pull-right m-l-sm" ng-click="PmC.Sil()"><i class="glyphicon glyphicon-remove"></i>&nbsp;Sil</button>
+                    <button type="button" ng-if="PmC.personelMuayene.Protokol!=null" class="btn btn-xs btn-success active pull-right" ng-click="PmC.NewSubmit()"><i class="glyphicon glyphicon-plus"></i>&nbsp;Yeni Muayene Kaydı</button>
+                </div>
+                <div class="ibox-content">
+                    <select ng-model="sonuc" ng-options="t.adi for t in PmC.sonuclar" class="form-control">
+                        <option value="">Muayene Sonucunu Seçiniz.</option>
+                    </select>
+                    <div class="row" style="margin-top:5px" ng-if="sonuc!= PmC.sonuclar[5] && sonuc!= PmC.sonuclar[7]" ng-include="sonuc.url"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--<pre>{{PmC.Muayene |json}}</pre>
+    <pre>{{PmC.personelMuayene |json}}</pre>-->
+    <script type="text/ng-template" id="degerKaydi.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Laboratuvar</h3>
+        </div>
+        <div class="modal-body">
+            <label>{{deger.tetkik}} Sonuçunu Giriniz..</label>
+            <input type="text" ng-model="deger.giris" autofocus="autofocus" ng-enter="submittenx()" />
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="submittenx ()">Evet</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">İptal</button>
+        </div>
+    </script>
+    <script type="text/ng-template" id="sonucKaydi.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Hemogram</h3>
+        </div>
+        <div class="modal-body">
+            <label>{{sonuc.prt}} Sonucunu Giriniz..</label>
+            <input type="text" ng-model="sonuc.giris" autofocus="autofocus" ng-enter="submittenx()" />
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="submittenx ()">Evet</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">İptal</button>
+        </div>
+    </script>
+    <script type="text/ng-template" id="customTemplate.html">
+        <a>
+            
+            <span ng-bind-html="match.label | uibTypeaheadHighlight:query"></span><br />
+            <small ng-bind-html="match.model.AtcAdi | uibTypeaheadHighlight:query"></small>
+            <small>, {{match.model.Fiyat}} TL</small>
+        </a>
+    </script>
+    <script type="text/ng-template" id="isBasi.html">
+        <div class="jumbotron" style="margin-bottom: 0px;margin-bottom: 0px;padding: 5px;z-index:100">
+            <h5>İş Başı Tarihi</h5>
+            <p class="input-group">
+                <input ng-model="PmC.Muayene.Isbasi.Tarihi" type="text" class="form-control" uib-datepicker-popup="dd-MM-yyyy" ng-init="PmC.Muayene.Isbasi.Tarihi=PmC.dateNow"
+                       is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" ng-click="open1()" alt-input-formats="altInputFormats" />
+                <span class="input-group-btn" style="z-index:100">
+                    <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+            </p>
+            <div class="row">
+                <div class="col-sm-4">
+                    <button class="btn btn-danger btn-sm" ng-if="PmC.personelMuayene.Protokol!=null">Reçete</button>
+                </div>
+                <div class="col-sm-4">
+
+                </div>
+                <div class="col-sm-4">
+                    <button class="btn btn-primary btn-sm pull-right" ng-click="PmC.IsbasiMuayeneKaydet()">Muayene Kaydet</button>
+                </div>
+            </div>
+        </div>
+    </script>
+    <script type="text/ng-template" id="imza.html">
+        <div class="modal-header">
+            <h3 class="modal-title">E-Recete</h3>
+        </div>
+        <div class="modal-body">
+            <div ng-if="bekle">
+                <h2>Lütfen Bekleyiniz. Bağlantı Kuruluyor..</h2>
+                <div class="sk-spinner sk-spinner-wave">
+                    <div class="sk-rect1"></div>
+                    <div class="sk-rect2"></div>
+                    <div class="sk-rect3"></div>
+                    <div class="sk-rect4"></div>
+                    <div class="sk-rect5"></div>
+                </div>
+            </div>
+            <div ng-if="!bekle">
+                <div class="row" ng-if="hataMesaji==null">
+                    <span style="font-weight:700;font-size:x-large">Sn. {{Muayene.imzaliEreceteGirisReturn.ereceteDVOField.kisiDVOField.adiField}} {{Muayene.imzaliEreceteGirisReturn.ereceteDVOField.kisiDVOField.soyadiField}}</span>
+                </div>
+                <div class="row" ng-if="hataMesaji==null">
+                    <span style="font-weight:900;font-size:xx-large">TC No:{{Muayene.imzaliEreceteGirisReturn.ereceteDVOField.tcKimlikNoField}}</span>
+                </div>
+                <div class="row" ng-if="hataMesaji==null">
+                    <span style="font-weight:900;font-size:xx-large;color:crimson">E-Reçete No:{{Muayene.imzaliEreceteGirisReturn.ereceteDVOField.ereceteNoField}}</span>
+                </div>
+                <div class="row" ng-if="hataMesaji==null">
+                    <span style="font-weight:700;font-size:x-large">Dr {{Muayene.imzaliEreceteGirisReturn.ereceteDVOField.doktorAdiField}} {{Muayene.imzaliEreceteGirisReturn.ereceteDVOField.doktorSoyadiField}} {{Muayene.imzaliEreceteGirisReturn.ereceteDVOField.receteTarihiField}} </span>
+                </div>
+                <div ng-if="hataMesaji!=null"><h2 style="color:crimson">Hata: {{hataMesaji}}</h2></div>
+            </div>
+
+        </div>
+
+        <div class="modal-footer" ng-if="!bekle">
+            <button class="btn btn-success" ng-if="!bekle" type="button" ng-click="sendEreceteBilgiSMS()">Personele SMS Gönder</button>
+            <button class="btn btn-primary" ng-if="!bekle" type="button" ng-click="sendEreceteBilgiMaili()">Personele Mail Gönder</button>
+            <button class="btn btn-success" ng-if="!bekle" type="button" ng-click="cancel()">Tamam</button>
+        </div>
+    </script>
+    <script type="text/ng-template" id="imzaSil.html">
+        <div class="modal-header">
+            <h3 class="modal-title">E-Recete</h3>
+        </div>
+        <div class="modal-body">
+            <span ng-if="!bekle" style="color:crimson;font-weight:800;font-size:large"><i class="glyphicon glyphicon-remove-circle"></i> {{no}} {{bilgi}}</span>
+            <div ng-if="bekle">
+                <h4>Lütfen Bekleyiniz. Bağlantı Kuruluyor...</h4>
+                <div class="sk-spinner sk-spinner-wave">
+                    <div class="sk-rect1"></div>
+                    <div class="sk-rect2"></div>
+                    <div class="sk-rect3"></div>
+                    <div class="sk-rect4"></div>
+                    <div class="sk-rect5"></div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer" ng-if="!bekle">
+            <button class="btn btn-success" ng-if="!bekle" type="button" ng-click="sil()">Tamam</button>
+            <button class="btn btn-danger" ng-if="!bekle" type="button" ng-click="cancel()">İptal</button>
+        </div>
+    </script>
+</div>
+    <style>
+        .my-pagination {
+            font-family: Helvetica, FontAwesome;
+        }
+
+        #Pm_wrapper {
+            padding-bottom: 0px;
+        }
+
+        #acc .panel-group {
+            margin-bottom: 5px;
+        }
+
+        .etiket {
+            border-style: ridge;
+            border-width: thin;
+            border-radius: 5px;
+            padding: 3px 5px 3px 3px;
+            margin: 3px;
+        }
+
+        .slide-animate-container {
+            position: relative;
+            background: white;
+            border: 1px solid groove;
+            height: auto;
+            overflow: hidden;
+        }
+
+        .slide-animate {
+            padding: 2px;
+        }
+
+            .slide-animate.ng-enter, .slide-animate.ng-leave {
+                transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.35s;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                display: block;
+                padding: 10px;
+            }
+
+            .slide-animate.ng-enter {
+                top: -50px;
+            }
+
+                .slide-animate.ng-enter.ng-enter-active {
+                    top: 0;
+                }
+
+            .slide-animate.ng-leave {
+                top: 0;
+            }
+
+                .slide-animate.ng-leave.ng-leave-active {
+                    top: 50px;
+                }
+
+        .bekle {
+            cursor: wait;
+        }
+
+        .selected {
+            background-color: dodgerblue;
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+

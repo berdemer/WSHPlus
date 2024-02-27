@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34525.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISG.Entities", "ISG.Entities\ISG.Entities.csproj", "{98A14294-369B-4483-AAA4-EA54C8C8EBC0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISG.DataAccess", "ISG.DataAccess\ISG.DataAccess.csproj", "{58A8A115-5EBB-4849-BBDC-B3380679F9D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISG.Business", "ISG.Business\ISG.Business.csproj", "{27F43A35-E7FD-4AF3-A5EB-30FC08C07517}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{053A6750-7494-42B0-A2D8-6A349224084E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISG.WebApi", "ISG.WebApi\ISG.WebApi.csproj", "{D1A143E5-5F32-43F8-BE12-F47FA785545A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISG.WebAngularJsUIv1", "ISG.WebAngularJsUIV1\ISG.WebAngularJsUIv1.csproj", "{0B9C5B5E-C573-44D7-92F6-3D1A94285B5C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{98A14294-369B-4483-AAA4-EA54C8C8EBC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98A14294-369B-4483-AAA4-EA54C8C8EBC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98A14294-369B-4483-AAA4-EA54C8C8EBC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98A14294-369B-4483-AAA4-EA54C8C8EBC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58A8A115-5EBB-4849-BBDC-B3380679F9D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58A8A115-5EBB-4849-BBDC-B3380679F9D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58A8A115-5EBB-4849-BBDC-B3380679F9D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58A8A115-5EBB-4849-BBDC-B3380679F9D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27F43A35-E7FD-4AF3-A5EB-30FC08C07517}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27F43A35-E7FD-4AF3-A5EB-30FC08C07517}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27F43A35-E7FD-4AF3-A5EB-30FC08C07517}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27F43A35-E7FD-4AF3-A5EB-30FC08C07517}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1A143E5-5F32-43F8-BE12-F47FA785545A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1A143E5-5F32-43F8-BE12-F47FA785545A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1A143E5-5F32-43F8-BE12-F47FA785545A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1A143E5-5F32-43F8-BE12-F47FA785545A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B9C5B5E-C573-44D7-92F6-3D1A94285B5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B9C5B5E-C573-44D7-92F6-3D1A94285B5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B9C5B5E-C573-44D7-92F6-3D1A94285B5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B9C5B5E-C573-44D7-92F6-3D1A94285B5C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {961B8839-2325-4759-B199-DBFE5FAC40CD}
+	EndGlobalSection
+EndGlobal

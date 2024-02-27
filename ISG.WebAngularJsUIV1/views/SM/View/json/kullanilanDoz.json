@@ -1,0 +1,38 @@
+﻿[
+	{
+		"adi": "Adet",
+		"val": 1
+	},
+	{
+		"adi": "ml",
+		"val": 2
+	},
+	{
+		"adi": "mg",
+		"val": 3
+	},
+	{
+		"adi": "gr",
+		"val": 4
+	},
+	{
+		"adi": "Damla",
+		"val": "5"
+	},
+	{
+		"adi": "Ü",
+		"val": 6
+	},
+	{
+		"adi": "Kutu",
+		"val": 7
+	},
+	{
+		"adi": "mcg",
+		"val": 8
+	},
+	{
+		"adi": "mcl",
+		"val": 9
+	}
+]

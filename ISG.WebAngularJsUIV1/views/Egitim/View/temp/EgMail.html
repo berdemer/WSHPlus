@@ -1,0 +1,25 @@
+﻿<br>
+<div class="row"  >
+    <span  style="font-weight:600;font-size:x-large">Sn. {{xx.AdSoyad}} </span>
+</div><br>
+<div class="row" >
+    <span style="font-weight:400;font-size:x-large">6331 sayılı İş Sağlığı ve Güvenliği Kanunu kapsamında
+    yer alan Çalışanların İş Sağlığı Ve Güvenliği Eğitimlerinin Usul Ve Esasları Hakkında Yönetmeliğe göre adınıza yasal zorunluluk olan ISG eğitimi tanımlanmıştır..</span>
+</div><br>
+<div class="row" >
+    <span style="font-weight:400;font-size:x-large">Toplantı Tarihi:{{xx.egitimYapisi.egitimTarihi}}<br>Saat:{{xx.dersler.saat}}<br>Eğitim Salonu:{{xx.dersler.salon}}<br>Eğitimci:{{xx.dersler.IsgProfesyoneliAdi}} </span>
+</div><br>
+<div class="row" >
+         <strong  style="font-weight:600;font-size:x-large">Eğitim Konularınız :</strong>
+     <ol style="font-weight:400;font-size:x-large">
+         <li ng-repeat="v in xx.dersler.KaydaGidecekDersler" ><span ng-bind="v.konu" ></span>&nbsp;Süre:<span ng-bind="v.egitimSuresi" ></span>&nbsp;dk.</li>
+     </ol><br>
+     <span style="font-weight:400;font-size:x-large">Toplantı Ders Süresi:{{xx.dersler.DersSuresi}} dk </span>
+</div><br>
+<div class="row">
+    <span style="font-weight:400;font-size:x-large">Sağlıklı ve Kazasız Günler Dileklerimizle.</span>
+</div>
+<br><br><br>
+<div class="row">
+    <span style="font-weight:200">Not:Katılımı yapılamama durumunda ISG biriminize bilgilendirme yapmanız rica olunur..</span>
+</div>

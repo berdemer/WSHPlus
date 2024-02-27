@@ -1,0 +1,45 @@
+﻿<div class="ibox float-e-margins">
+    <div class="ibox-title">
+        <h5>Uzman Atamaları</h5>
+        <div class="ibox-tools">
+            <span class="label label-warning-light" ng-cloak>{{count}} Uzman/Hekim Ataması Yapıldı</span>
+        </div>
+    </div>
+    <div class="ibox-content">
+        <div class="feed-activity-list">
+            <div class="feed-element" ng-repeat="yetkili in yetkiler">
+                <a ui-sref="profile" class="pull-left">
+                    <img alt="image" class="img-circle" ng-cloak ng-src="{{yetkili.Resim}}"  on-error="defaultUser.png"  style="width: auto; height: auto;max-width: 55px;max-height: 55px">
+                </a>
+                <div class="media-body" animated fadeindown>
+                    <h4 class="pull-right text-danger">{{yetkili.Meslek}}</h4>
+                    <strong>{{yetkili.FullName}}</strong><br>
+                    <b>Email</b>: {{yetkili.Email}}<br>
+                    <b>Görevi</b>: {{yetkili.Gorevi}}<br>
+                    <b>Telefon</b>: {{yetkili.Tel}}<br>
+                    <small class="text-muted" ng-cloak>Kayıt Tarihi: {{yetkili.JoinDate| date : "dd/MMMM/yyyy":"+0200"}}</small>
+                    <div class="actions">
+                        <a class="btn btn-sm btn-warning" ng-click="delete(yetkili)"><i class="fa fa-remove"></i> Kaldır </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ui-select ng-model="person.selected" theme="bootstrap" title="Bir kişi seçin">
+            <ui-select-match placeholder="İSG personelini ada ve mesleğe göre arayarak seçebilirsiniz">{{$select.selected.FullName}}</ui-select-match>
+            <ui-select-choices repeat="person in rols | propsFilter: {FullName: $select.search, Meslek: $select.search}">
+                <div ng-bind-html="person.FullName | highlight: $select.search"></div>
+                <small>
+                    Email: {{person.Email}}
+                </small>
+                <p>
+                    <small>
+                        Meslek: <span ng-bind-html="''+person.Meslek | highlight: $select.search"></span>
+                    </small>
+                </p>
+            </ui-select-choices>
+        </ui-select>
+        <button class="btn btn-primary m-t" ng-click="add(person.selected)"><i class="fa fa-arrow-down"></i> Uzman Ekle</button>
+    </div>
+</div>
+
+

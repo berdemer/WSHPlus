@@ -1,0 +1,90 @@
+﻿<div wrapper wrapper-content ng-class="stokgiristableClass">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>{{birim.selected.SirketAdi}} {{birim.selected.SaglikBirimiAdi}} Stok Giriş Listesi </h5>
+            <div ibox-tools></div>
+        </div>
+        <div class="ibox-content">
+            <div class="btn-group m-b-xs pull-left" style="z-index:1">
+                <input ng-model="qx" id="searchinput" type="search"  ng-mouseup="pageStartUp()" placeholder="Detaylarda Arama">
+                <span id="searchclear" class="glyphicon glyphicon-remove-circle" ng-click="clearInput()"></span>
+            </div>&nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="btn-group buttons-excel buttons-html5 pull-right m-l-xl" uib-dropdown>
+                <button type="button" class="btn btn-default" uib-dropdown-toggle>
+                   <span class="glyphicon glyphicon-share"></span>&nbsp;&nbsp;Excel&nbsp;<span class="caret"></span>
+                </button>
+                <ul role="menu" uib-dropdown-menu="">
+                    <li><a ng-click="exportData()">Genel Liste</a></li>
+                    <li><a ng-click="exportDataMiyad()">Miyad Süresi Dolanlar</a></li>
+                </ul>
+            </div>
+
+            <input type="number" min="3" max="500" ng-model="viewby" class="m-b-xs" ng-change="setItemsPerPage(viewby)" />
+            <div id="exportable">
+                <table id="table1" class="table table-bordered table-responsive" arrow-selector>
+                    <thead>
+                        <tr>
+                            <th tooltip-popup-delay="2000" tooltip-placement="bottom" uib-tooltip="Stok Adı">Ad</th>
+                            <th tooltip-popup-delay="2000" tooltip-placement="bottom" uib-tooltip="Kutu Miktarı veya adeti">K.Mik.</th>
+                            <th tooltip-popup-delay="2000" tooltip-placement="bottom" uib-tooltip="Kutu içindeki miktar">İ.Mik.</th>
+                            <th tooltip-popup-delay="2000" tooltip-placement="bottom" uib-tooltip="Toplam Miktarı">T.Mik.</th>
+                            <th tooltip-popup-delay="2000" tooltip-placement="bottom" uib-tooltip="Kutu Üzerindeki Miad Tarihi">M.Tar.</th>
+                            <th tooltip-popup-delay="2000" tooltip-placement="bottom" uib-tooltip="Sistemin Uyarısı için Miad tarihinden önceki tarih">K.Tar.</th>
+                            <th tooltip-popup-delay="2000" tooltip-placement="bottom" uib-tooltip="Artan Miad Telef Miktari">Telef</th>
+                            <th>Maliyet</th>
+                            <!--<th>Tarih</th>-->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="stokGirisi in (stokGirisleri | filter:qx).slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))"
+                             ng-class="{'selected':$index == selectedRow,'lightcoralStyle':stokGirisi.MiadUyarisi,'lightblueStyle':stokGirisi.KritikMiadUyarisi}" ng-click="setClickedRow($index,stokGirisi)">
+                            <td ng-bind="stokGirisi.IlacAdi"></td>
+                            <td ng-bind="stokGirisi.KutuMiktari"></td>
+                            <td ng-bind="stokGirisi.KutuIcindekiMiktar"></td>
+                            <td ng-bind="stokGirisi.ToplamMiktar"></td>
+                            <td ng-bind="stokGirisi.MiadTarihi!== '0001-01-01T00:00:00' ? (formatDate(stokGirisi.MiadTarihi)|date:dd/mm/yyyy) :'----'"></td>
+                            <td ng-bind="stokGirisi.KritikMiadTarihi!== '0001-01-01T00:00:00' ? (formatDate(stokGirisi.KritikMiadTarihi)|date:dd/mm/yyyy):'----'"></td>
+                            <td ng-bind="stokGirisi.ArtanMiadTelefMiktari"></td>
+                            <td ng-bind="stokGirisi.Maliyet|currency"></td>
+                            <!--<td ng-bind="stokGirisi.Tarih|date:dd/mm/yyyy"></td>-->
+                        </tr>
+                    </tbody>
+                </table>
+             </div>
+                <ul uib-pagination class="m-t-xxs" total-items="(stokGirisleri | filter:qx).length" ng-model="currentPage" first-text="Birinci" last-text="Sonuncu"
+                    previous-text="Önceki" next-text="Sonraki"
+                    max-size="4" boundary-links="true" rotate="false" num-pages="numPages" items-per-page="itemsPerPage"></ul>
+            </div>
+    </div>
+</div>
+<style>
+     .lightblueStyle{
+        background-color:lightcyan;
+        font-weight: bold;
+    }
+    .lightcoralStyle{
+        background-color:lightpink;
+        font-weight: bold;
+        color: white;
+    }
+
+    .selected {
+        background-color: dodgerblue;
+        color: white;
+        font-weight: bold;
+    }
+    #searchinput {
+        width: 200px;
+    }
+    #searchclear {
+        position: absolute;
+        right: 5px;
+        top: 0;
+        bottom: 0;
+        height: 14px;
+        margin: auto;
+        font-size: 14px;
+        cursor: pointer;
+        color: #ccc;
+    }
+</style>

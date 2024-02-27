@@ -1,0 +1,27 @@
+﻿<div class="jumbotron" style="margin-bottom: 0px;margin-bottom: 0px;padding: 5px;z-index:100">
+    <h5>İş Başı Tarihi</h5>
+    <p class="input-group">
+        <input ng-model="PmC.Muayene.Isbasi.Tarihi" type="text" class="form-control" uib-datepicker-popup="dd-MM-yyyy" ng-init="PmC.Muayene.Isbasi.Tarihi=PmC.dateNow"
+               is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" ng-click="open1()" alt-input-formats="altInputFormats" />
+        <span class="input-group-btn" style="z-index:100">
+            <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+        </span>
+    </p>
+    <div class="row">
+        <div class="col-sm-4">
+            <button class="btn btn-danger btn-sm" ng-if="PmC.personelMuayene.Protokol!=null" ng-disabled="PmC.Muayene.imzaliEreceteGirisReturn.ereceteDVOField.ereceteNoField!=null" ng-click="PmC.EReceteKaydet()"><i class="glyphicon glyphicon-send"></i>&nbsp;&nbsp;E-Reçete</button>
+        </div>
+        <div class="col-sm-4">
+            <button class="btn btn-instagram btn-sm" ng-if="PmC.personelMuayene.Protokol!=null" ng-click="PmC.recete()"><i class="glyphicon glyphicon-print"></i>&nbsp;&nbsp;Yaz</button>
+            <button class="btn btn-odnoklassniki btn-sm" ng-if="PmC.personelMuayene.Protokol!=null&&PmC.Muayene.Ikbilgisi!=null" ng-click="PmC.isKazasiRaporu()"><i class="glyphicon glyphicon-print"></i>&nbsp;&nbsp;R.Yaz</button>
+        </div>
+        <div class="col-sm-4">
+            <button class="btn btn-sm pull-right " ng-class="{'btn-success':PmC.Renjk,'btn-primary':!PmC.Renjk,'btn-rounded':PmC.Renjk}" ng-click="PmC.IsbasiMuayeneKaydet()"><i class="fa fa-cog fa-spin fa-2x fa-fw" ng-if="PmC.Renjk==true"></i><i class="fa fa-save" ng-hide="PmC.Renjk!=false"></i>&nbsp;&nbsp;{{message}}</button>
+        </div>
+    </div>
+</div>
+<datetimepicker ng-model="PmC.Muayene.Isbasi.Tarihi" ng-show="false"
+                date-format="dd-MMM-yyyy" class="form-control"
+                date-options="dateOptions"
+                date-disabled="isDisabledDate(date, mode)">
+</datetimepicker>

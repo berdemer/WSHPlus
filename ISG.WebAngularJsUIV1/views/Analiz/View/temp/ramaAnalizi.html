@@ -1,0 +1,104 @@
+﻿
+<div wrapper wrapper-content ng-class="rmzC.ramaClass">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <p><a href="https://www.resmigazete.gov.tr/eskiler/2008/10/20081011-10.htm" target="_blank">ÇALIŞMA GÜCÜ VE MESLEKTE KAZANMA GÜCÜ KAYBI ORANI TESPİT İŞLEMLERİ YÖNETMELİĞİ </a><a href="https://www.resmigazete.gov.tr/eskiler/2008/10/20081011-10-2.xls" target="_blank"> SGK.Ek-2</a></p>
+            <h5>Ramazzini <small class="m-l-sm">İş ve Meslek Hastalıkları Risk Analizi</small></h5>
+            <div ibox-tools></div>
+        </div>
+        <div class="ibox-content">
+            <div class="row">
+                <div class="row m-b-sm">
+                    <div class="col-sm-8">
+                        <select ng-model="rmzC.grubu" ng-options="t as t for t in rmzC.gruplarListesi" class="form-control">
+                            <option value="">Meslek Hastalıkları Gruplarını Seçiniz.</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-4">
+                        <input ng-model="rmzC.grupSearch" ng-model-options="{debounce:1000}" type="search" class="form-control" placeholder="&#xF002 Grupları Ara" style="font-family:Arial,FontAwesome" />
+                    </div>
+                </div>
+                <div>
+                    <table id="table1" class="table table-bordered table-responsive" arrow-selector>
+                        <thead>
+                            <tr>
+                                <th>Meslek Hastalıkları Grupları</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="grup in rmzC.Analiz.gruplistesi">
+                                <td ng-bind="grup"></td>
+                                <td width="5%">
+                                    <button class="btn btn-success btn-sm" type="button" ng-click="rmzC.aktar(grup,'grup')">
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="hr-line-dashed" style="margin-top: 1px; margin-bottom: 7px;"></div>
+            <div class="row">
+                <div class="m-b-sm">
+                    <input ng-model="rmzC.islerSearch" ng-model-options="{debounce:1000}" type="search" class="form-control" placeholder="&#xF002 Hastalık Tehlikesi Olan Başlıca İşleri Araynız." style="font-family:Arial,FontAwesome" />
+                </div>
+                <div>
+                    <table id="table1" class="table table-bordered table-responsive" arrow-selector>
+                        <thead>
+                            <tr>
+                                <th>Meslek veya İş Kolu</th>
+                                <th>.</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="is in rmzC.Analiz.isler">
+                                <td ng-bind="is"></td>
+                                <td width="5%">
+                                    <button class="btn btn-success btn-sm" type="button" ng-click="rmzC.aktar(is,'isler')">
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="hr-line-dashed" style="margin-top: 1px; margin-bottom: 7px;"></div>
+            <div class="row">
+                <div class="m-b-sm">
+                    <input ng-model="rmzC.hastalikSearch" ng-model-options="{debounce:1000}" type="search" class="form-control" placeholder="&#xF002 Hastalık veya Belirtiler Arayınız." style="font-family:Arial,FontAwesome" />
+                </div>
+                <div>
+                    <table id="table1" class="table table-bordered table-responsive" arrow-selector>
+                        <thead>
+                            <tr>
+                                <th>Hastalık veya Belirtiler</th>
+                                <th>Süresi</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="hastalik in rmzC.Analiz.meslekHastaliklari">
+                                <td ng-bind="hastalik.meslekHastalik"></td>
+                                <td ng-bind="hastalik.sure"></td>
+                                <td width="5%">
+                                    <button class="btn btn-success btn-sm" type="button" ng-click="rmzC.aktar(hastalik,'meslekHastaliklari')">
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    input[type="search"]::-webkit-search-cancel-button {
+        -webkit-appearance: searchfield-cancel-button;
+    }
+</style>

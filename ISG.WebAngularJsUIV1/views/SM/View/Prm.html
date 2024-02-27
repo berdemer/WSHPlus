@@ -1,0 +1,950 @@
+﻿<div ng-controller="PrmCtrl as PrmC">
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <div class="col-xs-4">
+            <a ui-sref="SM.SMCards({id:PrmC.guid})"><img alt="image" class="img-thumbnail" ng-cloak ng-src="{{PrmC.fileImgPath}}{{PrmC.img}}"  on-error="defaultUser.png"  style="width: auto; height: auto;max-width: 75px;max-height: 90px;margin-left:-20px;margin-right:10px;float:left" />  </a>
+            <a ui-sref="SM.SMCards({id:PrmC.guid})"><h3 style="color:yellow" ng-bind="PrmC.AdSoyad"></h3></a>
+            <address class="m-t-n-sm m-b-n-lg">
+                <strong ng-bind="PrmC.PRMB.sirketAdi"></strong>=><span ng-bind="PRMB.bolumAdi"></span><br>
+                <span ng-bind="PrmC.PRMB.data.Gorevi|degerYok"></span>=>
+                <span ng-bind="PrmC.PRMB.data.KadroDurumu|degerYok"></span><br>
+                <label> Sicil No:</label>{{PrmC.PRMB.data.SicilNo}}<label>Tc No :</label>{{PrmC.PRMB.data.TcNo}}<br>
+            </address>
+        </div>
+        <div class="col-xs-4 m-t-md  m-b-n-lg">
+            <label style="margin-bottom: 0px;">Kan Grubu :</label>{{PrmC.PRMB.data.KanGrubu}}
+            <label style="margin-bottom: 0px;">Yaşı :</label><span ng-bind="PrmC.PRMB.data.PersonelDetayi.DogumTarihi | getAge"></span><br>
+            <label style="margin-bottom: 0px;">Egitim Seviyesi :</label><span ng-bind="PrmC.PRMB.data.PersonelDetayi.EgitimSeviyesi|degerYok"></span><br>
+            <label style="margin-bottom: 0px;">Telefon :</label><a style="color:yellow" href="tel:0{{PrmC.PRMB.data.Telefon}}" ng-bind="PrmC.PRMB.data.Telefon|tel"></a><br>
+            <label style="margin-bottom: 0px;">Mail :</label><a style="color:yellow" href="mailto:{{PrmC.PRMB.data.Mail}}" ng-bind="PrmC.PRMB.data.Mail|degerYok"></a>
+        </div>
+        <div class="col-xs-4">
+            <div class="col-sm-6">
+                <address class="m-t-md  m-b-n-lg pull-left">
+                    <div class="row"> <a class="btn btn-xs btn-instagram" ui-sref="Analiz.Ramazzinis({sti:PrmC.PRMB.sirketId,blm:PrmC.PRMB.bolumId,sAdi:PrmC.PRMB.sirketAdi,bAdi:PrmC.PRMB.bolumAdi})"><i class="fa fa-deviantart"></i> Ramazzini </a>  </div>
+                    <div class="row">
+                        <a class="btn btn-xs btn-warning" ng-click="PrmC.Ikaz(true)" ng-if="!PrmC.warning"><i class="fa fa-exclamation"></i>&nbsp;Uyarılarımız</a>
+                    </div>
+                </address>
+            </div>
+            <div class="col-sm-6">
+                <span class="fa-stack fa-2x" ng-click="PrmC.Ikaz(false)" style="cursor: pointer" ng-if="PrmC.warning" tooltip-placement="right" uib-tooltip="{{PrmC.warningLength}} Adet Uyarınız Var.">
+                    <i class="fa fa-circle fa-stack-2x" style="color: #f7ef07;"></i>
+                    <i class="fa fa-exclamation fa-stack-1x"></i>
+                </span>
+            </div>
+
+        </div>
+    </div>
+    <div class="animated fadeInRight">
+        <div class="ibox float-e-margins collapsed">
+            <div class="ibox-title">
+                <div class="col-sm-3">
+                    <h5 ng-click="showhide()" style="color:darkblue">Periyodik Muayene Kayıtları</h5>
+                </div>
+                <div class="col-sm-8">
+                    <a href="#" editable-select="nbv" e-ng-options="sx as sx.SirketAdi+' '+sx.SaglikBirimiAdi for sx in birimler" ng-bind="nbv.SirketAdi+' '+nbv.SaglikBirimiAdi||'Sağlık Birimini Seçiniz'"></a>
+                </div>
+                <div class="col-sm-1">
+                    <div id="cv" class="ibox-tools" uib-dropdown>
+                        <a ng-click="showhide()"> <i class="fa fa-chevron-up"></i></a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="ibox-content" style="padding-bottom: 0em">
+                <table datatable="ng" id="Prm" style="width:100%;cursor:pointer"
+                       dt-options="dtOptionsPrmC" dt-column-defs="dtColumnDefsPrmC" class="table table-responsive  table-striped table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>Prt</th>
+                            <th>Tarih</th>
+                            <th>Muayene Türü</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="pm in PrmC.PrMleri" ng-class="{'selected':pm.PeriyodikMuayene_Id===PrmC.selectedRow}">
+                            <td ng-bind="pm.PeriyodikMuayene_Id"></td>
+                            <td ng-bind="pm.Protokol"></td>
+                            <td ng-bind="pm.Tarih|date:'dd/MM/yyyy  HH:mm'"></td>
+                            <td ng-bind="pm.MuayeneTuru"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div id="ana" class="row ibox float-e-margins animated fadeInUp">
+        <div class="col-sm-9">
+            <uib-accordion close-others="oneAtATime">
+                <div uib-accordion-group class="panel-default" is-open="status.open21">
+                    <uib-accordion-heading>
+                        <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open21, 'glyphicon-chevron-right': !status.open21}"></i>
+                        Çalışma Durum Analizi
+                    </uib-accordion-heading>
+                    <div ng-include="PrmC.url" style="padding-bottom:1px"></div>
+                </div>
+                <div id="CalismaGecmisi" uib-accordion-group class="panel-default" is-open="status.open1">
+                    <uib-accordion-heading>
+                        <a ui-sref="Personel.Pers.CalismaGecmisi({id:PrmC.PRMB.data.PerGuid,'#':'CalismaGecmisi'})" class="btn btn-xs btn-circle btn-default m-r-xs" ng-if="status.open1==true" ng-click="PrmC.gitme=true" tooltip-placement="bottom" uib-tooltip="İlgili Alana Gidiniz."><i class="glyphicon glyphicon-grain"> </i></a>
+                        Daha önce çalıştığı yerler
+                        <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open1, 'glyphicon-chevron-right': !status.open1}"></i>
+                    </uib-accordion-heading>
+                    <table class="table table-responsive table-hover issue-tracker row m-t-n-xxs m-b-n-xs" style="width:100%;cursor:pointer">
+                        <tbody>
+                            <tr ng-repeat="calismaGecmisi  in PrmC.PRMB.data.Calisma_Gecmisi" class="altCizgisi">
+                                <td ng-bind="calismaGecmisi.Calistigi_Yer_Adi"></td>
+                                <td ng-bind="formatDate(calismaGecmisi.Ise_Baslama_Tarihi)|date:dd/MMMM/yyyy"></td>
+                                <td ng-bind="formatDate(calismaGecmisi.Isden_Cikis_Tarihi)|date:dd/MMMM/yyyy"></td>
+                                <td ng-bind="calismaGecmisi.Gorevi"></td>
+                                <td ng-bind="calismaGecmisi.Unvani"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="Allerjix" uib-accordion-group class="panel-default" is-open="status.open2">
+                    <uib-accordion-heading>
+                        <a ui-sref="SM.Og.Allerji({id:PrmC.PRMB.data.PerGuid,'#':'Allerjix'})" class="btn btn-xs btn-circle btn-default m-r-xs" ng-if="status.open2==true" ng-click="PrmC.gitme=true" tooltip-placement="bottom" uib-tooltip="İlgili Alana Gidiniz."><i class="glyphicon glyphicon-grain"> </i></a>
+                        Özgeçmişi
+                        <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open2, 'glyphicon-chevron-right': !status.open2}"></i>
+                    </uib-accordion-heading>
+                    <uib-accordion close-others="oneAtATime">
+                        <div id="KronikHastalik" uib-accordion-group class="panel-warning" is-open="status.open15">
+                            <uib-accordion-heading>
+                                <a ui-sref="SM.Og.KronikHastalik({id:PrmC.PRMB.data.PerGuid,'#':'KronikHastalik'})" class="btn btn-xs btn-circle btn-warning m-r-xs" ng-if="status.open15==true" tooltip-placement="bottom" ng-click="PrmC.gitme=true" uib-tooltip="İlgili Alana Gidiniz."><i class="glyphicon glyphicon-grain"> </i></a>
+                                KRONİK HASTALIKLAR: <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open15, 'glyphicon-chevron-right': !status.open15}"></i>
+                            </uib-accordion-heading>
+                            <table class="table table-responsive issue-tracker table-hover  row m-t-n-xxs m-b-n-xs" style="width:100%;cursor:pointer">
+                                <caption style="text-align:center"><strong>KRONİK HASTALIKLAR</strong></caption>
+                                <thead>
+                                    <tr>
+                                        <th>Hastalık</th>
+                                        <th>İlaçları</th>
+                                        <th>Süre</th>
+                                        <th>Ameliyat</th>
+                                        <th>İş Kazası</th>
+                                        <th>Engellilik</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="kronikHastalik in PrmC.PRMB.data.KronikHastaliklar|orderBy:'-$id'" class="altCizgisi">
+                                        <td ng-bind="kronikHastalik.HastalikAdi" style="width:32%"></td>
+                                        <td ng-bind="kronikHastalik.KullandigiIlaclar" style="width:45%"></td>
+                                        <td ng-bind="kronikHastalik.HastalikYilSuresi" style="width:5%"></td>
+                                        <td ng-bind="varYok(kronikHastalik.AmeliyatVarmi)" style="width:5%"></td>
+                                        <td ng-bind="varYok(kronikHastalik.IsKazasi)" style="width:8%"></td>
+                                        <td ng-bind="varYok(kronikHastalik.HastalikOzurDurumu)" style="width:5%"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="Asi" uib-accordion-group class="panel-warning" is-open="status.open16">
+                            <uib-accordion-heading>
+                                <a ui-sref="SM.Og.Asi({id:PrmC.PRMB.data.PerGuid,'#':'Asi'})" class="btn btn-xs btn-circle  btn-warning m-r-xs" ng-click="PrmC.gitme=true" ng-if="status.open16==true" tooltip-placement="bottom" uib-tooltip="İlgili Alana Gidiniz."><i class="glyphicon glyphicon-grain"> </i></a>
+                                AŞILAR: <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open16, 'glyphicon-chevron-right': !status.open16}"></i>
+                            </uib-accordion-heading>
+                            <table class="table table-responsive issue-tracker table-hover  row m-t-n-xxs m-b-n-xs" style="width:100%;cursor:pointer">
+                                <caption style="text-align:center"><strong>AŞILAR</strong></caption>
+                                <thead>
+                                    <tr>
+                                        <th>Tanimi</th>
+                                        <th>Yapılma Tarihi</th>
+                                        <th>Dozu</th>
+                                        <th>Ay</th>
+                                        <th>Rapel</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="asi in PrmC.PRMB.data.Asilar" class="altCizgisi">
+                                        <td ng-bind="asi.Asi_Tanimi"></td>
+                                        <td ng-bind="formatDate(asi.Yapilma_Tarihi)|date:dd/MMMM/yyyy"></td>
+                                        <td ng-bind="asi.Dozu"></td>
+                                        <td ng-bind="asi.Guncelleme_Suresi_Ay"></td>
+                                        <td ng-bind="formatDate(asi.Muhtamel_Tarih)|date:dd/MMMM/yyyy"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="Allerji" uib-accordion-group class="panel-warning" is-open="status.open17">
+                            <uib-accordion-heading>
+                                <a ui-sref="SM.Og.Allerji({id:PrmC.PRMB.data.PerGuid,'#':'Allerji'})" class="btn btn-xs btn-circle  btn-warning m-r-xs" ng-if="status.open17==true" ng-click="PrmC.gitme=true" tooltip-placement="bottom" uib-tooltip="İlgili Alana Gidiniz."><i class="glyphicon glyphicon-grain"> </i></a>
+                                ALLERJİLERİ: <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open17, 'glyphicon-chevron-right': !status.open17}"></i>
+                            </uib-accordion-heading>
+                            <table class="table table-responsive issue-tracker table-hover  row m-t-n-xxs m-b-n-xs" style="width:100%;cursor:pointer">
+                                <caption style="text-align:center"><strong>ALLERJİLER</strong></caption>
+                                <thead>
+                                    <tr>
+                                        <th>Öyküsü</th>
+                                        <th>Çeşiti</th>
+                                        <th>Etken</th>
+                                        <th>Süre</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="allerji in PrmC.PRMB.data.Allerjiler" class="altCizgisi">
+                                        <td ng-bind="allerji.AllerjiOykusu"></td>
+                                        <td ng-bind="allerji.AllerjiCesiti"></td>
+                                        <td ng-bind="allerji.AllerjiEtkeni"></td>
+                                        <td ng-bind="allerji.AllerjiSuresi"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="Ozurluluk" uib-accordion-group class="panel-warning" is-open="status.open18">
+                            <uib-accordion-heading>
+                                <a ui-sref="SM.Og.Ozurluluk({id:PrmC.PRMB.data.PerGuid,'#':'Ozurluluk'})" ng-click="PrmC.gitme=true" class="btn btn-xs btn-circle  btn-warning m-r-xs" ng-if="status.open18==true" tooltip-placement="bottom" uib-tooltip="İlgili Alana Gidiniz."><i class="glyphicon glyphicon-grain"> </i></a>
+                                ENGELLİLİK DURUMU: <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open18, 'glyphicon-chevron-right': !status.open18}"></i>
+                            </uib-accordion-heading>
+                            <table class="table table-responsive issue-tracker table-hover  row m-t-n-xxs m-b-n-xs" style="width:100%;cursor:pointer">
+                                <caption style="text-align:center"><strong>ENGELLİLİK DURUMLARI</strong></caption>
+                                <thead>
+                                    <tr>
+                                        <th>H.Tanimi</th>
+                                        <th>Oran</th>
+                                        <th>Derecesi</th>
+                                        <th>Hastane Adı</th>
+                                        <th>Açıklama</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="Ozurluluk in PrmC.PRMB.data.Ozurlulukler" class="altCizgisi">
+                                        <td ng-bind="Ozurluluk.HastalikTanimi"></td>
+                                        <td ng-bind="Ozurluluk.Oran"></td>
+                                        <td ng-bind="Ozurluluk.Derecesi"></td>
+                                        <td ng-bind="Ozurluluk.HastahaneAdi"></td>
+                                        <td ng-bind="Ozurluluk.Aciklama"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </uib-accordion>
+                </div>
+                <div id="SoyGecmisi" uib-accordion-group class="panel-default" is-open="status.open3">
+                    <uib-accordion-heading>
+                        <a ui-sref="SM.Og.SoyGecmisi({id:PrmC.PRMB.data.PerGuid,'#':'SoyGecmisi'})" class="btn btn-xs btn-circle btn-default m-r-xs" ng-if="status.open3==true" ng-click="PrmC.gitme=true" tooltip-placement="bottom" uib-tooltip="İlgili Alana Gidiniz."><i class="glyphicon glyphicon-grain"> </i></a>
+                        Soygeçmişi
+                        <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open3, 'glyphicon-chevron-right': !status.open3}"></i>
+                    </uib-accordion-heading>
+                    <table class="table table-responsive issue-tracker table-hover row m-t-n-xxs m-b-n-xs" style="width:100%;cursor:pointer">
+                        <thead>
+                            <tr>
+                                <th>Akrabalık</th>
+                                <th>Hastalık</th>
+                                <th>ICD10</th>
+                                <th>Aktifmi</th>
+                                <th>Yaşı</th>
+                                <th>Başlama Yaşı</th>
+                                <th>Ölum Nedeni</th>
+                                <th>Ölum Yaşı</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="soyGecmisi in PrmC.PRMB.data.SoyGecmisleri" class="altCizgisi">
+                                <td ng-bind="soyGecmisi.AkrabalikDurumi" style="width:25%"></td>
+                                <td ng-bind="soyGecmisi.HastalikAdi" style="width:25%"></td>
+                                <td ng-bind="soyGecmisi.ICD10" style="width:25%"></td>
+                                <td ng-bind="evetHayir(soyGecmisi.HastalikSuAnAktifmi)" style="width:5%"></td>
+                                <td ng-bind="soyGecmisi.AkrabaninYasi" style="width:5%"></td>
+                                <td ng-bind="soyGecmisi.AkrabaninHastaOlduguYas" style="width:5%"></td>
+                                <td ng-bind="soyGecmisi.OlumNedeni" style="width:5%"></td>
+                                <td ng-bind="soyGecmisi.OlumYasi" style="width:5%"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div uib-accordion-group class="panel-default" is-open="status.open4">
+                    <uib-accordion-heading>
+                        <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open4, 'glyphicon-chevron-right': !status.open4}"></i>
+                        Son bir yıl içinde aşağıdaki yakınmalardan herhangi birini geçirdiniz mi?
+                    </uib-accordion-heading>
+                    <div ng-repeat="yakinma in PrmC.yakinmalar" style="width:100%;display:inline-table;vertical-align:sub">
+                        <label class="col-sm-2 control-label m-t-sm" ng-bind="yakinma.tanim" ng-click="PrmC.periyodikMuayene.Yakinmalar[yakinma.kod]=!PrmC.periyodikMuayene.Yakinmalar[yakinma.kod]"></label>
+                        <div class="col-sm-1 m-t-sm">
+                            <div class="onoffswitch">
+                                <input type="checkbox" name="onoffswitch" ng-model="PrmC.periyodikMuayene.Yakinmalar[yakinma.kod]"
+                                       ng-change="PrmC.periyodikMuayene.Yakinmalar[yakinma.kod+'aciklama']=PrmC.periyodikMuayene.Yakinmalar[yakinma.kod]===false?'':PrmC.periyodikMuayene.Yakinmalar[yakinma.kod+'aciklama']"
+                                       class="onoffswitch-checkbox" id="{{yakinma.kod}}">
+                                <label class="onoffswitch-label" for="{{yakinma.kod}}">
+                                    <span class="onoffswitch-inner"></span>
+                                    <span class="onoffswitch-switch"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-9">
+                            <input type="text" ng-disabled="!PrmC.periyodikMuayene.Yakinmalar[yakinma.kod]" ng-model="PrmC.periyodikMuayene.Yakinmalar[yakinma.kod+'aciklama']" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div uib-accordion-group class="panel-default" is-open="status.open5">
+                    <uib-accordion-heading>
+                        <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open5, 'glyphicon-chevron-right': !status.open5}"></i>
+                        Son bir yıl içinde aşağıdaki hastalıklardan herhangi birini geçirdiniz mi?
+                    </uib-accordion-heading>
+                    <div ng-repeat="hastalik in PrmC.hastaliklar" style="width:100%;display:inline-table;vertical-align:sub">
+                        <label class="col-sm-3 control-label m-t-sm" ng-bind="hastalik.tanim" ng-click="PrmC.periyodikMuayene.Hastaliklar[hastalik.kod]=!PrmC.periyodikMuayene.Hastaliklar[hastalik.kod]"></label>
+                        <div class="col-sm-1 m-t-sm">
+                            <div class="onoffswitch">
+                                <input type="checkbox" name="onoffswitch" ng-model="PrmC.periyodikMuayene.Hastaliklar[hastalik.kod]"
+                                       ng-change="PrmC.periyodikMuayene.Hastaliklar[hastalik.kod+'aciklama']=PrmC.periyodikMuayene.Hastaliklar[hastalik.kod]===false?'':PrmC.periyodikMuayene.Hastaliklar[hastalik.kod+'aciklama']"
+                                       class="onoffswitch-checkbox" id="{{hastalik.kod+'hast'}}">
+                                <label class="onoffswitch-label" for="{{hastalik.kod+'hast'}}">
+                                    <span class="onoffswitch-inner"></span>
+                                    <span class="onoffswitch-switch"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-8">
+                            <input type="text" ng-disabled="!PrmC.periyodikMuayene.Hastaliklar[hastalik.kod]" ng-model="PrmC.periyodikMuayene.Hastaliklar[hastalik.kod+'aciklama']" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div uib-accordion-group class="panel-default" is-open="status.open7">
+                    <uib-accordion-heading>
+                        Mesleki ve Özel Sorular <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open7, 'glyphicon-chevron-right': !status.open7}"></i>
+                    </uib-accordion-heading>
+                    <div ng-repeat="ozelSoru in PrmC.ozelSorular" style="width:100%;display:inline-table;vertical-align:sub">
+                        <div class="row">
+                            <span ng-bind="$index+1" style="margin-left:10px"></span>.)<span style="margin-left:5px" ng-bind="ozelSoru.tanim"
+                                                                                             ng-click="PrmC.periyodikMuayene.OzelSorular[ozelSoru.kod]=!PrmC.periyodikMuayene.OzelSorular[ozelSoru.kod];PrmC.periyodikMuayene.OzelSorular[ozelSoru.kod+'aciklama']=PrmC.periyodikMuayene.OzelSorular[ozelSoru.kod]===false?'':PrmC.periyodikMuayene.OzelSorular[ozelSoru.kod+'aciklama']"></span>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-1 m-t-sm">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="onoffswitch" ng-model="PrmC.periyodikMuayene.OzelSorular[ozelSoru.kod]"
+                                           ng-change="PrmC.periyodikMuayene.OzelSorular[ozelSoru.kod+'aciklama']=PrmC.periyodikMuayene.OzelSorular[ozelSoru.kod]===false?'':PrmC.periyodikMuayene.OzelSorular[ozelSoru.kod+'aciklama']"
+                                           class="onoffswitch-checkbox" id="{{ozelSoru.kod+'soru'}}">
+                                    <label class="onoffswitch-label" for="{{ozelSoru.kod+'soru'}}">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-11">
+                                <input type="text" ng-disabled="!PrmC.periyodikMuayene.OzelSorular[ozelSoru.kod]" ng-model="PrmC.periyodikMuayene.OzelSorular[ozelSoru.kod+'aciklama']" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="Aliskanlik" uib-accordion-group class="panel-default" is-open="status.open8">
+                    <uib-accordion-heading>
+                        <a ui-sref="SM.Og.Aliskanlik({id:PrmC.PRMB.data.PerGuid,'#':'Aliskanlik'})" class="btn btn-xs btn-circle btn-default m-r-xs" ng-if="status.open8==true" ng-click="PrmC.gitme=true" tooltip-placement="bottom" uib-tooltip="İlgili Alana Gidiniz."><i class="glyphicon glyphicon-grain"> </i></a>
+                        Alışkanlıkları <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open8, 'glyphicon-chevron-right': !status.open8}"></i>
+                    </uib-accordion-heading>
+                    <table class="table table-responsive table-hover issue-tracker row m-t-n-xxs m-b-n-xs" style="width:100%;cursor:pointer">
+                        <thead>
+                            <tr>
+                                <th>Madde</th>
+                                <th>Başlama Tarihi</th>
+                                <th>Bitiş Tarihi</th>
+                                <th>Kullanım Sıklığı</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="aliskanlik in PrmC.PRMB.data.Aliskanliklar" class="altCizgisi">
+                                <td ng-bind="aliskanlik.Madde"></td>
+                                <td ng-bind="formatDate(aliskanlik.BaslamaTarihi)|date:dd/MMMM/yyyy"></td>
+                                <td ng-bind="formatDate(aliskanlik.BitisTarihi)|date:dd/MMMM/yyyy"></td>
+                                <td ng-bind="aliskanlik.SiklikDurumu"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div uib-accordion-group class="panel-default" is-open="status.open9">
+                    <uib-accordion-heading>
+                        Fizik Muayene Sonuçları<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open9, 'glyphicon-chevron-right': !status.open9}"></i>
+                    </uib-accordion-heading>
+                    <div class="form-group" ng-repeat="fm in PrmC.FMler">
+                        <label class="col-sm-3 control-label m-t-xs" for="{{fm.kod}}" ng-bind="fm.tanim+'   :'"></label>
+                        <div class="col-sm-9" style="margin-bottom:3px">
+                            <ui-select multiple tagging tagging-label="false" id="{{fm.kod}}" class="form-control" ng-model="PrmC.periyodikMuayene.FM[fm.kod]" theme="bootstrap">
+                                <ui-select-match placeholder="{{fm.tanim}} Fizik Muayene Bulgularınızı Seçiniz..↓┘ veya yazınız..">{{$item}}</ui-select-match>
+                                <ui-select-choices refresh="PrmC.refreshBulgu($select)"
+                                                   refresh-delay="300"
+                                                   repeat="item in PrmC.items | filter: $select.search">
+                                    <div ng-bind-html="item | highlight: $select.search"></div>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="TAx" uib-accordion-group class="panel-default" is-open="status.open10">
+                    <uib-accordion-heading>
+                        <a ui-sref="SM.Tk.TA({id:PrmC.PRMB.data.PerGuid,'#':'TAx'})" class="btn btn-xs btn-circle btn-default m-r-xs" ng-if="status.open10==true" ng-click="PrmC.gitme=true" tooltip-placement="bottom" uib-tooltip="İlgili Alana Gidiniz."><i class="glyphicon glyphicon-grain"> </i></a>
+                        Tansiyon / Kilo-Boy
+                        <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open10, 'glyphicon-chevron-right': !status.open10}"></i>
+                    </uib-accordion-heading>
+                    <uib-accordion close-others="oneAtATime">
+                        <div id="TA" uib-accordion-group class="panel-warning" is-open="status.open15">
+                            <uib-accordion-heading>
+                                <a ui-sref="SM.Tk.TA({id:PrmC.PRMB.data.PerGuid,'#':'TA'})" class="btn btn-xs btn-circle  btn-warning m-r-xs" ng-click="PrmC.gitme=true" ng-if="status.open15==true" tooltip-placement="bottom" uib-tooltip="İlgili Alana Gidiniz."><i class="glyphicon glyphicon-grain"> </i></a>
+                                TANSİYON NABIZ:<span ng-bind="PrmC.periyodikMuayene.TA"></span>
+                                <button class="btn btn-xs btn-danger m-r-lg m-l-xl" ng-if="PrmC.periyodikMuayene.TA!=null&&status.open15==true" tooltip-placement="bottom" uib-tooltip="Temizle" ng-click="$event.stopPropagation();  $event.preventDefault();PrmC.periyodikMuayene.TA=null"><i class="glyphicon glyphicon-trash"></i></button>
+                                <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open15, 'glyphicon-chevron-right': !status.open15}"></i>
+                            </uib-accordion-heading>
+                            <div style="width:100%" ng-if="PrmC.TAtotalItems>3" class="m-b-n-md">
+                                <input type="number" min="3" max="100" ng-model="PrmC.TAviewby" class="m-b-xs pull-right" ng-change="PrmC.TAsetItemsPerPage(PrmC.TAviewby)" />
+                                <ul uib-pagination class="m-t-xs" total-items="PrmC.TAtotalItems" ng-model="PrmC.TAcurrentPage" first-text="Birinci" last-text="Sonuncu"
+                                    previous-text="Önceki" next-text="Sonraki" max-size="maxSize" boundary-links="true" rotate="false" num-pages="numPages" items-per-page="PrmC.TAitemsPerPage"></ul>
+                            </div>
+                            <table class="table table-responsive issue-tracker table-hover  row m-t-n-xxs m-b-n-xs" style="width:100%;cursor:pointer">
+                                <thead>
+                                    <tr>
+                                        <th>Sağ Kol T.</th>
+                                        <th>Sol Kol T.</th>
+                                        <th>Nabız</th>
+                                        <th>Tarih</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="ta in (tansiyonlar | orderBy:'$index':true).slice(((PrmC.TAcurrentPage-1)*PrmC.TAitemsPerPage), ((PrmC.TAcurrentPage)*PrmC.TAitemsPerPage))" class="altCizgisi"
+                                        ng-click="PrmC.TArowSec($index,ta)" ng-class="{active:$index==selectedRow}">
+                                        <td ng-bind="Tansiyon(ta.TASagKolSistol,ta.TASagKolDiastol)"></td>
+                                        <td ng-bind="Tansiyon(ta.TASolKolSistol,ta.TASolKolDiastol)"></td>
+                                        <td ng-bind="Nabiz(ta.Nabiz)"></td>
+                                        <td ng-bind="ta.Tarih|date:'dd/MM/yyyy  HH:mm'"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="BoyKilo" uib-accordion-group class="panel-warning" is-open="status.open16">
+                            <uib-accordion-heading>
+                                <a ui-sref="SM.Tk.BoyKilo({id:PrmC.PRMB.data.PerGuid,'#':'BoyKilo'})" class="btn btn-xs btn-circle  btn-warning m-r-xs" ng-click="PrmC.gitme=true" ng-if="status.open16==true" tooltip-placement="bottom" uib-tooltip="İlgili Alana Gidiniz."><i class="glyphicon glyphicon-grain"> </i></a>
+                                BOY KİLO:<span ng-bind="PrmC.periyodikMuayene.BoyKilo"></span>
+                                <button class="btn btn-xs btn-danger m-r-lg m-l-xl" ng-if="PrmC.periyodikMuayene.BoyKilo!=null&&status.open16==true" tooltip-placement="bottom" uib-tooltip="Temizle" ng-click="$event.stopPropagation();  $event.preventDefault();PrmC.periyodikMuayene.BoyKilo=null"><i class="glyphicon glyphicon-trash"></i></button>
+                                <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open16, 'glyphicon-chevron-right': !status.open16}"></i>
+                            </uib-accordion-heading>
+                            <div style="width:100%" ng-if="PrmC.BKtotalItems>3" class="m-b-n-md">
+                                <input type="number" min="3" max="100" ng-model="PrmC.BKviewby" class="m-b-xs pull-right" ng-change="PrmC.BKsetItemsPerPage(PrmC.BKviewby)" />
+                                <ul uib-pagination class="m-t-xs" total-items="PrmC.BKtotalItems" ng-model="PrmC.BKcurrentPage" first-text="Birinci" last-text="Sonuncu"
+                                    previous-text="Önceki" next-text="Sonraki" max-size="maxSize" boundary-links="true" rotate="false" num-pages="numPages" items-per-page="PrmC.BKitemsPerPage"></ul>
+                            </div>
+                            <table class="table table-responsive issue-tracker table-hover  row m-t-n-xxs m-b-n-xs" style="width:100%;cursor:pointer">
+                                <thead>
+                                    <tr>
+                                        <th>Boy</th>
+                                        <th>Kilo</th>
+                                        <th>Bel</th>
+                                        <th>Kalca</th>
+                                        <th>BKI</th>
+                                        <th>BKO</th>
+                                        <th>Tarih</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="boyKilo in (BoyKilolari|orderBy:'$index':true).slice(((PrmC.BKcurrentPage-1)*PrmC.BKitemsPerPage), ((PrmC.BKcurrentPage)*PrmC.BKitemsPerPage))" class="altCizgisi"
+                                        ng-click="PrmC.BKrowSec($index,boyKilo)" ng-class="{active:$index==selectedRow}">
+                                        <td ng-bind="Vurgusu(boyKilo.Boy,' Cm')"></td>
+                                        <td ng-bind="Vurgusu(boyKilo.Kilo,' Kg')"></td>
+                                        <td ng-bind="Vurgusu(boyKilo.Bel,' Cm')"></td>
+                                        <td ng-bind="Vurgusu(boyKilo.Kalca,' Cm')"></td>
+                                        <td ng-bind="Vurgusu(boyKilo.BKI,' Kg/m²')"></td>
+                                        <td ng-bind="boyKilo.BKO"></td>
+                                        <td ng-bind="boyKilo.Tarih|date:'dd/MM/yyyy'"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </uib-accordion>
+                </div>
+                <div id="Odiox" uib-accordion-group class="panel-default" is-open="status.open12">
+                    <uib-accordion-heading>
+                        <a ui-sref="SM.Tk.Odio({id:PrmC.PRMB.data.PerGuid,'#':'Odiox'})" class="btn btn-xs btn-circle btn-default m-r-xs" ng-if="status.open12==true" ng-click="PrmC.gitme=true" tooltip-placement="bottom" uib-tooltip="İlgili Alana Gidiniz."><i class="glyphicon glyphicon-grain"> </i></a>
+                        Tetkikler: <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open12, 'glyphicon-chevron-right': !status.open12}"></i>
+                    </uib-accordion-heading>
+                    <uib-accordion close-others="oneAtATime">
+                        <div id="Odio" uib-accordion-group class="panel-warning" is-open="status.open17">
+                            <uib-accordion-heading>
+                                <a ui-sref="SM.Tk.Odio({id:PrmC.PRMB.data.PerGuid,'#':'Odio'})" class="btn btn-xs btn-circle  btn-warning m-r-xs" ng-if="status.open17==true" tooltip-placement="bottom" ng-click="PrmC.gitme=true" uib-tooltip="İlgili Alana Gidiniz."><i class="glyphicon glyphicon-grain"> </i></a>
+                                <a class="btn btn-xs btn-circle  btn-warning m-r-xs" ng-click="PrmC.OdioNormal()" tooltip-placement="bottom" uib-tooltip="Normal Değerlendirme Girişi."><i class="glyphicon glyphicon-record"> </i></a>
+                                <a class="btn btn-xs btn-circle  btn-warning m-r-xs" ng-if="status.open17==true" ng-click="PrmC.periyodikMuayene.Odio='Hafif seviye İşitme Kaybı'" tooltip-placement="bottom" uib-tooltip="Hafif İşitme Kaybı Değerlendirme Girişi."><i class="glyphicon glyphicon-record"> </i></a>
+                                <a class="btn btn-xs btn-circle  btn-warning m-r-xs" ng-if="status.open17==true" ng-click="PrmC.periyodikMuayene.Odio='Orta seviye İşitme Kaybı'" tooltip-placement="bottom" uib-tooltip="ORTA SEVİYEDE İşitme Kaybı Değerlendirme Girişi."><i class="glyphicon glyphicon-record"> </i></a>
+                                <a class="btn btn-xs btn-circle  btn-warning m-r-xs" ng-if="status.open17==true" ng-click="PrmC.periyodikMuayene.Odio='Ağır seviye İşitme Kaybı'" tooltip-placement="bottom" uib-tooltip="AĞIR SEVİYEDE İşitme Kaybı Değerlendirme Girişi."><i class="glyphicon glyphicon-record"> </i></a>
+                                <a class="btn btn-xs btn-circle  btn-warning m-r-xs" ng-if="status.open17==true" ng-click="PrmC.periyodikMuayene.Odio='Bilateral Tiz Seslerde İşitme Kaybı'" tooltip-placement="bottom" uib-tooltip="Tiz seslerde İşitme Kaybı Değerlendirme Girişi."><i class="glyphicon glyphicon-record"> </i></a>
+                                Odio: <span ng-bind="PrmC.periyodikMuayene.Odio"></span>
+                                <button class="btn btn-xs btn-danger m-r-lg m-l-xl" ng-if="PrmC.periyodikMuayene.Odio!=null&&status.open17==true" tooltip-placement="bottom" uib-tooltip="Temizle" ng-click="$event.stopPropagation();  $event.preventDefault();PrmC.periyodikMuayene.Odio=null"><i class="glyphicon glyphicon-trash"></i></button>
+                                <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open17, 'glyphicon-chevron-right': !status.open17}"></i>
+                            </uib-accordion-heading>
+                            <div style="width:100%" class="m-b-n-md">
+                                <ul ng-if="PrmC.OdiototalItems>3" class="m-t-n-xxs" uib-pagination total-items="PrmC.OdiototalItems" ng-model="PrmC.OdiocurrentPage" first-text="Birinci" last-text="Sonuncu"
+                                    previous-text="Önceki" next-text="Sonraki" max-size="maxSize" boundary-links="true" rotate="false" num-pages="numPages" items-per-page="PrmC.OdioitemsPerPage"></ul>
+                                <input ng-if="PrmC.OdiototalItems>3" type="number" min="3" max="100" ng-model="PrmC.Odioviewby" class="m-b-xs pull-right" ng-change="PrmC.OdiosetItemsPerPage(PrmC.Odioviewby)" />
+                            </div>
+                            <table class="table table-responsive issue-tracker table-hover  row m-t-n-xxs m-b-n-xs" style="width:100%;cursor:pointer">
+                                <thead>
+                                    <tr>
+                                        <th>Sağ K.Ortalaması</th>
+                                        <th>Sol K.Ortalaması</th>
+                                        <th>Tarih</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="odio in (Odiolar|orderBy:'$index':true).slice(((PrmC.OdiocurrentPage-1)*PrmC.OdioitemsPerPage), ((PrmC.OdiocurrentPage)*PrmC.OdioitemsPerPage))" class="altCizgisi"
+                                        ng-click="PrmC.OdiorowSec($index,odio)" ng-class="{active:$index==selectedRow}">
+                                        <td ng-bind="Vurgusu(odio.SagOrtalama,' dB')"></td>
+                                        <td ng-bind="Vurgusu(odio.SolOrtalama,' dB')"></td>
+                                        <td ng-bind="odio.Tarih|date:'dd/MM/yyyy'"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <div id="Sft" uib-accordion-group class="panel-warning" is-open="status.open18">
+                            <uib-accordion-heading>
+                                <a ui-sref="SM.Tk.Sft({id:PrmC.PRMB.data.PerGuid,'#':'Sft'})" class="btn btn-xs btn-circle  btn-warning m-r-xs" ng-if="status.open18==true" tooltip-placement="bottom" ng-click="PrmC.gitme=true" uib-tooltip="İlgili Alana Gidiniz."><i class="glyphicon glyphicon-grain"> </i></a>
+                                <a class="btn btn-xs btn-circle  btn-warning m-r-xs" ng-click="PrmC.periyodikMuayene.Sft ='Normal Spirometre Bulguları Var.'" tooltip-placement="bottom" uib-tooltip="Normal Değerlendirme Girişi."><i class="glyphicon glyphicon-record"> </i></a>
+                                <a class="btn btn-xs btn-circle  btn-warning m-r-xs" ng-if="status.open18==true" ng-click="PrmC.periyodikMuayene.Sft ='Restriktif Tip Solunum Yetmezliği Bulguları Var..'" tooltip-placement="bottom" uib-tooltip="Respriktif Tip"><i class="glyphicon glyphicon-record"> </i></a>
+                                <a class="btn btn-xs btn-circle  btn-warning m-r-xs" ng-if="status.open18==true" ng-click="PrmC.periyodikMuayene.Sft ='Obstrüktif Tip Solunum Yetmezliği Bulguları Var.'" tooltip-placement="bottom" uib-tooltip="Obstrüktif Tip"><i class="glyphicon glyphicon-record"> </i></a>
+                                <a class="btn btn-xs btn-circle  btn-warning m-r-xs" ng-if="status.open18==true" ng-click="PrmC.periyodikMuayene.Sft ='Mikst Tip Solunum Yetmezliği Bulguları Var.'" tooltip-placement="bottom" uib-tooltip="Mikst Tip"><i class="glyphicon glyphicon-record"> </i></a>
+                                SFT:<span ng-bind="PrmC.periyodikMuayene.Sft"></span>
+                                <button class="btn btn-xs btn-danger m-r-lg m-l-xl" ng-if="PrmC.periyodikMuayene.Sft!=null&&status.open18==true" tooltip-placement="bottom" uib-tooltip="Temizle" ng-click="$event.stopPropagation();  $event.preventDefault();PrmC.periyodikMuayene.Sft=null"><i class="glyphicon glyphicon-trash"></i></button>
+                                <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open18, 'glyphicon-chevron-right': !status.open18}"></i>
+                            </uib-accordion-heading>
+                            <div style="width:100%" ng-if="PrmC.SfttotalItems>3" class="m-b-n-md">
+                                <input type="number" min="3" max="100" ng-model="PrmC.Sftviewby" class="m-b-xs pull-right" ng-change="PrmC.SftsetItemsPerPage(PrmC.Sftviewby)" />
+                                <ul uib-pagination class="m-t-xs" total-items="PrmC.SfttotalItems" ng-model="PrmC.SftcurrentPage" first-text="Birinci" last-text="Sonuncu"
+                                    previous-text="Önceki" next-text="Sonraki" max-size="maxSize" boundary-links="true" rotate="false" num-pages="numPages" items-per-page="PrmC.SftitemsPerPage"></ul>
+                            </div>
+                            <table class="table table-responsive issue-tracker table-hover  row m-t-n-xxs m-b-n-xs" style="width:100%;cursor:pointer">
+                                <thead>
+                                    <tr>
+                                        <th>FVC</th>
+                                        <th>FEV1</th>
+                                        <th>FEV1/FVC</th>
+                                        <th>PEF</th>
+                                        <th>Tarih</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="sft in (SFTleri|orderBy:'$index':true).slice(((PrmC.SftcurrentPage-1)*PrmC.SftitemsPerPage), ((PrmC.SftcurrentPage)*PrmC.SftitemsPerPage))" class="altCizgisi"
+                                        ng-click="PrmC.SftrowSec($index,sft)" ng-class="{active:$index==selectedRow}">
+                                        <td ng-bind="sft.FVC"></td>
+                                        <td ng-bind="sft.FEV1"></td>
+                                        <td ng-bind="sft.Fev1Fvc"></td>
+                                        <td ng-bind="sft.PEF"></td>
+                                        <td ng-bind="sft.Tarih|date:'dd/MM/yyyy'"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="Radyoloji" uib-accordion-group class="panel-warning" is-open="status.open19">
+                            <uib-accordion-heading>
+                                <a ui-sref="SM.Tk.Radyoloji({id:PrmC.PRMB.data.PerGuid,'#':'Radyoloji'})" class="btn btn-xs btn-circle  btn-warning m-r-xs" ng-if="status.open19==true" ng-click="PrmC.gitme=true" tooltip-placement="bottom" uib-tooltip="İlgili Alana Gidiniz."><i class="glyphicon glyphicon-grain"> </i></a>
+                                <a class="btn btn-xs btn-circle  btn-warning m-r-xs" ng-click="PrmC.periyodikMuayene.Radyoloji ='Normal P.A. Akçiğer grafi bulguları.'" tooltip-placement="bottom" uib-tooltip="Normal Değerlendirme Girişi."><i class="glyphicon glyphicon-record"> </i></a>
+                                <a class="btn btn-xs btn-circle  btn-warning m-r-xs" ng-if="status.open19==true" ng-click="PrmC.periyodikMuayene.Radyoloji ='Anormal P.A. Akçiğer grafi bulguları.'" tooltip-placement="bottom" uib-tooltip="Anormal Değerlendirme Girişi."><i class="glyphicon glyphicon-record"> </i></a>
+                                Radyoloji:<span ng-bind="PrmC.periyodikMuayene.Radyoloji"></span>
+                                <button class="btn btn-xs btn-danger m-r-lg m-l-xl" ng-if="PrmC.periyodikMuayene.Radyoloji!=null&&status.open19==true" tooltip-placement="bottom" uib-tooltip="Temizle" ng-click="$event.stopPropagation();  $event.preventDefault();PrmC.periyodikMuayene.Radyoloji=null;selectedRow = -1"><i class="glyphicon glyphicon-trash"></i></button>
+                                <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open19, 'glyphicon-chevron-right': !status.open19}"></i>
+                            </uib-accordion-heading>
+                            <div style="width:100%" ng-if="PrmC.RADtotalItems>3" class="m-b-n-md">
+                                <input type="number" min="3" max="100" ng-model="PrmC.RADviewby" class="m-b-xs pull-right" ng-change="PrmC.RADsetItemsPerPage(PrmC.RADviewby)" />
+                                <ul uib-pagination class="m-t-xs" total-items="PrmC.RADtotalItems" ng-model="PrmC.RADcurrentPage" first-text="Birinci" last-text="Sonuncu"
+                                    previous-text="Önceki" next-text="Sonraki" max-size="maxSize" boundary-links="true" rotate="false" num-pages="numPages" items-per-page="PrmC.RADitemsPerPage"></ul>
+                            </div>
+                            <table class="table table-responsive issue-tracker table-hover  row m-t-n-xxs m-b-n-xs" style="width:100%;cursor:pointer">
+                                <thead>
+                                    <tr>
+                                        <th>Radyoloji</th>
+                                        <th>Radyolojik Sonuç</th>
+                                        <th>Tarih</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="radyoloji in (Radyolojileri|orderBy:'$index':true).slice(((PrmC.RADcurrentPage-1)*PrmC.RADitemsPerPage), ((PrmC.RADcurrentPage)*PrmC.RADitemsPerPage))" class="altCizgisi"
+                                        ng-click="PrmC.RADrowSec($index,radyoloji)" ng-class="{active:$index==selectedRow}">
+                                        <td ng-bind="radyoloji.RadyolojikIslem"></td>
+                                        <td ng-bind="radyoloji.RadyolojikSonuc"></td>
+                                        <td ng-bind="radyoloji.Tarih|date:'dd/MM/yyyy'"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <div id="Laboratuar" uib-accordion-group class="panel-warning" is-open="status.open20">
+                            <uib-accordion-heading>
+                                <a ui-sref="SM.Tk.Laboratuar({id:PrmC.PRMB.data.PerGuid,'#':'Laboratuar'})" class="btn btn-xs btn-circle btn-warning m-r-xs" ng-click="PrmC.gitme=true" ng-if="status.open20==true" tooltip-placement="bottom" uib-tooltip="İlgili Alana Gidiniz."><i class="glyphicon glyphicon-grain"> </i></a>
+                                <a class="btn btn-xs btn-circle  btn-warning m-r-xs" ng-click="PrmC.periyodikMuayene.Laboratuar ='Tüm Laboratuvar Parametreleri Doğal Olarak Değerlendirilmiştir.'" tooltip-placement="bottom" uib-tooltip="NORMAL Değerlendirme Girişi."><i class="glyphicon glyphicon-record"> </i></a>
+                                <a class="btn btn-xs btn-circle  btn-warning m-r-xs" ng-click="PrmC.periyodikMuayene.Laboratuar ='Laboratuvar Parametreleri PATOLOJİK Olarak Değerlendirilmiştir.'" tooltip-placement="bottom" uib-tooltip="ANORMAL Değerlendirme Girişi."><i class="glyphicon glyphicon-record"> </i></a>
+                                Biyokimya / Mikrobiyoloji: <span ng-bind="PrmC.periyodikMuayene.Laboratuar"></span>
+                               
+                                <button class="btn btn-xs btn-danger m-r-lg m-l-xl" ng-if="PrmC.periyodikMuayene.Laboratuar!=null&&status.open20==true" tooltip-placement="bottom" uib-tooltip="Temizle" ng-click="$event.stopPropagation();  $event.preventDefault();PrmC.periyodikMuayene.Laboratuar=null"><i class="glyphicon glyphicon-trash"></i></button>
+                                <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open20, 'glyphicon-chevron-right': !status.open20}"></i>
+                            </uib-accordion-heading>
+                            <div style="width:100%" ng-if="PrmC.LABtotalItems>3" class="m-b-n-md">
+                                <input type="number" min="3" max="100" ng-model="PrmC.LABviewby" class="m-b-xs pull-right" ng-change="PrmC.LABsetItemsPerPage(PrmC.LABviewby)" />
+                                <ul uib-pagination class="m-t-xs" total-items="PrmC.LABtotalItems" ng-model="PrmC.LABcurrentPage" first-text="Birinci" last-text="Sonuncu"
+                                    previous-text="Önceki" next-text="Sonraki" max-size="maxSize" boundary-links="true" rotate="false" num-pages="numPages" items-per-page="PrmC.LABitemsPerPage"></ul>
+                            </div>
+                            <table class="table table-responsive issue-tracker table-hover  row m-t-n-xxs m-b-n-xs" style="width:100%;cursor:pointer">
+                                <thead>
+                                    <tr>
+                                        <th>Grubu</th>
+                                        <th>Tetkikler</th>
+                                        <th>Tarih</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="laboratuar in (Laboratuarlari|orderBy:'$index':true).slice(((PrmC.LABcurrentPage-1)*PrmC.LABitemsPerPage), ((PrmC.LABcurrentPage)*PrmC.LABitemsPerPage))" class="altCizgisi"
+                                        ng-click="PrmC.LABrowSec($index,laboratuar)" ng-class="{active:$index==selectedRow}">
+                                        <td ng-bind="laboratuar.Grubu"></td>
+                                        <td ng-bind="laboratuar.Sonuc"></td>
+                                        <td ng-bind="laboratuar.Tarih|date:'dd/MM/yyyy'"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <div id="Hemogram" uib-accordion-group class="panel-warning" is-open="status.open22">
+                            <uib-accordion-heading>
+                                <a ui-sref="SM.Tk.Hemogram({id:PrmC.PRMB.data.PerGuid,'#':'Hemogram'})" class="btn btn-xs btn-circle btn-warning m-r-xs" ng-click="PrmC.gitme=true" ng-if="status.open22==true" tooltip-placement="bottom" uib-tooltip="İlgili Alana Gidiniz."><i class="glyphicon glyphicon-grain"> </i></a>
+                                <a class="btn btn-xs btn-circle  btn-warning m-r-xs" ng-click="PrmC.periyodikMuayene.Hemogram ='Tüm Hemogram Parametreleri Doğal Olarak Değerlendirilmiştir.'" tooltip-placement="bottom" uib-tooltip="NORMAL Değerlendirme Girişi."><i class="glyphicon glyphicon-record"> </i></a>
+                                <a class="btn btn-xs btn-circle  btn-warning m-r-xs" ng-click="PrmC.periyodikMuayene.Hemogram ='Tüm Hemogram Parametreleri PATOLOJİK Olarak Değerlendirilmiştir.'" tooltip-placement="bottom" uib-tooltip="ANORMAL Değerlendirme Girişi."><i class="glyphicon glyphicon-record"> </i></a>
+                                Hemogram: <span ng-bind="PrmC.periyodikMuayene.Hemogram"></span>
+                                <button class="btn btn-xs btn-danger m-r-lg m-l-xl" ng-if="PrmC.periyodikMuayene.Hemogram!=null&&status.open22==true" tooltip-placement="bottom" uib-tooltip="Temizle" ng-click="$event.stopPropagation();  $event.preventDefault();PrmC.periyodikMuayene.Hemogram=null"><i class="glyphicon glyphicon-trash"></i></button>
+                                <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open22, 'glyphicon-chevron-right': !status.open22}"></i>
+                            </uib-accordion-heading>
+                            <div style="width:100%" ng-if="PrmC.HEMtotalItems>3" class="m-b-n-md">
+                                <input type="number" min="3" max="100" ng-model="PrmC.HEMviewby" class="m-b-xs pull-right" ng-change="PrmC.HEMsetItemsPerPage(PrmC.HEMviewby)" />
+                                <ul uib-pagination class="m-t-xs" total-items="PrmC.HEMtotalItems" ng-model="PrmC.HEMcurrentPage" first-text="Birinci" last-text="Sonuncu"
+                                    previous-text="Önceki" next-text="Sonraki" max-size="maxSize" boundary-links="true" rotate="false" num-pages="numPages" items-per-page="PrmC.HEMitemsPerPage"></ul>
+                            </div>
+                            <table class="table table-responsive issue-tracker table-hover  row m-t-n-xxs m-b-n-xs" style="width:100%;cursor:pointer">
+                                <thead>
+                                    <tr>
+                                        <th>Hemogram</th>
+                                        <th>Tarih</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="hemogram in  (Hemogramlar|orderBy:'$index':true).slice(((PrmC.HEMcurrentPage-1)*PrmC.HEMitemsPerPage), ((PrmC.HEMcurrentPage)*PrmC.HEMitemsPerPage))" class="altCizgisi"
+                                        ng-click="PrmC.HEMrowSec($index,hemogram)" ng-class="{active:$index==selectedRow}">
+                                        <td ng-bind="Hem(hemogram.Eritrosit,hemogram.Hematokrit,hemogram.Hemoglobin,hemogram.Lokosit,hemogram.MCV,
+                            hemogram.MCH,hemogram.MCHC,hemogram.Trombosit,hemogram.Platekrit )"></td>
+                                        <td ng-bind="hemogram.Tarih|date:'dd/MM/yyyy'"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <div id="Ekg" uib-accordion-group class="panel-warning" is-open="status.open23">
+                            <uib-accordion-heading>
+                                <a ui-sref="SM.Tk.Ekg({id:PrmC.PRMB.data.PerGuid,'#':'Ekg'})" class="btn btn-xs btn-circle btn-warning m-r-xs" ng-if="status.open23==true" tooltip-placement="bottom" uib-tooltip="İlgili Alana Gidiniz." ng-click="PrmC.gitme=true"><i class="glyphicon glyphicon-grain"> </i></a>
+                                <a class="btn btn-xs btn-circle  btn-warning m-r-xs" ng-click="PrmC.periyodikMuayene.EKG ='Tüm EKG Parametreleri Doğal Olarak Değerlendirilmiştir.'" tooltip-placement="bottom" uib-tooltip="Normal Değerlendirme Girişi."><i class="glyphicon glyphicon-record"> </i></a>
+                                EKG:<span ng-bind="PrmC.periyodikMuayene.EKG"></span>
+                                <button class="btn btn-xs btn-danger m-r-lg m-l-xl" ng-if="PrmC.periyodikMuayene.EKG!=null&&status.open23==true" tooltip-placement="bottom" uib-tooltip="Temizle" ng-click="$event.stopPropagation();  $event.preventDefault();PrmC.periyodikMuayene.EKG=null"><i class="glyphicon glyphicon-trash"></i></button>
+                                <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open23, 'glyphicon-chevron-right': !status.open23}"></i>
+                            </uib-accordion-heading>
+                            <div style="width:100%" ng-if="PrmC.EKGtotalItems>3" class="m-b-n-md">
+                                <input type="number" min="3" max="100" ng-model="PrmC.EKGviewby" class="m-b-xs pull-right" ng-change="PrmC.EKGsetItemsPerPage(PrmC.EKGviewby)" />
+                                <ul uib-pagination class="m-t-xs" total-items="PrmC.EKGtotalItems" ng-model="PrmC.EKGcurrentPage" first-text="Birinci" last-text="Sonuncu"
+                                    previous-text="Önceki" next-text="Sonraki" max-size="maxSize" boundary-links="true" rotate="false" num-pages="numPages" items-per-page="PrmC.EKGitemsPerPage"></ul>
+                            </div>
+                            <table class="table table-responsive issue-tracker table-hover  row m-t-n-xxs m-b-n-xs" style="width:100%;cursor:pointer">
+                                <thead>
+                                    <tr>
+                                        <th>Değerlendirme</th>
+                                        <th>Tarih</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="ekg in  (EKGleri|orderBy:'$index':true).slice(((PrmC.EKGcurrentPage-1)*PrmC.EKGitemsPerPage), ((PrmC.EKGcurrentPage)*PrmC.EKGitemsPerPage))" class="altCizgisi"
+                                        ng-click="PrmC.EKGrowSec($index,ekg)" ng-class="{active:$index==selectedRow}">
+                                        <td ng-bind="ekg.Sonuc"></td>
+                                        <td ng-bind="ekg.Tarih|date:'dd/MM/yyyy'"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <div uib-accordion-group class="panel-warning" is-open="status.open24">
+                            <uib-accordion-heading>
+                                <a class="btn btn-xs btn-circle  btn-warning m-r-xs" ng-click="PrmC.periyodikMuayene.Psikoloji ='Değerlendirme sonuçları NORMAL bulunmuştur.'" tooltip-placement="bottom" uib-tooltip="Normal Değerlendirme Girişi."><i class="glyphicon glyphicon-record"> </i></a>
+                                Psikolojik Testler: <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open24, 'glyphicon-chevron-right': !status.open24}"></i>
+                            </uib-accordion-heading>
+
+                            <textarea id="TextArea1" rows="2" ng-model="PrmC.periyodikMuayene.Psikoloji" style="width:100%;max-width:100%"></textarea>
+                        </div>
+                        <div uib-accordion-group class="panel-warning" is-open="status.open25">
+                            <uib-accordion-heading>
+                                <a class="btn btn-xs btn-circle  btn-warning m-r-xs" ng-click="PrmC.periyodikMuayene.IdrarTesti ='Değerlendirme sonuçları normal olarak bulunmuştur.'" tooltip-placement="bottom" uib-tooltip="Normal Değerlendirme Girişi."><i class="glyphicon glyphicon-record"> </i></a>
+                                <a class="btn btn-xs btn-circle  btn-warning m-r-xs" ng-click="PrmC.periyodikMuayene.IdrarTesti ='Değerlendirme sonuçları PATOLOJİK olarak bulunmuştur.'" tooltip-placement="bottom" uib-tooltip="ANORMAL Değerlendirme Girişi."><i class="glyphicon glyphicon-record"> </i></a>
+                                İdrar Testi: <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open25, 'glyphicon-chevron-right': !status.open25}"></i>
+                            </uib-accordion-heading>
+                            <textarea id="TextArea1" rows="2" ng-model="PrmC.periyodikMuayene.IdrarTesti" style="width:100%;max-width:100%"></textarea>
+                        </div>
+                        <div uib-accordion-group class="panel-warning" is-open="status.open26">
+                            <uib-accordion-heading>
+                                <a class="btn btn-xs btn-circle  btn-warning m-r-xs" ng-click="PrmC.periyodikMuayene.PortorMuayenesi ='Değerlendirme sonuçları normal olarak bulunmuştur.'" tooltip-placement="bottom" uib-tooltip="Normal Değerlendirme Girişi."><i class="glyphicon glyphicon-record"> </i></a>
+                                <a class="btn btn-xs btn-circle  btn-warning m-r-xs" ng-click="PrmC.periyodikMuayene.PortorMuayenesi ='Değerlendirme sonuçları PATOLOJİK olarak bulunmuştur.'" tooltip-placement="bottom" uib-tooltip="ANORMAL Değerlendirme Girişi."><i class="glyphicon glyphicon-record"> </i></a>
+                                Portör Muayenesi Değerlendirmesi: <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open26, 'glyphicon-chevron-right': !status.open26}"></i>
+                            </uib-accordion-heading>
+                            <textarea id="TextArea1" rows="2" ng-model="PrmC.periyodikMuayene.PortorMuayenesi" style="width:100%;max-width:100%"></textarea>
+                        </div>
+
+                    </uib-accordion>
+                </div>
+                <div uib-accordion-group class="panel-default" is-open="status.open14">
+                    <uib-accordion-heading>
+                        Kanaat ve Sonuç: <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open14, 'glyphicon-chevron-right': !status.open14}"></i>
+                    </uib-accordion-heading>
+                    <div class="form-group">
+                        <label>Kanaat</label>
+                        <select class="form-control" ng-model="PrmC.periyodikMuayene.Kanaat.Sonucu"
+                                ng-options="t for t in ['Çalışması Elverişlidir','Aşağıdaki Koşullarda Çalışması Uygundur!','Normal Muayene Bulguları']"
+                                ng-change="PrmC.periyodikMuayene.Kanaat.Kosullari=PrmC.periyodikMuayene.Kanaat.Sonucu=='Aşağıdaki Koşullarda Çalışması Uygundur!'?PrmC.periyodikMuayene.Kanaat.Kosullari:[]"></select>
+                    </div>
+                    <div class="form-group" ng-if="PrmC.periyodikMuayene.Kanaat.Sonucu=='Aşağıdaki Koşullarda Çalışması Uygundur!'">
+                        <label>Koşullar</label>
+                        <ui-select multiple ng-model="PrmC.periyodikMuayene.Kanaat.Kosullari"
+                                   theme="bootstrap" ng-disabled="PrmC.disabled" close-on-select="false" title="Seçiniz..!">
+                            <ui-select-match placeholder="Seçiniz....">{{$item.id}}</ui-select-match>
+                            <ui-select-choices repeat="fz as fz in PrmC.kanaatSonuclari | propsFilter: {id: $select.search}">
+                                <div ng-bind-html="fz.id | highlight: $select.search"></div>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                    <div class="form-group">
+                        <label>Açklama</label>
+                        <textarea id="TextArea1" rows="2" ng-model="PrmC.periyodikMuayene.Kanaat.Aciklama" maxlength="200" style="width:100%;max-width:100%;"></textarea>
+                    </div>
+                </div>
+            </uib-accordion>
+        </div>
+        <div class="col-sm-3">
+            <div class="ibox" ng-class="{'fikset':genislik>750&&PrmC.checkBrowser===true,'zop':genislik>750&&PrmC.checkBrowser===false}">
+                <div class="ibox-title">
+                    <h5 ng-if="PrmC.prm.Protokol==null">Muayene Kayıt</h5>
+                    <h5 ng-if="PrmC.prm.Protokol!=null">Protokol: {{PrmC.prm.Protokol}}</h5>
+                    <button type="button" ng-if="PrmC.prm.Protokol!=null" class="btn btn-xs btn-success active pull-right" ng-click="PrmC.NewSubmit()"><i class="glyphicon glyphicon-plus"></i>&nbsp;Yeni Muayene Kaydı</button>
+
+                </div>
+                <div class="ibox-content" style="padding-bottom: 6px">
+                    <div class="row">
+                        <a class="btn btn-sm btn-dropbox m-t-n-sm" tooltip-placement="bottom" ng-init="temizle='İstenildiği Kadar Bölüm Açılsın'" uib-tooltip="{{temizle}}" ng-click="oneAtATime=!oneAtATime;temizle=oneAtATime==false?'Sadece Bir Bölüm Açılsın':'İstenildiği Kadar Bölümde Açılsın'"><i ng-class="{'fa fa-minus-square-o':oneAtATime,'fa fa-square-o':!oneAtATime}"></i></a>
+                        <a class="btn btn-sm  btn-social btn-soundcloud m-t-n-sm" ng-init="bbilgi='Tümünü Aç'" ng-click="PrmC.acilKapa=!PrmC.acilKapa;PrmC.AcilKapa();bbilgi=PrmC.acilKapa==true?'Tümünü Kapa':'Tümünü Aç'"><i ng-class="{'fa fa-stack-overflow':!PrmC.acilKapa,'fa fa-stack-exchange':PrmC.acilKapa}"></i>&nbsp;{{bbilgi}}</a>
+                        <button class="btn btn-danger btn-sm m-t-n-sm" ng-if="PrmC.prm.Protokol!=null" ng-click="PrmC.pMuayeneSil()"><i class="glyphicon glyphicon-trash"></i>&nbsp;Sil</button>
+                    </div>
+                    <div class="row">
+                        <label>Muayene Nedeni:</label>
+                        <select class="form-control" ng-model="PrmC.periyodikMuayene.Nedeni"
+                                ng-options="z for z in ['Periyodik Muayene','İşe Giriş Muayenesi']"></select>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <button class="btn btn-sm m-t-sm btn-social" ng-class="{'btn-pinterest':PrmC.Renjk,'btn-vk':!PrmC.Renjk,'btn-rounded':PrmC.Renjk}" ng-click="PrmC.Kayit()"><i ng-class="{'fa fa-cog fa-spin fa-2x fa-fw':PrmC.Renjk,'fa fa-check':!PrmC.Renjk}"></i>{{message}}</button>
+                        </div>
+                        <div class="col-sm-7">
+                            <button class="btn btn-info m-t-sm btn-sm pull-right" ng-if="PrmC.prm.Protokol!=null" ngf-select="uploadFiles($files)" multiple
+                                    accept="image/*,application/pdf,application/msword,application/vnd.ms-excel,
+                      application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" uib-tooltip="Dosya Yükleme" tooltip-popup-delay="1500">
+                                <i class="glyphicon glyphicon-upload"></i>
+                            </button>
+                            <button class="btn btn-primary m-t-sm btn-sm pull-right" ng-if="PrmC.prm.Protokol!=null" ng-click="PrmC.pBilgisi()" uib-tooltip="Bilgi Raporu Yazdır" tooltip-popup-delay="1500"><i class="glyphicon glyphicon-inbox"></i></button>
+                            <button class="btn btn-danger m-t-sm btn-sm pull-right" ng-if="PrmC.prm.Protokol!=null" ng-click="PrmC.pMuayene()" uib-tooltip="Rapor Yazdır" tooltip-popup-delay="1500"><i class="glyphicon glyphicon-print"></i></button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <ul style="list-style-type: upper-roman;" ng-show="dosyaList">
+                            <li ng-repeat="f in files" style="font:normal;margin-left:20px">
+                                <a ng-click="download(f)" ng-bind="f.FileName" tooltip-placement="bottom" uib-tooltip="İndir" tooltip-popup-delay="2500"></a>
+                                <i class="fa fa-remove" ng-click="deleten(f.GenericName , $index)" tooltip-placement="bottom" uib-tooltip="Sil" tooltip-popup-delay="2500"> </i>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="ibox collapsed" ng-if="PrmC.prm.Protokol!=null">
+                    <div class="ibox-title">
+                        <h5>Mail Gönder</h5>
+                        <div ibox-tools></div>
+                    </div>
+                    <div class="ibox-content" style="padding-bottom: 0px;padding-top: 5px;">
+                        <div class="row">
+                            <table id="table1" class="table table-bordered table-responsive" arrow-selector style="margin-bottom:2px;">
+                                <thead>
+                                    <tr>
+                                        <th uib-tooltip="Gönderme Onayı">O</th>
+                                        <th uib-tooltip="Kime">T</th>
+                                        <th uib-tooltip="Bilgi">C</th>
+                                        <th uib-tooltip="Gizli">B</th>
+                                        <th>Email</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="mail in PrmC.mailListesi.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))"
+                                        ng-class="{'selected':$index == selectedRow2}">
+                                        <td style="width:2%;cursor:pointer">
+                                            <input type="checkbox" ng-model="mail.o" name="ax">
+                                        </td>
+                                        <td style="width:2%;cursor:pointer">
+                                            <input type="radio" ng-model="mail.to" value="Kime">
+                                        </td>
+                                        <td style="width:2%;cursor:pointer">
+                                            <input type="radio" ng-model="mail.to" value="Bilgi">
+                                        </td>
+                                        <td style="width:2%;cursor:pointer">
+                                            <input type="radio" ng-model="mail.to" value="Gizli">
+                                        </td>
+                                        <td style="width:92%" ng-bind="mail.email" ng-click="setClickedRow($index,mail)"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-9">
+                                <ul class="my-pagination" uib-pagination total-items="totalItems" ng-model="currentPage" first-text="&#xf049;" last-text="&#xf050;"
+                                    previous-text="&#xf048;" next-text="&#xf051;" style="margin-bottom: 5px;margin-top:5px"
+                                    max-size="2" boundary-links="true" rotate="false" num-pages="numPages" items-per-page="itemsPerPage"></ul>
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="number" min="2" max="500" ng-model="viewby" ng-change="setItemsPerPage(viewby)" style="margin-top:5px;" />
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label>Şekli</label>
+                                <select class="form-control" ng-model="PrmC.sendMail.to"
+                                        ng-options="z for z in ['Kime','Bilgi','Gizli']"></select>
+                            </div>
+                            <div class="form-group">
+                                <label>Adı ve Soyadı</label>
+                                <input type="text" ng-model="PrmC.sendMail.ad"
+                                       placeholder=""
+                                       class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Mail</label>
+                                <input type="email" ng-model="PrmC.sendMail.email"
+                                       placeholder=""
+                                       class="form-control">
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <button class="btn btn-danger btn-sm" ng-click="PrmC.deleteMail(PrmC.sendMail)"><i class="glyphicon glyphicon-trash"></i>&nbsp;Sil</button>
+                            <button class="btn btn-primary btn-sm" ng-click="PrmC.addMail(PrmC.sendMail)"><i class="glyphicon glyphicon-plus"></i>&nbsp;Ekle</button>
+                            <button class="btn btn-warning btn-sm" ng-click="PrmC.newMail()"><i class="glyphicon glyphicon-new-window"></i>&nbsp;Yeni</button>
+                            <button class="btn btn-sm pull-right" ng-disabled="PrmC.MailBilgisi==='Gönderiliyor!'" ng-class="{'btn-info':PrmC.MailBilgisi==='Gönder','btn-danger':PrmC.MailBilgisi==='Gönderiliyor!'}" ng-click="PrmC.sendMaili()"><i class="glyphicon glyphicon-envelope"></i>&nbsp; {{PrmC.MailBilgisi}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div ng-init="yukleme()">   </div>
+    </div>
+    <!--<strong>PrmC.periyodikMuayene</strong>
+    <pre>{{PrmC.periyodikMuayene|json}}</pre>-->
+    <!--<strong>PrmC.prm</strong>
+    <pre>{{PrmC.prm|json}}</pre>
+    <strong>PrmC.PRMB</strong>
+    <pre>{{PrmC.PRMB|json}}</pre>
+    <strong>PrmC.mSablonu</strong>
+    <pre>{{PrmC.mSablonu|json}}</pre>-->
+
+</div>
+<style>
+    #Prm_wrapper {
+        padding-bottom: 0px;
+    }
+
+    .zop {
+        position: absolute;
+        top: 40px;
+        width: 90%;
+    }
+
+    .fikset {
+        position: fixed;
+        top: 230px;
+        width: 20%;
+        right: 2%;
+    }
+
+    .altCizgisi {
+        border-bottom: 1px solid #e7eaec;
+    }
+
+    .onoffswitch {
+        position: relative;
+        width: 40px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+    }
+
+    .onoffswitch-checkbox {
+        display: none;
+    }
+
+    .onoffswitch-label {
+        display: block;
+        overflow: hidden;
+        cursor: pointer;
+        border: 2px solid #999999;
+        border-radius: 4px;
+    }
+
+    .onoffswitch-inner {
+        display: block;
+        width: 200%;
+        margin-left: -100%;
+        transition: margin 0.3s ease-in 0s;
+    }
+
+        .onoffswitch-inner:before, .onoffswitch-inner:after {
+            display: block;
+            float: left;
+            width: 50%;
+            height: 12px;
+            padding: 0;
+            line-height: 12px;
+            font-size: 11px;
+            color: white;
+            font-family: Trebuchet, Arial, sans-serif;
+            font-weight: bold;
+            box-sizing: border-box;
+        }
+
+        .onoffswitch-inner:before {
+            content: "E";
+            padding-left: 7px;
+            background-color: #34A7C1;
+            color: #FFFFFF;
+        }
+
+        .onoffswitch-inner:after {
+            content: "H";
+            padding-right: 7px;
+            background-color: #EEEEEE;
+            color: #999999;
+            text-align: right;
+        }
+
+    .onoffswitch-switch {
+        display: block;
+        width: 14px;
+        margin: -1px;
+        background: #FFFFFF;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 24px;
+        border: 2px solid #999999;
+        border-radius: 4px;
+        transition: all 0.3s ease-in 0s;
+    }
+
+    .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+        margin-left: 0;
+    }
+
+    .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+        right: 0px;
+    }
+
+    .my-pagination {
+        font-family: Helvetica, FontAwesome;
+    }
+</style>

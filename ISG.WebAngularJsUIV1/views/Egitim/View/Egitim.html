@@ -1,0 +1,190 @@
+﻿<div ng-controller="egitimCtrl as egtC">
+    <div class="row wrapper border-bottom white-bg page-heading" style="position:relative;z-index:10">
+        <div class="col-sm-4 m-t-sm">
+            <uib-accordion close-others="true">
+                <div uib-accordion-group class="panel-default" is-open="status.open">
+                    <uib-accordion-heading>
+                        <span class="maviFont" ng-bind="SirketBasligi.name"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <i class="pull-right maviFont" ng-class="{'fa fa-chevron-down': status.open, 'fa fa-chevron-right': !status.open}"></i>
+                    </uib-accordion-heading>
+                    <treecontrol class="tree-light"
+                                 tree-model="collectionSirket"
+                                 options="treeOptions"
+                                 expanded-nodes="expandList"
+                                 on-selection="showSelected(node)">
+                        <span class="maviFont" ng-bind="node.name"></span>
+                    </treecontrol>
+                </div>
+            </uib-accordion>
+        </div>
+        <div class="col-sm-3 m-t-sm form-group">
+            <label class="col-sm-4 m-t-sm control-label" style="text-align: right; color: #e5d50d ">Yıl:</label>
+            <div class="col-sm-8">
+                <select class="form-control maviFont" ng-model="egtC.year"
+                        ng-options="z for z in ['2016','2017','2018','2019','2020','2021','2022','2023','2024','2025','2026','2027','2028','2029','2030','2031','2032']"></select>
+            </div>
+        </div>
+        <div class="col-sm-5 m-t-sm form-group">
+
+        </div>
+    </div>
+    <div class="wrapper wrapper-content animated fadeInRight">
+
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <span ng-if="egtC.IsverenTemsicisi.length>0"><b>Firma Yöneticisi:</b> {{egtC.IsverenTemsicisi}}</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span ng-bind-html="egtC.tehlikeGrubu"></span>
+            </div>
+            <div class="ibox-content">
+                <button ui-sref=".EgtKayit({id:SirketBasligi.id,year:egtC.year})" ui-sref-active="current" ng-class="$state.includes('Egitim.egt.EgtKayit')?'btn btn-primary':'btn btn-default'">Eğitim Kaydı</button>
+                <button ui-sref=".EgtDersler({id:SirketBasligi.id,year:egtC.year})" ng-class="$state.includes('Egitim.egt.EgtDersler')?'btn btn-primary':'btn btn-default'">Dersler</button>
+                <button ui-sref=".EgtAlanlar({id:SirketBasligi.id,year:egtC.year})" ng-class="$state.includes('Egitim.egt.EgtAlanlar')?'btn btn-primary':'btn btn-default'">Eğtim Analizi</button>
+                <button ui-sref=".EgtNotlari({id:SirketBasligi.id,year:egtC.year})" ng-class="$state.includes('Egitim.egt.EgtNotlari')?'btn btn-primary':'btn btn-default'">Ders Notları</button>
+                <!--<button ui-sref=".EgtAlmayanlar({id:SirketBasligi.id,year:egtC.year})" ng-class="$state.includes('Egitim.egt.EgtAlmayanlar')?'btn btn-primary':'btn btn-default'">Eğitim Almayan Listesi</button>
+                <button ui-sref=".EgtSertifikasyon({id:SirketBasligi.id,year:egtC.year})" ng-class="$state.includes('Egitim.egt.EgtSertifikasyon')?'btn btn-primary':'btn btn-default'">Sertifika</button>
+                <button ui-sref=".EgtPlanlama({id:SirketBasligi.id,year:egtC.year})" ng-class="$state.includes('Egitim.egt.EgtPlanlama')?'btn btn-primary':'btn btn-default'">Planlama</button>
+                <button ui-sref=".EgtOnaylari({id:SirketBasligi.id,year:egtC.year})" ng-class="$state.includes('Egitim.egt.EgtOnaylari')?'btn btn-primary':'btn btn-default'">Onaylı Eğitimler</button>-->
+                <div ui-view style="background:#f0f7f3;padding:10px 5px;width: 100%;height: 100%;display: inline-flex;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .glyphicon-refresh-animate {
+        -moz-animation: spin-moz .7s infinite linear;
+        -webkit-animation: spin-webkit .7s infinite linear;
+        animation: spin .7s infinite linear;
+    }
+
+    @-moz-keyframes spin-moz {
+        from {
+            -moz-transform: rotate(0deg);
+        }
+
+        to {
+            -moz-transform: rotate(360deg);
+        }
+    }
+
+    @-webkit-keyframes spin-webkit {
+        from {
+            -webkit-transform: rotate(0deg);
+        }
+
+        to {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+
+    @keyframes spin {
+        from {
+            transform: scale(1) rotate(0deg);
+        }
+
+        to {
+            transform: scale(1) rotate(360deg);
+        }
+    }
+    #Prm_wrapper {
+        padding-bottom: 0px;
+    }
+
+    .zop {
+        position: absolute;
+        top: 40px;
+        width: 90%;
+    }
+
+    .fikset {
+        position: fixed;
+        top: 230px;
+        width: 20%;
+        right: 2%;
+    }
+
+    .altCizgisi {
+        border-bottom: 1px solid #e7eaec;
+    }
+
+    .onoffswitch {
+        position: relative;
+        width: 40px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+    }
+
+    .onoffswitch-checkbox {
+        display: none;
+    }
+
+    .onoffswitch-label {
+        display: block;
+        overflow: hidden;
+        cursor: pointer;
+        border: 2px solid #999999;
+        border-radius: 4px;
+    }
+
+    .onoffswitch-inner {
+        display: block;
+        width: 200%;
+        margin-left: -100%;
+        transition: margin 0.3s ease-in 0s;
+    }
+
+        .onoffswitch-inner:before, .onoffswitch-inner:after {
+            display: block;
+            float: left;
+            width: 50%;
+            height: 12px;
+            padding: 0;
+            line-height: 12px;
+            font-size: 11px;
+            color: white;
+            font-family: Trebuchet, Arial, sans-serif;
+            font-weight: bold;
+            box-sizing: border-box;
+        }
+
+        .onoffswitch-inner:before {
+            content: "E";
+            padding-left: 7px;
+            background-color: #34A7C1;
+            color: #FFFFFF;
+        }
+
+        .onoffswitch-inner:after {
+            content: "H";
+            padding-right: 7px;
+            background-color: #EEEEEE;
+            color: #999999;
+            text-align: right;
+        }
+
+    .onoffswitch-switch {
+        display: block;
+        width: 14px;
+        margin: -1px;
+        background: #FFFFFF;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 24px;
+        border: 2px solid #999999;
+        border-radius: 4px;
+        transition: all 0.3s ease-in 0s;
+    }
+
+    .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+        margin-left: 0;
+    }
+
+    .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+        right: 0px;
+    }
+
+    .my-pagination {
+        font-family: Helvetica, FontAwesome;
+    }
+</style>

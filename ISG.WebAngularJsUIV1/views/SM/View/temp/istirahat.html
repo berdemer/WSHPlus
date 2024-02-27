@@ -1,0 +1,67 @@
+﻿<div class="jumbotron" style="margin-bottom: 0px;margin-bottom: 0px;padding: 5px;z-index:100">
+    <form>
+        <div class="form-group">
+            <label>İstirahata Başlama Tarihi</label>
+            <div class="input-group">
+                <input type="text" class="form-control" uib-datepicker-popup="dd.MMMM.yyyy" ng-init="PmC.Muayene.Istirahat.BaslamaTarihi=PmC.Muayene.Istirahat.BaslamaTarihi==null?PmC.dateNow:PmC.Muayene.Istirahat.BaslamaTarihi" ng-model="PmC.Muayene.Istirahat.BaslamaTarihi"
+                       is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" ng-click="open1()" alt-input-formats="altInputFormats" />
+                <span class="input-group-btn" style="z-index:100">
+                    <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="row m-t-n-sm">
+            <div class="col-sm-4 form-group" style="padding-right: 2px;margin-bottom: 5px;">
+                <label>Gün</label>
+                <select ng-init="PmC.Muayene.Istirahat.GunSayisi=PmC.Muayene.Istirahat.GunSayisi==null?2:PmC.Muayene.Istirahat.GunSayisi" ng-model="PmC.Muayene.Istirahat.GunSayisi" ng-options="t for t in [1,2,3,4,5,6,7,8,9,10]" class="form-control"></select>
+            </div>
+            <div class="col-sm-8 form-group" style="padding-left: 2px;margin-bottom: 5px;">
+                <label>Bitiş Tarihi</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" uib-datepicker-popup="dd.MMMM.yyyy" ng-model="PmC.Muayene.Istirahat.BitisTarihi" is-open="popup2.opened" datepicker-options="dateOptions2" ng-required="true" close-text="Close2" ng-click="open2()" alt-input-formats="altInputFormats" />
+                    <span class="input-group-btn" style="z-index:100">
+                        <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-7" style="padding-right: 2px;margin-bottom: 5px;">
+                <label>İstirahat Nedeni</label>
+                <select ng-init="PmC.Muayene.Istirahat.Nedeni='Hastalık'" ng-model="PmC.Muayene.Istirahat.Nedeni" ng-options="t for t in ['Hastalık','İş Kazası','Meslek Hastalığı','Analık']" class="form-control"></select>
+            </div>
+            <div class="form-group col-sm-5" style="padding-left: 2px;margin-bottom: 5px;">
+                <label>Sonrası</label>
+                <select ng-init="PmC.Muayene.Istirahat.Sonrasi='çalışır.'" ng-model="PmC.Muayene.Istirahat.Sonrasi" ng-options="t for t in ['çalışır.','kontrol edilecek.']" class="form-control"></select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <button class="btn btn-danger btn-sm" ng-if="PmC.personelMuayene.Protokol!=null" ng-disabled="PmC.personelMuayene.PMJson.imzaliEreceteGirisReturn.ereceteDVOField.ereceteNoField!=null" ng-click="PmC.EReceteKaydet()"><i class="glyphicon glyphicon-send"></i>&nbsp;&nbsp;E-Reçete</button>
+            </div>
+            <div class="col-sm-5">
+                <button class="btn btn-warning btn-sm" ng-if="PmC.personelMuayene.Protokol!=null" ng-click="PmC.rapor()"><i class="fa fa-print"></i>&nbsp;&nbsp;İ.Yaz</button>
+                <button class="btn btn-odnoklassniki btn-sm" ng-if="PmC.personelMuayene.Protokol!=null&&PmC.Muayene.Ikbilgisi!=null" ng-click="PmC.isKazasiRaporu()"><i class="glyphicon glyphicon-print"></i>&nbsp;&nbsp;K.Yaz</button>
+            </div>
+            <div class="col-sm-3"><button class="btn btn-sm pull-right" ng-class="{'btn-success':PmC.Renjk,'btn-primary':!PmC.Renjk,'btn-rounded':PmC.Renjk}" ng-click="PmC.IstirahatMuayeneKaydet()"><i class="fa fa-cog fa-spin fa-2x fa-fw" ng-show="PmC.Renjk"></i><i class="fa fa-save" ng-hide="PmC.Renjk!=false"></i>&nbsp;&nbsp;{{message}}</button></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-5">
+                <button class="btn btn-instagram btn-sm" ng-if="PmC.personelMuayene.Protokol!=null" ng-click="PmC.recete()"><i class="glyphicon glyphicon-print"></i>&nbsp;&nbsp;Recete Yaz</button>
+            </div>
+            <div class="col-sm-7">
+                <button class="btn btn-info btn-sm" ng-if="PmC.personelMuayene.Protokol!=null" ng-click="PmC.istirihatSMS()"><i class="fa fa-comment-o"></i>&nbsp;SMS</button>
+            </div>
+        </div>
+    </form>
+</div>
+<datetimepicker ng-init="PmC.Muayene.Istirahat.BaslamaTarihi=PmC.Muayene.Istirahat.BaslamaTarihi==null?PmC.dateNow:PmC.Muayene.Istirahat.BaslamaTarihi" ng-model="PmC.Muayene.Istirahat.BaslamaTarihi" ng-show="false"
+                date-format="dd-MMM-yyyy" class="form-control"
+                date-options="dateOptions"
+                date-disabled="isDisabledDate(date, mode)">
+</datetimepicker>
+<datetimepicker ng-model="PmC.Muayene.Istirahat.BitisTarihi" ng-show="false"
+                date-format="dd-MMM-yyyy" class="form-control"
+                date-options="dateOptions"
+                date-disabled="isDisabledDate(date, mode)">
+</datetimepicker>

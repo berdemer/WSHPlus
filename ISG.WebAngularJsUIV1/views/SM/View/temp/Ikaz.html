@@ -1,0 +1,170 @@
+﻿<div class="modal-header">
+    <i class="fa fa-exclamation-triangle fa-3x" style="color: yellow;"></i>
+    <span style="font-size:x-large">Uyarılarımız</span>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <table datatable="ng" id="Pm" style="width:100%;cursor:pointer"
+               dt-options="dtOptionsmdl" dt-column-defs="dtColumnDefsmdl" class="table table-responsive  table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Muayene Türü</th>
+                    <th>Uyarı Metni</th>
+                    <th>Sonuç Metni</th>
+                    <th>Termin Tarihi</th>
+                    <th>Tarih</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="ik in Ikazlar">
+                    <td ng-bind="ik.Ikaz_Id"></td>
+                    <td ng-bind="ik.MuayeneTuru" style="width:14%"></td>
+                    <td ng-bind="ik.IkazText" style="width:38%"></td>
+                    <td ng-bind="ik.SonucIkazText" style="width:38%"></td>
+                    <td ng-bind="ik.SonTarih|date:'dd/MM/yyyy'" style="width:10%"></td>
+                    <td ng-bind="ik.Tarih|date:'dd/MM/yyyy'" style="width:10%"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <div class="row">
+            <div class="col-sm-3">
+                <label>Uyarı Metni</label>
+                <textarea rows="3" cols="30" ng-model="uyari.IkazText"></textarea>
+            </div>
+            <div class="col-sm-3">
+                <label>Sonuç Metni</label>
+                <textarea rows="3" cols="30" ng-model="uyari.SonucIkazText"></textarea>
+            </div>
+            <div class="col-sm-3">
+                <label>Termin Tarihi</label>
+                <p class="input-group">
+                    <input ng-model="uyari.SonTarih" type="text" class="form-control" uib-datepicker-popup="dd-MM-yyyy" ng-init="uyari.SonTarih=simdi"
+                           is-open="popup13.opened" datepicker-options="dateOptionsmdl" ng-required="false" close-text="Close" ng-click="open13()" alt-input-formats="altInputFormats" />
+                    <span class="input-group-btn" style="z-index:100">
+                        <button type="button" class="btn btn-default" ng-click="open13()"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </p>
+            </div>
+            <div class="col-sm-3">
+                <label>Aktivasyon</label>
+                <div class="onoffswitch">
+                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch"
+                           ng-model="uyari.Status" ng-change="uyari.Status!=uyari.Status">
+                    <label class="onoffswitch-label" for="myonoffswitch">
+                        <span class="onoffswitch-inner"></span>
+                        <span class="onoffswitch-switch"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            &nbsp;   &nbsp;  <button class="btn btn-outline btn-info btn-sm" ng-click="perSMSI()">SMS gönder</button>
+        </div>
+        <div class="row">
+            &nbsp; <h3 style="color:red">&nbsp;{{bilgilendirme}}</h3>
+        </div>
+    </div>
+
+
+</div>
+<div class="modal-footer">
+    <button class="btn btn-danger" ng-if="uyari.Ikaz_Id!=null" type="button" style="cursor:pointer" ng-click="remove()">Sil</button>
+    <button class="btn btn-warning" ng-if="uyari.Ikaz_Id!=null" type="button" style="cursor:pointer" ng-click="yeni()">Yeni</button>
+    <button class="btn btn-success" type="button" style="cursor:pointer" ng-click="save()">Kaydet</button>
+    <button class="btn btn-facebook" type="button" style="cursor:pointer" ng-click="cancel()">Formu Kapat</button>
+</div>
+<datetimepicker ng-model="uyari.SonTarih" ng-show="false"
+                date-format="dd-MMM-yyyy" class="form-control"
+                date-options="dateOptions"
+                date-disabled="isDisabledDate(date, mode)">
+</datetimepicker>
+<style>
+    .onoffswitch {
+        position: relative;
+        width: 56px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+    }
+
+    .onoffswitch-checkbox {
+        display: none;
+    }
+
+    .onoffswitch-label {
+        display: block;
+        overflow: hidden;
+        cursor: pointer;
+        border: 1px solid #D4D4D4;
+        border-radius: 14px;
+    }
+
+    .onoffswitch-inner {
+        display: block;
+        width: 200%;
+        margin-left: -100%;
+        -moz-transition: margin 0.3s ease-in 0s;
+        -webkit-transition: margin 0.3s ease-in 0s;
+        -o-transition: margin 0.3s ease-in 0s;
+        transition: margin 0.3s ease-in 0s;
+    }
+
+        .onoffswitch-inner:before, .onoffswitch-inner:after {
+            display: block;
+            float: left;
+            width: 50%;
+            height: 16px;
+            padding: 0;
+            line-height: 16px;
+            font-size: 10px;
+            color: white;
+            font-family: Trebuchet, Arial, sans-serif;
+            font-weight: bold;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .onoffswitch-inner:before {
+            content: "Aktif";
+            padding-left: 10px;
+            background-color: #54A2F5;
+            color: #FFFFFF;
+        }
+
+        .onoffswitch-inner:after {
+            content: "Pasif";
+            padding-right: 10px;
+            background-color: #FC3535;
+            color: #FFFFFF;
+            text-align: right;
+        }
+
+    .onoffswitch-switch {
+        display: block;
+        width: 9px;
+        margin: 3.5px;
+        background: #FFFFFF;
+        border: 1px solid #D4D4D4;
+        border-radius: 14px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 36px;
+        -moz-transition: all 0.3s ease-in 0s;
+        -webkit-transition: all 0.3s ease-in 0s;
+        -o-transition: all 0.3s ease-in 0s;
+        transition: all 0.3s ease-in 0s;
+    }
+
+    .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+        margin-left: 0;
+    }
+
+    .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+        right: 0px;
+    }
+</style>

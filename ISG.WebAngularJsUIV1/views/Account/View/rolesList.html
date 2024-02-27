@@ -1,0 +1,77 @@
+﻿<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Rol Listesi</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+            <li>
+                <a>ui Grid</a>
+            </li>
+            <li class="active">
+                <strong>ui Grid</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight" ng-controller="rolesListController as vm">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Yetkilendirme Listesi - Satır Detayi</h5>
+                    <div ibox-tools></div>
+                </div>
+                <div class="ibox-content">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                            <input type="text" class="form-control" placeholder="Rol Arama" ng-model="vm.searchRole">
+                        </div>
+                    </div>
+                    <!-- wt-responsive-table mobile uyumu için konuldu. -->
+                    <table wt-responsive-table class="table table-bordered table-striped table-hover table-condensed">
+                        <thead>
+                            <tr>
+                                <td>
+                                    <a href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse">
+                                        <h4>
+                                            Roller
+                                            <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>
+                                            <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span>
+                                        </h4>
+                                    </a>
+                                </td>
+                                <td class="visible-lg"></td>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="roll in vm.gridData | toArray:false  | orderBy:sortType:sortReverse | filter:vm.searchRole">
+                                <td>{{ roll.Name }}</td>
+                                <td>
+                                    <button class="btn btn-danger" ng-click="vm.delete(roll.Id)">
+                                        <i class="fa fa-trash-o"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <form  name="vm.form" role="form" novalidate>
+                        <formly-form model="vm.model" fields="vm.fields" options="vm.options" form="vm.form">
+                            <button type="submit" class="btn btn-primary block m-b" data-ng-click="vm.save()" ng-disabled="vm.form.$invalid">Kaydet</button>
+                        </formly-form>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .cropArea {
+        overflow: hidden;
+        width: 400px;
+        height: 300px;
+    }
+</style>

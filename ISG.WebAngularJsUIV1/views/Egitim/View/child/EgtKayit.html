@@ -1,0 +1,572 @@
+<div ng-controller="egtKayitCtrl  as EgKC" style="width:100%">
+    <div class="row">
+        <div class="col-sm-1">
+            <label class="control-label pull-right m-t-sm">
+                Eğitimci*:
+            </label>
+        </div>
+        <div class="col-sm-2">
+            <ui-select ng-model="EgKC.profesyoneli" theme="bootstrap">
+                <ui-select-match placeholder="Eğitimci Seçiniz...">{{$select.selected.adi}}</ui-select-match>
+                <ui-select-choices repeat="item as item in EgKC.isgUsers | filter: $select.search">
+                    <div ng-bind-html="item.adi | highlight: $select.search"></div>
+                    <small style="display: flex; flex-direction: column;">
+                        {{item.gorevi}}
+                        <span>{{item.TcNo}}</span>
+                    </small>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+        <div class="col-sm-1">
+            <label class="control-label pull-right m-t-sm">
+                Tipi*:
+            </label>
+        </div>
+        <div class="col-sm-2">
+            <select class="form-control" ng-model="EgKC.egitimYapisi.belgeTipi" name="TehlikeGrubu" placeholder=""
+                    ng-options="z.K as z.N for z in EgKC.belgeTipleri" required>
+                <option value="">-- Belge Tipi--</option>
+            </select>
+        </div>
+        <div class="col-sm-1">
+            <label class="control-label pull-right m-t-sm">
+                Yeri *:
+            </label>
+        </div>
+        <div class="col-sm-2">
+            <select class="form-control" ng-model="EgKC.egitimYapisi.egitimYer" name="TehlikeGrubu" placeholder=""
+                    ng-options="z.K as z.N for z in EgKC.egitimYerleri" required>
+                <option value="">--Eğitim Yeri--</option>
+            </select>
+        </div>
+        <div class="col-sm-1">
+            <label class="control-label pull-right m-t-sm">
+                Türü *:
+            </label>
+        </div>
+        <div class="col-sm-2">
+            <select class="form-control" ng-model="EgKC.egitimYapisi.egitimtur" name="egitimtur" placeholder=""
+                    ng-options="z.K as z.N for z in EgKC.egitimTurleri">
+                <option value="">--Eğitim Türü--</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-1">
+            <label class="control-label pull-right m-t-sm">Tarih*:</label>
+        </div>
+        <div class="col-sm-2">
+            <div class="input-group">
+                <input type="text" class="form-control" uib-datepicker-popup="dd.MMMM.yyyy" ng-model="EgKC.egitimTarihi" is-open="popup1.opened" datepicker-options="dateOptions1" close-text="Close3" ng-click="open1()" alt-input-formats="altInputFormats" />
+                <span class="input-group-btn" style="z-index:100">
+                    <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="col-sm-1">
+            <label class="control-label pull-right m-t-sm">Saat:</label>
+        </div>
+        <div class="col-sm-2">
+            <div class="input-group " clock-picker data-autoclose="true">
+                <input type="text" class="form-control" value="00:00" ng-model="EgKC.dersler.saat">
+                <span class="input-group-addon">
+                    <span class="fa fa-clock-o"></span>
+                </span>
+            </div>
+        </div>
+        <div class="col-sm-1">
+            <label class="control-label pull-right m-t-sm">
+                Salonu:
+            </label>
+        </div>
+        <div class="col-sm-2">
+                <select class="form-control" ng-model="EgKC.dersler.salon" name="sablon"
+                        ng-options="z.salon as z.salon for z in EgKC.Salonlar">
+                    <option value="">-Seçiniz-</option>
+                </select>
+        </div>
+        <div class="col-sm-1">
+            <label class="control-label pull-right m-t-sm">
+                Şablon:
+            </label>
+        </div>
+        <div class="col-sm-2">
+            <div style="float:left">
+                <a class="btn btn-white btn-bitbuzket" ng-click="EgKC.sablonSil(EgKC.sablon)">
+                    <i class="fa fa-remove"></i>
+                </a>
+            </div>
+            <div style="float:left;min-width:120px">
+                <select class="form-control" ng-model="EgKC.sablon" name="sablon"
+                        ng-options="z as z.Egitim_Turu for z in EgKC.Sablonlar">
+                    <option value="">-Seçiniz-</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="ibox float-e-margins collapsed m-b-n-xxs">
+        <div class="ibox-title">
+            <div id="cv" class="ibox-tools" uib-dropdown>
+                <div>
+                    <a class="pull-left" style="color:darkblue" ng-click="showhide()">
+                        <i class="fa fa-chevron-up"></i>
+                        <b style="color:darkblue;">Tüm Ders Konuları</b>
+                    </a>
+                    <span ng-init="EgKC.dersler['DersSuresi']= 0" ng-show="EgKC.dersler['DersSuresi'] > 0">
+                        <a ng-if="EgKC.acKapa == false" class="btn btn-success btn-rounded btn-outline btn-xs" ng-click="EgKC.sablonKayitModeli()">Şablon Kaydet</a>
+                        &nbsp; &nbsp; &nbsp;
+                        <b>Derslerin Toplam Süresi:</b>
+                        <b ng-bind="EgKC.dersler['DersSuresiSaat']"></b>
+                    </span>
+                </div>
+                <div ng-if="EgKC.egitimYapisi.egitimObjects.length > 0" style="vertical-align:top;text-align:left">
+                    <ol style="display: inline-block; margin: 0; padding: 0;">
+                        <li ng-repeat="ders in EgKC.derslerinOzeti" style="display: inline">&nbsp;&nbsp;<b ng-bind="$index+1"></b>.)&nbsp;<b ng-bind="ders.tanim"></b><b>(</b><b ng-bind="ders.sure"></b><b> dk)</b></li>
+                    </ol>
+                </div>
+            </div>
+            <div class="ibox-content" style="padding-bottom: 0em">
+                <uib-accordion close-others="oneAtATime">
+                    <div uib-accordion-group class="panel-default" is-open="status.open1">
+                        <uib-accordion-heading>
+                            <b>Genel Konular</b>
+                            <span ng-show="EgKC.genelderssuresi > 0"><b>Süresi:</b> <b ng-bind=" EgKC.genelderssuresi|numToTime"></b></span>
+                            <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open1, 'glyphicon-chevron-right': !status.open1}"></i>
+                        </uib-accordion-heading>
+                        <div ng-repeat="egt in EgKC.EgitimTurleri| filter: {tipi: 'Genel'}" style="width:100%;display:inline-table;vertical-align:sub">
+                            <label class="col-sm-7 control-label m-t-sm" ng-bind="egt.konu"
+                                   ng-init="EgKC.dersler.genelKonular[egt.tanimlama+'sure']=0;EgKC.dersler.genelKonular[egt.tanimlama+'kod']=egt.kod"
+                                   ng-click="EgKC.dersler.genelKonular[egt.tanimlama]=!EgKC.dersler.genelKonular[egt.tanimlama];
+                                   EgKC.konularDegisimi(EgKC.dersler.genelKonular[egt.tanimlama+'sure'],EgKC.dersler.genelKonular[egt.tanimlama],egt)"></label>
+
+                            <div class="col-sm-3">   </div>
+                            <div class="col-sm-1 m-t-sm">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="onoffswitch" ng-init="EgKC.dersler.genelKonular[egt.tanimlama]=false" ng-model="EgKC.dersler.genelKonular[egt.tanimlama]"
+                                           ng-change="EgKC.konularDegisimi(EgKC.dersler.genelKonular[egt.tanimlama+'sure'],EgKC.dersler.genelKonular[egt.tanimlama],egt);
+                                           EgKC.dersler.genelKonular[egt.tanimlama+'sure']=EgKC.dersler.genelKonular[egt.tanimlama]==false?null:EgKC.dersler.genelKonular[egt.tanimlama+'sure']"
+                                           class="onoffswitch-checkbox" id="{{egt.tanimlama}}">
+                                    <label class="onoffswitch-label" for="{{egt.tanimlama}}">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-1 input-icon input-icon-right">
+                                <input type="number" class="form-control" ng-disabled="!EgKC.dersler.genelKonular[egt.tanimlama]"
+                                       min="0" ng-model-options="{ debounce: 1000 }"
+                                       max="80" required
+                                       ng-change="EgKC.konularDegisimi(EgKC.dersler.genelKonular[egt.tanimlama+'sure'],EgKC.dersler.genelKonular[egt.tanimlama],egt)"
+                                       ng-model="EgKC.dersler.genelKonular[egt.tanimlama+'sure']">
+                                <i>Dk</i>
+                            </div>
+                        </div>
+                    </div>
+                    <div uib-accordion-group class="panel-default" is-open="status.open2">
+                        <uib-accordion-heading>
+                            <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open2, 'glyphicon-chevron-right': !status.open2}"></i>
+                            <b>Sağlık Konuları</b>
+                            <span ng-show="EgKC.saglikderssuresi > 0"><b>Süresi:</b> <b ng-bind=" EgKC.saglikderssuresi|numToTime"></b></span>
+                        </uib-accordion-heading>
+                        <div ng-repeat="egt in EgKC.EgitimTurleri| filter: {tipi: 'Saglik'}" style="width:100%;display:inline-table;vertical-align:sub">
+                            <label class="col-sm-7 control-label m-t-sm" ng-bind="egt.konu"
+                                   ng-init="EgKC.dersler.saglikKonular[egt.tanimlama+'sure']=0;EgKC.dersler.saglikKonular[egt.tanimlama+'kod']=egt.kod"
+                                   ng-click="EgKC.dersler.saglikKonular[egt.tanimlama]=!EgKC.dersler.saglikKonular[egt.tanimlama];
+                                   EgKC.konularDegisimi(EgKC.dersler.saglikKonular[egt.tanimlama+'sure'],EgKC.dersler.saglikKonular[egt.tanimlama],egt)"></label>
+
+                            <div class="col-sm-3">   </div>
+                            <div class="col-sm-1 m-t-sm">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="onoffswitch" ng-init="EgKC.dersler.saglikKonular[egt.tanimlama]=false" ng-model="EgKC.dersler.saglikKonular[egt.tanimlama]"
+                                           ng-change="EgKC.konularDegisimi(EgKC.dersler.saglikKonular[egt.tanimlama+'sure'],EgKC.dersler.saglikKonular[egt.tanimlama],egt);
+                                           EgKC.dersler.saglikKonular[egt.tanimlama+'sure']=EgKC.dersler.saglikKonular[egt.tanimlama]==false?null:EgKC.dersler.saglikKonular[egt.tanimlama+'sure']"
+                                           class="onoffswitch-checkbox" id="{{egt.tanimlama}}">
+                                    <label class="onoffswitch-label" for="{{egt.tanimlama}}">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-1 input-icon input-icon-right">
+                                <input type="number" class="form-control" ng-disabled="!EgKC.dersler.saglikKonular[egt.tanimlama]"
+                                       min="0" ng-model-options="{ debounce: 1000 }"
+                                       max="80" required
+                                       ng-change="EgKC.konularDegisimi(EgKC.dersler.saglikKonular[egt.tanimlama+'sure'],EgKC.dersler.saglikKonular[egt.tanimlama],egt)"
+                                       ng-model="EgKC.dersler.saglikKonular[egt.tanimlama+'sure']">
+                                <i>Dk</i>
+                            </div>
+                        </div>
+                    </div>
+                    <div uib-accordion-group class="panel-default" is-open="status.open3">
+                        <uib-accordion-heading>
+                            <b>Teknik Konular </b>
+                            <span ng-show="EgKC.teknikderssuresi > 0"><b>Süresi:</b> <b ng-bind=" EgKC.teknikderssuresi|numToTime"></b></span>
+                            <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open3, 'glyphicon-chevron-right': !status.open3}"></i>
+
+                        </uib-accordion-heading>
+                        <div ng-repeat="egt in EgKC.EgitimTurleri| filter: {tipi: 'Teknik'}" style="width:100%;display:inline-table;vertical-align:sub">
+                            <label class="col-sm-7 control-label m-t-sm" ng-bind="egt.konu"
+                                   ng-init="EgKC.dersler.teknikKonular[egt.tanimlama+'sure']=0;EgKC.dersler.teknikKonular[egt.tanimlama+'kod']=egt.kod"
+                                   ng-click="EgKC.dersler.teknikKonular[egt.tanimlama]=!EgKC.dersler.teknikKonular[egt.tanimlama];
+                                   EgKC.konularDegisimi(EgKC.dersler.teknikKonular[egt.tanimlama+'sure'],EgKC.dersler.teknikKonular[egt.tanimlama],egt)"></label>
+
+                            <div class="col-sm-3">   </div>
+                            <div class="col-sm-1 m-t-sm">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="onoffswitch" ng-init="EgKC.dersler.teknikKonular[egt.tanimlama]=false" ng-model="EgKC.dersler.teknikKonular[egt.tanimlama]"
+                                           ng-change="EgKC.konularDegisimi(EgKC.dersler.teknikKonular[egt.tanimlama+'sure'],EgKC.dersler.teknikKonular[egt.tanimlama],egt);
+                                           EgKC.dersler.teknikKonular[egt.tanimlama+'sure']=EgKC.dersler.teknikKonular[egt.tanimlama]==false?null:EgKC.dersler.teknikKonular[egt.tanimlama+'sure']"
+                                           class="onoffswitch-checkbox" id="{{egt.tanimlama}}">
+                                    <label class="onoffswitch-label" for="{{egt.tanimlama}}">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-1 input-icon input-icon-right">
+                                <input type="number" class="form-control" ng-disabled="!EgKC.dersler.teknikKonular[egt.tanimlama]"
+                                       min="0" ng-model-options="{ debounce: 1000 }"
+                                       max="80" required
+                                       ng-change="EgKC.konularDegisimi(EgKC.dersler.teknikKonular[egt.tanimlama+'sure'],EgKC.dersler.teknikKonular[egt.tanimlama],egt)"
+                                       ng-model="EgKC.dersler.teknikKonular[egt.tanimlama+'sure']">
+                                <i>Dk</i>
+                            </div>
+                        </div>
+                    </div>
+                    <div uib-accordion-group class="panel-default" is-open="status.open4">
+                        <uib-accordion-heading>
+                            <b>Diğer Konular</b> (Bakanlık grubuna dahil değildir.)
+                            <span ng-show="EgKC.digerderssuresi > 0"><b>Süresi:</b> <b ng-bind=" EgKC.digerderssuresi|numToTime"></b></span>
+                            <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open3, 'glyphicon-chevron-right': !status.open3}"></i>
+                        </uib-accordion-heading>
+                        <div ng-repeat="egt in EgKC.EgitimTurleri| filter: {tipi: 'Diger'}" style="width:100%;display:inline-table;vertical-align:sub">
+                            <label class="col-sm-7 control-label m-t-sm" ng-bind="egt.konu"
+                                   ng-init="EgKC.dersler.digerKonular[egt.tanimlama+'sure']=0;EgKC.dersler.digerKonular[egt.tanimlama+'kod']=egt.kod"
+                                   ng-click="EgKC.dersler.digerKonular[egt.tanimlama]=!EgKC.dersler.digerKonular[egt.tanimlama];
+                                   EgKC.konularDegisimi(EgKC.dersler.digerKonular[egt.tanimlama+'sure'],EgKC.dersler.digerKonular[egt.tanimlama],egt)"></label>
+
+                            <div class="col-sm-3">   </div>
+                            <div class="col-sm-1 m-t-sm">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="onoffswitch" ng-init="EgKC.dersler.digerKonular[egt.tanimlama]=false" ng-model="EgKC.dersler.digerKonular[egt.tanimlama]"
+                                           ng-change="EgKC.konularDegisimi(EgKC.dersler.digerKonular[egt.tanimlama+'sure'],EgKC.dersler.digerKonular[egt.tanimlama],egt);
+                                           EgKC.dersler.digerKonular[egt.tanimlama+'sure']=EgKC.dersler.digerKonular[egt.tanimlama]==false?null:EgKC.dersler.digerKonular[egt.tanimlama+'sure']"
+                                           class="onoffswitch-checkbox" id="{{egt.tanimlama}}">
+                                    <label class="onoffswitch-label" for="{{egt.tanimlama}}">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-1 input-icon input-icon-right">
+                                <input type="number" class="form-control" ng-disabled="!EgKC.dersler.digerKonular[egt.tanimlama]"
+                                       min="0" ng-model-options="{ debounce: 1000 }"
+                                       max="80" required
+                                       ng-change="EgKC.konularDegisimi(EgKC.dersler.digerKonular[egt.tanimlama+'sure'],EgKC.dersler.digerKonular[egt.tanimlama],egt)"
+                                       ng-model="EgKC.dersler.digerKonular[egt.tanimlama+'sure']">
+                                <i>Dk</i>
+                            </div>
+                        </div>
+                    </div>
+                </uib-accordion>
+            </div>
+        </div>
+    </div>
+    <div class="ibox" data-ng-init="onloadFun()">
+        <div class="ibox-content" style="padding-top: 2px;">
+            <span class="text-muted small pull-right">Bilgi: <i class="fa fa-deaf"></i>{{EgKC.KatilimciSayisi}}  * En fazla 200 çalışan eklenebilmektedir.</span>
+            <h4 style="color:darkblue;margin-left: 70px;"><b>Katılımcıları Ekleyin</b></h4>
+            <div class="row">
+                <div class="col-xs-1" style=" padding-right: 0px;">
+                    <button class="btn btn btn-vimeo pull-right" tooltip-placement="bottom" uib-tooltip="Tüm personelleri ekle"
+                            ng-click="EgKC.tumPersonelleriEkle()">
+                        <i ng-if="!messageIcoEkle" class="fa fa-user-times"></i>
+                        <span ng-if="messageIcoEkle" class="loading dots2"></span>
+                    </button>
+                </div>
+                <form name="KatilimciFrom" ng-submit="EgKC.ekleKatilimci(EgKC.repo,$event);" autocomplete="cc-csc" novalidate>
+                    <div class="col-xs-4" style="padding-right: 0px; padding-left: 0px;">
+                        <input type="text" id="katilimci" name="katilimciInput" ng-model="EgKC.repo" placeholder="Katılımcıları Arayabilirsiniz..↓┘Ent"
+                               uib-typeahead="repo as repo.AdiSoyadi for repo in EgKC.getRepos($viewValue)" typeahead-focus-first="false"
+                               typeahead-no-results="noResults" typeahead-min-length="2" autocomplete="cc-csc"
+                               typeahead-wait-ms="300" class="form-control" typeahead-template-url="customTemplate.html" autofocus="autofocus" required>
+                    </div>
+                    <div class="col-xs-7" style="padding-left: 0px;">
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn btn-primary" tooltip-placement="bottom" uib-tooltip="Sadece bir peroneli ekle!">
+                                <i ng-if="!msg" class="fa fa-user-circle-o"></i>
+                                <span ng-if="msg" class="loading dots2"></span>
+                            </button>
+                            <button ng-show="EgKC.Katilimciler.length > 0   > 0 && EgKC.profesyoneli!=null" class="btn btn-success" ng-click="EgKC.TumunuKaydet()" style="margin-left: 40px;" type="button"><i class="fa fa-group"></i>&nbsp;&nbsp;<span class="bold">Kaydet</span></button>
+                            <button ng-show="EgKC.Katilimciler.length > 0   > 0 && EgKC.profesyoneli!=null" class="btn btn-reddit" ng-click="EgKC.KatilimFormu()" style="margin-left: 40px;" type="button"><i class="fa fa-print"></i>&nbsp;&nbsp;<span class="bold">Eğitim Formu</span></button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <b> <span class="text-muted small pull-left" style="color:black" ng-show="EgKC.Katilimciler.length" ng-bind="EgKC.KatilimciSayisi"></span></b>
+        <div class="clients-list" ng-show="EgKC.Katilimciler.length > 0" style=" height:300px;">
+            <div class="full-height-scroll" full-scroll>
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <tbody>
+                            <tr ng-repeat="kt in EgKC.Katilimciler |reverse">
+                                <td class="client-avatar"><img alt="image" ng-src="{{kt.Photo}}"   on-error="defaultUser.png"> </td>
+                                <td><a ng-click="client = 1" class="client-link" ng-bind="kt.AdiSoyadi" style="font-size: x-large;"></a></td>
+                                <td> <span ng-bind="kt.TcNo" style="font-size: large;"></span></td>
+                                <td> <span ng-bind="kt.Gorevi" style="font-size: large;"></span></td>
+                                <td class="client-status" ng-init="kt.DurumBilgisi=kt.KayitDurumu ? 'Kayıt Altında':'Kayıtsız'"><span ng-class=" {'bg-primary p-xs':kt.KayitDurumu , 'bg-warning  p-xs': !kt.KayitDurumu}" ng-bind="kt.DurumBilgisi"></span></td>
+                                <td class="client-status">
+                                    <a class="btn btn btn-danger p-xs b-r-sm" ng-click="EgKC.removeRow(kt)">Sil</a>
+                                </td>
+                                <td class="client-status">
+                                    <a class="btn btn btn-vimeo p-xs b-r-sm" ng-click="EgKC.MailAt(kt.AdiSoyadi,kt.Mail)">Mail</a>
+                                </td>
+                                <td class="client-status">
+                                    <a class="btn btn btn-yahoo p-xs b-r-sm" ng-click="EgKC.SMSAt(kt.AdiSoyadi,kt.Telefon)">SMS</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--<pre>EgKC.egitimYapisi={{EgKC.egitimYapisi|json}}</pre>
+    <pre>EgKC.dersler={{EgKC.dersler|json}}</pre>-->
+</div>
+<datetimepicker ng-init="EgKC.egitimTarihi=EgKC.egitimTarihi==null?EgKC.egitimTarihi" ng-model="EgKC.egitimTarihi" ng-show="false"
+                date-format="dd-MMM-yyyy" class="form-control"
+                date-options="dateOptions"
+                date-disabled="isDisabledDate(date, mode)">
+</datetimepicker>
+<script type="text/ng-template" id="KayitTuru.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Kaydın Niteliği</h3>
+    </div>
+    <form name="KayitFrom" ng-submit="NitelikliKayit(KayitAdi)" novalidate>
+        <div class="modal-body">
+            <div class="form-group">
+                <label>Kayıt Tipini Seçiniz.</label>
+                <select class="form-control" ng-model="KayitAdi" autofocus="autofocus"
+                        name="KayitAdi" ng-options="z as z.durum for z in DurumKayitlari" required></select>
+            </div>
+            <span ng-if="messageIco"  class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
+            <label ng-bind="message" style="color:brown"></label>
+            <span ng-if="messageIco" style="color: brown" class="loading fish"></span>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-success" type="submit">Kaydet</button>
+            <button class="btn btn-danger" type="button" ng-click="cancel()">İptal</button>
+        </div>
+    </form>
+</script>
+<script type="text/ng-template" id="SablonKaydet.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Eğitim Planı Şablonu Kaydet</h3>
+    </div>
+    <form name="sablonFrom" ng-submit="ekleTani(SablonTanimi)" novalidate>
+        <div class="modal-body">
+            <div class="form-group"
+                 ng-class="{ 'has-error' : sablonFrom.sablonAdiInput.$invalid && !sablonFrom.sablonAdiInput.$pristine }">
+                <label>Şablon Tanımı</label>
+                <input type="text" name="sablonAdiInput" id="sablonAdiInput" ng-model="SablonTanimi" placeholder="Şablonun Adını Giriniz.↓┘Ent"
+                       class="form-control" typeahead-wait-ms="750" autofocus="autofocus" required>
+                <p ng-show="sablonFrom.sablonAdiInput.$invalid && !sablonFrom.sablonAdiInput.$pristine" class="help-block">Şablon Adını Boş Bırakmayın.</p>
+            </div>
+            <label ng-bind="message" style="color:brown"></label>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-success" ng-disabled="sablonFrom.$invalid" type="submit">Kaydet</button>
+            <button class="btn btn-danger" type="button" ng-click="cancel()">İptal</button>
+        </div>
+    </form>
+</script>
+<script type="text/ng-template" id="customTemplate.html">
+    <a>
+        <div class="select2-result-repository clearfix">
+            <div class="select2-result-repository__avatar">
+                <img ng-src="{{match.model.Photo}}"  on-error="defaultUser.png">
+            </div>
+            <div class="select2-result-repository__meta">
+                <div class="select2-result-repository__title" ng-bind-html="match.label | uibTypeaheadHighlight:query"></div>
+                <div class="select2-result-repository__description" ng-bind-html="match.model.TcNo | uibTypeaheadHighlight:query"></div>
+                <div class="select2-result-repository__statistics">
+                    <div class="select2-result-repository__forks">
+                        <i class="fa fa-flash"></i> {{match.model.Gorevi}}
+                    </div>
+                    <div class="select2-result-repository__stargazers"><i class="fa fa-star"></i> {{match.model.bolumAdi}}</div>
+                </div>
+            </div>
+        </div>
+    </a>
+</script>
+<script type="text/ng-template" id="KatilimFormu.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Eğitim Katılım Formu</h3>
+    </div>
+    <div class="modal-body" ng-init="konu='Dolu Form Sayfası';unCheck=true;">
+        <div class="row">
+            <div class="col-md-6">
+                <label class="checkbox-inline">
+                    <input icheck type="checkbox" value="false" ng-change="!unCheck;konu = unCheck ? 'Dolu Form Sayfası' : 'Boş Form Sayfası'" ng-model="unCheck">{{konu}}
+                </label>
+            </div>
+            <div class="col-md-6" ng-show="!unCheck">
+                <label>
+                    Sayfa Adeti:
+                </label>
+                <input class="form-control" ng-model="sayfa" type="number" min="0"max="80">
+            </div>
+        </div>
+    </div>
+        <div class="modal-footer">
+            <button class="btn btn-success" ng-click="Yazdir(unCheck)">Yazdir</button>
+            <button class="btn btn-danger" type="button" ng-click="cancel()">İptal</button>
+        </div>
+</script>
+<style>
+    .selected_icon {
+        height: 25px;
+        width: 30px;
+        display: inline-block;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    .selected_title {
+        height: 25px;
+        padding-left: 50px;
+        display: inline-block;
+        line-height: 28px;
+    }
+
+    .select2-result-repository {
+        padding-top: 4px;
+        padding-bottom: 3px;
+    }
+
+    .select2-result-repository__avatar {
+        float: left;
+        width: 60px;
+        margin-right: 10px;
+    }
+
+        .select2-result-repository__avatar img {
+            width: 100%;
+            height: auto;
+            border-radius: 2px;
+        }
+
+    .select2-result-repository__meta {
+        margin-left: 70px;
+    }
+
+    .select2-result-repository__title {
+        color: black;
+        font-weight: bold;
+        word-wrap: break-word;
+        line-height: 1.1;
+        margin-bottom: 4px;
+    }
+
+    .select2-result-repository__forks,
+    .select2-result-repository__stargazers {
+        margin-right: 1em;
+    }
+
+    .select2-result-repository__forks,
+    .select2-result-repository__stargazers,
+    .select2-result-repository__watchers {
+        display: inline-block;
+        color: #aaa;
+        font-size: 11px;
+    }
+
+    .select2-result-repository__description {
+        font-size: 13px;
+        color: black;
+        margin-top: 4px;
+    }
+
+    .select2-results__option--highlighted .select2-result-repository__title {
+        color: white;
+    }
+
+    .select2-results__option--highlighted .select2-result-repository__forks,
+    .select2-results__option--highlighted .select2-result-repository__stargazers,
+    .select2-results__option--highlighted .select2-result-repository__description,
+    .select2-results__option--highlighted .select2-result-repository__watchers {
+        color: #c6dcef;
+    }
+
+    .clearfix {
+        clear: both;
+    }
+
+    div > label {
+        color: darkblue;
+    }
+
+    .btn-bitbuzket {
+        color: #2d2828;
+        /* background-color: #205081; */
+        border-color: rgba(0,0,0,0.2);
+    }
+
+    .input-icon {
+        position: relative;
+    }
+
+        .input-icon > i {
+            position: absolute;
+            display: block;
+            transform: translate(0, -50%);
+            top: 50%;
+            pointer-events: none;
+            width: 25px;
+            text-align: center;
+            font-style: normal;
+        }
+
+        .input-icon > input {
+            padding-left: 25px;
+            padding-right: 0;
+        }
+
+    .input-icon-right > i {
+        right: 0;
+    }
+
+    .input-icon-right > input {
+        padding-left: 0;
+        padding-right: 25px;
+        text-align: right;
+    }
+
+    .typeahead-demo .custom-popup-wrapper {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 1000;
+        display: none;
+        background-color: #f9f9f9;
+    }
+
+        .typeahead-demo .custom-popup-wrapper > .message {
+            padding: 10px 20px;
+            border-bottom: 1px solid #ddd;
+            color: #868686;
+        }
+
+        .typeahead-demo .custom-popup-wrapper > .dropdown-menu {
+            position: static;
+            float: none;
+            display: block;
+            min-width: 160px;
+            background-color: transparent;
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
+        }
+</style>

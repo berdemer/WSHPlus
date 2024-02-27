@@ -1,0 +1,74 @@
+﻿<div ng-controller="revirIslemleriCtrl  as riC">
+    <div class="row wrapper border-bottom white-bg page-heading" style="position:relative;z-index:10">
+        <div class="col-sm-1 m-t-lg" style="padding-right:0px;padding-left:15px;">
+            <h4 class="m-t-sm">Sağlık Birimi:</h4>
+        </div>
+        <div class="col-sm-4 m-t-lg" style="padding-left:0px;">
+            <ui-select ng-model="birim.selected" theme="bootstrap">
+                <ui-select-match   class="maviFont" placeholder="Birimi Seç veya Ara..">{{$select.selected.SirketAdi+' '+$select.selected.SaglikBirimiAdi|| $select.selected}}</ui-select-match>
+                <ui-select-choices repeat="item in birimler | filter: $select.search">
+                    <span   class="maviFont" ng-bind-html="item.SirketAdi | highlight: $select.search"></span><br />
+                    <small   class="maviFont" ng-bind-html="item.SaglikBirimiAdi "></small>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+        <div class="col-sm-1 m-t-lg" style="padding-right:0px;padding-left:15px;">
+            <h4 class="m-t-sm pull-right">Günü Seçiniz:</h4>
+        </div>
+        <div class="col-sm-2 m-t-lg">
+            <p class="input-group">
+                <input ng-model="riC.tarih" type="text" class="form-control maviFont" uib-datepicker-popup="dd-MM-yyyy" ng-init="riC.tarih=new Date()"
+                       is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" ng-click="open1()" alt-input-formats="altInputFormats" />
+                <span class="input-group-btn" style="z-index:100">
+                    <button type="button" class="btn btn-default maviFont" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+            </p>
+        </div>
+        <div class="col-sm-4 m-t-lg" style="padding-right:0px;padding-left:15px;">
+            <button class="btn btn-sm btn-primary"  ng-click="riC.AylikListe(birim.selected.SaglikBirimi_Id,riC.tarih)">Aylık Liste</button>
+        </div>
+    </div>
+    <div class="animated fadeInRight">
+        <div wrapper wrapper-content>
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>{{birim.selected.SirketAdi}} {{birim.selected.SaglikBirimiAdi}} {{riC.year}} Yapılan İşlemler</h5>
+                    <div ibox-tools></div>
+                </div>
+                <div class="ibox-content">
+                    <table datatable="ng" id="ay" style="cursor:pointer"
+                           dt-options="dtOptions" dt-column-defs="dtColumnDefs" class="table table-responsive  table-striped table-bordered table-hover dataTables-example row-border hover">
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>Adı-Soyadı</th>
+                                <th>Yapılan İşlem</th>
+                                <th>Şirket Adı</th>
+                                <th>Bölüm Adı</th>
+                                <th>Tarih</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="i in riC.personeller">
+                                <td ng-bind="i.$id"></td>
+                                <td><a ui-sref="SM.SMCards({id:i.TcNo})">{{i.PersonelAdi+' '+ i.PersonelSoyadi}}</a></td>
+                                <td ng-bind="i.Muayene_Turu"></td>
+                                <td ng-bind="i.SirketAdi"></td>
+                                <td ng-bind="i.BolumAdi"></td>
+                                <td ng-bind="i.Tarih|date:'dd/MM/yyyy'"></td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+<style>
+    .cropArea {
+        overflow: hidden;
+        width: 400px;
+        height: 300px;
+    }
+</style>

@@ -1,0 +1,20 @@
+﻿<row>
+    <form ng-submit="vm.onSubmit()" novalidate>
+        <formly-form model="vm.model" fields="vm.fields" form="vm.form" ng-style="genislik">
+            <button type="submit" class="btn btn-primary submit-button" ng-disabled="vm.form.$invalid">Kaydet</button>
+            <button type="button" class="btn btn-info" ng-click="FotoGet()" ng-hide="foto">Fotograf Ekle</button>
+            <button class="btn btn-warning" ngf-select="uploadFiles($files)" multiple
+                    accept="image/*,application/pdf,application/msword,application/vnd.ms-excel,
+application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ng-hide="foto">
+                Belge Ekle
+            </button>
+        </formly-form>
+    </form>
+    <ul style="list-style-type: none;overflow: hidden;" ng-show="dosyaList">
+        <li style="font:medium;color: mediumvioletred;float: left;margin-left:20px">Dijital Belgeleri :</li>
+        <li ng-repeat="f in files" style="font:normal;float: left;margin-left:20px">
+            <a ng-click="download(f)" ng-bind="f.FileName" tooltip-placement="bottom" uib-tooltip="İndir" tooltip-popup-delay="2500"></a>
+            <i class="fa fa-remove" ng-click="deleten(f.GenericName , $index)" tooltip-placement="bottom" uib-tooltip="Sil" tooltip-popup-delay="2500"> </i>
+        </li>
+    </ul>
+</row>

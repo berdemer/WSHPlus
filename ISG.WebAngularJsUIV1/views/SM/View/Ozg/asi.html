@@ -1,0 +1,54 @@
+﻿<div ng-controller="asiCtrl  as asic" style="width:100%">
+    <row>
+        <table datatable="ng" id="asi"  style="cursor:pointer"
+               dt-options="dtOptionsasic" dt-column-defs="dtColumnDefsasic" class="table table-responsive  table-striped table-bordered table-hover dataTables-example row-border hover">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>No</th>
+                    <th>Tanimi</th>
+                    <th>Yapılma Tarihi</th>
+                    <th>Dozu</th>
+                    <th>Ay</th>
+                    <th>Rapel</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="asi in Asilar">
+                    <td ng-bind="asi.Asi_Id"></td>
+                    <td ng-bind="asi.$id"></td>
+                    <td ng-bind="asi.Asi_Tanimi"></td>
+                    <td ng-bind="formatDate(asi.Yapilma_Tarihi)|date:dd/MMMM/yyyy"></td>                   
+                    <td ng-bind="asi.Dozu"></td>
+                    <td ng-bind="asi.Guncelleme_Suresi_Ay"></td>
+                    <td ng-bind="formatDate(asi.Muhtamel_Tarih)|date:dd/MMMM/yyyy"></td>   
+                </tr>
+            </tbody>
+        </table>
+    </row>
+            <row>
+                <div uib-collapse="isCollapsed" class="m-t-n-lg col-sm-12">
+                    <form ng-submit="asic.onSubmit()" novalidate>
+                        <formly-form model="asic.model" fields="asic.fields" form="asic.form">
+                            <button type="submit" class="btn btn-primary submit-button" ng-disabled="asic.form.$invalid">Kaydet</button>
+                            <button type="button" class="btn btn-success" ng-disabled="!asic.form.$valid" ng-click="yeniasic()">Yeni</button>
+                            <button type="button" class="btn btn-danger" ng-disabled="!asic.form.$valid" ng-click="silasic()">Sil</button>
+                            <button class="btn btn btn-warning" ngf-select="uploadFiles($files)" multiple
+                                    accept="image/*,application/pdf,application/msword,application/vnd.ms-excel,
+application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ng-show="fileButtonShow">
+                                Rapor Ekle
+                            </button>
+                        </formly-form>
+                    </form>
+                </div>
+            </row>
+            <row>
+                <ul style="list-style-type: none;overflow: hidden;" ng-show="dosyaList">
+                    <li style="font:medium;color: mediumvioletred;float: left;margin-left:20px" ng-if="files.length>0?true:false">Eklenen Dosyalar :</li>
+                    <li ng-repeat="f in files" style="font:normal;float: left;margin-left:20px">
+                        <a ng-click="download(f)" ng-bind="f.FileName" tooltip-placement="bottom" uib-tooltip="İndir" tooltip-popup-delay="2500"></a>
+                        <i class="fa fa-remove" ng-click="deleten(f.GenericName , $index)" tooltip-placement="bottom" uib-tooltip="Sil" tooltip-popup-delay="2500"> </i>
+                    </li>
+                </ul>
+            </row>
+</div>

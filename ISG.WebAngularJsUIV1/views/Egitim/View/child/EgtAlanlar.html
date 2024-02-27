@@ -1,0 +1,169 @@
+﻿<div ng-controller="egtAlanlarCtrl  as EgAC" style="width:100%">
+    <div wrapper wrapper-content>
+        <div class="ibox float-e-margins">
+            <div class="ibox-title" style="color:mediumvioletred">
+                <h5 ng-if=" EgAC.Bekle"> <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Lütfen Bekleyiniz!</h5><span ng-if=" EgAC.Bekle" class="loading fish"></span>
+            </div>
+            <div class="ibox-content">
+                <table datatable="ng" dt-column-defs="dtColumnDefs"
+                       dt-options="dtOptions" class="table table-striped table-bordered table-hover dataTables-example">
+                    <thead>
+                        <tr>
+                            <th>Adı</th>
+                            <th>Tc No</th>
+                            <th>Bölüm</th>
+                            <th>Gorevi</th>
+                            <th>Top.Ders.Say.</th>
+                            <th>Başarım</th>
+                            <th>Süresi/dk</th>
+                            <th>Süresi/saat</th>
+                            <th>Genel Derslerinin Sayısı</th>
+                            <th>Genel Derslerinin Tarihleri</th>
+                            <th>Genel Derslerinin Süresi/dk</th>
+                            <th>Sağlık Derslerinin Sayısı</th>
+                            <th>Sağlık Derslerinin Tarihleri</th>
+                            <th>Sağlık Derslerinin Süresi/dk</th>
+                            <th>Teknik konulu Derslerinin Sayısı</th>
+                            <th>Teknik konulu Derslerinin Tarihleri</th>
+                            <th>Teknik konulu Derslerinin Süresi/dk</th>
+                            <th></th>
+                            <!--<th>Sertifika</th>-->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="s in EgAC.egitimAlanlar">
+                            <td><a ui-sref="SM.SMCards({id:s.TcNo})">{{s.AdiSoyadi}}</a></td>
+                            <td ng-bind="s.TcNo"></td>
+                            <td ng-bind="s.BolumAdi"></td>
+                            <td ng-bind="s.Gorevi"></td>
+                            <td ng-bind="s.ISG_Toplam_KatilimSayisi"></td>
+                            <td ng-bind="s.BasarimYuzdesi"></td>
+                            <td ng-bind="s.ISG_Toplam_Suresi"></td>
+                            <td ng-bind="s.ISG_Toplam_Suresi_Saat"></td>
+                            <td ng-bind="s.Genel_Sayisi"></td>
+                            <td ng-bind="s.Genel_Tarihleri"></td>
+                            <td ng-bind="s.Genel_Suresi"></td>
+                            <td ng-bind="s.Saglik_Sayisi"></td>
+                            <td ng-bind="s.Saglik_Tarihleri"></td>
+                            <td ng-bind="s.Saglik_Suresi"></td>
+                            <td ng-bind="s.Teknik_Sayisi"></td>
+                            <td ng-bind="s.Teknik_Tarihleri"></td>
+                            <td ng-bind="s.Teknik_Suresi"></td>
+                            <td>
+                                <button class="btn btn-primary" id="{{s}}" onclick="angular.element(this).scope().mail(this)" tooltip-placement="bottom" uib-tooltip="Mail">
+                                    <i class="fa fa-envelope"></i>
+                                </button>&nbsp;
+                                <button class="btn btn-success" id="{{s}}" onclick="angular.element(this).scope().sms(this)" tooltip-placement="bottom" uib-tooltip="SMS">
+                                    <i class="fa fa-comment-o"></i>
+                                </button>
+                                &nbsp;
+                                <button class="btn btn-soundcloud" id="{{s}}" onclick="angular.element(this).scope().sertifika(this)" tooltip-placement="bottom" uib-tooltip="Sertifika">
+                                    <i class="fa fa-certificate"></i>
+                                </button>
+                                &nbsp;
+                                <button class="btn btn-google" id="{{s}}" onclick="angular.element(this).scope().detay(this)" tooltip-placement="bottom" uib-tooltip="Detay">
+                                    <i class="fa fa-info"></i>
+                                </button>
+                            </td>
+                            <!--<td><input type="checkbox" ng-model="s.DurumSertifika"></td>-->
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/ng-template" id="isgEgitimiAlanlar.html">
+    <div class="modal-header">
+        <h3 class="modal-title">{{IsgEgitimleri.AdiSoyadi}} Adlı Personelin Aldığı ISG Dersleri</h3>
+    </div>
+    <div class="modal-body">
+        <table datatable="ng" id="isgEgitimi"
+               dt-options="dtOptionsiec" dt-column-defs="dtColumnDefsiec" class="table table-responsive  table-striped table-bordered table-hover dataTables-example row-border hover">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>No</th>
+                    <th>Tanımı</th>
+                    <th>E.Türü</th>
+                    <th>Süre/Dk.</th>
+                    <th>Verildi T.</th>
+                    <th>Eğitici</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="isgEgitimi in IsgEgitimleri.detayliEgitim">
+                    <td ng-bind="isgEgitimi.Egitim_Id"></td>
+                    <td ng-bind="isgEgitimi.$id"></td>
+                    <td ng-bind="isgEgitimi.Egitim_Turu"></td>
+                    <td ng-bind="isgEgitimi.Tanimi"></td>
+                    <td ng-bind="isgEgitimi.Egitim_Suresi"></td>
+                    <td ng-bind="formatDate(isgEgitimi.VerildigiTarih)|date:dd/MMMM/yyyy"></td>
+                    <td ng-bind="isgEgitimi.IsgEgitimiVerenPersonel"></td>
+                </tr>
+            </tbody>
+        </table>
+            Derslere Katılım Sayısı :{{IsgEgitimleri.ISG_Toplam_KatilimSayisi}}<br />
+            Derslerin Katılım Toplam Süresi/ Saat :{{IsgEgitimleri.ISG_Toplam_Suresi_Saat}}<br />
+            ISG Katılım Yüzdesi:{{IsgEgitimleri.BasarimYuzdesi}}<br />
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-danger" type="button" ng-click="cancel()">Kapat</button>
+    </div>
+</script>
+<script type="text/ng-template" id="Sertifika.html">
+    <div class="modal-header">
+        <h3 class="modal-title">İSG Profesyonelleri</h3>
+    </div>
+    <form name="KayitFrom" ng-submit="SertifikaYazdir(Kayit)" novalidate>
+        <div class="modal-body">
+            <div class="form-group">
+                <label>İşyeri Hekimini Seçiniz.</label>
+                <select class="form-control" ng-model="Kayit.doktor" autofocus="autofocus"
+                        name="KayitAdi" ng-options="z as z.adi for z in isgUsers" required></select>
+            </div>
+            <div class="form-group">
+                <label>İSG Uzmanını Seçiniz.</label>
+                <select class="form-control" ng-model="Kayit.isguzmani"
+                        name="KayitAdi" ng-options="z as z.adi for z in isgUsers" required></select>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-success" type="submit">Yazdır</button>
+            <button class="btn btn-danger" type="button" ng-click="cancel()">İptal</button>
+        </div>
+    </form>
+</script>
+<script type="text/ng-template" id="MailBilgi.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Mail İçeriği</h3> <span ng-bind="Bilgi"></span>
+    </div>
+    <form name="KayitFrom" ng-submit="Gonder()" novalidate>
+        <div class="modal-body" style="padding-bottom: 0px;">
+            <summernote focus ng-model="txt"></summernote>
+        </div>
+        <div class="modal-footer" style=" margin-top: 0px;">
+            <button class="btn btn-success" type="submit">Mail Gönder</button>
+            <button class="btn btn-danger" type="button" ng-click="cancel()">İptal</button>
+        </div>
+    </form>
+</script>
+<script type="text/ng-template" id="SMSBilgi.html">
+    <div class="modal-header">
+        <h3 class="modal-title">SMS İçeriği</h3> <span ng-bind="Bilgi"></span>
+    </div>
+    <form name="KayitFrom" ng-submit="Gonder()" novalidate>
+        <div class="modal-body">
+            <textarea rows="7" cols="72" ng-model="txt"></textarea>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="submit">SMS Gönder</button>
+            <button class="btn btn-danger" type="button" ng-click="cancel()">İptal</button>
+        </div>
+    </form>
+</script>
+<style>  
+    .modal-xl {
+        width: 1000px;
+    }
+</style>

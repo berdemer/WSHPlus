@@ -1,0 +1,201 @@
+﻿<div ng-controller="SMHeadCardsCtrl">
+    <div class="row wrapper border-bottom white-bg page-heading" resize onResize>
+        <script type="text/ng-template" id="group-template.html">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a  href="javascript:void(0)" tabindex="0" class="accordion-toggle" ng-click="toggleOpen()" uib-accordion-transclude="heading">
+                        <span uib-accordion-header ng-class="{'text-muted': isDisabled}">
+                            {{heading}}
+                        </span>
+                    </a>
+                </h4>
+            </div>
+            <div class="panel-collapse collapse" uib-collapse="!isOpen">
+                <div class="panel-body" style="background-color: #555;" ng-transclude></div>
+            </div>
+        </script>
+        <div class="col-sm-3 m-t-md">
+            <div class="slinput" ng-init="">
+                <i ng-show="!Loading" class="fa fa-search-plus left-icon"></i>
+                <i ng-show="Loading" class="loading dots left-icon"></i>
+                <input  class="maviFont" placeholder="Personel Araması" ng-model="searchInputVal" ng-model-options="{debounce:500}" />
+                <i class="fa fa-close right-icon maviFont" ng-show="searchInputVal.length > 0" ng-click="searchInputVal = ''"></i>
+            </div>
+        </div>
+        <div class="col-sm-4 m-t-md" ng-show="sakla">
+            <uib-accordion close-others="true">
+                <div uib-accordion-group class="panel-default" is-open="status.open">
+                    <uib-accordion-heading>
+                        <span  class="maviFont" ng-bind="SirketBasligi.name"></span>&nbsp;&nbsp;&nbsp;&nbsp;<i class="pull-right maviFont" ng-class="{'fa fa-chevron-down': status.open, 'fa fa-chevron-right': !status.open}"></i>
+                    </uib-accordion-heading>
+                    <treecontrol class="tree-light"
+                                 tree-model="collectionSirket"
+                                 options="treeOptions"
+                                 expanded-nodes="expandList"
+                                 on-selection="showSelected(node)">
+                        <span  class="maviFont"  ng-bind="node.name"></span>
+                    </treecontrol>
+                </div>
+            </uib-accordion>
+        </div>
+        <div class="col-sm-4 m-t-md" ng-show="sakla">
+            <uib-accordion close-others="true">
+                <div uib-accordion-group class="panel-default" is-open="status.open2" template-url="group-template.html">
+                    <uib-accordion-heading>
+                        <span  class="maviFont" ng-bind="BolumBasligi.name"></span>&nbsp;&nbsp;&nbsp;&nbsp;<i class="pull-right maviFont" ng-class="{'fa fa-chevron-down': status.open2, 'fa fa-chevron-right': !status.open2}"></i>
+                    </uib-accordion-heading>
+                    <div style="background-color: #555;">
+                        <treecontrol class="tree-dark"
+                                     tree-model="collectionBolum"
+                                     options="treeOptions"
+                                     on-selection="showSelectedBolum(node)">
+                            <span ng-bind="node.name"></span>
+                        </treecontrol>
+                    </div>
+                </div>
+            </uib-accordion>
+        </div>
+        <div class="col-sm-1 m-t-md" ng-show="sakla">
+            <div class="checkbox checkbox-primary">
+                <input id="checkbox2" type="checkbox" ng-model="dahil" ng-change="dahilinde()">
+                <label for="checkbox2">
+                    Dahilinde
+                </label>
+            </div>
+
+        </div>
+    </div>
+    <row ng-show="gizle" class="animated fadeIn"  style=" color: #3f48cc;">
+        <div class="col-sm-4">
+            <div class="pull-left" ng-show="sakla">
+                <label style="text-align:left;white-space:nowrap;font-weight:normal">
+                    Sayfada
+                    <select ng-model="viewBy" class="form-control input-sm" style="width:35%;display:inline-block;direction:rtl"
+                            ng-options="number for number in [2,4,8,16,32,64,96]" ng-change="setItemsPerPage()"></select> personel göster
+                </label>
+            </div>
+        </div>
+        <div class="col-sm-4"> <label ng-bind="kayitBilgisi"></label><span style="color:darksalmon" ng-show="Loading" class="loading fish"></span> </div>
+        <div class="col-sm-4">
+            <ul uib-pagination total-items="TotalItems" ng-model="CurrentPage"
+                items-per-page="viewBy"
+                max-size="1" class="pagination-sm pull-right m-t-xxs"
+                first-text="İlk" last-text="Son"
+                previous-text="Önce" next-text="Sonra"
+                boundary-links="true" force-ellipses="true"></ul>
+        </div>
+    </row>
+</div>
+<div class="wrapper wrapper-content m-t-md" ng-controller="SMCardsCtrl"  data-ng-init="init()">
+    <div class="row">
+        <div class="col-lg-3" ng-repeat="card in Cards">
+            <div class="anaCard animated bounceInRight">
+                <div flip style="width: 100%; height: 100%">
+                    <div class="contact-box center-version">
+                        <a ng-click="showBackPanel()" style=" color: #3f48cc;">
+                            <i class="fa fa-reply pull-right"></i>
+                            <span class="fa-stack fa-2x  pull-left"ng-if="card.Ikaz">
+                                <i class="fa fa-circle fa-stack-2x" style="color: #f7ef07;"></i>
+                                <i class="fa fa-exclamation fa-stack-1x"></i>
+                            </span>
+                            <img alt="image" ng-init="asd=(card.Photo|resimYok)" class="img-circle" ng-src="{{fileImgPath}}{{asd}}"  on-error="defaultUser.png">
+                            <h3 class="m-b-xs"><strong ng-bind="card.AdiSoyadi  |limitTo:70"></strong></h3>
+                            <label style="display:inline"> Görevi: <span class="font-bold" ng-bind="card.Gorevi |limitTo: 25"></span></label><br />
+                            <label style="display:inline">
+                                Kadrosu:<span class="font-noraml" ng-bind="card.KadroDurumu|degerYok |limitTo:30"></span>
+                            </label>
+                            <address class="m-t-md">
+                                <strong ng-bind="card.sirketAdi  |limitTo: 70"></strong><br>
+                                <span title="Bölümün Adı" ng-bind="card.bolumAdi |limitTo:35"></span> <br>
+                                Vardiya:<span title="Bölümün Adı" ng-bind="card.CalismaSekli|degerYok"></span> <br>
+                                <abbr title="Tc Kimlik Numarası">Tc No:</abbr> {{card.TcNo}}
+                            </address>
+                        </a>
+                        <div class="contact-box-footer"  style=" color: #3f48cc;">
+                            <div class="m-t-xs btn-group">
+                                <a class="btn btn-xs btn-white" ui-sref="SM.Og.Allerji({id:card.PerGuid})"><i class="fa fa-deviantart"></i> Öz Geçmiş </a>
+                                <a class="btn btn-xs btn-white" ui-sref="SM.Tk.RevirTedavi({id:card.PerGuid})"><i class="glyphicon glyphicon-tent"></i>Tetkikler</a>
+                                <a class="btn btn-xs btn-white" rp-only="['Admin','ISG_Admin','ISG_Hekim']" rp-behavior="hide" ui-sref="SM.Pm({id:card.PerGuid})"><i class="fa fa-stethoscope"></i>&nbsp;Muayene</a>
+                            </div>
+                            <div class="m-t-xs btn-group">
+                                <a class="btn btn-xs btn-white" rp-only="['Admin','ISG_Admin','ISG_Hekim']" rp-behavior="hide" ui-sref="SM.Prm({id:card.PerGuid})"><i class="fa fa-retweet"></i> Periyodik Muayene </a>
+                                <a class="btn btn-xs btn-white" ui-sref="SM.Ik({id:card.PerGuid})"><i class="fa fa-chain-broken"></i> İş Kazası</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-box center-version">
+                        <a ng-click="showFrontPanel()" style="background-color: rgb(255,192,252); color: #3f48cc;">
+                            <i class="fa fa-share pull-left"></i>
+                            <span class="fa-stack fa-2x  pull-right" ng-if="card.Ikaz">
+                                <i class="fa fa-circle fa-stack-2x" style="color: #f7ef07;"></i>
+                                <i class="fa fa-exclamation fa-stack-1x"></i>
+                            </span>
+                            <img alt="image" ng-init="asd=(card.Photo|resimYok)" class="img-circle" ng-src="{{fileImgPath}}{{asd}}"  on-error="defaultUser.png" >
+                            <h3 class="m-b-xs"><strong ng-bind="card.AdiSoyadi  |limitTo:70"></strong></h3>
+                            <label style="display:inline">Kan Grubu: <span class="font-bold" ng-bind="card.KanGrubu|degerYok"></span></label><br />
+                            <label style="display:inline">
+                                Kadrosu:<span class="font-noraml" ng-bind="card.KadroDurumu|degerYok | limitTo:40"></span>
+                            </label>
+                            <address class="m-t-md">
+                                <strong ng-bind="card.SgkNo"></strong><br>
+                                <span ng-bind="card.Mail | degerYok | limitTo:70"></span> <br>
+                                Sicil No:{{card.SicilNo}}<br>
+                                <abbr title="Phone">Telefon:</abbr> {{card.Telefon | tel}}
+                            </address>
+                        </a>
+                        <div class="contact-box-footer" style="background-color: rgb(255,192,252); color: #3f48cc; border-top: 1px solid rgba(183, 183, 183, 0.51);">
+                            <div class="m-t-xs btn-group">
+                                <a class="btn btn-xs btn-grey" rp-only="['Admin','ISG_Admin','ISG_Hekim']" rp-behavior="hide" ui-sref="SM.Gb.GenericUpdate({id:card.PerGuid})"><i class="fa fa-deviantart"></i> Genel Bilgileri</a>
+                                <a class="btn btn-xs btn-grey" rp-only="['Admin','ISG_Admin','ISG_Hekim']" rp-behavior="hide" ui-sref="SM.Gb.IsgEgitimi({id:card.PerGuid})"><i class="fa fa-leanpub"></i> ISG Eğitimleri</a>
+                            </div>
+                            <div class="m-t-xs btn-group">
+                                <a class="btn btn-xs btn-grey" ui-sref="SM.Tk.Pansuman({id:card.PerGuid})"><i class="fa fa-medkit"></i> Pansumanları</a>
+                                <a class="btn btn-xs btn-grey" ui-sref="SM.Gb.Kkd({id:card.PerGuid})"><i class="fa fa-superpowers"></i>Kişisel Koruyucuları</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .flip-panel {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 1px 5px rgba(0,0,0,0.9);
+        -webkit-backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
+        -webkit-transition: -webkit-transform .4s;
+        -moz-transition: -moz-transform .4s;
+        -webkit-transform: perspective(800px) rotateY(0deg);
+        -moz-transform: perspective(800px) rotateY(0deg);
+    }
+
+    .flip-hide-back-panel {
+        -webkit-transform: perspective(800px) rotateY(180deg);
+        -moz-transform: perspective(800px) rotateY(180deg);
+        box-shadow: 0 1px 5px rgba(0,0,0,0.9);
+    }
+
+    .flip-hide-front-panel {
+        -webkit-transform: perspective(800px) rotateY(-180deg);
+        -moz-transform: perspective(800px) rotateY(-180deg);
+        box-shadow: 0 1px 5px rgba(0,0,0,0.9);
+    }
+
+    .anaCard {
+        margin: 0 10px 20px 0;
+        width: 310px;
+        height: 390px;
+        float: left;
+        position: relative;
+    }
+
+    .btn-grey {
+        color: inherit;
+        background: #f3f3f3;
+        border: 1px solid rgb(211, 211, 211);
+    }
+</style>

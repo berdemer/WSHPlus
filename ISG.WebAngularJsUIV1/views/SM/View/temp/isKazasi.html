@@ -1,0 +1,524 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8" />
+	<style type="text/css">
+		@page {
+			size: A4; /* auto,   media="print"  stile ekleyebilirsin.*/
+			margin: 0mm; /* sayfa margin sıfırla */
+		}
+
+		@media all {
+			.pagebreak {
+				display: none;
+			}
+		}
+
+		@media print {
+			.pagebreak {
+				display: block;
+				page-break-before: always;
+			}
+		}
+
+		html {
+			background-color: #FFFFFF;
+			margin: 0px; /* this affects the margin on the html before sending to printer */
+		}
+
+		body {
+			height: 842pt;
+			width: 595pt;
+			font-family: Garamond'Times New Roman', serif;
+			background-color: #FFFFFF;
+			margin: 0px; /* the margin on the content before printing */
+			padding: 0px;
+			-ms-filter: none;
+			line-height: 1.45;
+			word-spacing: 1px;
+			letter-spacing: 0.2px;
+			font-size: x-small;
+			/*border: solid 1px;*/
+		}
+
+		.auto-style1 {
+			width: 90%;
+			border-collapse: collapse;
+			/*border: 1px solid #000000;*/
+			border-spacing: 0;
+			overflow: inherit;
+			table-layout: fixed;
+			margin: 50px 20px 30px 40px;
+		}
+
+		.auto-style2 {
+			height: 25px;
+			border: 1px solid #000000;
+			padding-left: 5px;
+			vertical-align: middle;
+		}
+
+		.auto-style3 {
+			height: 35px;
+			border: 1px solid #000000;
+			padding-left:3px;
+		}
+
+		.auto-style4 {
+			height: 25px;
+			border: 1px solid #000000;
+			text-align: center;
+			font-size: small;
+		}
+
+		.auto-style5 {
+			height: 25px;
+			border: 1px solid #000000;
+			text-align: center;
+			font-size: small;
+			background-color: #FFFF99;
+		}
+
+		.auto-style6 {
+			height: 25px;
+			border: 1px solid #000000;
+			padding-left: 5px;
+			vertical-align: middle;
+			text-align: center;
+		}
+
+		.auto-style7 {
+			height: 50px;
+			border: 1px solid #000000;
+			padding-left: 5px;
+			vertical-align: middle;
+		}
+
+		.auto-style9 {
+			height: 25px;
+			border: 1px solid #000000;
+			padding-left: 5px;
+			vertical-align: middle;
+			background-color: #CCFFCC;
+			text-align: center;
+		}
+
+		.auto-style10 {
+			text-align: center;
+		}
+
+		.auto-style11 {
+			text-align: center;
+			font-size: small;
+		}
+
+		.auto-style12 {
+			font-size: small;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<table class="auto-style1">
+			<tr>
+				<td class="auto-style3" colspan="3"></td>
+				<td class="auto-style3" colspan="3"></td>
+				<td class="auto-style3" colspan="4">
+					<strong>Belgenin Düzenlendiği Tarih:<span ng-bind="as.Tarih|date:'dd/MM/yyyy'"></span> </strong>
+					<br />
+					<strong>
+						Belgenin Düzenlendiği Sayı :<span ng-bind="as.Protokol"></span>
+					</strong>
+				</td>
+			</tr>
+			<tr>
+				<td class="auto-style4" colspan="10"><strong>İŞ KAZASI BİLDİRİM FORMU</strong></td>
+			</tr>
+			<tr>
+				<td class="auto-style5" colspan="10"><strong>İşyeri Bilgileri:</strong></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="3"><strong>İş Yeri No:</strong></td>
+				<td class="auto-style2" colspan="7"><span ng-bind="isYeriSicilNo"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="3"><strong>İşyeri bağlı Bulunduğu İl:</strong></td>
+				<td class="auto-style2" colspan="7"><span ng-bind="bagliBulunduguIl"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="3"><strong>Vergi Dairesi Adı:</strong></td>
+				<td class="auto-style2" colspan="7"><span ng-bind="vergiDairesiAdi"></span></td>
+			</tr>
+
+			<tr>
+				<td class="auto-style2" colspan="3"><strong>Vergi Dairesi No:</strong></td>
+				<td class="auto-style2" colspan="7"><span ng-bind=""></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="3"><strong>Kaza Günü İşyeri Vardiya Başlangıç Saati:</strong></td>
+				<td class="auto-style2" colspan="7"><span ng-bind="vardiyaBaslamaSaati"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="3"><strong>Kaza Günü İşyeri Vardiya Bitiş Saati:</strong></td>
+				<td class="auto-style2" colspan="7"><span ng-bind="vardiyaBitisSaati"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="3"><strong>İş Yeri Adres:</strong></td>
+				<td class="auto-style2" colspan="7"><span ng-bind="isYeriAdresi"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="3"><strong>İş Yeri Unvan:</strong></td>
+				<td class="auto-style2" colspan="7"><span ng-bind="isYeriUnvani"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="3"><strong>İş Yeri Tel:</strong></td>
+				<td class="auto-style2" colspan="7"><span ng-bind="isYeriTel"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="3"><strong>İş Yeri Faks:</strong></td>
+				<td class="auto-style2" colspan="7"><span ng-bind="isYeriFaks"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="3"><strong>Kaza Sonrası İş Yerinin Durumu:</strong></td>
+				<td class="auto-style2" colspan="7"><span ng-bind="isYeriDurumu"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style5" colspan="10"><strong>Sigortalı Bilgileri:</strong></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="3"><strong>Adı Soyadı:</strong></td>
+				<td class="auto-style2" colspan="7"><span ng-bind="(ac.data.Adi|trim)+' '+(data.Soyadi|trim)"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="3"><strong>Tc Kimlik No:</strong></td>
+				<td class="auto-style2" colspan="7"><span ng-bind="ac.data.TcNo|trim"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="3"><strong>Sicil No:</strong></td>
+				<td class="auto-style2" colspan="7"><span ng-bind="ac.calismaBilgisi.sicilNo|trim"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="3"><strong>Doğum Tarihi:</strong></td>
+				<td class="auto-style2" colspan="7"><span ng-bind="(ac.data.PersonelDetayi.DogumYeri|trim)"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="3"><strong>Medeni Hali:</strong></td>
+				<td class="auto-style2" colspan="7"><span ng-init="cinsiyet=ac.data.PersonelDetayi.Cinsiyet==true?'Erkek':'Kadın'" ng-bind="cinsiyet"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="3"><strong>Uyruğu:</strong></td>
+				<td class="auto-style2" colspan="7"><span>TC</span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="3"><strong>Son İşe Giriş Tarihi:</strong></td>
+				<td class="auto-style2" colspan="7"><span ng-bind=""></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="3"><strong>İlk İşe Giriş Tarihi:</strong></td>
+				<td class="auto-style2" colspan="7"><span ng-bind="ac.data.PersonelDetayi.IlkIseBaslamaTarihi|date:'dd/MM/yyyy'"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="3"><strong>Öğrenim Durumu:</strong></td>
+				<td class="auto-style2" colspan="7"><span ng-bind="ac.data.PersonelDetayi.EgitimSeviyesi|trim"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="3"><strong>Mesleği:</strong></td>
+				<td class="auto-style2" colspan="7"><span ng-bind="ac.calismaBilgisi.kadroDurumu|trim"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="3"><strong>Görevi:</strong></td>
+				<td class="auto-style2" colspan="7"><span ng-bind="ac.calismaBilgisi.gorevi|trim"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="3"><strong>Ücretli İzin Gün Sayısı:</strong></td>
+				<td class="auto-style2" colspan="7"><span ng-bind=""></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="3"><strong>Prim Ödeme Durumu:</strong></td>
+				<td class="auto-style2" colspan="7"><span ng-bind=""></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="3"><strong>Adresi:</strong></td>
+				<td class="auto-style2" colspan="7"><span ng-bind="ac.adres"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="3"><strong>İl/İlçe:</strong></td>
+				<td class="auto-style2" colspan="7"><span ng-bind=""></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="3"><strong>İstihdam Durumu:</strong></td>
+				<td class="auto-style2" colspan="7"><span>Kadrolu</span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="3"><strong>Faks:</strong></td>
+				<td class="auto-style2" colspan="7"><span ng-bind=""></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="3"><strong>Tel:</strong></td>
+				<td class="auto-style2" colspan="7"><span ng-bind="ac.data.Telefon|trim"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="3"><strong>E-posta:</strong></td>
+				<td class="auto-style2" colspan="7"><span ng-bind="ac.data.Mail|trim"></span></td>
+			</tr>
+
+			<tr>
+				<td class="auto-style6" colspan="2" rowspan="3"><strong>Sigortalını Yakınının</strong></td>
+				<td class="auto-style2" colspan="2"><strong>Adı Soyadı:</strong></td>
+				<td class="auto-style2"colspan="6"><span ng-bind="yakini.adSoyad"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="2"><strong>T.C. Kimlik Numarası:</strong></td>
+				<td class="auto-style2"colspan="6"><span ng-bind="yakini.tcNo"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="2"><strong>Adresi:</strong></td>
+				<td class="auto-style2"colspan="6"><span ng-bind="yakini.adresi"></span></td>
+			</tr>
+		</table>
+	</div>
+	<div class="pagebreak"></div>
+	<div style="padding-top:1px">
+		<table class="auto-style1">
+			<tr>
+				<td class="auto-style2" colspan="4"><strong>Mesleki Eğitim Almış mı?:</strong></td>
+				<td class="auto-style2"colspan="6"><span ng-bind="meslekiEgitim"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="4"><strong>İş Sağlığı ve Güvenliği Eğitimi Almış mı?:</strong></td>
+				<td class="auto-style2"colspan="6"><span ng-bind="isgEgitim"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="4"><strong>Kaza Günü İşbaşı Saati:</strong></td>
+				<td class="auto-style2"colspan="6"><span ng-bind="calisilan.isbasiSaati"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="4"><strong>Sigortalı Kazadan Sonra Ne Yaptı?:</strong></td>
+				<td class="auto-style2"colspan="6"><span ng-bind="calisilan.kazadanSonra"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="4"><strong>İşi Bırakma Tarihi:</strong></td>
+				<td class="auto-style2" colspan="2"><span ng-bind="calisilan.calismayiBiraktigiTarihi|date:'dd/MM/yyyy'"></span></td>
+				<td class="auto-style2" colspan="2"><strong>İşi Bırakma Saati:</strong></td>
+				<td class="auto-style2" colspan="2"><span ng-bind="calisilan.calismayiBiraktigiSaati"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="4"><strong>Kaza Anında Yürütmekte Olduğu Genel Faaliyet:</strong></td>
+				<td class="auto-style2"colspan="6"><span ng-bind="faaliyet.genel"></span>&nbsp;<span ng-bind="faaliyet.genelAlt"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="4"><strong>Kaza Anında Yürütmekte Olduğu Özel Faaliyet:</strong></td>
+				<td class="auto-style2"colspan="6"><span ng-bind="faaliyet.ozel"></span>&nbsp;<span ng-bind="faaliyet.ozelAlt"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="4"><strong>Özel Faaliyet Sırasında Kullandığı Araç/Gereç:</strong></td>
+				<td class="auto-style2"colspan="6"><span ng-bind="faaliyet.arac"></span>&nbsp;<span ng-bind="faaliyet.aracAlt"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="4"><strong>Yaralanmaya Neden Olan Olay:</strong></td>
+				<td class="auto-style2"colspan="6"><span ng-bind="yaralanma.olay"></span>&nbsp;<span ng-bind="yaralanma.olayAlt"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="4"><strong>Yaranın Türü:</strong></td>
+				<td class="auto-style2"colspan="6"><span ng-bind="yaralanma.turu"></span>&nbsp;<span ng-bind="yaralanma.turuAlt"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="4"><strong>Yaranın Vücuttaki Yeri:</strong></td>
+				<td class="auto-style2"colspan="6"><span ng-bind="yaralanma.yeri"></span>&nbsp;<span ng-bind="yaralanma.yeriAlt"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="4"><strong>Yaralanmaya Neden Olan Araç/Gereç:</strong></td>
+				<td class="auto-style2"colspan="6"><span ng-bind="yaralanma.arac"></span>&nbsp;<span ng-bind="yaralanma.aracAlt"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="4"><strong>Kaza Sonucu İş Göremezliği:</strong></td>
+				<td class="auto-style2"colspan="6"><span ng-bind="calisilan.isgoremezligi"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="4"><strong>Kaza Sonucu İş Göremezlik Durumu:</strong></td>
+				<td class="auto-style2"colspan="6"><span ng-bind="calisilan.isgoremezligiSonucu"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="4"><strong>Kazadan Dolayı İşgünü Kaybı:</strong></td>
+				<td class="auto-style2"colspan="6"><span ng-bind="calisilan.isgoremezligiSuresi"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="4"><strong>Kazanın Gerçekleştiği Yer:</strong></td>
+				<td class="auto-style2"colspan="6"><span ng-bind="calisilan.kazaninGerceklestigiYer"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="4"><strong>Kazanın Gerçekleştiği Bölüm/Ortam:</strong></td>
+				<td class="auto-style2"colspan="6"><span ng-init="yeni=calisilan.kazaninGerceklestigiYer=='İşyerinde'?calisilan.kazaninIsyerindeGerceklestigiOrtam:calisilan.kazaninIsyeriHaricindeGerceklestigiBolum" 
+														 ng-bind="yeni"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="4"><strong>Çalışılan Ortam:</strong></td>
+				<td class="auto-style2"colspan="6"><span ng-bind="calisilan.ortam"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="4"><strong>Çalışılan Çevre:</strong></td>
+				<td class="auto-style2"colspan="6"><span ng-bind="calisilan.cevre"></span>&nbsp;<span ng-bind="calisilan.cevreAlt"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="4"><strong>Tıbbi Müdehale Yapıldı mı? :</strong></td>
+				<td class="auto-style2"colspan="6"><span ng-bind="calisilan.tibbiMudahale"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="4"><strong>Tıbbi Müdehale Yapan Kişi:</strong></td>
+				<td class="auto-style2" colspan="2"><span ng-bind="calisilan.tibbiSonrasi.adSoyad"></span></td>
+				<td class="auto-style2" colspan="2"><strong>Tıbbi Müdehale Yapılan Yer:</strong></td>
+				<td class="auto-style2" colspan="2"><span ng-bind="calisilan.tibbiSonrasi.adresi"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="4"><strong>Tıbbi Müdehale Yapılan İl:</strong></td>
+				<td class="auto-style2" colspan="2"><span ng-bind="calisilan.tibbiSonrasi.il"></span></td>
+				<td class="auto-style2" colspan="2"><strong>Tıbbi Müdehale Yapılan İlçe:</strong></td>
+				<td class="auto-style2" colspan="2"><span ng-bind="calisilan.tibbiSonrasi.ilce"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="4"><strong>Tıbbi Müdehale Yapılan Tarih:</strong></td>
+				<td class="auto-style2" colspan="2"><span ng-bind="calisilan.tibbiSonrasi.tarih|date:'dd/MM/yyyy'"></span></td>
+				<td class="auto-style2" colspan="2"><strong>Tıbbi Müdehale Yapılan Saat:</strong></td>
+				<td class="auto-style2" colspan="2"><span ng-bind="calisilan.tibbiSonrasi.saat"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="4"><strong>Bildirim Tarihi:</strong></td>
+				<td class="auto-style2" colspan="2"><span ng-bind=""></span></td>
+				<td class="auto-style2" colspan="2"><strong>Bildirim Saati:</strong></td>
+				<td class="auto-style2" colspan="2"><span ng-bind=""></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style5" colspan="10"><strong>İş Kazası Bilgileri:</strong></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="4"><strong>Bildirimi Hazırlayan:</strong></td>
+				<td class="auto-style2" colspan="6"><span ng-bind="bildirimiHazirlayan.bilgisi"></span></td>
+			</tr>
+			<tr>				
+				<td class="auto-style2" colspan="3"><strong>Adı ve Soyadı:</strong></td>
+				<td class="auto-style2" colspan="7"><span ng-bind="bildirimiHazirlayan.adSoyad"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="2"><strong>Tc Kimlik No:</strong></td>
+				<td class="auto-style2" colspan="3"><span ng-bind="bildirimiHazirlayan.tcNo"></span></td>
+				<td class="auto-style2" colspan="2"><strong>Tel:</strong></td>
+				<td class="auto-style2" colspan="3"><span ng-bind="bildirimiHazirlayan.telefon"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="2"><strong>Faks:</strong></td>
+				<td class="auto-style2" colspan="3"><span ng-bind="bildirimiHazirlayan.faks"></span></td>
+				<td class="auto-style2" colspan="2"><strong>E-posta:</strong></td>
+				<td class="auto-style2" colspan="3"><span ng-bind="bildirimiHazirlayan.mail"></span></td>
+			</tr>
+			<tr>                
+				<td class="auto-style6" colspan="2" rowspan="6"><strong>Bildirilen İşçi Sayısı:</strong></td>
+				<td class="auto-style2" colspan="8"></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="2"><strong>Erkek:</strong></td>
+				<td class="auto-style2" colspan="2"><span ng-bind="erkekIsciSayisi"></span></td>
+				<td class="auto-style2" colspan="2"><strong>Kadın:</strong></td>
+				<td class="auto-style2" colspan="2"><span ng-bind="kadinIsciSayisi"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="2"><strong>Çocuk:</strong></td>
+				<td class="auto-style2" colspan="2"><span ng-bind="cocukIsciSayisi"></span></td>
+				<td class="auto-style2" colspan="2"><strong>Hükümlü:</strong></td>
+				<td class="auto-style2" colspan="2"><span ng-bind="hukumluIsciSayisi"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="2"><strong>Eski Hükümlü:</strong></td>
+				<td class="auto-style2" colspan="2"><span ng-bind="eskiHukumluIsciSayisi"></span></td>
+				<td class="auto-style2" colspan="2"><strong>Terör Mağduru:</strong></td>
+				<td class="auto-style2" colspan="2"><span ng-bind=""></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="2"><strong>Stajyer:</strong></td>
+				<td class="auto-style2" colspan="2"><span ng-bind="stajerIsciSayisi"></span></td>
+				<td class="auto-style2" colspan="2"><strong>Özürlü:</strong></td>
+				<td class="auto-style2" colspan="2"><span ng-bind="ozurluIsciSayisi"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="2"><strong>Toplam:</strong></td>
+				<td class="auto-style2" colspan="2"><span>{{erkekIsciSayisi+kadinIsciSayisi+cocukIsciSayisi+cocukIsciSayisi+hukumluIsciSayisi+stajerIsciSayisi+ozurluIsciSayisi}}</span></td>
+				<td class="auto-style2" colspan="2"></td>
+				<td class="auto-style2" colspan="2"></td>
+			</tr>
+		</table>
+	</div>
+	<div class="pagebreak"></div>
+	<div style="padding-top:1px">
+		<table class="auto-style1">
+			<tr>
+				<td class="auto-style5" colspan="10"><strong>İş Kazası Bildirim Bilgileri:</strong></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="3"><strong>Kazaya Uğrayan Kişi Sayısı:</strong></td>
+				<td class="auto-style2" colspan="7"><span ng-bind="kBilgi.kazaKisiSayisi"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="3"><strong>Kaza İl:</strong></td>
+				<td class="auto-style2" colspan="3"><span ng-bind="kaza.il"></span></td>
+				<td class="auto-style2" colspan="2"><strong>Kaza İlçe:</strong></td>
+				<td class="auto-style2" colspan="2"><span ng-bind="kaza.ilce"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style2" colspan="3"><strong>Kaza Saati:</strong></td>
+				<td class="auto-style2" colspan="3"><span ng-bind="kaza.saati"></span></td>
+				<td class="auto-style2" colspan="2"><strong>Kaza Tarihi:</strong></td>
+				<td class="auto-style2" colspan="2"><span ng-bind="kaza.tarihi|date:'dd/MM/yyyy'"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style7" colspan="3"><strong>Kaza Adres:</strong></td>
+				<td class="auto-style7" colspan="7"><span ng-bind="kaza.adresi"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style7" colspan="3"><strong>Kazanın Gerçekleştiği Yer/Bölüm:</strong></td>
+				<td class="auto-style7" colspan="7"><span ng-bind="kBilgi.yeri"></span>&nbsp;<span ng-bind="kBilgi.yeriAlt"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style7" colspan="3"><strong>Kaza Sebebi Açıklama:</strong></td>
+				<td class="auto-style7" colspan="7"><span ng-bind="kBilgi.aciklama"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style7" colspan="3"><strong>Kaza Sebebi:</strong></td>
+				<td class="auto-style7" colspan="7"><span ng-bind="kBilgi.sebebOlayi"></span>&nbsp;<span ng-bind="kBilgi.sebebOlayiAlt"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style7" colspan="3"><strong>Kazaya Sebep Olan Araç/Gereç:</strong></td>
+				<td class="auto-style7" colspan="7"><span ng-bind="kBilgi.sebebArac"></span>&nbsp;<span ng-bind="kBilgi.sebebAracAlt"></span></td>
+			</tr>
+			<tr>
+				<td class="auto-style5" colspan="10"><strong>İş Kazası Şahit Bilgileri:</strong></td>
+			</tr>
+			<tr>
+				<td class="auto-style9" colspan="1"><strong>Tc Kimlik No</strong></td>
+				<td class="auto-style9" colspan="3"><strong>Ad Soyad</strong></td>
+				<td class="auto-style9" colspan="2"><strong>e-posta</strong></td>
+				<td class="auto-style9" colspan="1"><strong>Tel</strong></td>
+				<td class="auto-style9" colspan="3"><strong>Adres</strong></td>
+			</tr>
+			<tr ng-repeat="sahit  in  kBilgi.sahitler">
+				<td class="auto-style7" colspan="1"><span ng-bind="sahit.tcNo"></span></td>
+				<td class="auto-style7" colspan="3"><span ng-bind="sahit.adSoyad"></span></td>
+				<td class="auto-style7" colspan="2"><span ng-bind="sahit.mail"></span></td>
+				<td class="auto-style7" colspan="1"><span ng-bind="sahit.tel"></span></td>
+				<td class="auto-style7" colspan="3"><span ng-bind="sahit.adres"></span></td>
+			</tr>
+			<tr>
+				<td style="min-height:120px;height:120px" colspan="10">&nbsp;</td>
+			</tr>
+			<tr>
+				<td colspan="4" class="auto-style11">
+					<strong>
+						İş Güvenliği Uzmanı <br /> İmza Kaşe
+					</strong>
+				</td>
+				<td colspan="2" class="auto-style10"><strong>Tarih: <br /><span ng-bind="as.Tarih|date:'dd/MM/yyyy'"></span></strong></td>
+				<td colspan="4" class="auto-style10"><strong><span class="auto-style12">İş Yeri Hekimi </span></strong><span class="auto-style12"><strong> <br />İmza Kaşe </strong></span> </td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

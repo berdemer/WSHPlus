@@ -1,0 +1,110 @@
+﻿[
+  {
+    "verilis": "Ağızdan(Oral)",
+    "val": 1
+  },
+  {
+    "verilis": "Intra müsküler(IM)",
+    "val": 9
+  },
+  {
+    "verilis": "Cilt üzerine(Epidermal)",
+    "val": 2
+  },
+  {
+    "verilis": "Intra venöz(IV)",
+    "val": 15
+  },
+  {
+    "verilis": "inhalasyon",
+    "val": 17
+  },
+  {
+    "verilis": "Ağız içi",
+    "val": 4
+  },
+  {
+    "verilis": "Göz üzerine",
+    "val": 10
+  },
+  {
+    "verilis": "Burun içi(Intranazal)",
+    "val": 5
+  },
+  {
+    "verilis": "Dış kulak yolu",
+    "val": 7
+  },
+  {
+    "verilis": "Dil altı(Sublingual)",
+    "val": 6
+  },
+  {
+    "verilis": "Subkutan",
+    "val": 14
+  },
+  {
+    "verilis": "Solunum yolu",
+    "val": 3
+  },
+  {
+    "verilis": "Kolon",
+    "val": 8
+  },
+  {
+    "verilis": "Rektal",
+    "val": 11
+  },
+  {
+    "verilis": "Intra vajinal",
+    "val": 12
+  },
+  {
+    "verilis": "Intra dermal",
+    "val": 13
+  },
+  {
+    "verilis": "Kalp içi",
+    "val": 16
+  },
+  {
+    "verilis": "Trans dermal",
+    "val": 18
+  },
+  {
+    "verilis": "İntravezikal",
+    "val": 19
+  },
+  {
+    "verilis": "İntra-artiküler",
+    "val": 20
+  },
+  {
+    "verilis": "İntraperitoneal",
+    "val": 21
+  },
+  {
+    "verilis": "İntravitreal",
+    "val": 22
+  },
+  {
+    "verilis": "İntratekal",
+    "val": 23
+  },
+  {
+    "verilis": "İntraligamenter",
+    "val": 24
+  },
+  {
+    "verilis": "Perinöral",
+    "val": 25
+  },
+  {
+    "verilis": "İntrakaviter",
+    "val": "26"
+  },
+  {
+    "verilis": "",
+    "val": 99
+  }
+]

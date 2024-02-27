@@ -1,0 +1,32 @@
+{
+  "name": "angular-nested-combobox",
+  "description": "Custom drop-down list directive for AngularJs with nested elements",
+  "version": "0.1.5",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/matjas/angular-nested-combobox.git"
+  },
+  "main": "./dist/ng-nested-combobox.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "keywords": [
+    "angular",
+    "angular-nested-combobox",
+    "angularjs"
+  ],
+  "authors": [
+    "Maciej Jaskuła"
+  ],
+  "directories": {
+    "lib": "src/"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/MIT"
+    }
+  ]
+}

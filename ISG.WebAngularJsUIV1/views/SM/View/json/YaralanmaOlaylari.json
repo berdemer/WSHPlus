@@ -1,0 +1,42 @@
+[
+  {
+    "kaza": "0 - Bilgi yok",
+    "alt": [ "0 - Bilgi yok"]
+  },
+  {
+    "kaza": "10 - Elektrik akımı, ısı, tehlikeli maddelerle temas - Belirtilmemiş",
+    "alt": ["11 - Bir kaynak arkı, kıvılcım veya çakması (pasif) ","12 - Elektrikle doğrudan temas, elektrik yüklenmenin bedene alınması ","13 - Çıplak alev veya sıcak veya yanan bir nesne veya ortam ile temas ","14 - Soğuk veya donmuş bir nesne veya ortam ile temas ","15 - Tehlikeli maddelerle temas - burun, ağız yoluyla teneffüs"," 16 - Tehlikeli maddelerle temas - cilt veya gözler yoluyla/üzerinden 17 - Tehlikeli maddelerle temas - yutma veya yeme yoluyla sindirim sisteminden ","19 - Yukarıda listelenmemiş başka 10 çeşit sapma"]
+  },
+  {
+    "kaza": "20 - Boğulma, gömülme, sarılma",
+    "alt": ["21 - Sıvı içinde boğulma ","22 - Katı madde altında gömülme ","23 - Gaz veya havadaki zerrecikler içinde veya tarafından sarılma ","29 - Yukarıda listelenmemiş başka 20 çeşit sapma"]
+  },
+  {
+    "kaza": "30 - Sabit bir nesneye yatay veya düşey darbe (kazazede hareket halindeyken)- Belirtilmemiş",
+    "alt": ["31 - Bir şeye doğru düşey hareket, çarpışma (düşüşten dolayı)"," 32 - Bir şeye doğru yatay hareket, çarpışma ","39 - Yukarıda listelenmemiş başka 30 çeşit sapma"]
+  },
+  {
+    "kaza": "40 - Hareket halindeki bir nesnenin çarpması, çarpışma- Belirtilmemiş",
+    "alt": ["41 - Uçan bir nesnenin darbesi ","42 - Düşen bir nesnenin darbesi ","43 - Salınan bir nesnenin darbesi ","44 - Araçlar da dahil olmak üzere dönen, hareket eden, taşınmakta olan bir nesnenin darbesi ","45 - Araçlar da dahil olmak üzere bir nesne ile çarpışma - bir kişi ile çarpışma (kazazede hareket halindeyken) ","49 - Yukarıda listelenmemiş başka 40 çeşit sapma"]
+  },
+  {
+    "kaza": " 50 - Sivri, uçlu, sert veya kaba bir materyal araç ile temas",
+    "alt": ["51 - Keskin bir materyal araç ile temas (bıçak, keski, vb.) ","52 - Sivriltilmiş bir materyal araç ile temas (çivi, sivri alet, vb.) ","53 - Sert veya kaba materyal araç ile temas ","59 - Yukarıda listelenmemiş başka 50 çeşit sapma"]
+  },
+  {
+    "kaza": "60 - Kısılmak, ezilmek, vb.",
+    "alt": ["61 - Kısılmak, ezilmek - içeride ","62 - Kısılmak, ezilmek - altında ","63 - Kısılmak, ezilmek - arasında ","64 - Kol, el veya parmağın kopması, kesilmesi ","69 - Yukarıda listelenmemiş başka 60 çeşit sapma"]
+  },
+  {
+    "kaza": "70 - Fiziksel veya ruhsal baskı",
+    "alt": ["71 - Fiziksel baskı - kas/iskelet sistemi üzerinde ","72 - Fiziksel baskı - radyasyon, gürültü, ışık veya basınç nedeniyle ","73 - Ruhsal stres veya şok ","79 - Yukarıda listelenmemiş başka 70 çeşit sapma"]
+  },
+  {
+    "kaza": "80 - Isırılma, tekme, vb. (hayvan veya insan tarafından)",
+    "alt": ["81 - Isırık"," 82 - Böcek veya balık sokması"," 83 - Darbe, çifte, toz veya sıkarak boğma ","89 - Yukarıda listelenmemiş başka 80 çeşit sapma"]
+  },
+  {
+    "kaza": "99 - Bu sınıflandırmada listelenmemiş yaralanmaya sebep olan hareket (olay)",
+    "alt": ["99 - Bu sınıflandırmada listelenmemiş yaralanmaya sebep olan hareket (olay)"]
+  }
+]

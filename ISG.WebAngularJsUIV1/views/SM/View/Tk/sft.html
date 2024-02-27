@@ -1,0 +1,66 @@
+﻿<div ng-controller="sftCtrl  as SftC" style="width:100%">
+    <div class="col-sm-12">
+        <div class="col-sm-9">
+            <table datatable="ng" id="sft"  style="cursor:pointer"
+                   dt-options="dtOptionsSftC" dt-column-defs="dtColumnDefsSftC" class="table table-responsive  table-striped table-bordered table-hover dataTables-example row-border hover">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>No</th>
+                        <th>FVC</th>
+                        <th>FEV1</th>
+                        <th>FEV1/FVC</th>
+                        <th>PEF</th>
+                        <th>Tarih</th>
+                        <th>Protokol</th>
+                        <th>Muayene Türü</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="sft in SFTleri">
+                        <td ng-bind="sft.Sft_Id"></td>
+                        <td ng-bind="sft.$id"></td>
+                        <td ng-bind="sft.FVC"></td>
+                        <td ng-bind="sft.FEV1"></td>
+                        <td ng-bind="sft.Fev1Fvc"></td>
+                        <td ng-bind="sft.PEF"></td>
+                        <td ng-bind="sft.Tarih|date:'dd/MM/yyyy'"></td>
+                        <td ng-bind="sft.Protokol"></td>
+                        <td ng-bind="sft.MuayeneTuru"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-3">
+            <canvas barchart options="SftC.barOptions" data="SftC.barData" width="200" height=heightx responsive=true></canvas>
+        </div>
+    </div>
+    <div uib-collapse="isCollapsed" class="m-t-n-lg col-sm-12">
+        <form ng-submit="SftC.onSubmit()" novalidate>
+            <formly-form model="SftC.model" fields="SftC.fields" form="SftC.form">
+                <button type="submit" class="btn btn-primary submit-button" ng-disabled="SftC.form.$invalid">Kaydet</button>
+                <button type="button" class="btn btn-success" ng-disabled="!SftC.form.$valid" ng-click="yeniSftC()">Yeni</button>
+                <button type="button" class="btn btn-danger" ng-disabled="!SftC.form.$valid" ng-click="silSftC()">Sil</button>
+                <button class="btn btn btn-warning" ngf-select="uploadFiles($files)" multiple
+                                            accept="image/*,application/pdf,application/msword,application/vnd.ms-excel,
+                application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ng-show="fileButtonShow">
+                                        Rapor Ekle
+                                    </button>
+                <div class="pull-right">
+                    <label for="slc">Protokol Verilsin mi?</label>
+                    <select class="form-control" style="width:90px" ng-model="SftC.protokolGirisi" name="slc" ng-options="opsiyon.adi for opsiyon in opsiyonlar"></select>
+                </div>
+            </formly-form>
+        </form>
+    </div>
+    <row>
+        <ul style="list-style-type: none;overflow: hidden;" ng-show="dosyaList">
+            <li style="font:medium;color: mediumvioletred;float: left;margin-left:20px" ng-if="files.length>0?true:false">Eklenen Dosyalar :</li>
+            <li ng-repeat="f in files" style="font:normal;float: left;margin-left:20px">
+                <a ng-click="download(f)" ng-bind="f.FileName" tooltip-placement="bottom" uib-tooltip="İndir" tooltip-popup-delay="2500"></a>
+                <i class="fa fa-remove" ng-click="deleten(f.GenericName , $index)" tooltip-placement="bottom" uib-tooltip="Sil" tooltip-popup-delay="2500"> </i>
+            </li>
+        </ul>
+    </row>
+    <span style="color:red">{{message}}</span>    
+</div>

@@ -1,0 +1,71 @@
+﻿<div ng-controller="imzaCtrl  as imC">
+    <div class="row wrapper border-bottom white-bg page-heading" style="position:relative;z-index:10;padding-top: 45px;padding-bottom: 45px;">
+
+    </div>
+    <div class="animated fadeInRight  m-t-sm">
+        <div wrapper wrapper-content class="col-lg-4">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>E-imza</h5>
+                    <div ibox-tools></div>
+                </div>
+                <div class="ibox-content">
+                    <form class="form-horizontal" ng-submit="imC.submitForm()" novalidate>
+                        <p>E-imza ve Reçete şifre kayıtları</p>
+                        <div class="form-group">
+                            <label class="col-lg-5 control-label">Tc No</label>
+                            <div class="col-lg-7">
+                                <input type="text" ng-model="imC.val.TcNo" placeholder="Tc Kimlik Numarası" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-5 control-label">Dr Sertifika No</label>
+                            <div class="col-lg-7">
+                                <input type="text" ng-model="imC.val.doktorSertifikaKodu" placeholder="Dr Sertifika No" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-5 control-label">Dr Branş Kodu</label>
+                            <div class="col-lg-7">
+                                <input type="text" ng-model="imC.val.doktorBransKodu" placeholder="Branş Kodu" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-5 control-label">Dr Tesis Kodu</label>
+                            <div class="col-lg-7">
+                                <input type="text" ng-model="imC.val.doktorTesisKodu" placeholder="11(il kodu)9903 kullanılmalıdır." class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-5 control-label">Medulla Şifreniz</label>
+
+                            <div class="col-lg-7">
+                                <input type="password" placeholder="Medula" ng-model="imC.val.MedullaPassw" autocomplete="new-password" readonly onfocus="this.removeAttribute('readonly');" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-5 control-label">E-Imza Şifreniz</label>
+
+                            <div class="col-lg-7">
+                                <input type="password" ng-model="imC.val.key" autocomplete="new-password" readonly onfocus="this.removeAttribute('readonly');" placeholder="E-İmza" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-lg-offset-2 col-lg-10">
+                                <button class="btn btn-sm btn-reddit" type="submit">Kaydet</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .cropArea {
+        overflow: hidden;
+        width: 400px;
+        height: 300px;
+    }
+</style>

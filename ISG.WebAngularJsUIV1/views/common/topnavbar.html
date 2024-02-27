@@ -1,0 +1,15 @@
+﻿<div class="row border-bottom">
+    <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <span minimaliza-sidebar></span>           
+        </div>
+        <ul class="nav navbar-top-links navbar-right">
+            <li><button class="btn btn-warning" onclick="javascript:history.go(-1);" tooltip-placement="right" tooltip="Bir onceki sayfaniz!"> <i class="fa fa-arrow-circle-o-right"></i></button></li>
+            <li data-ng-hide="!authentication.isAuth">
+                <a href="" data-ng-click="logOut()">
+                    <i class="fa fa-sign-out"></i> Kapat
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>

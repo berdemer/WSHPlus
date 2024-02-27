@@ -1,0 +1,65 @@
+﻿<div ng-controller="TkCtrl as tkC">
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <div class="col-xs-4">
+            <a ui-sref="SM.SMCards({id:guid})">
+                <img alt="image" class="img-thumbnail" ng-cloak ng-src="{{fileImgPath}}{{img}}"  on-error="defaultUser.png"  style="width: auto; height: auto;max-width: 75px;max-height: 90px;margin-left:-20px;margin-right:10px;float:left" />
+            </a>
+            <a ui-sref="SM.SMCards({id:guid})">
+                <h3 style="color:yellow" ng-bind="AdSoyad"></h3>
+            </a>
+            <address class="m-t-n-sm m-b-n-lg">
+                <strong ng-bind="Tetkik.sirketAdi"></strong>=><span ng-bind="Tetkik.bolumAdi"></span><br>
+                <span ng-bind="Tetkik.data.Gorevi|degerYok"></span>=>
+                <span ng-bind="Tetkik.data.KadroDurumu|degerYok"></span><br>
+                <label> Sicil No:</label>{{Tetkik.data.SicilNo}}<label>Tc No :</label>{{Tetkik.data.TcNo}}<br>
+            </address>
+        </div>
+        <div class="col-xs-4 m-t-md  m-b-n-lg">
+            <label style="margin-bottom: 0px;">Kan Grubu :</label>{{Tetkik.data.KanGrubu}}
+            <label style="margin-bottom: 0px;">Yaşı :</label><span ng-bind="Tetkik.data.PersonelDetayi.DogumTarihi | getAge"></span><br>
+            <label style="margin-bottom: 0px;">Egitim Seviyesi :</label><span ng-bind="Tetkik.data.PersonelDetayi.EgitimSeviyesi|degerYok"></span><br>
+            <label style="margin-bottom: 0px;">Telefon :</label><a style="color:yellow" href="tel:0{{Tetkik.data.Telefon}}" ng-bind="Tetkik.data.Telefon|tel"></a><br>
+            <label style="margin-bottom: 0px;">Mail :</label><a style="color:yellow" href="mailto:{{Tetkik.data.Mail}}" ng-bind="Tetkik.data.Mail|degerYok"></a>
+        </div>
+        <div class="col-xs-4">
+            <address class="m-t-md  m-b-n-lg pull-left">
+                <span class="fa-stack fa-2x" style="cursor: pointer" ng-click="tkC.Ikaz(false)"  ng-if="tkC.warning" tooltip-placement="right" uib-tooltip="{{tkC.warningLength}} Adet Uyarınız Var.">
+                    <i class="fa fa-circle fa-stack-2x" style="color: #f7ef07;"></i>
+                    <i class="fa fa-exclamation fa-stack-1x"></i>
+                </span>
+            </address>
+            <a class="btn btn-xs btn-warning" ng-click="tkC.Ikaz(true)" ng-if="!tkC.warning"><i class="fa fa-exclamation"></i>&nbsp;Uyarılarımız</a>
+        </div>
+    </div>
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <div ibox-tools style="float:right"></div>
+                        <a href="#" editable-select="nbv" e-ng-options="sx as sx.SirketAdi+' '+sx.SaglikBirimiAdi for sx in birimler" ng-bind="nbv.SirketAdi+' '+nbv.SaglikBirimiAdi||'Sağlık Birimini Seçiniz'"></a>
+                        &nbsp;
+                        <a href="#" editable-select="islem" e-ng-options="sx as sx.muayene for sx in islemler" ng-bind="islem.muayene||'İşlem Türünü Seçiniz'"></a>
+                        <span>{{message}}</span>
+                        <a class="btn btn-success btn-xs m-l-xl" ui-sref="SM.Prm({id:Tetkik.data.PerGuid,'#':lokal})" ng-if="tkC.bilgi==true"><i class="fa fa-arrow-circle-left"></i> Periyodik Muayeneye Dön</a>
+                    </div>
+                    <div class="ibox-content">
+                        <button ui-sref=".TA({id:Tetkik.data.PerGuid})" ng-class="$state.includes('SM.Tk.TA')?'btn btn-primary':'btn btn-default'">Tansiyon</button>
+                        <button ui-sref=".BoyKilo({id:Tetkik.data.PerGuid})" ng-class="$state.includes('SM.Tk.BoyKilo')?'btn btn-primary':'btn btn-default'">Boy Kilo</button>
+                        <button ui-sref=".Sft({id:Tetkik.data.PerGuid})" ui-sref-active="current" ng-class="$state.includes('SM.Tk.Sft')?'btn btn-primary':'btn btn-default'">SFT</button>
+                        <button ui-sref=".Odio({id:Tetkik.data.PerGuid})" ng-class="$state.includes('SM.Tk.Odio')?'btn btn-primary':'btn btn-default'">Odio</button>
+                        <button ui-sref=".Laboratuar({id:Tetkik.data.PerGuid})" ng-class="$state.includes('SM.Tk.Laboratuar')?'btn btn-primary':'btn btn-default'">Laboratuvar</button>
+                        <button ui-sref=".Hemogram({id:Tetkik.data.PerGuid})" ng-class="$state.includes('SM.Tk.Hemogram')?'btn btn-primary':'btn btn-default'">Hemogram</button>
+                        <button ui-sref=".Radyoloji({id:Tetkik.data.PerGuid})" ng-class="$state.includes('SM.Tk.Radyoloji')?'btn btn-primary':'btn btn-default'">Radyoloji</button>
+                        <button ui-sref=".Ekg({id:Tetkik.data.PerGuid})" ng-class="$state.includes('SM.Tk.Ekg')?'btn btn-primary':'btn btn-default'">EKG</button>
+                        <button ui-sref=".PsikolojikTest({id:Tetkik.data.PerGuid})" ng-class="$state.includes('SM.Tk.PsikolojikTest')?'btn btn-primary':'btn btn-default'">Psikoloji</button>
+                        <button ui-sref=".Gorme({id:Tetkik.data.PerGuid})" ng-class="$state.includes('SM.Tk.Gorme')?'btn btn-primary':'btn btn-default'">Görme Muayenesi</button>
+                        <button ui-sref=".Pansuman({id:Tetkik.data.PerGuid})" ng-class="$state.includes('SM.Tk.Pansuman')?'btn btn-primary':'btn btn-default'">Pansumanları</button>
+                        <button ui-sref=".RevirTedavi({id:Tetkik.data.PerGuid})" ng-class="$state.includes('SM.Tk.RevirTedavi')?'btn btn-primary':'btn btn-default'">Revir Tedavileri</button>
+                        <div ui-view style="background:#f0f7f3;padding:10px 5px;width: 100%;height: 100%;display: inline-flex;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

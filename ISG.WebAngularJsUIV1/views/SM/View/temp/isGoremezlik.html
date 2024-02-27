@@ -1,0 +1,325 @@
+﻿<style type="text/css">
+    @page {
+        size: A5; /* auto,A5  media="print" stile ekleyebilirsin.*/
+        margin: 0mm; /* sayfa margin sıfırla */
+    }
+
+    html {
+        background-color: #FFFFFF;
+        margin: 0px; /* this affects the margin on the html before sending to printer */
+    }
+
+    body {
+        font-family: GaGaramond'Times New Roman', serif;
+        background-color: #FFFFFF;
+        border: solid 1px black;
+        margin: 0px; /* the margin on the content before printing */
+        padding: 0px;
+        -ms-filter: none;
+        line-height: 1.45;
+        word-spacing: 1px;
+        letter-spacing: 0.2px;
+        height: 210mm;
+        width: 148.5mm;
+        font-size: x-small;
+    }
+
+    table.normal {
+        table-layout: fixed;
+        width: 100%;
+        border: solid 3px #000000;
+        padding: 0;
+        border-collapse: collapse;
+        border-spacing: 0;
+        overflow: inherit;
+        table-layout: fixed;
+    }
+
+        table.normal th {
+            border: solid 1px #000000;
+            word-wrap: break-word;
+        }
+
+        table.normal td {
+            border: solid 1px #000000;
+            vertical-align: top;
+            word-wrap: break-word;
+            padding-left: 3px;
+        }
+
+    input[type="checkbox"] {
+        width: 14px;
+        height: 14px;
+        vertical-align: bottom;
+        background: none;
+        color: white;
+    }
+
+    label.checkbox {
+        vertical-align: top;
+        line-height: 24px;
+        margin: 2px 0;
+        display: block;
+        height: 24px;
+    }
+
+    .rapor1 {
+        height: 38pt;
+        vertical-align: top;
+        text-align: left;
+    }
+
+    .rapor2 {
+        text-align: left;
+        vertical-align: top;
+    }
+
+    .rapor3 {
+        height: 38pt;
+    }
+
+    .rapor4 {
+        height: 30pt;
+    }
+
+    .rapor5 {
+        text-align: center;
+    }
+
+    .rapor6 {
+        text-align: left;
+    }
+
+    .rapor7 {
+        height: 30pt;
+    }
+
+    .rapor9 {
+        height: 27pt;
+        vertical-align: top;
+        text-align: left;
+    }
+
+    .rapor10 {
+        height: 30pt;
+    }
+
+    .rapor11 {
+        height: 25pt;
+        text-align: left;
+        width: 76pt;
+    }
+
+    .rapor12 {
+        height: 25pt;
+        text-align: left;
+        width: 116pt;
+    }
+
+    .rapor16 {
+        height: 38pt;
+        text-align: left;
+    }
+
+    .rapor20 {
+        text-align: left;
+    }
+
+    .rapor26 {
+        text-align: left;
+        height: 57pt;
+    }
+
+    .rapor27 {
+        height: 25pt;
+        text-align: left;
+    }
+</style>
+
+
+<div style="margin: 20pt; border-style: none; overflow: inherit;">
+    <p class="rapor5">
+        <strong>İŞ GÖREMEZLİK BELGESİ</strong>
+    </p>
+    <table class="normal">
+        <tbody>
+            <tr>
+                <td colspan="3" class="rapor9">
+                    <p>
+                        (1) SAĞLIK TESİSİ:<span ng-bind="patient.kurumu"></span>
+                    </p>
+                </td>
+                <td colspan="2" class="rapor9">
+                    <p>
+                        (2) DÜZENLEYEN POLİKLİNİK:<span ng-bind="patient.saglikBirimi"></span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <p>
+                        (3) ADI :<span ng-bind="patient.adi"></span>
+                    </p>
+                    <p>
+                        SOYADI :<span ng-bind="patient.soyadi"></span>
+                    </p>
+                </td>
+                <td colspan="2" class="rapor10">
+                    <p>
+                        (4) SİGORTA
+                    </p>
+                    <p>
+                        SİCİL NO :<span ng-bind="patient.sgkNo"></span>
+                    </p>
+                </td>
+                <td class="rapor4">
+                    <p>
+                        (5) TC. KİMLİK
+                    </p>
+                    <p>
+                        NO:<span ng-bind="patient.tcNo"></span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5" class="rapor7">
+
+                    (6) EV ADRESİ: 
+                    <span ng-bind="patient.adres"></span>
+                    <p>TEL:
+                        <span ng-bind="patient.tel"></span>
+                    </p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p style="text-align: center;">
+        (II) BİRİNCİ ON GÜNE KADAR AYAKTAN İSTİRAHATLER İÇİN DOLDURULACAK BÖLÜM
+    </p>
+    <table class="normal">
+        <tbody>
+            <tr>
+                <td class="rapor11">
+                    <p>
+                        <label>
+                            (7) İŞ KAZASI :
+                            [<span>{{patient.isKazasi}}</span>]
+                        </label>
+
+                    </p>
+                </td>
+                <td class="rapor12">
+                    <p>
+                        <label>
+                            (8) MESLEK HASTALIĞI :
+                            [<span>{{patient.meslekHastaligi}}</span>]
+                        </label>
+                    </p>
+                </td>
+                <td class="rapor27">
+                    <p>
+                        <label>
+                            (9) HASTALIK :
+                            [<span>{{patient.hastalik}}</span>]
+                        </label>
+
+                    </p>
+                </td>
+                <td class="rapor20">
+                    <p>
+                        <label>
+                            (10) ANALIK :
+                            [<span>{{patient.analik}}</span>]
+                        </label>
+
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="rapor1">
+                    <p>
+                        (11) TEŞHİS:<span ng-bind="patient.tani"></span>
+                    </p>
+                </td>
+                <td class="rapor16">
+                    <p>
+                        (12) POLİKLİNİK
+                    </p>
+                    <p>
+                        TARİHİ:<span ng-bind="patient.date"></span>
+                    </p>
+                </td>
+                <td class="rapor3">
+                    <p>
+                        (13) POLİKLİNİK
+
+                        DEFTER SIRA
+
+                        NO:<span ng-bind="patient.Protokol"></span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="rapor26">
+                    <p>
+                        (14)
+                    </p>
+
+                    <p>
+                        <span ng-bind="patient.Istirahat.BaslamaTarihi"></span> den <span ng-bind="patient.Istirahat.BitisTarihi"></span> tarihine kadar istirahatlidir. Rapor Gün Sayısı :<span ng-bind="patient.Istirahat.GunSayisi"></span>
+                    </p>
+                    <p>
+                        <span ng-bind="patient.Istirahat.iseBaslamaTarihi"></span> tarihinde <span ng-bind="patient.Istirahat.Sonrasi"></span>
+                    </p>
+                </td>
+                <td colspan="2" class="rapor26">
+                    <p>
+                        (15)
+                    </p>
+                    <p>
+                        Hastaneye Yatış Tarihi : ……/……/……
+                    </p>
+                    <p>
+                        Hastaneden Çıkış Tarihi : ……/……/……
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <p>
+                        (16) DÜZENLEYEN HEKİMİN
+                    </p>
+                    <p style="width:100%">
+                        <span style="float:left;">ADI SOYADI :</span>
+                        <span style="float:right;margin-right:4px;">İMZASI</span>
+                    </p>
+                    <div style="clear:both">   </div>
+                    <p>
+                        SİCİL NO :
+                    </p>
+                    <p>
+                        DİPLOMA
+                    </p>
+                    <p>
+                        TESCİL NO :
+                    </p>
+                </td>
+                <td colspan="2">
+                    <p>
+                        (17) ONAY
+                    </p>
+                    <p>
+                        İSİM KAŞESİ :
+                    </p>
+                    <p>
+                        MÜHÜR :
+                    </p>
+                    <p>
+                        İMZA :
+                    </p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <span style="font-size:5px">WSH+ &copy; 2017</span>
+</div>

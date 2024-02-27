@@ -1,0 +1,104 @@
+﻿<div class="row wrapper border-bottom white-bg page-heading" ng-controller="personelHeadViewCtrl">
+    <script type="text/ng-template" id="group-template.html">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a href tabindex="0" class="accordion-toggle" ng-click="toggleOpen()" uib-accordion-transclude="heading">
+                    <span uib-accordion-header ng-class="{'text-muted': isDisabled}">
+                        {{heading}}
+                    </span>
+                </a>
+            </h4>
+        </div>
+        <div class="panel-collapse collapse" uib-collapse="!isOpen">
+            <div class="panel-body" style="background-color: #555;" ng-transclude></div>
+        </div>
+    </script>
+    <div class="col-lg-10">
+        <div class="col-sm-4 m-t-md">
+            <uib-accordion close-others="true">
+                <div uib-accordion-group class="panel-default" is-open="status.open">
+                    <uib-accordion-heading>
+                        <span ng-bind="SirketBasligi.name"></span>&nbsp;&nbsp;&nbsp;&nbsp;<i class="pull-right" ng-class="{'fa fa-chevron-down': status.open, 'fa fa-chevron-right': !status.open}"></i>
+                    </uib-accordion-heading>
+                    <treecontrol class="tree-light"
+                                 tree-model="collectionSirket"
+                                 options="treeOptions"
+                                 expanded-nodes="expandList"
+                                 on-selection="showSelected(node)">
+                        <span ng-bind="node.name"></span>
+                    </treecontrol>
+                </div>
+            </uib-accordion>
+        </div>
+        <div class="col-sm-4 m-t-md">
+            <uib-accordion close-others="true">
+                <div uib-accordion-group class="panel-default" is-open="status.open2" template-url="group-template.html">
+                    <uib-accordion-heading>
+                        <span ng-bind="BolumBasligi.name"></span>&nbsp;&nbsp;&nbsp;&nbsp;<i class="pull-right" ng-class="{'fa fa-chevron-down': status.open2, 'fa fa-chevron-right': !status.open2}"></i>
+                    </uib-accordion-heading>
+                    <div style="background-color: #555;">
+                        <treecontrol class="tree-dark"
+                                     tree-model="collectionBolum"
+                                     options="treeOptions"
+                                     on-selection="showSelectedBolum(node)">
+                            <span ng-bind="node.name"></span>
+                        </treecontrol>
+                    </div>
+                </div>
+            </uib-accordion>
+        </div>
+        <div class="col-sm-4 m-t-md">
+            <button type="button" class="btn btn-primary" ng-click="listeyeDon()"><i class="fa fa-forward"></i>&nbsp;Listeye Dön</button>
+        </div>
+
+    </div>
+    <div class="col-lg-2">
+        <img alt="image" class="img-thumbnail" ng-show="sdx" ng-click="FotoGetx()" ng-cloak ng-src="{{fileImgPath}}" on-error="defaultUser.png" style="width: auto; height: auto;max-width: 75px;max-height: 90px;float:right" />
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12" ng-controller="personelViewCrtl as vm">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>
+                        Personel Kaydı
+                        <small data-ng-hide="message == ''" data-ng-class="(savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
+                            {{message}}
+                        </small>
+                    </h5>
+                    <div ibox-tools></div>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <form ng-submit="vm.onSubmit()" novalidate>
+                            <formly-form model="vm.model" fields="vm.fields" form="vm.form">
+                                <button type="submit" class="btn btn-primary submit-button" ng-disabled="vm.form.$invalid">Kaydet</button>
+                                <button type="button" class="btn btn-info" ng-click="FotoGet()" ng-hide="foto">Fotograf Ekle</button>
+                            </formly-form>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/ng-template" id="mukerrer.html">
+        <div class="modal-header">
+            <h3 class="modal-title" style="color:red">Sistemde Tc Nosu Kayıtlı Olan Personel(Mükerrer)</h3> 
+        </div>
+        <form ng-submit="Gonder()">
+            <div class="modal-body">
+                <p style="font-weight:bold">{{PersonelAdSoyadi}} {{Bilgi}}</p>
+                <span style="color:red"> Kayıt </span><span>butonuna basarak fabrika ve bölüm güncellemesini yapabilirsiniz.</span>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="submit">Kayıt</button>
+                <button class="btn btn-danger" type="button" ng-click="cancel()">İptal</button>
+            </div>
+        </form>
+    </script>
+
+
+
+</div>
+

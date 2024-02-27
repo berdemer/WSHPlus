@@ -1,0 +1,58 @@
+﻿<div ng-controller="pansumanCtrl  as PnsC" style="width:100%">
+    <div class="col-sm-12">
+        <table datatable="ng" id="pansuman"  style="cursor:pointer"
+               dt-options="dtOptionsPnsC" dt-column-defs="dtColumnDefsPnsC" class="table table-responsive  table-striped table-bordered table-hover dataTables-example row-border hover">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>No</th>
+                    <th>Yara Yeri</th>
+                    <th>Yara Türü</th>
+                    <th>Tarih-Saat</th>
+                    <th>Protokol</th>
+                    <th>Muayene Türü</th>
+                </tr>
+            </thead>
+                <tbody>
+                    <tr ng-repeat="pansuman in Pansumanlari">
+                        <td ng-bind="pansuman.Pansuman_Id"></td>
+                        <td ng-bind="pansuman.$id"></td>
+                        <td ng-bind="pansuman.YaraYeri"></td>
+                        <td ng-bind="pansuman.YaraCesidi"></td>
+                        <td ng-bind="pansuman.Tarih|date:'dd/MM/yyyy  HH:mm'"></td>
+                        <td ng-bind="pansuman.Protokol"></td>
+                        <td ng-bind="pansuman.MuayeneTuru"></td>
+                    </tr>
+                </tbody>
+</table>
+    </div>
+    <div uib-collapse="isCollapsed" class="m-t-n-lg col-sm-12">
+        <form ng-submit="PnsC.onSubmit()" novalidate>
+            <formly-form model="PnsC.model" fields="PnsC.fields" form="PnsC.form">
+                <button type="submit" class="btn btn-primary submit-button" ng-disabled="PnsC.form.$invalid">Kaydet</button>
+                <button type="button" class="btn btn-success" ng-disabled="!PnsC.form.$valid" ng-click="yeniPnsC()">Yeni</button>
+                <button type="button" class="btn btn-danger" ng-disabled="!PnsC.form.$valid" ng-click="silPnsC()">Sil</button>
+                <button class="btn btn btn-warning" ngf-select="uploadFiles($files)" multiple
+                        accept="image/*,application/pdf,application/msword,application/vnd.ms-excel,
+application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ng-if="PnsC.model.Pansuman_Id!=null">
+                    Rapor Ekle
+                </button>
+                <button type="button" class="btn btn-white" ng-disabled="PnsC.form.$valid" ng-click="lastSave()">Son Kayıt Yükleme</button>
+                <div class="pull-right">
+                    <label for="slc">Protokol Verilsin mi?</label>
+                    <select class="form-control" style="width:90px" ng-model="PnsC.protokolGirisi" name="slc" ng-options="opsiyon.adi for opsiyon in opsiyonlar"></select>
+                </div>
+            </formly-form>
+        </form>
+    </div>
+    <row>
+        <ul style="list-style-type: none;overflow: hidden;" ng-show="dosyaList">
+            <li style="font:medium;color: mediumvioletred;float: left;margin-left:20px" ng-if="files.length>0?true:false">Eklenen Dosyalar :</li>
+            <li ng-repeat="f in files" style="font:normal;float: left;margin-left:20px">
+                <a ng-click="download(f)" ng-bind="f.FileName" tooltip-placement="bottom" uib-tooltip="İndir" tooltip-popup-delay="2500"></a>
+                <i class="fa fa-remove" ng-click="deleten(f.GenericName , $index)" tooltip-placement="bottom" uib-tooltip="Sil" tooltip-popup-delay="2500"> </i>
+            </li>
+        </ul>
+    </row>
+    <span style="color:red">{{message}}</span>    
+</div>

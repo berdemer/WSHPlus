@@ -1,0 +1,860 @@
+[
+  {
+    "Soru": "İşimden soğuduğumu hissediyorum.",
+    "a": {
+      "ad": "Hiçbir Zaman",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Çok Nadir",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Bazen",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Çoğu Zaman",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "Her Zaman",
+      "val": "4",
+      "active": false,
+      "display": true
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "İş günü sonunda kendimi tükenmiş hissediyorum.",
+    "a": {
+      "ad": "Hiçbir Zaman",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Çok Nadir",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Bazen",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Çoğu Zaman",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "Her Zaman",
+      "val": "4",
+      "active": false,
+      "display": true
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "Sabah kalkıp, yeni bir iş gününe başlamak zorunda olduğum zaman, yorgunluk hissediyorum.",
+    "a": {
+      "ad": "Hiçbir Zaman",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Çok Nadir",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Bazen",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Çoğu Zaman",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "Her Zaman",
+      "val": "4",
+      "active": false,
+      "display": true
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "İşim gereği karşılaştığım insanların olaylarla ilgili neler hissettiğini çok kolay anlayabiliyorum.",
+    "a": {
+      "ad": "Hiçbir Zaman",
+      "val": "4",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Çok Nadir",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Bazen",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Çoğu Zaman",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "Her Zaman",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "İşim gereği bazı kişilere karşı soğuk ve ilgisiz davrandığımı hissediyorum.",
+    "a": {
+      "ad": "Hiçbir Zaman",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Çok Nadir",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Bazen",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Çoğu Zaman",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "Her Zaman",
+      "val": "4",
+      "active": false,
+      "display": true
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "Gün boyu insanlarla birlikte çalışmak, beni gerçekten geriyor.",
+    "a": {
+      "ad": "Hiçbir Zaman",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Çok Nadir",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Bazen",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Çoğu Zaman",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "Her Zaman",
+      "val": "4",
+      "active": false,
+      "display": true
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "İşim gereği kişilerin sorunlarını çok etkili bir şekilde ele alıyorum.",
+    "a": {
+      "ad": "Hiçbir Zaman",
+      "val": "4",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Çok Nadir",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Bazen",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Çoğu Zaman",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "Her Zaman",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "Yaptığım işten yıldığımı hissediyorum.",
+    "a": {
+      "ad": "Hiçbir Zaman",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Çok Nadir",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Bazen",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Çoğu Zaman",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "Her Zaman",
+      "val": "4",
+      "active": false,
+      "display": true
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "Yaptığım iş ile başkalarının hayatını olumlu etkilediğimi düşünüyorum.",
+    "a": {
+      "ad": "Hiçbir Zaman",
+      "val": "4",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Çok Nadir",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Bazen",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Çoğu Zaman",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "Her Zaman",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "Bu işe girdiğimden beri, insanlara karşı daha duyarsız oldum.",
+    "a": {
+      "ad": "Hiçbir Zaman",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Çok Nadir",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Bazen",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Çoğu Zaman",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "Her Zaman",
+      "val": "4",
+      "active": false,
+      "display": true
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "Bu işin, beni duygusal olarak körelttiğinden endişe ediyorum.",
+    "a": {
+      "ad": "Hiçbir Zaman",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Çok Nadir",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Bazen",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Çoğu Zaman",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "Her Zaman",
+      "val": "4",
+      "active": false,
+      "display": true
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "Kendimi çok enerjik hissediyorum.",
+    "a": {
+      "ad": "Hiçbir Zaman",
+      "val": "4",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Çok Nadir",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Bazen",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Çoğu Zaman",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "Her Zaman",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "İşimin beni kısıtladığını düşünüyorum.",
+    "a": {
+      "ad": "Hiçbir Zaman",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Çok Nadir",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Bazen",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Çoğu Zaman",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "Her Zaman",
+      "val": "4",
+      "active": false,
+      "display": true
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "İş yerinde çok yoğun çalıştığımı düşünüyorum.",
+    "a": {
+      "ad": "Hiçbir Zaman",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Çok Nadir",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Bazen",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Çoğu Zaman",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "Her Zaman",
+      "val": "4",
+      "active": false,
+      "display": true
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "İşim gereği bazı kişilere ne olup ne olmadığı beni gerçekten ilgilendirmiyor.",
+    "a": {
+      "ad": "Hiçbir Zaman",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Çok Nadir",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Bazen",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Çoğu Zaman",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "Her Zaman",
+      "val": "4",
+      "active": false,
+      "display": true
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "İnsanlarla doğrudan birlikte çalışmak bende çok fazla stres yaratıyor.",
+    "a": {
+      "ad": "Hiçbir Zaman",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Çok Nadir",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Bazen",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Çoğu Zaman",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "Her Zaman",
+      "val": "4",
+      "active": false,
+      "display": true
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "İşim gereği kişilerle birlikte, kolaylıkla rahat bir ortam oluşturabiliyorum.",
+    "a": {
+      "ad": "Hiçbir Zaman",
+      "val": "4",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Çok Nadir",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Bazen",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Çoğu Zaman",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "Her Zaman",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "İşim gereği kişilerle yakından ilgilendikten sonra kendimi canlanmış hissederim.",
+    "a": {
+      "ad": "Hiçbir Zaman",
+      "val": "4",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Çok Nadir",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Bazen",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Çoğu Zaman",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "Her Zaman",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "İşimde birçok önemli şey yaptım.",
+    "a": {
+      "ad": "Hiçbir Zaman",
+      "val": "4",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Çok Nadir",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Bazen",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Çoğu Zaman",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "Her Zaman",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "Sabrımın tükendiğini hissediyorum.",
+    "a": {
+      "ad": "Hiçbir Zaman",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Çok Nadir",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Bazen",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Çoğu Zaman",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "Her Zaman",
+      "val": "4",
+      "active": false,
+      "display": true
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "İşimde, duygusal sorunlara soğukkanlılıkla yaklaşırım.",
+    "a": {
+      "ad": "Hiçbir Zaman",
+      "val": "4",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Çok Nadir",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Bazen",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Çoğu Zaman",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "Her Zaman",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "İşim gereği kişilerin, bazı sorunları yüzünden, beni suçladıklarını hissediyorum.",
+    "a": {
+      "ad": "Hiçbir Zaman",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Çok Nadir",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Bazen",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Çoğu Zaman",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "Her Zaman",
+      "val": "4",
+      "active": false,
+      "display": true
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  }
+]

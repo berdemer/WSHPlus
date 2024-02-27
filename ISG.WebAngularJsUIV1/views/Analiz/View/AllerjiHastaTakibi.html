@@ -1,0 +1,66 @@
+﻿<div ng-controller="allerjiHastaTakibiCtrl  as ahtC">
+    <div class="row wrapper border-bottom white-bg page-heading" style="position:relative;z-index:10">
+        <div class="col-sm-1 m-t-lg" style="padding-right:0px;padding-left:15px;">
+            <h4 class="m-t-sm">Şİrket Adı:</h4>
+        </div>
+        <div class="col-sm-5 m-t-lg" style="padding-left:0px;">
+            <uib-accordion close-others="true">
+                <div uib-accordion-group class="panel-default" is-open="status.open">
+                    <uib-accordion-heading>
+                        <span   class="maviFont" ng-bind="SirketBasligi.name"></span>&nbsp;&nbsp;&nbsp;&nbsp;<i class="pull-right maviFont" ng-class="{'fa fa-chevron-down': status.open, 'fa fa-chevron-right': !status.open}"></i>
+                    </uib-accordion-heading>
+                    <treecontrol class="tree-light"
+                                 tree-model="collectionSirket"
+                                 options="treeOptions"
+                                 expanded-nodes="expandList"
+                                 on-selection="showSelected(node)">
+                        <span   class="maviFont" ng-bind="node.name"></span>
+                    </treecontrol>
+                </div>
+            </uib-accordion>
+        </div>
+        <div class="col-sm-6 m-t-lg"></div>
+    </div>
+    <div class="animated fadeInRight">
+        <div wrapper wrapper-content>
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>{{SirketBasligi.name}} Allerjisi Olan Hastaların Listesi</h5>
+                    <div ibox-tools></div>
+                </div>
+                <div class="ibox-content">
+                    <table datatable="ng" id="ay" style="cursor:pointer"
+                           dt-options="dtOptions" dt-column-defs="dtColumnDefs" class="table table-responsive  table-striped table-bordered table-hover dataTables-example row-border hover">
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>Adı-Soyadı</th>
+                                <th>Bölüm Adı</th>
+                                <th>Öyküsü</th>
+                                <th>Çeşidi</th>
+                                <th>Etkeni</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="i in ahtC.raporlar">
+                                <td ng-bind="i.$id"></td>
+                                <td><a ui-sref="SM.SMCards({id:i.TcNo})">{{i.Adi+' '+ i.Soyadi}}</a></td>
+                                <td ng-bind="i.BolumAdi"></td>
+                                <td ng-bind="i.Oykusu"></td>
+                                <td ng-bind="i.Cesidi"></td>
+                                <td ng-bind="i.Etkeni"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+<style>
+    .cropArea {
+        overflow: hidden;
+        width: 400px;
+        height: 300px;
+    }
+</style>

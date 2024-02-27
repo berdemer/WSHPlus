@@ -1,0 +1,166 @@
+﻿<div ng-controller="adressUpdateCrtl  as adrs" style="width:100%">
+    <row>
+            <table datatable="ng" id="adress"
+                   dt-options="dtOptions" dt-column-defs="dtColumnDefs" class="table table-striped table-responsive table-bordered table-hover dataTables-example row-border hover">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>Türü</th>
+                        <th>Genel</th>
+                        <th>Ek Bilgi</th>
+                        <th>Map Lokasyonu</th>
+                        <!--<th></th>-->
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="adres in Adress">
+                        <td ng-bind="adres.Adres_Id"></td>
+                        <td ng-bind="adres.Adres_Turu"></td>
+                        <td ng-bind="adres.GenelAdresBilgisi"></td>
+                        <td ng-bind="adres.EkAdresBilgisi"></td>
+                        <td ng-bind="adres.MapLokasyonu"></td>
+                    </tr>
+                </tbody>
+            </table>
+    </row>
+    <row  uib-collapse="isCollapsed" class="m-t-n-lg">
+        <div class="col-lg-6">
+            <form ng-submit="adrs.onSubmit()" novalidate>
+                <formly-form model="adrs.model" fields="adrs.fields" form="adrs.form">
+                    <button type="submit" class="btn btn-primary submit-button" ng-disabled="adrs.form.$invalid">Kaydet</button>
+                    <button type="button" class="btn btn-success" ng-click="yeni()" ng-disabled="!adrs.form.$valid">Yeni</button>
+                    <button type="button" class="btn btn-danger" ng-click="sil()" ng-disabled="!adrs.form.$valid">Sil</button>
+                    <button type="button" class="btn btn-info" ng-click="codexAddress()">Harita Bilgisi Göster</button>
+                    <button type="button" class="btn btn-info" ng-click="zx()">Harita Bilgisi Ekle</button>
+                </formly-form>
+            </form>
+            <div id="infoPanel">
+                <b style="color:orangered">İşaretleyici Durumu:</b>
+                <div id="markerStatus"><i>İşaretçiyi tklayın ve sürükleyin.</i></div>
+                <b style="color:orangered">Kullanılan Pozisyon:</b>
+                <div id="info"></div>
+                <b style="color:orangered">En yakın eşleşen adresi:</b>
+                <div id="address"></div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div id="panel">
+                <input id="city_country" g-places-autocomplete ng-model="place" class="col-sm-10" type="text" value="Adana, Türkiye">
+                <input type="button" value="Adres" onclick="codeAddress()" class="col-sm-2">
+            </div>
+            <div id="mapCanvas" class="col-lg-12"></div>
+        </div>
+    </row>
+
+</div>
+<style>
+    #mapCanvas {
+        min-width: 300px;
+        height: 300px;
+        float: left;
+    }
+
+    #infoPanel {
+        float: left;
+        margin-left: 10px;
+    }
+
+        #infoPanel div {
+            margin-bottom: 5px;
+        }
+</style>
+<script type="text/javascript">
+    var geocoder;
+    var map;
+    var marker;
+
+    codeAddress = function (data) {
+        geocoder = new google.maps.Geocoder();
+        if (data == undefined) {
+            var address = document.getElementById('city_country').value;
+        } else {
+            var address = data;
+        }
+
+        geocoder.geocode({ 'address': address }, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                map = new google.maps.Map(document.getElementById('mapCanvas'), {
+                    zoom: 18,
+                    streetViewControl: false,
+                    mapTypeControlOptions: {
+                        style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+                        mapTypeIds: [google.maps.MapTypeId.HYBRID, google.maps.MapTypeId.ROADMAP]
+                    },
+                    center: results[0].geometry.location,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                });
+                map.setCenter(results[0].geometry.location);
+                marker = new google.maps.Marker({
+                    map: map,
+                    position: results[0].geometry.location,
+                    draggable: true,
+                    title: 'WSH++'
+                });
+                updateMarkerPosition(results[0].geometry.location);
+                geocodePosition(results[0].geometry.location);
+
+                // Add dragging event listeners.
+                google.maps.event.addListener(marker, 'dragstart', function () {
+                    updateMarkerAddress('Sürükleniyor...');
+                });
+
+                google.maps.event.addListener(marker, 'drag', function () {
+                    updateMarkerStatus('Sürükleniyor...');
+                    updateMarkerPosition(marker.getPosition());
+                });
+
+                google.maps.event.addListener(marker, 'dragend', function () {
+                    updateMarkerStatus('Sürüklenme Sonlandı.');
+                    geocodePosition(marker.getPosition());
+                    map.panTo(marker.getPosition());
+                });
+
+                google.maps.event.addListener(map, 'click', function (e) {
+                    updateMarkerPosition(e.latLng);
+                    geocodePosition(marker.getPosition());
+                    marker.setPosition(e.latLng);
+                    map.panTo(marker.getPosition());
+                });
+
+            } else {
+                if (status == 'ZERO_RESULTS')
+                { alert('Adresi sadece mahalle ve sokak numarası olarak sorgulatın!'); }
+                else { alert('Geocode şu nedenle başarısız oldu: ' + status); }
+
+            }
+        });
+    }
+
+    function geocodePosition(pos) {
+        geocoder.geocode({
+            latLng: pos
+        }, function (responses) {
+            if (responses && responses.length > 0) {
+                updateMarkerAddress(responses[0].formatted_address);
+            } else {
+                updateMarkerAddress('Bu konumda adresini belirlemek mümkün değil.');
+            }
+        });
+    }
+
+    function updateMarkerStatus(str) {
+        document.getElementById('markerStatus').innerHTML = str;
+    }
+
+    function updateMarkerPosition(latLng) {
+        document.getElementById('info').innerHTML = [
+          latLng.lat(),
+          latLng.lng()
+        ].join(', ');
+    }
+
+    function updateMarkerAddress(str) {
+        document.getElementById('address').innerHTML = str;
+    }
+</script>
+<!--http://jsfiddle.net/landwire/WppF6/24/-->

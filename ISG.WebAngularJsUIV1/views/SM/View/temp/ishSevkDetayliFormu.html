@@ -1,0 +1,351 @@
+<html>
+
+<head>
+    <meta http-equiv=Content-Type content="text/html; charset=utf-8">
+    <style media="print">
+        <!--
+        /* Font Definitions */
+        @font-face {
+            font-family: Wingdings;
+            panose-1: 5 0 0 0 0 0 0 0 0 0;
+        }
+
+        @font-face {
+            font-family: "Cambria Math";
+            panose-1: 2 4 5 3 5 4 6 3 2 4;
+        }
+
+        @font-face {
+            font-family: Calibri;
+            panose-1: 2 15 5 2 2 2 4 3 2 4;
+        }
+        /* Style Definitions */
+        p.MsoNormal, li.MsoNormal, div.MsoNormal {
+            margin-top: 0cm;
+            margin-right: 0cm;
+            margin-bottom: 8.0pt;
+            margin-left: 0cm;
+            line-height: 107%;
+            font-size: 11.0pt;
+            font-family: "Calibri",sans-serif;
+        }
+
+        p {
+            margin-right: 0cm;
+            margin-left: 0cm;
+            font-size: 12.0pt;
+            font-family: "Times New Roman",serif;
+        }
+
+        .MsoChpDefault {
+            font-family: "Calibri",sans-serif;
+        }
+
+        .MsoPapDefault {
+            margin-bottom: 8.0pt;
+            line-height: 107%;
+        }
+
+        @page WordSection1 {
+            size: 595.3pt 841.9pt;
+            margin: 36.0pt 36.0pt 36.0pt 36.0pt;
+        }
+
+        div.WordSection1 {
+            page: WordSection1;
+        }
+
+        .kutula {
+            margin: 0cm;
+            margin-bottom: .0001pt;
+        }
+
+        .spansitili {
+            font-size: 9.0pt;
+            font-family: "Calibri",sans-serif;
+            color: black;
+        }
+
+        .spansitili2 {
+            font-size: 9.0pt;
+            font-family: Wingdings;
+            color: black;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between; /* İçerikleri sol ve sağa yaslar */
+        }
+        -->
+    </style>
+
+</head>
+
+<body lang=TR>
+
+    <div class=WordSection1>
+
+        <p align=center style='margin:0cm;margin-bottom:.0001pt;text-align:center'>
+            <b>
+                <u>
+                    <span class='spansitili'>
+                        İŞYERİ HEKİMİ SEVK FORMU
+                    </span>
+                </u>
+            </b>
+        </p>
+
+        <p class='kutula'><span class='spansitili'>&nbsp;</span></p>
+
+        <p class='kutula'><b><u><span class='spansitili'>Sigortalının :</span></u></b></p>
+
+        <p class='kutula  container'>
+            <b>
+                <span class='spansitili'>T.C Numarası:{{patient.tcNo}}</span>
+            </b>
+            <b>
+                <span class='spansitili'> Tarih:{{patient.date}}</span>
+            </b>
+        </p>
+        <p class='kutula  container'>
+            <b>
+                <span class='spansitili'>
+                    Adı Soyadı:
+                </span><span class='spansitili' ng-bind="patient.name"></span>
+            </b>
+            <b>
+                <span class='spansitili'>Protokol No:{{patient.Protokol}}</span>
+            </b>
+        </p>
+
+        <p class='kutula'>
+            <b>
+                <span class='spansitili'> Telefonu: </span>
+            </b><span class='spansitili' ng-bind="patient.tel | tel"> </span>
+        </p>
+
+        <p class='kutula'><b><span class='spansitili'>Çalıştığı İşyerinin Unvanı     : </span></b><span class='spansitili' ng-bind="patient.kurumu"></span></p>
+
+        <p class='kutula'>
+            <b><span class='spansitili'>Ne kadar süredir çalışıyor   :</span></b>
+            <span class='spansitili'> {{patient.sure.yil}} Yıl {{patient.sure.ay}} Ay</span> 
+        </p>
+
+        <p class='kutula'><b><span class='spansitili'>Çalıştığı Bölüm / Yaptığı İş  :</span></b><span class='spansitili' ng-bind="patient.bolumu"></span></p>
+
+        <p class='kutula'>
+            <b>
+                <span class='spansitili'>
+                    Yaptığı İşin Tanımı:
+                </span>
+            </b><span class='spansitili' ng-bind="patient.gorevi"></span>
+        </p>
+
+        <p align=center style='margin:0cm;margin-bottom:.0001pt;text-align:center'>
+            <b>
+
+                <span class='spansitili' ng-bind="patient.Sevk.saglikBirimiAdi  | uppercase">
+                </span> <span class='spansitili' ng-bind="patient.Sevk.bolumu  | uppercase"></span>
+
+            </b>
+        </p>
+
+        <p align=center style='margin:0cm;margin-bottom:.0001pt;text-align:center'>
+            <b>
+                <u>
+                    <span class='spansitili'>
+                        Sayın Meslektaşım,
+                    </span>
+                </u>
+            </b>
+        </p>
+
+        <p style='margin:0cm;margin-bottom:.0001pt;text-align:justify'>
+            <span class='spansitili'>
+                İş bu Sevk formu, ATİ Çalışır Heyet Rapor talebi <u>değildir</u>. İleri tetkik,
+                Tedavi ve <u>Konsültasyon</u> talebidir. Aşağıdaki sağlık bilgileri belirtilen çalışanın
+                tarafınızdan, değerlendirilmesini, ilgili tanınızın, tedavisinin bilgi formuna
+                işlenerek, kontrol muayenesi/periyodik muayene bilgilerinin tarafımıza bildirilmesini;
+                İşyeri Personel Sağlık takibi yapabilmemiz açısından, saygılarımla arz/rica
+                ederim.
+            </span>
+        </p>
+
+        <p class='kutula'><span class='spansitili'>&nbsp;</span></p>
+
+        <p class='kutula'>
+            <b>
+                <span class='spansitili'>
+                    İYH'ne Başvuru Şekli:
+                </span>
+            </b>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class='spansitili2'>o</span><span class='spansitili'>  </span><b>
+                <span class='spansitili'>İşe Giriş</span>
+            </b>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class='spansitili2'>o</span><b><span class='spansitili'>  Periyodik Muayene</span></b>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class='spansitili2'>o</span><b><span class='spansitili'> Poliklinik Muayene </span></b>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class='spansitili'> </span>
+        </p>
+
+        <p class='kutula'><b><span class='spansitili'>Mevcut Şikayeti             :</span></b><span class='spansitili' ng-bind="patient.sikayetleri"></span></p>
+
+        <p class='kutula'><b><span class='spansitili'>Rahatsızlığının Süresi    :</span></b>........................................</p>
+
+        <p class='kutula'><b><span class='spansitili'>Mevcut Bulgular            : </span></b><span class='spansitili' ng-bind="patient.bulgular"></span></p>
+
+        <p class='kutula'><b><span class='spansitili'>Yapılan Tedaviler           : </span></b><span class='spansitili' ng-bind="patient.ilaclar"></span></p>
+
+        <p class='kutula'>
+            <b>
+                <span class='spansitili'>
+                    Ön Tanı:
+                </span>
+            </b><span class='spansitili' ng-bind="patient.tani"></span>
+
+        </p>
+
+        <p class='kutula'><b><u><span class='spansitili'>İŞYERİ HEKİMİ</span></u></b></p>
+
+        <p class='kutula'><b><span class='spansitili'>Adı-Soyadı       :    </span></b></p>
+
+        <p class='kutula'><b><span class='spansitili'>e-Posta              : </span></b></p>
+
+        <p class='kutula'><b><span class='spansitili'>Kaşe  / İmza     :</span></b></p>
+
+        <p class='kutula'><span class='spansitili'>&nbsp;</span></p>
+
+        <p class='kutula'>
+            <b>
+                <i>
+                    <span style='font-size:8.0pt;font-family:"Calibri",sans-serif;color:black'>
+                        MUAYENE EDEN BRANŞ HEKİMİ TARAFINDAN DOLDURULACAKTIR. <u>LÜTFEN</u> İLGİLİ BÖLÜMLERİ TIBBİ GÖRÜŞÜNÜZE GÖRE,İŞYERİ HEKİMİNİN ETKİN SAĞLIK GÖZETİMİ YAPABİLMESİ İÇİN DOLDURUNUZ.
+                    </span>
+                </i>
+            </b>
+        </p>
+
+        <p class='kutula'><b><i><span class='spansitili'> </span></i></b></p>
+
+        <p class='kutula'>
+            <b><i><u><span class='spansitili'>TANINIZ</span></u></i></b><b>
+                <u>
+                    <span class='spansitili'> : </span>
+                </u>
+            </b>
+        </p>
+
+        <p class='kutula'><span class='spansitili'>&nbsp;</span></p>
+
+        <p class='kutula'><b><i><u><span class='spansitili'>TIBBİ SONUÇ VE ÖNERİLER: </span></u></i></b></p>
+
+        <br /><br /><br />
+
+        <p class='kutula'><span class='spansitili2'>o</span><span class='spansitili'>  Reçetesi düzenlendi. </span></p>
+
+        <p class='kutula'>
+            <span class='spansitili2'>o</span><span style='font-size:9.0pt;
+font-family:"Calibri",sans-serif;color:black'>  </span><span style='font-size:
+9.0pt;font-family:"Calibri",sans-serif;color:black'>
+                İstirahat düzenlendi (…………….Gün)
+            </span>
+        </p>
+
+        <p class='kutula'>
+            <span class='spansitili2'>o</span><span class='spansitili'>  </span><span class='spansitili'>
+                Kontrole çağrıldı. (……………..Gün
+                / Hafta / Ay sonra)
+            </span>
+        </p>
+
+        <p class='kutula'>
+            <span class='spansitili2'>o</span><span class='spansitili'>  </span><span class='spansitili'>
+                Periyodik olarak ……………..Gün
+                / Hafta / Ay ara ile ...........………………………………………………………………………...Bölümüne yönlendirildi.
+                <b>&nbsp;</b>
+            </span>
+        </p>
+
+        <p class='kutula'><b><span class='spansitili'>&nbsp;</span></b></p>
+
+        <p class='kutula'>
+            <b><i><u><span class='spansitili'>İŞ İLE İLGİLİ ÖNERİLER </span></u></i></b><b>
+                <span class='spansitili'>
+                    (MHH hariç,
+                    Son kanaat ve hukuki sorumluluk İYH’nin olmakla birlikte; görüşünüz değerlidir.)
+                    :<u>  </u>
+                </span>
+            </b>
+        </p>
+
+        <p class='kutula'><span class='spansitili'>&nbsp;</span></p>
+
+        <p class='kutula'>
+            <span class='spansitili2'>o</span><span class='spansitili'>
+                Mevcut işini yapmasında sakınca
+                yoktur.
+            </span>
+        </p>
+
+        <p class='kutula'>
+            <span class='spansitili2'>o</span><span class='spansitili'>  </span><span class='spansitili'>
+                Mevcut işini yapmasında sakınca
+                olup olmadığı ……………….gün / hafta / ay sonraki kontrolde belirtilecektir.
+            </span>
+        </p>
+
+        <p class='kutula'>
+            <span class='spansitili2'>o</span><span class='spansitili'>
+                Mevcut işini yapması sakıncalıdır.
+            </span>
+        </p>
+
+        <p class='kutula'>
+            <span class='spansitili2'>o</span><span class='spansitili'>  </span><span class='spansitili'>
+                Mevcut işini yapması ………………
+                gün / hafta / Ay süre için sakıncalıdır.
+            </span>
+        </p>
+
+        <p class='kutula'>
+            <span class='spansitili2'>o</span><span class='spansitili'>  </span><span class='spansitili'>
+                Mevcut işini yapmasında sakınca
+                olup olmadığı <b>Sağlık Kurulu Raporu</b> <b>ile</b> belirlenmelidir. <b>&nbsp;</b>
+            </span>
+        </p>
+
+        <p class='kutula'><span style='font-size:9.0pt'>&nbsp;</span></p>
+
+        <p class='kutula'><b><span class='spansitili'>        </span></b></p>
+
+        <p class='kutula'>
+            <b>
+                <span class='spansitili container'>
+                    <b>
+                        <span class='spansitili'>Tarih:... /......./20...</span>
+                    </b>
+                    <b>
+                        <span class='spansitili'> Doktor Kaşe, İmza</span>
+                    </b>
+                </span>
+            </b>
+        </p>
+        <br /><br /><br />
+
+        <p class='kutula'>
+            <b><span style='font-size:8.0pt;font-family:"Calibri",sans-serif;color:black'>Önemli NOT :  </span></b><span style='font-size:8.0pt;font-family:"Calibri",sans-serif;color:black'>
+                Hastanedeki
+                işlemlerinin bitmesini müteakiben; Çalışanımıza İşyeri Personel Birimine vermek
+                üzere,
+            </span><span style='font-size:8.0pt'> </span><span style='font-size: 8.0pt;font-family:"Calibri",sans-serif;color:black'>
+                takdir ettiğiniz şekilde,&nbsp;İşbaşı/Çalışır
+                Kağıdı veya İş Görmezlik/İstirahat Belgesinin düzenlenerek tarafınızdan verilmesini saygılarımla arz/rica ederim<b>.</b>
+            </span>
+        </p>
+
+        <p class=MsoNormal>&nbsp;</p>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+﻿<div ng-controller="odioCtrl  as OdC" style="width:100%">
+    <div class="col-sm-12">
+        <div class="col-sm-9">
+            <table datatable="ng" id="odio"  style="cursor:pointer"
+                   dt-options="dtOptionsOdC" dt-column-defs="dtColumnDefsOdC" class="table table-responsive  table-striped table-bordered table-hover dataTables-example row-border hover">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>No</th>
+                        <th>Sağ K.Ortalaması</th>
+                        <th>Sol K.Ortalaması</th>
+                        <th>Tarih</th>
+                        <th>Protokol</th>
+                        <th>Muayene Türü</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="odio in Odiolar">
+                        <td ng-bind="odio.Odio_Id"></td>
+                        <td ng-bind="odio.$id"></td>
+                        <td ng-bind="Vurgusu(odio.SagOrtalama,' dB')"></td>
+                        <td ng-bind="Vurgusu(odio.SolOrtalama,' dB')"></td>
+                        <td ng-bind="odio.Tarih|date:'dd/MM/yyyy'"></td>
+                        <td ng-bind="odio.Protokol"></td>
+                        <td ng-bind="odio.MuayeneTuru"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-3">
+            <canvas linechart options="OdC.lineOptions" data="OdC.lineData" width="200" height=heightx responsive=true></canvas>
+        </div>
+    </div>
+    <div uib-collapse="isCollapsed" class="m-t-n-lg col-sm-12">
+            <form ng-submit="OdC.onSubmit()" novalidate>
+                <formly-form model="OdC.model" fields="OdC.fields" form="OdC.form">
+                    <button type="submit" class="btn btn-primary submit-button" ng-disabled="OdC.form.$invalid">Kaydet</button>
+                    <button type="button" class="btn btn-success" ng-disabled="!OdC.form.$valid" ng-click="yeniOdC()">Yeni</button>
+                    <button type="button" class="btn btn-danger" ng-disabled="!OdC.form.$valid" ng-click="silOdC()">Sil</button>
+                    <button class="btn btn btn-warning" ngf-select="uploadFiles($files)" multiple
+                            accept="image/*,application/pdf,application/msword,application/vnd.ms-excel,
+                application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ng-if="OdC.model.Odio_Id!=null">
+                        Rapor Ekle
+                    </button>
+                    <div class="pull-right">
+                        <label for="slc">Protokol Verilsin mi?</label>
+                        <select class="form-control" style="width:90px" ng-model="OdC.protokolGirisi" name="slc" ng-options="opsiyon.adi for opsiyon in opsiyonlar"></select>
+                    </div>
+                </formly-form>
+            </form>
+    </div>
+    <row>
+        <ul style="list-style-type: none;overflow: hidden;" ng-show="dosyaList">
+            <li style="font:medium;color: mediumvioletred;float: left;margin-left:20px" ng-if="files.length>0?true:false">Eklenen Dosyalar :</li>
+            <li ng-repeat="f in files" style="font:normal;float: left;margin-left:20px">
+                <a ng-click="download(f)" ng-bind="f.FileName" tooltip-placement="bottom" uib-tooltip="İndir" tooltip-popup-delay="2500"></a>
+                <i class="fa fa-remove" ng-click="deleten(f.GenericName , $index)" tooltip-placement="bottom" uib-tooltip="Sil" tooltip-popup-delay="2500"> </i>
+            </li>
+        </ul>
+    </row>
+    <span style="color:red">{{message}}</span>    
+</div>
+
+<style>
+    .kirmizi >div> label{
+        color:#ff1464;
+    }
+    .mavi >div> label{
+        color:#0058ff;
+    }
+</style>

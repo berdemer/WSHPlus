@@ -1,0 +1,34 @@
+﻿[
+	{
+		"adi": "Ayaktan Reçetesi",
+		"val": 1
+	},
+	{
+		"adi": "Yatan Reçetesi",
+		"val": 2
+	},
+	{
+		"adi": "Taburcu Reçetesi",
+		"val": 3
+	},
+	{
+		"adi": "Günübirlik Reçetesi",
+		"val": 4
+	},
+	{
+		"adi": "Acil Reçetesi",
+		"val": 5
+	},
+	{
+		"adi": "Yeşil Alan Reçetesi",
+		"val": 6
+	},
+	{
+		"adi": "Evde Bakım Reçetesi",
+		"val": 7
+	},
+	{
+		"adi": "Gezici Sağlık Hizmeti Reçetesi",
+		"val": 8
+	}
+]

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <style type="text/css">
+        @page {
+            size: A4 portrait; /* auto,   media="print"  stile ekleyebilirsin.*/
+            margin: 0mm; /* sayfa margin sıfırla */
+        }
+
+        @media all {
+            .pagebreak {
+                display: none;
+            }
+        }
+
+        @media print {
+            .pagebreak {
+                display: block;
+                page-break-before: always;
+            }
+        }
+
+        html {
+            background-color: #FFFFFF;
+            margin: 0px; /* this affects the margin on the html before sending to printer */
+        }
+
+        body {
+            font-family: GaGaramond'Times New Roman', serif;
+            background-color: #FFFFFF;
+            margin: 0px; /* the margin on the content before printing */
+            padding: 0px;
+            -ms-filter: none;
+            line-height: 1.45;
+            word-spacing: 1px;
+            letter-spacing: 0.2px;
+            font-size: xx-small;
+            color: #2F75B5;
+         /* //  border: solid 1px;*/
+        }
+
+        table.normal {
+            table-layout: fixed;
+            width: 100%;
+            border: solid 3px #000000;
+            padding: 0;
+            border-collapse: collapse;
+            border-spacing: 0;
+            overflow: inherit;
+            table-layout: fixed;
+        }
+
+            table.normal th {
+                border: solid 1px #000000;
+                word-wrap: break-word;
+            }
+
+            table.normal td {
+                border: solid 1px #000000;
+                vertical-align: top;
+                word-wrap: break-word;
+                padding-left: 3px;
+            }
+
+        .ser11 {
+            width: 85%;
+            max-width: 85%;
+            border-style: double;
+            border-color: #2F75B5;
+            height: 760pt;
+            max-height: 760pt;
+            overflow: inherit;
+            margin-left: 40pt;
+            margin-top: 40pt;
+        }
+
+        .baslik {
+            color: #2F75B5;
+            font-size: 20.0pt;
+            font-weight: 700;
+            text-align: center;
+            vertical-align: middle;
+            white-space: normal;
+            text-align: center;
+            border-collapse: collapse;
+        }
+
+        .katlmci {
+            color: #2F75B5;
+            font-size: 16.0pt;
+            font-weight: 800;
+            text-align: center;
+            vertical-align: middle;
+            white-space: normal;
+            border: solid 1px #2F75B5;
+            border-collapse: collapse;
+        }
+
+        .katlmcim {
+            color: #2F75B5;
+            font-size: 14.0pt;
+            font-weight: 700;
+            vertical-align: middle;
+            white-space: normal;
+            text-align: left;
+            border: solid 1px #2F75B5;
+            border-collapse: collapse;
+            width: 130pt;
+        }
+
+        .bilgiBaslik {
+            border: solid 1px #2F75B5;
+            border-collapse: collapse;
+            color: #2F75B5;
+            font-size: 12.0pt;
+            font-weight: 700;
+            vertical-align: middle;
+            white-space: normal;
+            text-align: left;
+        }
+
+        .aciklama {
+            border: solid 1px #2F75B5;
+            border-collapse: collapse;
+            color: #2F75B5;
+            font-size: 12.0pt;
+            font-weight: 700;
+            vertical-align: middle;
+            white-space: normal;
+            text-align: left;
+        }
+
+        .isyeri {
+            color: #2F75B5;
+            font-size: 14.0pt;
+            font-weight: 700;
+            vertical-align: middle;
+            white-space: normal;
+            text-align: center;
+            border: solid 1px #2F75B5;
+            border-collapse: collapse;
+            width: 50%;
+        }
+        .isyerininfo {
+            color: #2F75B5;
+            font-size: 12.0pt;
+            font-weight: 600;
+            vertical-align: middle;
+            white-space: normal;
+            text-align: center;
+            border: solid 1px #2F75B5;
+            border-collapse: collapse;
+            height:40pt;
+        }
+        .arabaslik {
+            color: #2F75B5;
+            font-size: 12.0pt;
+            font-weight: 700;
+            text-align: center;
+            vertical-align: middle;
+            white-space: normal;
+            text-align: center;
+        }
+        .isveren {
+            color: #2F75B5;
+            font-size: 12.0pt;
+            font-weight: 600;
+            vertical-align: middle;
+            white-space: normal;
+            text-align: center;
+            border: solid 1px #2F75B5;
+            border-collapse: collapse;
+            width: 50pt;
+        }
+        .isverenVekili {
+            color: #2F75B5;
+            font-size: 14.0pt;
+            font-weight: 700;
+            vertical-align: middle;
+            white-space: normal;
+            text-align: left;
+            border: solid 1px #2F75B5;
+            border-collapse: collapse;
+            width:200pt;
+            height:50pt;
+        }
+        .isverenVekilin {
+            color: #2F75B5;
+            font-size: 12.0pt;
+            font-weight: 700;
+            vertical-align: middle;
+            white-space: normal;
+            text-align: left;
+            border: solid 1px #2F75B5;
+            border-collapse: collapse;
+            width: 300pt;
+            height: 50pt;
+        }
+        .egitimTarihleriBaslik {
+            color: #2F75B5;
+            font-size: 14.0pt;
+            font-weight: 700;
+            vertical-align: middle;
+            white-space: normal;
+            text-align: center;
+            border: solid 1px #2F75B5;
+            border-collapse: collapse;
+            height: 40pt;
+        }
+        .egitimTarihleriBilgi {
+            color: #2F75B5;
+            font-size: 12.0pt;
+            font-weight: 700;
+            vertical-align: middle;
+            white-space: normal;
+            text-align: center;
+            border: solid 1px #2F75B5;
+            border-collapse: collapse;
+            height: 60pt;
+        }
+        ol.d {
+            list-style-type:none;
+            color: #2F75B5;
+            font-size: 12.0pt;
+            font-weight: 700;
+            vertical-align: middle;
+            white-space: normal;
+        }
+        .arkaarabaslik {
+            color: #2F75B5;
+            font-size: 14.0pt;
+            font-weight: 700;
+            white-space: normal;
+            text-align: left;
+        }
+        .spanimage {
+            border-collapse: collapse;
+            color: black;
+            font-size: 11.0pt;
+            font-weight: 400;
+            font-style: normal;
+            font-family: Calibri, sans-serif;
+            white-space: nowrap;
+            position: absolute;
+            z-index: 2;
+            margin-left: 6px;
+            margin-top: 12px;
+            width: 212px;
+            height: 67px;
+        }
+        page[size="A4"] {
+            background: white;
+            width: 21cm;
+            height: 29cm;
+            max-width: 21cm;
+            max-height: 29cm;
+            margin: 0 auto;
+            display: block;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="ser11">
+        <span ng-if="logo" class="spanimage">
+            <img width="150" height="75" alt="logo" ng-cloak ng-src="{{logo}}" style="max-width: 160px; max-height: 44px; background-size: cover; display: block; margin-left: auto; margin-right: auto;" />
+        </span>
+        <p class="baslik" style="margin-top:45pt;margin-bottom: 3pt;">
+            <span><strong>ISG TEMEL EĞİTİM BELGESİ</strong></span>
+        </p>
+        <table>
+            <tr>
+                <td colspan="1"></td>
+                <td colspan="8" class="katlmci"><span>Katılımcı</span></td>
+                <td colspan="1"></td>
+            </tr>
+            <tr>
+                <td colspan="1"></td>
+                <td colspan="1" class="katlmcim"><span>&nbsp;Adı  Soyadı:</span></td>
+                <td colspan="7" class="bilgiBaslik">&nbsp;{{b.AdiSoyadi}} ({{b.TcNo}})</td>
+                <td colspan="1"></td>
+            </tr>
+            <tr>
+                <td colspan="1"></td>
+                <td colspan="1" class="katlmcim"><span>&nbsp;Görevi:</span></td>
+                <td colspan="7" class="bilgiBaslik">&nbsp;{{b.Gorevi}}</td>
+                <td colspan="1"></td>
+            </tr>
+            <tr>
+                <td colspan="1"></td>
+                <td colspan="8" class="aciklama"><span>&nbsp;&nbsp;&nbsp;Yukarıda adı geçen, Çalışanların İş Sağlığı ve Eğitimlerinin Usul ve Esasları Hakkında Yönetmelik kapsamında verilen iş sağlığı ve güvenliği eğitimlerini başarı ile tamamlayarak bu eğitim belgesini almaya hak kazanmıştır.</span></td>
+                <td colspan="1"></td>
+            </tr>
+        </table>
+        <br />
+        <table>
+            <tr>
+                <td colspan="1"></td>
+                <td colspan="4" class="isyeri">Eğitimi Veren Kurum/Kuruluş</td>
+                <td colspan="4" class="isyeri">Çalışanın Eğitim Aldığı İşyerinin Unvanı</td>
+                <td colspan="1"></td>
+            </tr>
+            <tr>
+                <td colspan="1" rowspan="2"></td>
+                <td colspan="4" rowspan="2" class="isyerininfo"><span ng-bind="b.SirketAdi  |limitTo:50"></span></td>
+                <td colspan="4" rowspan="2" class="isyerininfo"></td>
+                <td colspan="1" rowspan="2"></td>
+            </tr>
+        </table>
+        <div class="arabaslik"><span>İşveren/İşveren Vekili</span> </div>
+        <table>
+            <tr>
+                <td colspan="2" class="isverenVekili">&nbsp;Adı Soyadı</td>
+                <td colspan="2" class="isverenVekilin">&nbsp;<span ng-bind="b.sirketYetkilisi"></span></td>
+                <td colspan="4" class="isverenVekilin" rowspan="2"></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="isverenVekili">&nbsp; Unvanı / Görevi</td>
+                <td colspan="2" class="isverenVekilin">&nbsp;Genel Müdür </td>
+            </tr>
+        </table>
+        <div class="arabaslik"><span>Eğitim Tarihleri</span> </div>
+        <table>
+            <tr>
+                <td colspan="4" style="width: 400pt;" class="egitimTarihleriBaslik">Eğitim Tarihi</td>
+                <td colspan="2" style="width: 200pt;" class="egitimTarihleriBaslik">Eğitim Süresi</td>
+                <td colspan="2" style="width: 200pt;" class="egitimTarihleriBaslik">Eğitim Şekli</td>
+            </tr>
+            <tr>
+                <td colspan="4" style="width: 400pt;" class="egitimTarihleriBilgi">
+                    <div style="display: inline-block; justify-content: space-between;" ng-repeat="egt in b.detayliEgitim | unique :'VerildigiTarih'">
+                        &nbsp;<span ng-bind="egt.VerildigiTarih|date:'dd.MM.yyyy'"></span>,
+                    </div>
+                </td>
+                <td colspan="2" style="width: 200pt;" class="egitimTarihleriBilgi"><span ng-bind="b.tehlikeGrubu"></span></td>
+                <td colspan="2" style="width: 200pt;" class="egitimTarihleriBilgi">Örgün</td>
+            </tr>
+        </table>
+        <div class="arabaslik"><span>Eğitimi Veren(ler)</span> </div>
+        <table>
+            <tr>
+                <td colspan="2" style="width: 200pt;" class="egitimTarihleriBaslik">Adı Soyadı|</td>
+                <td colspan="2" style="width: 200pt;" class="egitimTarihleriBaslik">Görevi</td>
+                <td colspan="2" style="width: 200pt;" class="egitimTarihleriBaslik">Belge No</td>
+                <td colspan="2" style="width: 200pt;" class="egitimTarihleriBaslik">İmza</td>
+            </tr>
+            <tr>
+                <td colspan="2" style="width: 200pt;" class="egitimTarihleriBilgi"><span ng-bind="isgUzmanlari.doktor.adi"></span></td>
+                <td colspan="2" style="width: 200pt;" class="egitimTarihleriBilgi"><span ng-bind="isgUzmanlari.doktor.meslegi"></span></td>
+                <td colspan="2" style="width: 200pt;" class="egitimTarihleriBilgi"><span ng-bind="isgUzmanlari.doktor.kodu"></span></td>
+                <td colspan="2" style="width: 200pt;" class="egitimTarihleriBilgi"></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="width: 200pt;" class="egitimTarihleriBilgi"><span ng-bind="isgUzmanlari.isguzmani.adi"></span></td>
+                <td colspan="2" style="width: 200pt;" class="egitimTarihleriBilgi"><span ng-bind="isgUzmanlari.isguzmani.meslegi"></span></td>
+                <td colspan="2" style="width: 200pt;" class="egitimTarihleriBilgi"><span ng-bind="isgUzmanlari.isguzmani.kodu"></span></td>
+                <td colspan="2" style="width: 200pt;" class="egitimTarihleriBilgi"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="pagebreak"></div>
+    <page  size="A4">
+        <div style="margin-left: 20pt; margin-right: 15pt; n ">
+            <br />
+            <span ng-if="logo" class="spanimage">
+                <img   width="150" height="75" alt="logo" ng-cloak ng-src="{{logo}}" style="max-width: 160px; max-height: 44px; background-size: cover; display: block; margin-left: auto; margin-right: auto;" />
+            </span>
+            <br /><br /><br /><br />
+            <p class="baslik"><span><strong>EĞİTİM KONULARI</strong></span></p>
+            <p class="arkaarabaslik"> Genel Konular</p>
+            <ol class="d" ng-repeat="egt in b.detayliEgitim| filter: {Tanimi: 'Genel'}">
+                <li>{{$index + 1}}-)&nbsp;<span ng-bind="egt.Egitim_Turu"></span>&nbsp;(<span ng-bind="egt.Egitim_Suresi"></span>&nbsp;dk)</li>
+            </ol>
+            <br />
+            <p class="arkaarabaslik"> Sağlık Konuları</p>
+            <ol class="d" ng-repeat="egt in b.detayliEgitim| filter: {Tanimi: 'Saglik'}">
+                <li>{{$index + 1}}-)&nbsp;<span ng-bind="egt.Egitim_Turu"></span>&nbsp;(<span ng-bind="egt.Egitim_Suresi"></span>&nbsp;dk)</li>
+            </ol><br />
+            <p class="arkaarabaslik"> Teknik Konuları</p>
+            <ol class="d" ng-repeat="egt in b.detayliEgitim| filter: {Tanimi: 'Teknik'}">
+                <li>{{$index + 1}}-)&nbsp;<span ng-bind="egt.Egitim_Turu"></span>&nbsp;(<span ng-bind="egt.Egitim_Suresi"></span>&nbsp;dk)</li>
+            </ol>
+        </div>
+    </page>
+</body>
+</html>

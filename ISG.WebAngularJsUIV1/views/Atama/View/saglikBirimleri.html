@@ -1,0 +1,101 @@
+﻿<div class="form-horizontal">
+    <table border="1" class="table table-bordered table-striped table-hover table-responsive">
+        <thead>
+            <tr>
+                <th>Sağlık Biriminin Adı</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="sBirimi in sBirimleri" ng-click="satirBilgisi(sBirimi)">
+                <td ng-bind="sBirimi.Adi"></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="form-group">
+        <label class="control-label">Birim Adı</label>
+        <input type="text" ng-model="s_Birimi.Adi" placeholder="Sağlık Biriminin Adını Giriniz" class="form-control">
+    </div>
+    <fieldset class="scheduler-border">
+        <legend class="scheduler-border">Mail Server Tanımlanması</legend>
+        <div class="row">
+            <div class="form-group col-sm-3">
+                <label class="control-label">Port</label>
+                <input type="number" ng-model="s_Birimi.MailPort" class="form-control">
+            </div>
+            <div class="col-sm-1">
+            </div>
+            <div class="form-group col-sm-5">
+                <label class="control-label">Hosting Adresi</label>
+                <input type="text" ng-model="s_Birimi.MailHost" class="form-control">
+            </div>
+            <div class="col-sm-1">
+            </div>
+            <div class="col-sm-3 form-group">
+                <label class="control-label">Şekli</label>
+                <select class="form-control" ng-model="s_Birimi.mailSekli"
+                        ng-options="z for z in ['Exchange','Diğer']"></select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-6">
+                <div>
+                    <label>
+                        <input icheck ng-model="s_Birimi.EnableSsl" type="checkbox">Enable Ssl
+                    </label>
+                </div>
+            </div>
+            <div class="form-group col-sm-6">
+                <div>
+                    <label>
+                        <input icheck ng-model="s_Birimi.UseDefaultCredentials" type="checkbox">UseDefaultCredentials
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Kullanıcı Adı</label>
+            <input type="text" ng-model="s_Birimi.MailUserName" class="form-control">
+        </div>
+        <div class="form-group">
+            <label class="control-label">Pasaport</label>
+            <input type="password" ng-model="s_Birimi.MailPassword" class="form-control">
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-6">
+                <label class="control-label">Mail Adresi</label>
+                <input type="text" ng-model="s_Birimi.mailfromAddress" class="form-control">
+            </div>
+            <div class="col-sm-1">   </div>
+            <div class="form-group col-sm-6">
+                <label class="control-label">Domain</label>
+                <input type="text" ng-model="s_Birimi.domain" class="form-control">
+            </div>
+        </div>
+    </fieldset>
+    <div class="form-group">
+        <div class="col-sm-12">
+            <button class="btn btn-primary" ng-click="saveSaglikBirimi()" type="submit"><i class="fa fa-save"></i><span class="bold">&nbsp;&nbsp;Kaydet</span></button>
+            <button class="btn btn-info" ng-click="newSaglikBirimi()" type="submit"><i class="fa fa-plus-circle"></i><span class="bold">&nbsp;&nbsp;Yeni</span></button>
+            <button class="btn btn-danger" ng-click="deleteSaglikBirimi()" type="submit"><i class="fa fa-remove"></i><span class="bold">&nbsp;&nbsp;Sil</span></button>
+            <p> {{message}}</p>
+        </div>
+    </div>
+</div>
+<style>
+    fieldset.scheduler-border {
+        border: 1px ridge #ddd !important;
+        padding: 0 2.4em 2.4em 2.4em !important;
+        margin: 0 0 1.5em 0 !important;
+        -webkit-box-shadow: 0px 0px 0px 0px #000;
+        box-shadow: 0px 0px 0px 0px #000;
+    }
+
+    legend.scheduler-border {
+        font-size: 1.0em !important;
+        /*font-weight: bold !important;*/
+        text-align: left !important;
+        width: auto;
+        padding: 0 10px;
+        border-bottom: none;
+    }
+</style>

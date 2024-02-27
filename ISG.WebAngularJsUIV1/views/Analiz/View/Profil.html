@@ -1,0 +1,73 @@
+﻿<div ng-controller="profilCtrl  as prC">
+    <div class="row wrapper border-bottom white-bg page-heading" style="position:relative;z-index:10">
+        <div class="col-lg-10">
+            <h1 style=" margin: 22px 0px 22px 0px;"><strong>Profil Bilgileriniz</strong></h1>
+        </div>
+        <div class="col-lg-2">
+
+        </div>
+    </div>
+    <div class="animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="ibox product-detail m-t-sm">
+                    <div class="ibox-content" style="padding-bottom:10px">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <slick infinite="true" dots="false" arrows="true" adaptiveheight="true" variablewidth="true" data="listImage" init-onload="true">
+                                    <div ng-repeat="img in listImage">
+                                        <img data-lazy="{{img.LocalFilePath}}" class="img-rounded">
+                                    </div>
+                                </slick>
+                                <div class="form-group">
+                                    <label class="control-label" for="form-group-input">Şifre Güncelle</label>
+                                    <input type="text" class="form-control" ng-model="prC.sifrex" id="form-group-input" placeholder="Şifre">
+                                    <button class="btn btn-success btn-sm m-t-sm" ng-click="passwordUpdate(idl.Id,prC.sifrex)"><i class="fa fa-crosshairs"></i> Şifre Değiştir</button>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <h2 class="font-bold m-b-xs">
+                                    <span ng-bind="idl.FullName"></span>
+                                </h2>
+                                <small>
+                                    <b>Kullanıcı ID:</b><span ng-bind="idl.Id"></span>
+                                </small>
+                                <div class="m-t-md">
+                                    <h2 class="product-main-price">
+                                        <b>Görevi:</b><span ng-bind="idl.Gorevi"></span><br />
+                                        <small class="text-muted"><b>Mesleği:<br /></b><span ng-bind="idl.Meslek"></span></small><br />
+                                        <small class="text-muted"><b>Mail Adresi:<br /></b><span ng-bind="idl.Email"></span></small><br />
+                                        <small class="text-muted"><b>Kullanıcı Adı:<br /></b><span ng-bind="idl.UserName"></span></small><br />
+                                    </h2>
+
+                                </div>
+                                <hr>
+                                <h4><b>Kullanıcı Yetkileri</b></h4>
+                                <ul class="small m-t-md" style="list-style-type:decimal;display:block;">
+                                    <li ng-repeat="rols in Roller">{{rols}}</li>
+                                </ul>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ibox-footer">
+                        <span class="pull-right">
+                            Kayıt Tarihi - <i class="fa fa-clock-o"></i><span ng-bind="idl.JoinDate|date:'dd/MM/yyyy'"></span>
+                        </span>
+                        Resimleri boyutlu izleyebilirsiniz.
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .cropArea {
+        overflow: hidden;
+        width: 400px;
+        height: 300px;
+    }
+</style>

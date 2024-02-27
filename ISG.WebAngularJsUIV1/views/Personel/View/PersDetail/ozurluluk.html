@@ -1,0 +1,55 @@
+﻿
+<div ng-controller="ozurlulukCtrl  as ozurc" style="width:100%">
+    <row>
+        <table datatable="ng" id="ozur"
+               dt-options="dtOptionsozurc" dt-column-defs="dtColumnDefsozurc" class="table table-responsive  table-striped table-bordered table-hover dataTables-example row-border hover">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>No</th>
+                    <th>H.Tanimi</th>
+                    <th>Oran</th>
+                    <th>Derecesi</th>
+                    <th>Hastane Adı</th>
+                    <th>Açıklama</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="Ozurluluk in Ozurlulukler">
+                    <td ng-bind="Ozurluluk.Ozurluluk_Id"></td>
+                    <td ng-bind="Ozurluluk.$id"></td>
+                    <td ng-bind="Ozurluluk.HastalikTanimi"></td>
+                    <td ng-bind="Ozurluluk.Oran"></td>
+                    <td ng-bind="Ozurluluk.Derecesi"></td>
+                    <td ng-bind="Ozurluluk.HastahaneAdi"></td>
+                    <td ng-bind="Ozurluluk.Aciklama"></td>
+                </tr>
+            </tbody>
+        </table>
+    </row>
+    <row>
+        <div uib-collapse="isCollapsed" class="m-t-n-lg">
+            <form ng-submit="ozurc.onSubmit()" novalidate>
+                <formly-form model="ozurc.model" fields="ozurc.fields" form="ozurc.form">
+                    <button type="submit" class="btn btn-primary submit-button" ng-disabled="ozurc.form.$invalid">Kaydet</button>
+                    <button type="button" class="btn btn-success" ng-click="yeniozurc()" ng-disabled="!ozurc.form.$valid">Yeni</button>
+                    <button type="button" class="btn btn-danger" ng-click="silozurc()" ng-disabled="!ozurc.form.$valid">Sil</button>
+                    <button class="btn btn btn-warning" ngf-select="uploadFiles($files)" multiple
+                            accept="image/*,application/pdf,application/msword,application/vnd.ms-excel,
+application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"  ng-if="ozurc.model.Ozurluluk_Id!=null">
+                        Dosya Ekle
+                    </button>
+                </formly-form>
+            </form>
+        </div>
+    </row>
+    <row>
+        <ul style="list-style-type: none;overflow: hidden;" ng-show="dosyaList">
+            <li style="font:medium;color: mediumvioletred;float: left;margin-left:20px" ng-if="files.length>0?true:false">Eklenen Dosyalar :</li>
+            <li ng-repeat="f in files" style="font:normal;float: left;margin-left:20px">
+                <a ng-click="download(f)" ng-bind="f.FileName" tooltip-placement="bottom" uib-tooltip="İndir" tooltip-popup-delay="2500"></a>
+                <i class="fa fa-remove" ng-click="deleten(f.GenericName , $index)" tooltip-placement="bottom" uib-tooltip="Sil" tooltip-popup-delay="2500"> </i>
+            </li>
+        </ul>
+    </row>
+</div>

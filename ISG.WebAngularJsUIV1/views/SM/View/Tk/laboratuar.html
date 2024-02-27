@@ -1,0 +1,71 @@
+﻿<div ng-controller="laboratuarCtrl  as LbC" style="width:100%">
+    <div class="col-sm-12">
+         <table datatable="ng" id="laboratuar"  style="cursor:pointer"
+                   dt-options="dtOptionsLbC" dt-column-defs="dtColumnDefsLbC" class="table table-responsive  table-striped table-bordered table-hover dataTables-example row-border hover">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>No</th>
+                        <th>Grubu</th>
+                        <th>Tetkikler</th>
+                        <th>Tarih</th>
+                        <th>Protokol</th>
+                        <th>Muayene Türü</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="laboratuar in Laboratuarlari ">
+                        <td ng-bind="laboratuar.Laboratuar_Id"></td>
+                        <td ng-bind="laboratuar.$id"></td>
+                        <td ng-bind="laboratuar.Grubu"></td>
+                        <td ng-bind="laboratuar.Sonuc"></td>
+                        <td ng-bind="laboratuar.Tarih|date:'dd/MM/yyyy'"></td>
+                        <td ng-bind="laboratuar.Protokol"></td>
+                        <td ng-bind="laboratuar.MuayeneTuru"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+    </div>
+    <div uib-collapse="isCollapsed" class="m-t-n-lg col-sm-12">
+        <form ng-submit="LbC.onSubmit()" novalidate>
+            <formly-form model="LbC.model" fields="LbC.fields" form="LbC.form">
+                <button type="submit" class="btn btn-primary submit-button" ng-disabled="LbC.form.$invalid">Kaydet</button>
+                <button type="button" class="btn btn-success" ng-disabled="!LbC.form.$valid" ng-click="yeniLbC()">Yeni</button>
+                <button type="button" class="btn btn-danger" ng-disabled="!LbC.form.$valid" ng-click="silLbC()">Sil</button>
+                <button class="btn btn btn-warning" ngf-select="uploadFiles($files)" multiple
+                        accept="image/*,application/pdf,application/msword,application/vnd.ms-excel,
+application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ng-if="LbC.model.Laboratuar_Id!=null">
+                    Rapor Ekle
+                </button>
+                <div class="pull-right">
+                    <label for="slc">Protokol Verilsin mi?</label>
+                    <select class="form-control" style="width:90px" ng-model="LbC.protokolGirisi" name="slc" ng-options="opsiyon.adi for opsiyon in opsiyonlar"></select>
+                </div>
+            </formly-form>
+        </form>
+    </div>
+    <row>
+        <ul style="list-style-type: none;overflow: hidden;" ng-show="dosyaList">
+            <li style="font:medium;color: mediumvioletred;float: left;margin-left:20px" ng-if="files.length>0?true:false">Eklenen Dosyalar :</li>
+            <li ng-repeat="f in files" style="font:normal;float: left;margin-left:20px">
+                <a ng-click="download(f)" ng-bind="f.FileName" tooltip-placement="bottom" uib-tooltip="İndir" tooltip-popup-delay="2500"></a>
+                <i class="fa fa-remove" ng-click="deleten(f.GenericName , $index)" tooltip-placement="bottom" uib-tooltip="Sil" tooltip-popup-delay="2500"> </i>
+            </li>
+        </ul>
+    </row>
+    <script type="text/ng-template" id="degerKaydi.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Laboratuvar</h3>
+        </div>
+        <div class="modal-body">
+            <label>{{deger.tetkik}} Sonuçunu Giriniz..</label>
+            <input type="text" ng-model="deger.giris" autofocus="autofocus" ng-enter="submittenx()" />
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="submittenx ()">Evet</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">İptal</button>
+        </div>
+    </script>
+    <span style="color:red">{{message}}</span>    
+</div>

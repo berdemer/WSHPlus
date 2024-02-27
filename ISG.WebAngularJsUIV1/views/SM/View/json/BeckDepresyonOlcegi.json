@@ -1,0 +1,821 @@
+[
+  {
+    "Soru": "",
+    "a": {
+      "ad": "0.Kendimi üzüntülü ve sıkıntılı hissetmiyorum.",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "1. Kendimi üzüntülü ve sıkıntılı hissediyorum.",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "2. Hep üzüntülü ve sıkıntılıyım. Bundan kurtulamıyorum.",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "3. O kadar üzüntülü ve sıkıntılıyım ki artık dayanamıyorum.",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "",
+    "a": {
+      "ad": "0. Gelecek hakkında mutsuz ve karamsar değilim.",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "1. Gelecek hakkında karamsarım.",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "2. Gelecekten beklediğim hiçbir şey yok.",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "3. Geleceğim hakkında umutsuzum ve sanki hiçbir şey düzelmeyecekmiş gibi geliyor.",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "",
+    "a": {
+      "ad": "0. Kendimi başarısız bir insan olarak görmüyorum.",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "1. Çevremdeki birçok kişiden daha çok başarısızlıklarım olmuş gibi hissediyorum.",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "2. Geçmişe baktığımda başarısızlıklarla dolu olduğunu görüyorum.",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "3. Kendimi tümüyle başarısız biri olarak görüyorum.",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "",
+    "a": {
+      "ad": "0. Birçok şeyden eskisi kadar zevk alıyorum.",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "1. Eskiden olduğu gibi her şeyden hoşlanmıyorum.",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "2. Artık hiçbir şey bana tam anlamıyla zevk vermiyor.",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "3. Her şeyden sıkılıyorum.",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "",
+    "a": {
+      "ad": "0. Kendimi herhangi bir şekilde suçlu hissetmiyorum.",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "1. Kendimi zaman zaman suçlu hissediyorum.",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "2. Çoğu zaman kendimi suçlu hissediyorum.",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "3. Kendimi her zaman suçlu hissediyorum.",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "",
+    "a": {
+      "ad": "0. Bana cezalandırılmışım gibi geliyor.",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "1. Cezalandırılabileceğimi hissediyorum.",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "2. Cezalandırılmayı bekliyorum.",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "3. Cezalandırıldığımı hissediyorum.",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "",
+    "a": {
+      "ad": "0. Kendimden memnunum.",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "1. Kendi kendimden pek memnun değilim.",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "2. Kendime çok kızıyorum.",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "3. Kendimden nefret ediyorum.",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "",
+    "a": {
+      "ad": "0. Başkalarından daha kötü olduğumu sanmıyorum.",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "1. zayıf yanların veya hatalarım için kendi kendimi eleştiririm.",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "2. Hatalarımdan dolayı ve her zaman kendimi kabahatli bulurum.",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "3. Her aksilik karşısında kendimi hatalı bulurum.",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "",
+    "a": {
+      "ad": "0. Kendimi öldürmek gibi düşüncelerim yok.",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "1. Zaman zaman kendimi öldürmeyi düşündüğüm olur. Fakat yapmıyorum.",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "2. Kendimi öldürmek isterdim.",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "3. Fırsatını bulsam kendimi öldürürdüm.",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "",
+    "a": {
+      "ad": "0. Her zamankinden fazla içimden ağlamak gelmiyor.",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "1. Zaman zaman içimden ağlamak geliyor.",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "2. Çoğu zaman ağlıyorum.",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "3. Eskiden ağlayabilirdim şimdi istesem de ağlayamıyorum.",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "",
+    "a": {
+      "ad": "0. Şimdi her zaman olduğumdan daha sinirli değilim.",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "1. eskisine kıyasla daha kolay kızıyor ya da sinirleniyorum.",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "2. Şimdi hep sinirliyim.",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "3. Bir zamanlar beni sinirlendiren şeyler şimdi hiç sinirlendirmiyor.",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "",
+    "a": {
+      "ad": "0. Başkaları ile görüşmek, konuşmak isteğimi kaybetmedim.",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "1. Başkaları ile eskiden daha az konuşmak, görüşmek istiyorum.",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "2. Başkaları ile konuşma ve görüşme isteğimi kaybetmedim.",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "3. Hiç kimseyle konuşmak görüşmek istemiyorum.",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "",
+    "a": {
+      "ad": "0. Eskiden olduğu gibi kolay karar verebiliyorum.",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "1. Eskiden olduğu kadar kolay karar veremiyorum.",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "2. Karar verirken eskisine kıyasla çok güçlük çekiyorum.",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "3. Artık hiç karar veremiyorum.",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "",
+    "a": {
+      "ad": "0. Aynada kendime baktığımda değişiklik görmüyorum.",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "1. Daha yaşlanmış ve çirkinleşmişim gibi geliyor.",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "2. Görünüşümün çok değiştiğini ve çirkinleştiğimi hissediyorum.",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "3. Kendimi çok çirkin buluyorum.",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "",
+    "a": {
+      "ad": "0. Eskisi kadar iyi çalışabiliyorum.",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "1. Bir şeyler yapabilmek için gayret göstermem gerekiyor.",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "2. Herhangi bir şeyi yapabilmek için kendimi çok zorlamam gerekiyor.",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "3. Hiçbir şey yapamıyorum.",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "",
+    "a": {
+      "ad": "0.Her zamanki gibi iyi uyuyabiliyorum.",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "1. Eskiden olduğu gibi iyi uyuyamıyorum.",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "2. Her zamankinden 1-2 saat daha erken uyanıyorum ve tekrar uyuyamıyorum.",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "3. Her zamankinden çok daha erken uyanıyor ve tekrar uyuyamıyorum.",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "",
+    "a": {
+      "ad": "0. Her zamankinden daha çabuk yorulmuyorum.",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "1. Her zamankinden daha çabuk yoruluyorum.",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "2. Yaptığım her şey beni yoruyor.",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "3. Kendimi hemen hiçbir şey yapamayacak kadar yorgun hissediyorum.",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "",
+    "a": {
+      "ad": "0. İştahım her zamanki gibi.",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "1. iştahım her zamanki kadar iyi değil.",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "2. İştahım çok azaldı.",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "3. Artık hiç iştahım yok.",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "",
+    "a": {
+      "ad": "0. Son zamanlarda kilo vermedim.",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "1. İki kilodan fazla kilo verdim.",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "2. Dört kilodan fazla kilo verdim.",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "3. Altı kilodan fazla kilo vermeye çalışıyorum.",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "",
+    "a": {
+      "ad": "0. Sağlığım beni fazla endişelendirmiyor.",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "1. Ağrı, sancı, mide bozukluğu veya kabızlık gibi rahatsızlıklar beni endişelendirmiyor.",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "2. Sağlığım beni endişelendirdiği için başka şeyleri düşünmek zorlaşıyor.",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "3. Sağlığım hakkında o kadar endişeliyim ki başka hiçbir şey düşünemiyorum.",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "",
+    "a": {
+      "ad": "0. Son zamanlarda cinsel konulara olan ilgimde bir değişme fark etmedim.",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "1. Cinsel konularla eskisinden daha az ilgiliyim.",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "2. Cinsel konularla şimdi çok daha az ilgiliyim.",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "3. Cinsel konular olan ilgimi tamamen kaybettim.",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  }
+]

@@ -1,0 +1,101 @@
+﻿<div ng-controller="egtNotlariCtrl  as EgNC" style="width:100%">
+    <div wrapper wrapper-content>
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <label ng-if="messageIcoEkle" style="color:brown">Sistem Yükleniyor..Bırakın Balık Yüzsün...</label>
+                <span ng-if="messageIcoEkle" style="color:brown" class="loading fish"></span>
+            </div>
+            <div class="ibox-content">
+                <div class="row">
+                    <table datatable="ng" dt-column-defs="dtColumnDefs"
+                           dt-options="dtOptions" class="table table-striped table-bordered table-hover dataTables-example">
+                        <thead>
+                            <tr>
+                                <th>Ders Konusu</th>
+                                <th>Stili</th>
+                                <th>Hazırlayan</th>
+                                <th>Dosya</th>
+                                <th>Sil</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="s in EgNC.materyaller">
+                                <td style="font-size:smaller;font-weight:bold" ng-bind="s.konusu"></td>
+                                <td style="font-size: smaller; font-weight: bold " ng-bind="s.stili"></td>
+                                <td style="font-size: smaller; font-weight: bold " ng-bind="s.hazirlayan"></td>
+                                <td style="font-size: smaller; font-weight: bold ">
+                                    <a ng-click="download(s)" ng-bind="s.FileName" tooltip-placement="bottom"
+                                       uib-tooltip="İndir" tooltip-popup-delay="2500"></a>
+                                </td>
+                                <td style="font-size: smaller; font-weight: bold ">
+                                    <a class="btn btn-danger btn-sm" ng-click="EgNC.Sil(s.GenericName)">Sil</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1">
+                        <label class="control-label pull-right m-t-sm">
+                            Stili*:
+                        </label>
+                    </div>
+                    <div class="col-sm-2">
+                        <select class="form-control" ng-model="EgNC.belgeTipi" ng-options="z for z in ['Soru','Slayt','Konu Notları']">
+                            <option value="">-Seçiniz-</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-1">
+                        <label class="control-label pull-right m-t-sm">
+                            Hazırlayan*:
+                        </label>
+                    </div>
+                    <div class="col-sm-2">
+                        <ui-select ng-model="EgNC.profesyoneli" theme="bootstrap">
+                            <ui-select-match placeholder="Seçiniz...">{{$select.selected.adi}}</ui-select-match>
+                            <ui-select-choices repeat="item as item in EgNC.isgUsers | filter: $select.search">
+                                <div ng-bind-html="item.adi | highlight: $select.search"></div>
+                                <small style="display: flex; flex-direction: column;">
+                                    {{item.gorevi}}
+                                    <span>{{item.TcNo}}</span>
+                                </small>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                    <div class="col-sm-1">
+                        <label class="control-label pull-right m-t-sm">
+                            Tipi*:
+                        </label>
+                    </div>
+                    <div class="col-sm-5">
+                        <select class="form-control" ng-model="EgNC.konu" name="TehlikeGrubu" placeholder=""
+                                ng-options="egt.konu as egt.konu for egt in EgNC.EgitimTurleri" required>
+                            <option value="">-- Konular--</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <button class="btn btn btn-warning" ngf-select="uploadi($files)"
+                                accept="image/*,application/pdf,
+                                application/msword,application/vnd.ms-excel,
+                                application/vnd.openxmlformats-officedocument.wordprocessingml.document,
+                                application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,
+                                application/vnd.ms-powerpoint,
+                                application/vnd.openxmlformats-officedocument.presentationml.slideshow,
+                                application/vnd.ms-powerpoint.slideshow.macroEnabled.12">
+                            Belge Ekle
+                        </button>&nbsp;&nbsp;
+                        <button ladda="tamamlandi" ng-click="upload()" class="ladda-button btn btn-danger" data-style="expand-right">Kaydet</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <span style="font-size:larger" ng-bind="materyal"></span>&nbsp;
+                    <a ng-show="materyal" class="fa fa-remove" ng-click="materyal=null;"
+                       tooltip-placement="bottom" uib-tooltip="Sil" tooltip-popup-delay="2500"> </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>

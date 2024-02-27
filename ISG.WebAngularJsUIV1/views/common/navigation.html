@@ -1,0 +1,118 @@
+﻿<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul side-navigation class="nav metismenu" id="side-menu">
+            <li class="nav-header">
+                <div class="profile-element" uib-dropdown>
+                    <img alt="image" class="img-circle" ng-cloak ng-src="{{Img.LocalFilePath}}"  on-error="defaultUser.png"  style="width: auto; height: auto;max-width: 55px;max-height: 55px" />
+                    <a uib-dropdown-toggle href="javascript:void(0)">
+                        <span class="clear">
+                            <span class="block m-t-xs">
+                                <strong class="font-bold" ng-cloak>{{FName}}</strong>&nbsp;<b class="caret"></b>
+                            </span>
+                            <span class="text-muted text-xs block" ng-cloak>{{Gorevi}}</span>
+                        </span>
+                    </a>
+                    <ul uib-dropdown-menu class="animated fadeInRight m-t-xs">
+                        <li rp-only="['Admin','ISG_Admin','ISG_Hekim']" rp-behavior="hide"><a ui-sref="Analiz.Imza">İmza Kaydı</a></li>
+                        <li><a ui-sref="Analiz.Profil">Profiliniz</a></li>
+                        <li>
+                            <a href="#" data-ng-click="logOut()">
+                                <i class="fa fa-sign-out"></i> Kapat
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="logo-element">
+                    WSH+
+                </div>
+            </li>
+            <li ng-class="active">
+                <a href="">
+                    <i class="fa fa-hospital-o">
+                    </i> <span class="nav-label">Sağlık Birimi</span><span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level" ng-class="{in: $state.includes('tables')}">
+                    <li ui-sref-active="active"><a ui-sref="SM.SMCards" ui-sref-opts="{reload: true}"><i class="fa fa-file-archive-o"></i>Personel Kartları</a></li>
+                    <li ng-class="active">
+                        <a href=""><i class="fa fa-medkit"></i> <span class="nav-label">Birim Stokları</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level" ng-class="{in: $state.includes('tables')}">
+                            <li ui-sref-active="active"><a ui-sref="SM.StokTanimla" ui-sref-opts="{reload: true}"><i class="fa fa-slack"></i>Tanımlama</a></li>
+                            <li ui-sref-active="active"><a ui-sref="SM.StokHareketi" ui-sref-opts="{reload: true}"><i class="fa fa-joomla"></i>Hareketleri</a></li>
+                        </ul>
+                    </li>
+                    <li ng-class="active">
+                        <a href=""><i class="fa fa-ge"></i> <span class="nav-label">Analizler</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level" ng-class="{in: $state.includes('tables')}">
+                            <li ui-sref-active="active"><a ui-sref="Analiz.Ramazzini" ui-sref-opts="{reload: true}"><i class="fa  fa-american-sign-language-interpreting"></i>Ramazzini</a></li>
+                            <li ui-sref-active="active"><a ui-sref="Analiz.YillikRapor" ui-sref-opts="{reload: true}"><i class="glyphicon glyphicon-globe"></i>Yıllık Değerlendirme</a></li>
+                            <li ng-class="active">
+                                <a href=""><i class="fa fa-medkit"></i> <span class="nav-label">İş Kazaları</span><span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level" ng-class="{in: $state.includes('tables')}">
+                                    <li ui-sref-active="active"><a ui-sref="Analiz.IsKazasiListesi" ui-sref-opts="{reload: true}">Yıllık Liste</a></li>
+                                    <li ui-sref-active="active"><a ui-sref="Analiz.BolumAnalizi" ui-sref-opts="{reload: true}">Bölüm Analizi</a></li>
+                                </ul>
+                            </li>
+                            <li ng-class="active">
+                                <a href=""><i class="fa fa-medkit"></i> <span class="nav-label">Takipler</span><span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level" ng-class="{in: $state.includes('tables')}">
+                                    <li ui-sref-active="active"><a ui-sref="Analiz.PeriyodikMuayene" ui-sref-opts="{reload: true}">Periyodik Muayene</a></li>
+                                    <li ui-sref-active="active"><a ui-sref="Analiz.Asilar" ui-sref-opts="{reload: true}">Aşı Takipleri</a></li>
+                                    <li ui-sref-active="active"><a ui-sref="Analiz.RevirIslemleri" ui-sref-opts="{reload: true}">Revir İşlemleri</a></li>
+                                    <li ui-sref-active="active"><a ui-sref="Analiz.EngelliIslemleri" ui-sref-opts="{reload: true}">Engelli Takipleri</a></li>
+                                    <li ui-sref-active="active"><a ui-sref="Analiz.KronikHastaTakibi" ui-sref-opts="{reload: true}">Kr. Hasta Takipleri</a></li>
+                                    <li ui-sref-active="active"><a ui-sref="Analiz.AllerjiHastaTakibi" ui-sref-opts="{reload: true}">Allerjik Hastalar</a></li>
+                                    <li ui-sref-active="active"><a ui-sref="Analiz.AliskanlikHastaTakibi" ui-sref-opts="{reload: true}">Bağımllı Hastalar</a></li>
+                                    <li ui-sref-active="active"><a ui-sref="Analiz.DisRapor" ui-sref-opts="{reload: true}">Raporlu Takipleri</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li ng-class="active" rp-only="['Admin','ISG_Admin','ISG_Hekim']" rp-behavior="hide">
+                <a href=""><i class="fa fa-group"></i> <span class="nav-label">İK Personel</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level" ng-class="{in: $state.includes('tables')}">
+                    <li ui-sref-active="active"><a ui-sref="Personel.PersonellerList" ui-sref-opts="{reload: true}">Personel Listesi</a></li>
+                    <li ui-sref-active="active"><a ui-sref="Personel.PersonelNew" ui-sref-opts="{reload: true, notify:true}">Personel Yeni Kayıt</a></li>
+                    <li ui-sref-active="active"><a ui-sref="Personel.excelYukle">Excelden Personelleri Kaydet</a></li>
+                    <li ui-sref-active="active"><a ui-sref="Atama.resimler">Toplu Resim Kaydı</a></li>
+                </ul>
+            </li>
+            <li ng-class="active" rp-only="['Admin','ISG_Admin']" rp-behavior="hide">
+                <a href=""><i class="fa fa-user"></i> <span class="nav-label">Admin</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level" ng-class="{in: $state.includes('tables')}">
+                    <li ui-sref-active="active"><a ui-sref="Account.UsersList" ui-sref-opts="{reload: true}">Hesap Listesi</a></li>
+                    <li ui-sref-active="active"><a ui-sref="Account.RegisterIn">Hesap Ekle</a></li>
+                    <li ui-sref-active="active"><a ui-sref="Account.RolesList">Roller</a></li>
+                </ul>
+            </li>
+            <li ng-class="active" rp-only="ISG_Admin" rp-behavior="hide">
+                <a href=""><i class="fa fa-stumbleupon"></i> <span class="nav-label">WSH+ Admin</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level" ng-class="{in: $state.includes('tables')}">
+                    <li ui-sref-active="active"><a ui-sref="Atama.sirketler" ui-sref-opts="{reload: true}"><i class="fa fa-sitemap"></i>Organizasyon Listesi</a></li>
+                    <li ui-sref-active="active"><a ui-sref="Atama.tanimlar"><i class="fa fa-tag"></i>İfade Oluşturma</a></li>
+                    <li ui-sref-active="active"><a ui-sref="Atama.ilaclar"><i class="fa fa-info-circle"></i>İlaçlar</a></li>
+                    <li ui-sref-active="active"><a ui-sref="Atama.icd"><i class="glyphicon glyphicon-equalizer"></i>ICD10</a></li>
+                    <li ng-class="active">
+                        <a href=""><i class="fa fa-medkit"></i> <span class="nav-label">Toplu Aktarımlar</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level" ng-class="{in: $state.includes('tables')}">
+                            <li ui-sref-active="active"><a ui-sref="Atama.rad" ui-sref-opts="{reload: true}">Radyoloji</a></li>
+                            <li ui-sref-active="active"><a ui-sref="Atama.odio" ui-sref-opts="{reload: true}">Odio</a></li>
+                            <li ui-sref-active="active"><a ui-sref="Atama.sft" ui-sref-opts="{reload: true}">SFT</a></li>
+                            <li ui-sref-active="active"><a ui-sref="Atama.biyokimya" ui-sref-opts="{reload: true}">Biyokimya</a></li>
+                            <li ui-sref-active="active"><a ui-sref="Atama.hemogram" ui-sref-opts="{reload: true}">Hemogram</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li ng-class="active" rp-only="['Admin','ISG_Admin','ISG_Hekim','ISG_Uzman','ISG_SaglikMemuru']" rp-behavior="hide">
+                <a href=""><i class="fa fa-book"></i> <span class="nav-label">ISG Eğitimleri</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level" ng-class="{in: $state.includes('tables')}">
+                    <li ui-sref-active="active"><a ui-sref="Egitim.egt" ui-sref-opts="{reload: true}">Eğitim Düzenle</a></li>
+                    <!--<li ui-sref-active="active"><a ui-sref="Account.RegisterIn">Eğitim Raporları</a></li>-->
+                    <!--<li ui-sref-active="active"><a ui-sref="Account.RolesList">Roller</a></li>-->
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>

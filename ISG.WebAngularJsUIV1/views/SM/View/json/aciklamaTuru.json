@@ -1,0 +1,26 @@
+﻿[
+	{
+		"adi": "Teşhis/Tanı",
+		"val": 1
+	},
+	{
+		"adi": "Tedavi Süresi",
+		"val": 2
+	},
+	{
+		"adi": "Hasta Güvenlik ve İzleme Formu",
+		"val": 3
+	},
+	{
+		"adi": "Tetkik Sonucu",
+		"val": 4
+	},
+	{
+		"adi": "Endikasyon Dışı Kullanım İzni",
+		"val": 5
+	},
+	{
+		"adi": "Diğer",
+		"val": 99
+	}
+]

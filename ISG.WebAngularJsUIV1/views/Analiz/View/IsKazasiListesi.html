@@ -1,0 +1,95 @@
+﻿<div ng-controller="isKazasiListesiCtrl as iklC">
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <script type="text/ng-template" id="group-template.html">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a href="javascript:void(0)" tabindex="0" class="accordion-toggle" ng-click="toggleOpen()" uib-accordion-transclude="heading">
+                        <span uib-accordion-header ng-class="{'text-muted': isDisabled}">
+                            {{heading}}
+                        </span>
+                    </a>
+                </h4>
+            </div>
+            <div class="panel-collapse collapse" uib-collapse="!isOpen">
+                <div class="panel-body" style="background-color: #555;" ng-transclude></div>
+            </div>
+        </script>
+        <div class="col-lg-12">
+            <div class="col-sm-4 m-t-sm">
+                <uib-accordion close-others="true">
+                    <div uib-accordion-group class="panel-default" is-open="status.open">
+                        <uib-accordion-heading>
+                            <span   class="maviFont"  ng-bind="SirketBasligi.name"></span>&nbsp;&nbsp;&nbsp;&nbsp;<i class="pull-right maviFont" ng-class="{'fa fa-chevron-down': status.open, 'fa fa-chevron-right': !status.open}"></i>
+                        </uib-accordion-heading>
+                        <treecontrol class="tree-light"
+                                     tree-model="collectionSirket"
+                                     options="treeOptions"
+                                     expanded-nodes="expandList"
+                                     on-selection="showSelected(node)">
+                            <span class="maviFont" ng-bind="node.name"></span>
+                        </treecontrol>
+                    </div>
+                </uib-accordion>
+            </div>
+            <div class="col-sm-3 m-t-sm form-group">
+                <label class="col-sm-4 m-t-sm control-label">Rapor Yılı:</label>
+                <div class="col-sm-8">
+                    <select class="form-control maviFont" ng-model="iklC.year"
+                            ng-options="z for z in ['2016','2017','2018','2019','2020','2021','2022','2023','2024','2025']"></select>
+                </div>
+            </div>
+            <div class="col-sm-5 m-t-sm form-group">
+                <label class="col-sm-3 m-t-sm control-label">Kaza Sonuçları:</label>
+                <div class="col-sm-9">
+                    <select class="form-control maviFont" ng-model="iklC.sonuc"
+                            ng-options="z.adi for z in iklC.sonuclar"></select>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="ibox-title">
+            <h5>{{iklC.sirketAdi}} {{iklC.year}} Yılı İş Kazalarının Listesi</h5>
+            <div ibox-tools></div>
+        </div>
+        <div class="ibox-content">
+            <table datatable="ng" id="ay" style="cursor:pointer"
+                   dt-options="dtOptions" dt-column-defs="dtColumnDefs" class="table table-responsive  table-striped table-bordered table-hover dataTables-example row-border hover">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>Tc No</th>
+                        <th>Sicil No</th>
+                        <th>Şirket Adı</th>
+                        <th>Bölüm Adı</th>
+                        <th>Personelin Adı Soyadı</th>
+                        <th>Durumu</th>
+                        <th>Tarih</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="kaza in iklC.kazaListesi">
+                        <td ng-bind="kaza.$id"></td>
+                        <td ng-bind="kaza.TcNo"></td>
+                        <td ng-bind="kaza.SicilNo"></td>
+                        <td ng-bind="kaza.SirketAdi"></td>
+                        <td ng-bind="kaza.BolumAdi"></td>
+                        <td><a ui-sref="SM.SMCards({id:kaza.TcNo})">{{kaza.PersonelAdi+' '+kaza.PersonelSoyadi}}</a></td>
+                        <td ng-bind="iklC.Durumu(kaza)"></td>
+                        <td ng-bind="kaza.Tarih|date:'dd/MM/yyyy'"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+<style>
+    .cropArea {
+        overflow: hidden;
+        width: 400px;
+        height: 300px;
+    }
+</style>

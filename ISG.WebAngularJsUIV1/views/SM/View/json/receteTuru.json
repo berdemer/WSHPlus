@@ -1,0 +1,22 @@
+[
+  {
+    "adi": "Normal",
+    "val": 1
+  },
+  {
+    "adi": "Kırmızı",
+    "val": 2
+  },
+  {
+    "adi": "Turuncu",
+    "val": 3
+  },
+  {
+    "adi": "Mor",
+    "val": 4
+  },
+  {
+    "adi": "Yeşil",
+    "val": 5
+  }
+]

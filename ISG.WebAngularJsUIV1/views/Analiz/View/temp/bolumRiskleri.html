@@ -1,0 +1,52 @@
+﻿
+<div wrapper wrapper-content ng-class="rmzC.bolumClass">
+	<div class="ibox float-e-margins"  ng-if="SirketBasligi.id>0 && BolumBasligi.id>0">
+		<div class="ibox-title">
+			<h5>{{SirketBasligi.name}} {{BolumBasligi.name}}</h5>
+			<div ibox-tools></div>
+		</div>
+		<div class="ibox-content">
+			<div>
+				<h4 ng-if="rmzC.BolumRisk.gruplistesi.length>0">
+					Meslek Hastalıkları Grupları<br />
+				</h4>
+				<table class="table table-hover no-margins">
+					<tbody>
+						<tr ng-repeat="grup in rmzC.BolumRisk.gruplistesi">
+							<td ng-bind="grup"></td>
+							<td width="3%"><a href="javascript:;" ng-click="rmzC.BolumRiskRemove(grup,'gruplistesi')"><i class="fa fa-remove"></i></a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div>
+				<h4 ng-if="rmzC.BolumRisk.isler.length>0">
+					Meslek veya İş Kolu<br />
+				</h4>
+				<table class="table table-hover no-margins">
+					<tbody>
+						<tr ng-repeat="is in rmzC.BolumRisk.isler">
+							<td ng-bind="is"></td>
+							<td width="3%"><a href="javascript:;" ng-click="rmzC.BolumRiskRemove(is,'isler')"><i class="fa fa-remove"></i></a></td>
+						</tr>
+					</tbody>
+				</table>     
+			</div>
+			<div>
+				<h4 ng-if="rmzC.BolumRisk.meslekHastaliklari.length>0">
+					Hastalık veya Belirtiler<br />
+				</h4>
+				<table class="table table-hover no-margins">
+					<tbody>
+						<tr ng-repeat="hastalik in rmzC.BolumRisk.meslekHastaliklari">
+							<td ng-bind="hastalik.meslekHastalik"></td>
+							<td ng-bind="hastalik.sure" width="15%"></td>
+							<td width="3%"><a href="javascript:;" ng-click="rmzC.BolumRiskRemove(hastalik,'meslekHastaliklari')"><i class="fa fa-remove"></i></a></td>
+						</tr>
+					</tbody>
+				</table>    
+			</div>			
+		</div>
+	
+	</div>
+</div>

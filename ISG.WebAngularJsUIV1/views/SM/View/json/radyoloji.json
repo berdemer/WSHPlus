@@ -1,0 +1,558 @@
+﻿[
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Akciğer grafisi P.A. (tek yön)"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "El-bilek grafisi (tek film)"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Floroskopi "
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Kemik survey"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Mammografi (tek meme)"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Mandibula (tek yön)"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Schuller grafisi (mukayeseli)"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Sella spot grafisi"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Sinüs (Waters) grafisi (tek yön)"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Skolyoz tetkiki "
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Stenvers grafisi (mukayeseli)"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Temporamandibular eklem "
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Uzun kemikler (tek film) (tek yön)"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Kopya film (her bir film için) "
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Akciğer grafisi (iki yön) "
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Akciğer grafisi (üç yön) baryumlu "
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Akciğer grafisi (üç yön) "
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Bacak uzunluk grafisi "
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Düz karın grafisi "
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Eklem grafisi (iki yön) mukayeseli"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Eklem grafisi (tek yön) mukayeseli"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Eklem grafisi (tek yön) tek eklem"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Eklem grafisi(iki yön)tek eklem"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Eklem grafisi(üç yön)"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Kafa grafisi (dört yön)"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Kafa grafisi (iki yön)"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Kafa grafisi (tek yön)"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Kalp teleradyogramlar (iki yön) "
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Kalp teleradyogramlar (tek yön) "
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Kalp teleradyogramlar (üç yön) baryumlu "
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Kalp teleradyogramlar (üç yön) "
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Pelvis gr.(tek yön) "
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Pelvis gr.(üç yön) "
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Pelvimetri (iki yön)"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Vertebra grafileri, servikal (dört yön)"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Vertebra grafileri, servikal (iki yön)"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Vertebra grafileri, servikal (tek yön)"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Vertebra grafileri, servikal (üç yön)"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Vertebra grafileri, dorsal veya lomber (dört yön ) "
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Vertebra grafileri, dorsal veya lomber (iki yön ) "
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Vertebra grafileri, dorsal veya lomber (tek yön ) "
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Vertebra grafileri, dorsal veya lomber (üç yön )  "
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "L5-S1 spot grafisi"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Anterograd pyelografi, var olan kateterden"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Anterograd pyelografi, ince iğne ile, işlemin tümü"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Artrografi"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Bronkografı"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Çift kontrast kolon tetkiki"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Çift kontrast mide tetkiki"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Dakriosistografi"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Defekografi"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Distal kolon grafisi"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Duktografi-galaktografi"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Enteroklizis"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Faringografi"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Faringo-ozefagografi"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Fistülografi"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "HSG"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "I.V.P."
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "I.V.P.(dakikalık)"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "İnce barsak tetkiki"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Kolon tetkiki"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Laringografi"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Lenfanjiografi"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Mide duedonum tetkiki"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Miyelografi"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Oral kolesistografi"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Özefagografi"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Peroperatuar kolanjiografi"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Poş grafisi"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Retrograd pyelografi"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Retrograd üretrografi"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Sialografi (iki taraf)"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Sialografi (tek taraf)"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Sine özefagografi "
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Sistogram (üç film)"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "T tüp kolanjiografi"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Velofaringeal sinefloroskopi"
+  },
+  {
+    "Tipi": "Radyografi",
+    "Grafiler": "Voiding sistoüretrografi"
+  },
+  {
+    "Tipi": "MR",
+    "Grafiler": "MR, Eklem tek "
+  },
+  {
+    "Tipi": "MR",
+    "Grafiler": "MR, ekstremite tek taraflı "
+  },
+  {
+    "Tipi": "MR",
+    "Grafiler": "MR, fonksiyonel "
+  },
+  {
+    "Tipi": "MR",
+    "Grafiler": "MR, hipofiz "
+  },
+  {
+    "Tipi": "MR",
+    "Grafiler": "MR, kardiak "
+  },
+  {
+    "Tipi": "MR",
+    "Grafiler": "MR, kardiak fonksiyon "
+  },
+  {
+    "Tipi": "MR",
+    "Grafiler": "MR, kardiak perfüzyon "
+  },
+  {
+    "Tipi": "MR",
+    "Grafiler": "MR, kulak "
+  },
+  {
+    "Tipi": "MR",
+    "Grafiler": "MR, vertebra, lomber  "
+  },
+  {
+    "Tipi": "MR",
+    "Grafiler": "MR, meme "
+  },
+  {
+    "Tipi": "MR",
+    "Grafiler": "MR Anjiyografi"
+  },
+  {
+    "Tipi": "MR",
+    "Grafiler": "MR Kolanjiyografi"
+  },
+  {
+    "Tipi": "MR",
+    "Grafiler": "MR Myelografi"
+  },
+  {
+    "Tipi": "MR",
+    "Grafiler": "MR Spektroskopi (tek voksel tek eko)"
+  },
+  {
+    "Tipi": "MR",
+    "Grafiler": "MR Spektroskopi (multivoksel tek eko)"
+  },
+  {
+    "Tipi": "MR",
+    "Grafiler": "MR ürografi"
+  },
+  {
+    "Tipi": "MR",
+    "Grafiler": "MR artrografi"
+  },
+  {
+    "Tipi": "MR",
+    "Grafiler": "MR, diğer"
+  },
+  {
+    "Tipi": "MR",
+    "Grafiler": "MR, Nazofarinks"
+  },
+  {
+    "Tipi": "MR",
+    "Grafiler": "MR, Orbita"
+  },
+  {
+    "Tipi": "MR",
+    "Grafiler": "MR, Perfüzyon"
+  },
+  {
+    "Tipi": "MR",
+    "Grafiler": "MR, Vertebra, servikal"
+  },
+  {
+    "Tipi": "MR",
+    "Grafiler": "MR, Temporomandibuler eklem (tek eklem)"
+  },
+  {
+    "Tipi": "MR",
+    "Grafiler": "MR, Vertebra, torakal"
+  },
+  {
+    "Tipi": "MR",
+    "Grafiler": "MR, Abdomen, üst"
+  },
+  {
+    "Tipi": "MR",
+    "Grafiler": "MR, tüm vücut metastaz tarama, hareketli masa ile"
+  },
+  {
+    "Tipi": "MR",
+    "Grafiler": "MR, Girişimsel"
+  },
+  {
+    "Tipi": "MR",
+    "Grafiler": "MR, Yüz"
+  },
+  {
+    "Tipi": "BT",
+    "Grafiler": "BT, 3 boyutlu görüntüleme "
+  },
+  {
+    "Tipi": "BT",
+    "Grafiler": "BT, angiografi, tek anatomik bölge için "
+  },
+  {
+    "Tipi": "BT",
+    "Grafiler": "BT, abdomen, alt "
+  },
+  {
+    "Tipi": "BT",
+    "Grafiler": "BT, beyin (aksiyel+koronal)  "
+  },
+  {
+    "Tipi": "BT",
+    "Grafiler": "BT, beyin "
+  },
+  {
+    "Tipi": "BT",
+    "Grafiler": "BT, boyun"
+  },
+  {
+    "Tipi": "BT",
+    "Grafiler": "BT, dental tomografi"
+  },
+  {
+    "Tipi": "BT",
+    "Grafiler": "BT, extremite (20-50cm bölge) "
+  },
+  {
+    "Tipi": "BT",
+    "Grafiler": "BT, hava veya opaklı sisternografi  "
+  },
+  {
+    "Tipi": "BT",
+    "Grafiler": "BT, hipofiz  "
+  },
+  {
+    "Tipi": "BT",
+    "Grafiler": "BT, kantitatif tomografi (kals.skor., BTBMD gibi)"
+  },
+  {
+    "Tipi": "BT",
+    "Grafiler": "BT, larenks "
+  },
+  {
+    "Tipi": "BT",
+    "Grafiler": "BT, maksillofasial tomografi, aksiyel"
+  },
+  {
+    "Tipi": "BT",
+    "Grafiler": "BT, maksillofasial tomografi, koronal"
+  },
+  {
+    "Tipi": "BT",
+    "Grafiler": "BT, nazofarinks  "
+  },
+  {
+    "Tipi": "BT",
+    "Grafiler": "BT, orbita  "
+  },
+  {
+    "Tipi": "BT",
+    "Grafiler": "BT, paranazal sinüs"
+  },
+  {
+    "Tipi": "BT",
+    "Grafiler": "BT, radyoterapi planlaması için tomog. "
+  },
+  {
+    "Tipi": "BT",
+    "Grafiler": "BT, tempomandibular eklem  "
+  },
+  {
+    "Tipi": "BT",
+    "Grafiler": "BT, temporal kemik YRBT, tek düzlem "
+  },
+  {
+    "Tipi": "BT",
+    "Grafiler": "BT, toraks  "
+  },
+  {
+    "Tipi": "BT",
+    "Grafiler": "BT, tomografi, diğer"
+  },
+  {
+    "Tipi": "BT",
+    "Grafiler": "BT, üst abdomen  "
+  },
+  {
+    "Tipi": "BT",
+    "Grafiler": "BT, vertebra,  servikal "
+  },
+  {
+    "Tipi": "BT",
+    "Grafiler": "BT, vertebra torakal"
+  },
+  {
+    "Tipi": "BT",
+    "Grafiler": "BT, vertebra lumbal "
+  },
+  {
+    "Tipi": "BT",
+    "Grafiler": "BT eşliğinde girişimsel tetkik "
+  },
+  {
+    "Tipi": "BT",
+    "Grafiler": "BT perfüzyon çalışmaları "
+  },
+  {
+    "Tipi": "BT",
+    "Grafiler": "BT sanal endoskopi "
+  },
+  {
+    "Tipi": "BT",
+    "Grafiler": "BT, dinamik, trifazik, bifazik inceleme "
+  },
+  {
+    "Tipi": "BT",
+    "Grafiler": "BT, yüksek rezolusyonlu akciğer  "
+  },
+  {
+    "Tipi": "BT",
+    "Grafiler": "BT, yüksek rezolusyonlu akciğer, ekspratuar "
+  }
+]

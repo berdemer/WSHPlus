@@ -1,0 +1,67 @@
+﻿<div ng-controller="kronikHastalikCtrl  as Khc" style="width:100%">
+    <row>
+        <table datatable="ng" id="kronikHastalik"  style="cursor:pointer"
+               dt-options="dtOptionsKhc" dt-column-defs="dtColumnDefsKhc" class="table table-responsive  table-striped table-bordered table-hover dataTables-example row-border hover">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>No</th>
+                    <th>Hastalık</th>
+                    <th>İlaçları</th>
+                    <th>Süre</th>
+                    <th>Ameliyat</th>
+                    <th>İş Kazası</th>
+                    <th>Engellilik</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="kronikHastalik in KronikHastaliklar|orderBy:'-$id'">
+                    <td ng-bind="kronikHastalik.KronikHastalik_Id"></td>
+                    <td ng-bind="kronikHastalik.$id" style="width:5%"></td>
+                    <td ng-bind="kronikHastalik.HastalikAdi" style="width:32%"></td>
+                    <td ng-bind="kronikHastalik.KullandigiIlaclar" style="width:40%"></td>
+                    <td ng-bind="kronikHastalik.HastalikYilSuresi" style="width:5%"></td>
+                    <td ng-bind="varYok(kronikHastalik.AmeliyatVarmi)" style="width:5%"></td>
+                    <td ng-bind="varYok(kronikHastalik.IsKazasi)" style="width:8%"></td>
+                    <td ng-bind="varYok(kronikHastalik.HastalikOzurDurumu)" style="width:5%"></td>
+                </tr>
+            </tbody>
+        </table>
+    </row>
+    <div uib-collapse="isCollapsed" class="m-t-n-lg col-sm-12">
+        <form ng-submit="Khc.onSubmit()" novalidate>
+            <formly-form model="Khc.model" fields="Khc.fields" form="Khc.form">
+                <button type="submit" class="btn btn-primary submit-button" ng-disabled="Khc.form.$invalid">Kaydet</button>
+                <button type="button" class="btn btn-success" ng-disabled="!Khc.form.$valid" ng-click="yeniKhc()">Yeni</button>
+                <button type="button" class="btn btn-danger" ng-disabled="!Khc.form.$valid" ng-click="silKhc()">Sil</button>
+                <button class="btn btn btn-warning" ngf-select="uploadFiles($files)" multiple
+                        accept="image/*,application/pdf,application/msword,application/vnd.ms-excel,
+application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ng-if="Khc.model.KronikHastalik_Id!=null" >
+                    Rapor Ekle
+                </button>
+            </formly-form>
+        </form>
+    </div>
+    <row>
+        <ul style="list-style-type: none;overflow: hidden;" ng-show="dosyaList">
+            <li style="font:medium;color: mediumvioletred;float: left;margin-left:20px" ng-if="files.length>0?true:false">Eklenen Dosyalar :</li>
+            <li ng-repeat="f in files" style="font:normal;float: left;margin-left:20px">
+                <a ng-click="download(f)" ng-bind="f.FileName" tooltip-placement="bottom" uib-tooltip="İndir" tooltip-popup-delay="2500"></a>
+                <i class="fa fa-remove" ng-click="deleten(f.GenericName , $index)" tooltip-placement="bottom" uib-tooltip="Sil" tooltip-popup-delay="2500"> </i>
+            </li>
+        </ul>
+    </row>
+    <script type="text/ng-template" id="dozKaydi.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Veriliş Şekli</h3>
+        </div>
+        <div class="modal-body">
+            <label>{{doz.ilacAdi}} Kullanım ve Dozunu Giriniz..</label>
+            <input type="text" ng-model="doz.giris" autofocus="autofocus" ng-enter="submittenx()"/>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="submittenx ()">Evet</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">İptal</button>
+        </div>
+    </script>
+</div>

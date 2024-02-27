@@ -1,0 +1,821 @@
+[
+  {
+    "Soru": "1. Bedeninizin herhangi bir yerinde uyuşma veya karıncalanma",
+    "a": {
+      "ad": "Hiç",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Hafif düzeyde Beni pek etkilemedi",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Orta düzeyde Hoş değildi ama katlanabildim ",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Ciddi düzeyde Dayanmakta çok zorlandım",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "2. Sıcak/ ateş basmaları",
+    "a": {
+      "ad": "Hiç",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Hafif düzeyde Beni pek etkilemedi",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Orta düzeyde Hoş değildi ama katlanabildim ",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Ciddi düzeyde Dayanmakta çok zorlandım",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "3. Bacaklarda halsizlik, titreme",
+    "a": {
+      "ad": "Hiç",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Hafif düzeyde Beni pek etkilemedi",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Orta düzeyde Hoş değildi ama katlanabildim ",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Ciddi düzeyde Dayanmakta çok zorlandım",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "4. Gevşeyememe",
+    "a": {
+      "ad": "Hiç",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Hafif düzeyde Beni pek etkilemedi",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Orta düzeyde Hoş değildi ama katlanabildim ",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Ciddi düzeyde Dayanmakta çok zorlandım",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "5. Çok kötü şeyler olacak korkusu",
+    "a": {
+      "ad": "Hiç",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Hafif düzeyde Beni pek etkilemedi",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Orta düzeyde Hoş değildi ama katlanabildim ",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Ciddi düzeyde Dayanmakta çok zorlandım",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "6. Baş dönmesi veya sersemlik",
+    "a": {
+      "ad": "Hiç",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Hafif düzeyde Beni pek etkilemedi",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Orta düzeyde Hoş değildi ama katlanabildim ",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Ciddi düzeyde Dayanmakta çok zorlandım",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "7. Kalp çarpıntısı",
+    "a": {
+      "ad": "Hiç",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Hafif düzeyde Beni pek etkilemedi",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Orta düzeyde Hoş değildi ama katlanabildim ",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Ciddi düzeyde Dayanmakta çok zorlandım",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "8. Dengeyi kaybetme duygusu",
+    "a": {
+      "ad": "Hiç",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Hafif düzeyde Beni pek etkilemedi",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Orta düzeyde Hoş değildi ama katlanabildim ",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Ciddi düzeyde Dayanmakta çok zorlandım",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "9. Dehşete kapılma",
+    "a": {
+      "ad": "Hiç",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Hafif düzeyde Beni pek etkilemedi",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Orta düzeyde Hoş değildi ama katlanabildim ",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Ciddi düzeyde Dayanmakta çok zorlandım",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "10. Sinirlilik",
+    "a": {
+      "ad": "Hiç",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Hafif düzeyde Beni pek etkilemedi",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Orta düzeyde Hoş değildi ama katlanabildim ",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Ciddi düzeyde Dayanmakta çok zorlandım",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "11. Boğuluyormuş gibi olma duygusu",
+    "a": {
+      "ad": "Hiç",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Hafif düzeyde Beni pek etkilemedi",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Orta düzeyde Hoş değildi ama katlanabildim ",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Ciddi düzeyde Dayanmakta çok zorlandım",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "12. Ellerde titreme",
+    "a": {
+      "ad": "Hiç",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Hafif düzeyde Beni pek etkilemedi",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Orta düzeyde Hoş değildi ama katlanabildim ",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Ciddi düzeyde Dayanmakta çok zorlandım",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "13. Titreklik",
+    "a": {
+      "ad": "Hiç",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Hafif düzeyde Beni pek etkilemedi",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Orta düzeyde Hoş değildi ama katlanabildim ",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Ciddi düzeyde Dayanmakta çok zorlandım",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "14. Kontrolü kaybetme korkusu",
+    "a": {
+      "ad": "Hiç",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Hafif düzeyde Beni pek etkilemedi",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Orta düzeyde Hoş değildi ama katlanabildim ",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Ciddi düzeyde Dayanmakta çok zorlandım",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "15. Nefes almada güçlük",
+    "a": {
+      "ad": "Hiç",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Hafif düzeyde Beni pek etkilemedi",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Orta düzeyde Hoş değildi ama katlanabildim ",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Ciddi düzeyde Dayanmakta çok zorlandım",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "16. Ölüm korkusu",
+    "a": {
+      "ad": "Hiç",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Hafif düzeyde Beni pek etkilemedi",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Orta düzeyde Hoş değildi ama katlanabildim ",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Ciddi düzeyde Dayanmakta çok zorlandım",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "17. Korkuya kapılma",
+    "a": {
+      "ad": "Hiç",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Hafif düzeyde Beni pek etkilemedi",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Orta düzeyde Hoş değildi ama katlanabildim ",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Ciddi düzeyde Dayanmakta çok zorlandım",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "18. Midede hazımsızlık ya da rahatsızlık hissi",
+    "a": {
+      "ad": "Hiç",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Hafif düzeyde Beni pek etkilemedi",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Orta düzeyde Hoş değildi ama katlanabildim ",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Ciddi düzeyde Dayanmakta çok zorlandım",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "19. Baygınlık",
+    "a": {
+      "ad": "Hiç",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Hafif düzeyde Beni pek etkilemedi",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Orta düzeyde Hoş değildi ama katlanabildim ",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Ciddi düzeyde Dayanmakta çok zorlandım",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "20. Yüzün kızarması",
+    "a": {
+      "ad": "Hiç",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Hafif düzeyde Beni pek etkilemedi",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Orta düzeyde Hoş değildi ama katlanabildim ",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Ciddi düzeyde Dayanmakta çok zorlandım",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  },
+  {
+    "Soru": "21. Terleme (sıcaklığa bağlı olmayan)",
+    "a": {
+      "ad": "Hiç",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Hafif düzeyde Beni pek etkilemedi",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Orta düzeyde Hoş değildi ama katlanabildim ",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Ciddi düzeyde Dayanmakta çok zorlandım",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    },
+    "f": {
+      "ad": "",
+      "val": "",
+      "active": false,
+      "display": false
+    }
+  }
+]

@@ -1,0 +1,921 @@
+﻿<html>
+
+<head>
+
+    <style>
+            @font-face {
+            font-family: Wingdings;
+            panose-1: 5 0 0 0 0 0 0 0 0 0;
+            mso-font-charset: 2;
+            mso-generic-font-family: auto;
+            mso-font-pitch: variable;
+            mso-font-signature: 0 268435456 0 0 -2147483648 0;
+        }
+
+        @font-face {
+            font-family: "Cambria Math";
+            panose-1: 2 4 5 3 5 4 6 3 2 4;
+            mso-font-charset: 0;
+            mso-generic-font-family: roman;
+            mso-font-pitch: variable;
+            mso-font-signature: 3 0 0 0 1 0;
+        }
+
+        @font-face {
+            font-family: "Segoe UI";
+            panose-1: 2 11 5 2 4 2 4 2 2 3;
+            mso-font-charset: 162;
+            mso-generic-font-family: swiss;
+            mso-font-pitch: variable;
+            mso-font-signature: -469750017 -1073683329 9 0 511 0;
+        }
+        /* Style Definitions */
+        p.MsoNormal, li.MsoNormal, div.MsoNormal {
+            mso-style-unhide: no;
+            mso-style-qformat: yes;
+            mso-style-parent: "";
+            margin: 0cm;
+            margin-bottom: .0001pt;
+            mso-pagination: widow-orphan;
+            font-size: 10.0pt;
+            font-family: "Times New Roman",serif;
+            mso-fareast-font-family: "Times New Roman";
+        }
+
+        p.MsoHeader, li.MsoHeader, div.MsoHeader {
+            mso-style-priority: 99;
+            mso-style-link: "Üst Bilgi Char";
+            margin: 0cm;
+            margin-bottom: .0001pt;
+            mso-pagination: widow-orphan;
+            tab-stops: center 8.0cm right 16.0cm;
+            font-size: 10.0pt;
+            font-family: "Times New Roman",serif;
+            mso-fareast-font-family: "Times New Roman";
+        }
+
+        p.MsoFooter, li.MsoFooter, div.MsoFooter {
+            mso-style-priority: 99;
+            mso-style-link: "Alt Bilgi Char";
+            margin: 0cm;
+            margin-bottom: .0001pt;
+            mso-pagination: widow-orphan;
+            tab-stops: center 8.0cm right 16.0cm;
+            font-size: 10.0pt;
+            font-family: "Times New Roman",serif;
+            mso-fareast-font-family: "Times New Roman";
+        }
+
+        p.MsoAcetate, li.MsoAcetate, div.MsoAcetate {
+            mso-style-noshow: yes;
+            mso-style-priority: 99;
+            mso-style-link: "Balon Metni Char";
+            margin: 0cm;
+            margin-bottom: .0001pt;
+            mso-pagination: widow-orphan;
+            font-size: 9.0pt;
+            font-family: "Segoe UI",sans-serif;
+            mso-fareast-font-family: "Times New Roman";
+        }
+
+        p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph {
+            mso-style-priority: 34;
+            mso-style-unhide: no;
+            mso-style-qformat: yes;
+            margin-top: 0cm;
+            margin-right: 0cm;
+            margin-bottom: 0cm;
+            margin-left: 36.0pt;
+            margin-bottom: .0001pt;
+            mso-add-space: auto;
+            mso-pagination: widow-orphan;
+            font-size: 10.0pt;
+            font-family: "Times New Roman",serif;
+            mso-fareast-font-family: "Times New Roman";
+        }
+
+        p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst {
+            mso-style-priority: 34;
+            mso-style-unhide: no;
+            mso-style-qformat: yes;
+            mso-style-type: export-only;
+            margin-top: 0cm;
+            margin-right: 0cm;
+            margin-bottom: 0cm;
+            margin-left: 36.0pt;
+            margin-bottom: .0001pt;
+            mso-add-space: auto;
+            mso-pagination: widow-orphan;
+            font-size: 10.0pt;
+            font-family: "Times New Roman",serif;
+            mso-fareast-font-family: "Times New Roman";
+        }
+
+        p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle {
+            mso-style-priority: 34;
+            mso-style-unhide: no;
+            mso-style-qformat: yes;
+            mso-style-type: export-only;
+            margin-top: 0cm;
+            margin-right: 0cm;
+            margin-bottom: 0cm;
+            margin-left: 36.0pt;
+            margin-bottom: .0001pt;
+            mso-add-space: auto;
+            mso-pagination: widow-orphan;
+            font-size: 10.0pt;
+            font-family: "Times New Roman",serif;
+            mso-fareast-font-family: "Times New Roman";
+        }
+
+        p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast {
+            mso-style-priority: 34;
+            mso-style-unhide: no;
+            mso-style-qformat: yes;
+            mso-style-type: export-only;
+            margin-top: 0cm;
+            margin-right: 0cm;
+            margin-bottom: 0cm;
+            margin-left: 36.0pt;
+            margin-bottom: .0001pt;
+            mso-add-space: auto;
+            mso-pagination: widow-orphan;
+            font-size: 10.0pt;
+            font-family: "Times New Roman",serif;
+            mso-fareast-font-family: "Times New Roman";
+        }
+
+        span.stBilgiChar {
+            mso-style-name: "Üst Bilgi Char";
+            mso-style-priority: 99;
+            mso-style-unhide: no;
+            mso-style-locked: yes;
+            mso-style-link: "Üst Bilgi";
+            mso-ansi-font-size: 10.0pt;
+            mso-bidi-font-size: 10.0pt;
+            font-family: "Times New Roman",serif;
+            mso-ascii-font-family: "Times New Roman";
+            mso-fareast-font-family: "Times New Roman";
+            mso-hansi-font-family: "Times New Roman";
+            mso-bidi-font-family: "Times New Roman";
+            mso-fareast-language: TR;
+        }
+
+        span.AltBilgiChar {
+            mso-style-name: "Alt Bilgi Char";
+            mso-style-priority: 99;
+            mso-style-unhide: no;
+            mso-style-locked: yes;
+            mso-style-link: "Alt Bilgi";
+            mso-ansi-font-size: 10.0pt;
+            mso-bidi-font-size: 10.0pt;
+            font-family: "Times New Roman",serif;
+            mso-ascii-font-family: "Times New Roman";
+            mso-fareast-font-family: "Times New Roman";
+            mso-hansi-font-family: "Times New Roman";
+            mso-bidi-font-family: "Times New Roman";
+            mso-fareast-language: TR;
+        }
+
+        span.BalonMetniChar {
+            mso-style-name: "Balon Metni Char";
+            mso-style-noshow: yes;
+            mso-style-priority: 99;
+            mso-style-unhide: no;
+            mso-style-locked: yes;
+            mso-style-link: "Balon Metni";
+            mso-ansi-font-size: 9.0pt;
+            mso-bidi-font-size: 9.0pt;
+            font-family: "Segoe UI",sans-serif;
+            mso-ascii-font-family: "Segoe UI";
+            mso-fareast-font-family: "Times New Roman";
+            mso-hansi-font-family: "Segoe UI";
+            mso-bidi-font-family: "Segoe UI";
+            mso-fareast-language: TR;
+        }
+
+        span.GramE {
+            mso-style-name: "";
+            mso-gram-e: yes;
+        }
+
+        .MsoChpDefault {
+            mso-style-type: export-only;
+            mso-default-props: yes;
+            font-family: "Calibri",sans-serif;
+            mso-ascii-font-family: Calibri;
+            mso-ascii-theme-font: minor-latin;
+            mso-fareast-font-family: Calibri;
+            mso-fareast-theme-font: minor-latin;
+            mso-hansi-font-family: Calibri;
+            mso-hansi-theme-font: minor-latin;
+            mso-bidi-font-family: "Times New Roman";
+            mso-bidi-theme-font: minor-bidi;
+            mso-fareast-language: EN-US;
+        }
+
+        .MsoPapDefault {
+            mso-style-type: export-only;
+            margin-bottom: 8.0pt;
+            line-height: 107%;
+        }
+        /* Page Definitions */
+        @page {
+            mso-footnote-separator: url("EK5_dosyalar/header.htm") fs;
+            mso-footnote-continuation-separator: url("EK5_dosyalar/header.htm") fcs;
+            mso-endnote-separator: url("EK5_dosyalar/header.htm") es;
+            mso-endnote-continuation-separator: url("EK5_dosyalar/header.htm") ecs;
+        }
+
+        @page WordSection1 {
+            size: 595.3pt 841.9pt;
+            margin: 0pt 50pt 0pt 50pt;
+            mso-header-margin: 14.2pt;
+            mso-footer-margin: 17.0pt;
+            mso-header: url("EK5_dosyalar/header.htm") h1;
+            mso-paper-source: 0;
+
+        }
+
+        div.WordSection1 {
+            page: WordSection1;
+        }
+        /* List Definitions */
+        @list l0 {
+            mso-list-id: 14313531;
+            mso-list-type: hybrid;
+            mso-list-template-ids: -452006388 69140489 69140483 69140485 69140481 69140483 69140485 69140481 69140483 69140485;
+        }
+
+        @list l0:level1 {
+            mso-level-number-format: bullet;
+            mso-level-text: \F076;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            text-indent: -18.0pt;
+            font-family: Wingdings;
+        }
+
+        @list l0:level2 {
+            mso-level-number-format: bullet;
+            mso-level-text: o;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            text-indent: -18.0pt;
+            font-family: "Courier New";
+        }
+
+        @list l0:level3 {
+            mso-level-number-format: bullet;
+            mso-level-text: \F0A7;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            text-indent: -18.0pt;
+            font-family: Wingdings;
+        }
+
+        @list l0:level4 {
+            mso-level-number-format: bullet;
+            mso-level-text: \F0B7;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            text-indent: -18.0pt;
+            font-family: Symbol;
+        }
+
+        @list l0:level5 {
+            mso-level-number-format: bullet;
+            mso-level-text: o;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            text-indent: -18.0pt;
+            font-family: "Courier New";
+        }
+
+        @list l0:level6 {
+            mso-level-number-format: bullet;
+            mso-level-text: \F0A7;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            text-indent: -18.0pt;
+            font-family: Wingdings;
+        }
+
+        @list l0:level7 {
+            mso-level-number-format: bullet;
+            mso-level-text: \F0B7;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            text-indent: -18.0pt;
+            font-family: Symbol;
+        }
+
+        @list l0:level8 {
+            mso-level-number-format: bullet;
+            mso-level-text: o;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            text-indent: -18.0pt;
+            font-family: "Courier New";
+        }
+
+        @list l0:level9 {
+            mso-level-number-format: bullet;
+            mso-level-text: \F0A7;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            text-indent: -18.0pt;
+            font-family: Wingdings;
+        }
+
+        @list l1 {
+            mso-list-id: 806048324;
+            mso-list-type: hybrid;
+            mso-list-template-ids: -1959468178 69140481 69140483 69140485 69140481 69140483 69140485 69140481 69140483 69140485;
+        }
+
+        @list l1:level1 {
+            mso-level-start-at: 0;
+            mso-level-number-format: bullet;
+            mso-level-text: \F0B7;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            text-indent: -18.0pt;
+            font-family: Symbol;
+            mso-fareast-font-family: "Times New Roman";
+            mso-bidi-font-family: "Times New Roman";
+        }
+
+        @list l1:level2 {
+            mso-level-number-format: bullet;
+            mso-level-text: o;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            text-indent: -18.0pt;
+            font-family: "Courier New";
+        }
+
+        @list l1:level3 {
+            mso-level-number-format: bullet;
+            mso-level-text: \F0A7;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            text-indent: -18.0pt;
+            font-family: Wingdings;
+        }
+
+        @list l1:level4 {
+            mso-level-number-format: bullet;
+            mso-level-text: \F0B7;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            text-indent: -18.0pt;
+            font-family: Symbol;
+        }
+
+        @list l1:level5 {
+            mso-level-number-format: bullet;
+            mso-level-text: o;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            text-indent: -18.0pt;
+            font-family: "Courier New";
+        }
+
+        @list l1:level6 {
+            mso-level-number-format: bullet;
+            mso-level-text: \F0A7;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            text-indent: -18.0pt;
+            font-family: Wingdings;
+        }
+
+        @list l1:level7 {
+            mso-level-number-format: bullet;
+            mso-level-text: \F0B7;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            text-indent: -18.0pt;
+            font-family: Symbol;
+        }
+
+        @list l1:level8 {
+            mso-level-number-format: bullet;
+            mso-level-text: o;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            text-indent: -18.0pt;
+            font-family: "Courier New";
+        }
+
+        @list l1:level9 {
+            mso-level-number-format: bullet;
+            mso-level-text: \F0A7;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            text-indent: -18.0pt;
+            font-family: Wingdings;
+        }
+
+        @list l2 {
+            mso-list-id: 1030572025;
+            mso-list-type: hybrid;
+            mso-list-template-ids: 773069032 69140489 69140483 69140485 69140481 69140483 69140485 69140481 69140483 69140485;
+        }
+
+        @list l2:level1 {
+            mso-level-number-format: bullet;
+            mso-level-text: \F076;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            text-indent: -18.0pt;
+            font-family: Wingdings;
+        }
+
+        @list l2:level2 {
+            mso-level-number-format: bullet;
+            mso-level-text: o;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            text-indent: -18.0pt;
+            font-family: "Courier New";
+        }
+
+        @list l2:level3 {
+            mso-level-number-format: bullet;
+            mso-level-text: \F0A7;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            text-indent: -18.0pt;
+            font-family: Wingdings;
+        }
+
+        @list l2:level4 {
+            mso-level-number-format: bullet;
+            mso-level-text: \F0B7;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            text-indent: -18.0pt;
+            font-family: Symbol;
+        }
+
+        @list l2:level5 {
+            mso-level-number-format: bullet;
+            mso-level-text: o;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            text-indent: -18.0pt;
+            font-family: "Courier New";
+        }
+
+        @list l2:level6 {
+            mso-level-number-format: bullet;
+            mso-level-text: \F0A7;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            text-indent: -18.0pt;
+            font-family: Wingdings;
+        }
+
+        @list l2:level7 {
+            mso-level-number-format: bullet;
+            mso-level-text: \F0B7;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            text-indent: -18.0pt;
+            font-family: Symbol;
+        }
+
+        @list l2:level8 {
+            mso-level-number-format: bullet;
+            mso-level-text: o;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            text-indent: -18.0pt;
+            font-family: "Courier New";
+        }
+
+        @list l2:level9 {
+            mso-level-number-format: bullet;
+            mso-level-text: \F0A7;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            text-indent: -18.0pt;
+            font-family: Wingdings;
+        }
+
+        @list l3 {
+            mso-list-id: 1948661096;
+            mso-list-type: hybrid;
+            mso-list-template-ids: 254038192 69140481 69140483 69140485 69140481 69140483 69140485 69140481 69140483 69140485;
+        }
+
+        @list l3:level1 {
+            mso-level-start-at: 0;
+            mso-level-number-format: bullet;
+            mso-level-text: \F0B7;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            text-indent: -18.0pt;
+            font-family: Symbol;
+            mso-fareast-font-family: "Times New Roman";
+            mso-bidi-font-family: "Times New Roman";
+        }
+
+        @list l3:level2 {
+            mso-level-number-format: bullet;
+            mso-level-text: o;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            text-indent: -18.0pt;
+            font-family: "Courier New";
+        }
+
+        @list l3:level3 {
+            mso-level-number-format: bullet;
+            mso-level-text: \F0A7;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            text-indent: -18.0pt;
+            font-family: Wingdings;
+        }
+
+        @list l3:level4 {
+            mso-level-number-format: bullet;
+            mso-level-text: \F0B7;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            text-indent: -18.0pt;
+            font-family: Symbol;
+        }
+
+        @list l3:level5 {
+            mso-level-number-format: bullet;
+            mso-level-text: o;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            text-indent: -18.0pt;
+            font-family: "Courier New";
+        }
+
+        @list l3:level6 {
+            mso-level-number-format: bullet;
+            mso-level-text: \F0A7;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            text-indent: -18.0pt;
+            font-family: Wingdings;
+        }
+
+        @list l3:level7 {
+            mso-level-number-format: bullet;
+            mso-level-text: \F0B7;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            text-indent: -18.0pt;
+            font-family: Symbol;
+        }
+
+        @list l3:level8 {
+            mso-level-number-format: bullet;
+            mso-level-text: o;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            text-indent: -18.0pt;
+            font-family: "Courier New";
+        }
+
+        @list l3:level9 {
+            mso-level-number-format: bullet;
+            mso-level-text: \F0A7;
+            mso-level-tab-stop: none;
+            mso-level-number-position: left;
+            text-indent: -18.0pt;
+            font-family: Wingdings;
+        }
+
+        ol {
+            margin-bottom: 0cm;
+        }
+
+        ul {
+            margin-bottom: 0cm;
+        }
+        -->
+    </style>
+</head>
+
+<body lang=TR style='tab-interval:35.4pt'>
+
+    <div class=WordSection1>
+
+        <p class=MsoNormal align=center style='text-align:center'>
+            <b style='mso-bidi-font-weight:
+normal'><span style='font-size:12.0pt'><o:p>&nbsp;</o:p></span></b>
+        </p>
+
+        <p class=MsoNormal align=center style='text-align:center'>
+            <b style='mso-bidi-font-weight:
+normal'><span style='font-size:12.0pt'><o:p>&nbsp;</o:p></span></b>
+        </p>
+
+        <p class=MsoNormal align=center style='text-align:center'>
+            <b style='mso-bidi-font-weight:
+normal'>
+                <span style='font-size:12.0pt'>
+                    DURUM BİLDİRİR İŞYERİ HEKİMİ SAĞLIK
+                    RAPORU<o:p></o:p>
+                </span>
+            </b>
+        </p>
+
+        <p class=MsoNormal align=center style='text-align:center'>
+            <span style='font-size:12.0pt'><o:p>&nbsp;</o:p></span>
+        </p>
+
+        <p class=MsoListParagraph style='margin-left:53.25pt;mso-add-space:auto;
+text-indent:-88.7pt;tab-stops:0cm'>
+            <span style='font-size:11.0pt'>
+                <span style='mso-spacerun:yes'></span><o:p></o:p>
+            </span>
+        </p>
+
+        <p class=MsoNormal style='line-height:150%'>
+            <span style='font-size:12.0pt;
+line-height:150%'>
+                <span style='mso-spacerun:yes'> </span><span style='mso-spacerun:yes'></span><span style='mso-tab-count:1'>         </span><span style='mso-spacerun:yes'></span><o:p></o:p>
+            </span>
+        </p>
+
+        <table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 width=654
+               style='width:490.8pt;margin-left:-7.85pt;border-collapse:collapse;border:none;
+ mso-border-alt:double black 2.25pt;mso-yfti-tbllook:480;mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+ mso-border-insideh:.75pt solid black;mso-border-insidev:.75pt solid black'>
+            <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
+                <td width=654 colspan=2 valign=top style='width:490.8pt;border:double black 2.25pt;
+  border-bottom:solid black 1.0pt;mso-border-alt:double black 2.25pt;
+  mso-border-bottom-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt'>
+                    <p class=MsoNormal style='line-height:150%'>
+                        <b style='mso-bidi-font-weight:
+  normal'>
+                            <span style='font-size:12.0pt;line-height:150%;text-transform:uppercase'>
+                                BAŞVURU
+                                SAHİBİNİN: <o:p></o:p>
+                            </span>
+                        </b>
+                    </p>
+                </td>
+            </tr>
+            <tr style='mso-yfti-irow:1'>
+                <td width=311 valign=top style='width:233.5pt;border-top:none;border-left:
+  double black 2.25pt;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black .75pt;mso-border-alt:solid black .75pt;
+  mso-border-left-alt:double black 2.25pt;padding:0cm 5.4pt 0cm 5.4pt'>
+                    <p class=MsoNormal style='line-height:150%'>
+                        <span style='font-size:12.0pt;
+  line-height:150%'>
+                            Adı ve Soyadı:<span style='mso-spacerun:yes'></span><o:p></o:p>
+                        </span>
+                        <span ng-bind="p.adi"></span>&nbsp;<span ng-bind="p.soyadi"></span>
+                    </p>
+                </td>
+                <td width=343 valign=top style='width:257.3pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:double black 2.25pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  mso-border-alt:solid black .75pt;mso-border-right-alt:double black 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+                    <p class=MsoNormal style='line-height:150%'>
+                        <span style='font-size:12.0pt;
+  line-height:150%'>T.C. Kimlik Numarası:<o:p></o:p></span><span ng-bind="p.tcNo"></span>
+                    </p>
+                </td>
+            </tr>
+            <tr style='mso-yfti-irow:2;height:12.1pt'>
+                <td width=311 valign=top style='width:233.5pt;border-top:none;border-left:
+  double black 2.25pt;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black .75pt;mso-border-alt:solid black .75pt;
+  mso-border-left-alt:double black 2.25pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:12.1pt'>
+                    <p class=MsoNormal style='line-height:150%'>
+                        <span style='font-size:12.0pt;
+  line-height:150%'>Baba Adı:<o:p></o:p></span><span ng-bind="p.data.PersonelDetayi.baba_adi"></span>
+                    </p>
+                </td>
+                <td width=343 valign=top style='width:257.3pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:double black 2.25pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  mso-border-alt:solid black .75pt;mso-border-right-alt:double black 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:12.1pt'>
+                    <p class=MsoNormal style='line-height:150%'>
+                        <span style='font-size:12.0pt;
+  line-height:150%'>Cinsiyeti:<o:p></o:p></span><span ng-bind="p.cinsiyet"></span>
+                    </p>
+                </td>
+            </tr>
+            <tr style='mso-yfti-irow:3'>
+                <td width=311 valign=top style='width:233.5pt;border-top:none;border-left:
+  double black 2.25pt;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black .75pt;mso-border-alt:solid black .75pt;
+  mso-border-left-alt:double black 2.25pt;padding:0cm 5.4pt 0cm 5.4pt'>
+                    <p class=MsoNormal style='line-height:150%'>
+                        <span style='font-size:12.0pt;
+  line-height:150%'>Doğum Tarihi:<o:p></o:p></span><span ng-bind="(p.data.PersonelDetayi.DogumYeri|trim)+' '+(p.data.PersonelDetayi.DogumTarihi|date:'dd/MM/yyyy')"></span>
+                    </p>
+                </td>
+                <td width=343 valign=top style='width:257.3pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:double black 2.25pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  mso-border-alt:solid black .75pt;mso-border-right-alt:double black 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+                    <p class=MsoNormal style='line-height:150%'>
+                        <span style='font-size:12.0pt;
+  line-height:150%'>Tel:<o:p></o:p></span><span ng-bind="p.tel"></span>
+                    </p>
+                </td>
+            </tr>
+            <tr style='mso-yfti-irow:4'>
+                <td width=311 valign=top style='width:233.5pt;border-top:none;border-left:
+  double black 2.25pt;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black .75pt;mso-border-alt:solid black .75pt;
+  mso-border-left-alt:double black 2.25pt;padding:0cm 5.4pt 0cm 5.4pt'>
+                    <p class=MsoNormal style='line-height:150%;tab-stops:21.75pt'>
+                        <span style='font-size:12.0pt;line-height:150%'>Kurumu ve Görevi:<o:p></o:p></span>
+                        <span ng-bind="p.kurumu"></span>
+                    </p>
+                </td>
+                <td width=343 valign=top style='width:257.3pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:double black 2.25pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  mso-border-alt:solid black .75pt;mso-border-right-alt:double black 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+                    <p class=MsoNormal style='line-height:150%'>
+                        <span style='font-size:12.0pt;
+  line-height:150%'>Protokol No:<o:p></o:p></span><span ng-bind="p.Protokol"></span>
+                    </p>
+                </td>
+            </tr>
+            <tr style='mso-yfti-irow:5'>
+                <td width=311 valign=top style='width:233.5pt;border-top:none;border-left:
+  double black 2.25pt;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black .75pt;mso-border-alt:solid black .75pt;
+  mso-border-left-alt:double black 2.25pt;padding:0cm 5.4pt 0cm 5.4pt'>
+                    <p class=MsoNormal style='line-height:150%;tab-stops:21.75pt'>
+                        <span style='font-size:12.0pt;line-height:150%'>Rapor Tarihi:<o:p></o:p></span><span ng-bind="p.date"></span>
+</p>
+                </td>
+                <td width=343 valign=top style='width:257.3pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:double black 2.25pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  mso-border-alt:solid black .75pt;mso-border-right-alt:double black 2.25pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+                    <p class=MsoNormal style='line-height:150%'>
+                        <span style='font-size:12.0pt;
+  line-height:150%'>Rapor No:<o:p></o:p></span><span ng-bind="p.Protokol"></span>
+                    </p>
+                </td>
+            </tr>
+            <tr style='mso-yfti-irow:6;mso-yfti-lastrow:yes;height:30.45pt'>
+                <td width=654 colspan=2 valign=top style='width:490.8pt;border:double black 2.25pt;
+  border-top:none;mso-border-top-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:30.45pt'>
+                    <p class=MsoNormal style='line-height:150%'>
+                        <span style='font-size:12.0pt;
+  line-height:150%'>Adres:<o:p></o:p></span><span ng-bind="p.adres"></span>
+                    </p>
+                </td>
+            </tr>
+        </table>
+
+        <p class=MsoNormal style='line-height:150%'>
+            <span style='font-size:12.0pt;
+line-height:150%'><o:p>&nbsp;</o:p></span>
+        </p>
+
+        <table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 width=654
+               style='width:490.8pt;margin-left:-7.85pt;border-collapse:collapse;border:none;
+ mso-border-alt:double black 2.25pt;mso-yfti-tbllook:480;mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+ mso-border-insideh:.75pt solid black;mso-border-insidev:.75pt solid black'>
+            <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:50.25pt'>
+                <td width=654 valign=top style='width:490.8pt;border-top:solid 1.0pt;
+  border-left:double 2.25pt;border-bottom:solid 1.0pt;border-right:double 2.25pt;
+  border-color:black;mso-border-top-alt:solid .75pt;mso-border-left-alt:double 2.25pt;
+  mso-border-bottom-alt:solid .75pt;mso-border-right-alt:double 2.25pt;
+  mso-border-color-alt:black;padding:0cm 5.4pt 0cm 5.4pt;height:50.25pt'>
+                    <p class=MsoNormal style='line-height:150%'>
+                        <b style='mso-bidi-font-weight:
+  normal'>
+                            <span style='font-size:12.0pt;line-height:150%;text-transform:uppercase'>
+                                ICD
+                                KODU ve TANI(LAR):
+                            </span>
+                        </b><span style='font-size:12.0pt;line-height:150%'>
+                            Z02.5 Spora katılım için muayene,
+                        </span> <span style='font-size:12.0pt;
+  line-height:150%'>Z10.3 Spor takımlarının rutin genel sağlık kontrolü<o:p></o:p></span>
+                    </p>
+                    <p class=MsoNormal style='line-height:150%'>
+                        <span style='font-size:12.0pt;
+  line-height:150%'><o:p>&nbsp;</o:p></span>
+                    </p>
+                </td>
+            </tr>
+            <tr style='mso-yfti-irow:1;height:55.95pt'>
+                <td width=654 valign=top style='width:490.8pt;border-top:none;border-left:
+  double black 2.25pt;border-bottom:solid black 1.0pt;border-right:double black 2.25pt;
+  mso-border-top-alt:solid black .75pt;mso-border-top-alt:solid .75pt;
+  mso-border-left-alt:double 2.25pt;mso-border-bottom-alt:solid .75pt;
+  mso-border-right-alt:double 2.25pt;mso-border-color-alt:black;padding:0cm 5.4pt 0cm 5.4pt;
+  height:55.95pt'>
+                    <p class=MsoNormal style='line-height:150%'>
+                        <span style='font-size:12.0pt;
+  line-height:150%;text-transform:uppercase'>
+                            AKLİ MELEKE RAPORU İÇİN Mini
+                            MENTAL TEST SONUCU: Normal BULGU
+                        </span><span style='font-size:12.0pt;
+  line-height:150%'><o:p></o:p></span>
+                    </p>
+                </td>
+            </tr>
+            <tr style='mso-yfti-irow:2;mso-yfti-lastrow:yes;height:157.85pt'>
+                <td width=654 valign=top style='width:490.8pt;border:double black 2.25pt;
+  border-top:none;mso-border-top-alt:solid black .75pt;padding:0cm 5.4pt 0cm 5.4pt;
+  height:157.85pt'>
+                    <p class=MsoNormal style='line-height:150%'>
+                        <span class=GramE>
+                            <b style='mso-bidi-font-weight:normal'>
+                                <span style='font-size:12.0pt;line-height:
+  150%'>KARAR :</span>
+                            </b>
+                        </span><b style='mso-bidi-font-weight:normal'>
+                            <span style='font-size:12.0pt;line-height:150%'>
+                                <span style='mso-spacerun:yes'></span><o:p></o:p>
+                            </span>
+                        </b>
+                    </p>
+                    <p class=MsoNormal style='text-align:justify;line-height:150%'>
+                        <span style='mso-spacerun:yes'></span>(X)<span style='mso-spacerun:yes'>
+                        </span><span style='font-size:12.0pt;line-height:150%'>
+    Yukarıda bilgileri
+    bulunan şahsın düzenlemiş olduğu bilgi formu ve {{p.date}} tarihinde
+        yapılan fizik muayenesi
+                            sonucunda spor yapmasında engel bir durumu olmadığını bildirir hekim kanaat
+                            raporudur.<o:p></o:p>
+                        </span>
+                    </p>
+                    <p class=MsoNormal style='line-height:150%'>
+                        <span style='font-size:12.0pt;
+  line-height:150%'>
+                            <span style='mso-spacerun:yes'></span><o:p></o:p>
+                        </span>
+                    </p>
+                    <p class=MsoNormal style='line-height:150%'>
+                        <span style='font-size:12.0pt;
+  line-height:150%'>
+                            <span style='mso-spacerun:yes'>   </span><span class=GramE>
+                                (
+                                )
+                            </span><span style='mso-spacerun:yes'>  </span>Yukarıda bilgileri bulunan
+                            şahsın düzenlemiş olduğu bilgi formu ve  {{p.date}} <span style='mso-spacerun:yes'></span>tarihinde yapılan fizik muayenesi sonucunda
+                            ileri tetkik için üst basamak bir sağlık kuruluşunda değerlendirilmesi
+                            uygundur.<o:p></o:p>
+                        </span>
+                    </p>
+                </td>
+            </tr>
+        </table>
+
+        <p class=MsoNormal style='margin-left:-1.0cm'><span style='font-size:12.0pt'><o:p>&nbsp;</o:p></span></p>
+
+        <p class=MsoNormal><span style='font-size:12.0pt'><o:p>&nbsp;</o:p></span></p>
+
+        <p class=MsoNormalCxSpMiddle style='margin-top:0cm;margin-right:0cm;margin-bottom:
+8.0pt;margin-left:36.0pt;mso-add-space:auto;text-align:justify;line-height:
+107%'>
+            <b style='mso-bidi-font-weight:normal'>
+                <i style='mso-bidi-font-style:
+normal'><span style='font-family:"Arial",sans-serif'><o:p>&nbsp;</o:p></span></i>
+            </b>
+        </p>
+
+        <p class=MsoNormal align=center style='margin-left:283.2pt;text-align:center;
+text-indent:35.4pt'>
+            <b style='mso-bidi-font-weight:normal'>
+                <span style='font-size:12.0pt;text-transform:uppercase'>
+                    İŞYERİ Hekimİ<span style='mso-spacerun:yes'></span><o:p></o:p>
+                </span>
+            </b>
+        </p>
+
+        <p class=MsoNormal align=center style='margin-left:283.2pt;text-align:center;
+text-indent:35.4pt'>
+            <b style='mso-bidi-font-weight:normal'>
+                <span style='font-size:12.0pt;text-transform:uppercase'>Kaşe-İmza<o:p></o:p></span>
+            </b>
+        </p>
+
+    </div>
+
+</body>
+
+</html>

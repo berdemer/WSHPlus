@@ -1,0 +1,29 @@
+<form name="myForm">
+    <fieldset>
+        <span> Not: logo boutları 420X140 altında olmasın...</span>
+        <button class="btn btn-primary btn-block" ngf-select  ng-model="picFile" accept="image/*" style="width:20%;"
+                name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="4MB" ngf-resize="{width: 450, height: 150}"
+                >Logo Seçimi</button>
+        <br>
+        <div class="col-sm-2  thumbnail" ng-show="picFile" style="position: relative;width:20%;height:10%">
+            <img id="gh" ngf-thumbnail="picFile" class="img-responsive">
+            <button class="btn btn-danger btn-xs" ng-click="picFile = null;deleten();" style="position: absolute; top: 4px; right: 5px">
+                <i class="fa fa-remove"></i>
+            </button>
+            <span class="btn-primary btn-xs" ng-show="tamamlandi" style="position: absolute; top: 4px; left: 5px">
+                <i class="fa fa-check"></i>
+            </span>
+                <uib-progressbar value="progress" ng-show="tamamlandin != true" type="success" class="progress-striped active"></uib-progressbar> 
+        </div><br><br>    
+        <button ng-show="picFile" ng-click="upload(picFile)" class="btn btn-success btn-block" style="width: 20%; position: absolute;margin-top:120px">Logo Yükle</button>
+    </fieldset>
+    <br>
+</form>
+
+<style>
+    .thumb {
+        float: none;
+        position: relative;
+        top: 7px;
+    }
+</style>

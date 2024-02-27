@@ -1,0 +1,938 @@
+[
+  {
+    "Soru": "1. Okulda, evde ya da işte zor ya da ilginç olmayan şeylerin ilgimi çektiğini fark ediyorum.",
+    "a": {
+      "ad": "Hiç değil",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Az",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Bir dereceye kadar",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Ortalama olarak",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "Oldukça fazla",
+      "val": "4",
+      "active": false,
+      "display": true
+    },
+    "f": {
+      "ad": "Çok fazla",
+      "val": "5",
+      "active": false,
+      "display": true
+    }
+  },
+  {
+    "Soru": "2. Yazılı materyalleri çok ilginç ya da çok kolay olmadıkça okumakta zorlanıyorum.",
+    "a": {
+      "ad": "Hiç değil",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Az",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Bir dereceye kadar",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Ortalama olarak",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "Oldukça fazla",
+      "val": "4",
+      "active": false,
+      "display": true
+    },
+    "f": {
+      "ad": "Çok fazla",
+      "val": "5",
+      "active": false,
+      "display": true
+    }
+  },
+  {
+    "Soru": "3. Özellikle grup içinde konuşulanlara ilgimi toplamakta zorlanıyorum.",
+    "a": {
+      "ad": "Hiç değil",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Az",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Bir dereceye kadar",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Ortalama olarak",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "Oldukça fazla",
+      "val": "4",
+      "active": false,
+      "display": true
+    },
+    "f": {
+      "ad": "Çok fazla",
+      "val": "5",
+      "active": false,
+      "display": true
+    }
+  },
+  {
+    "Soru": "4. Çabuk heyecanlanıp, çabuk sakinleşiyorum.",
+    "a": {
+      "ad": "Hiç değil",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Az",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Bir dereceye kadar",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Ortalama olarak",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "Oldukça fazla",
+      "val": "4",
+      "active": false,
+      "display": true
+    },
+    "f": {
+      "ad": "Çok fazla",
+      "val": "5",
+      "active": false,
+      "display": true
+    }
+  },
+  {
+    "Soru": "5. Genellikle huzursuzum ve küçük şeyler beni sinirlendiriyor.",
+    "a": {
+      "ad": "Hiç değil",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Az",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Bir dereceye kadar",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Ortalama olarak",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "Oldukça fazla",
+      "val": "4",
+      "active": false,
+      "display": true
+    },
+    "f": {
+      "ad": "Çok fazla",
+      "val": "5",
+      "active": false,
+      "display": true
+    }
+  },
+  {
+    "Soru": "6. Düşünmeden söylediğim şeyleri daha sonra inkar ederim.",
+    "a": {
+      "ad": "Hiç değil",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Az",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Bir dereceye kadar",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Ortalama olarak",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "Oldukça fazla",
+      "val": "4",
+      "active": false,
+      "display": true
+    },
+    "f": {
+      "ad": "Çok fazla",
+      "val": "5",
+      "active": false,
+      "display": true
+    }
+  },
+  {
+    "Soru": "7. Kötü sonuçlara yol açabileceğini düşünmeden hızlı kararlar alırım.",
+    "a": {
+      "ad": "Hiç değil",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Az",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Bir dereceye kadar",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Ortalama olarak",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "Oldukça fazla",
+      "val": "4",
+      "active": false,
+      "display": true
+    },
+    "f": {
+      "ad": "Çok fazla",
+      "val": "5",
+      "active": false,
+      "display": true
+    }
+  },
+  {
+    "Soru": "8. İnsanlarla ilişkilerim önce konuşup sonra düşünme eğilimim nedeniyle zarar görüyor.",
+    "a": {
+      "ad": "Hiç değil",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Az",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Bir dereceye kadar",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Ortalama olarak",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "Oldukça fazla",
+      "val": "4",
+      "active": false,
+      "display": true
+    },
+    "f": {
+      "ad": "Çok fazla",
+      "val": "5",
+      "active": false,
+      "display": true
+    }
+  },
+  {
+    "Soru": "9. Ruh halim iniş çıkışlarla doludur.",
+    "a": {
+      "ad": "Hiç değil",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Az",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Bir dereceye kadar",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Ortalama olarak",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "Oldukça fazla",
+      "val": "4",
+      "active": false,
+      "display": true
+    },
+    "f": {
+      "ad": "Çok fazla",
+      "val": "5",
+      "active": false,
+      "display": true
+    }
+  },
+  {
+    "Soru": "10. Birkaç işi ya da amacı gerçekleştirmek için plan yapmakta zorlanıyorum.",
+    "a": {
+      "ad": "Hiç değil",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Az",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Bir dereceye kadar",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Ortalama olarak",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "Oldukça fazla",
+      "val": "4",
+      "active": false,
+      "display": true
+    },
+    "f": {
+      "ad": "Çok fazla",
+      "val": "5",
+      "active": false,
+      "display": true
+    }
+  },
+  {
+    "Soru": "11. Kolaylıkla hayal kırıklığına uğruyorum.",
+    "a": {
+      "ad": "Hiç değil",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Az",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Bir dereceye kadar",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Ortalama olarak",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "Oldukça fazla",
+      "val": "4",
+      "active": false,
+      "display": true
+    },
+    "f": {
+      "ad": "Çok fazla",
+      "val": "5",
+      "active": false,
+      "display": true
+    }
+  },
+  {
+    "Soru": "12. Kırılgan biriyim ve birçok şey beni kolaylıkla incitiyor.",
+    "a": {
+      "ad": "Hiç değil",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Az",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Bir dereceye kadar",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Ortalama olarak",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "Oldukça fazla",
+      "val": "4",
+      "active": false,
+      "display": true
+    },
+    "f": {
+      "ad": "Çok fazla",
+      "val": "5",
+      "active": false,
+      "display": true
+    }
+  },
+  {
+    "Soru": "13. Her zaman bir yere gidecek gibiyim.",
+    "a": {
+      "ad": "Hiç değil",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Az",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Bir dereceye kadar",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Ortalama olarak",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "Oldukça fazla",
+      "val": "4",
+      "active": false,
+      "display": true
+    },
+    "f": {
+      "ad": "Çok fazla",
+      "val": "5",
+      "active": false,
+      "display": true
+    }
+  },
+  {
+    "Soru": "14. Hareket ederken, otururken olduğumdan daha rahat hissediyorum.",
+    "a": {
+      "ad": "Hiç değil",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Az",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Bir dereceye kadar",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Ortalama olarak",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "Oldukça fazla",
+      "val": "4",
+      "active": false,
+      "display": true
+    },
+    "f": {
+      "ad": "Çok fazla",
+      "val": "5",
+      "active": false,
+      "display": true
+    }
+  },
+  {
+    "Soru": "15. Genellikle sorunun tamamı sorulmadan soruyu cevaplamaya başlıyorum.",
+    "a": {
+      "ad": "Hiç değil",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Az",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Bir dereceye kadar",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Ortalama olarak",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "Oldukça fazla",
+      "val": "4",
+      "active": false,
+      "display": true
+    },
+    "f": {
+      "ad": "Çok fazla",
+      "val": "5",
+      "active": false,
+      "display": true
+    }
+  },
+  {
+    "Soru": "16. Genellikle aynı anda birden fazla proje üzerinde çalışıyorum ve birçoğunu sonuçlandıramıyorum.",
+    "a": {
+      "ad": "Hiç değil",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Az",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Bir dereceye kadar",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Ortalama olarak",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "Oldukça fazla",
+      "val": "4",
+      "active": false,
+      "display": true
+    },
+    "f": {
+      "ad": "Çok fazla",
+      "val": "5",
+      "active": false,
+      "display": true
+    }
+  },
+  {
+    "Soru": "17. Kafamda çok fazla takıntı var.",
+    "a": {
+      "ad": "Hiç değil",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Az",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Bir dereceye kadar",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Ortalama olarak",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "Oldukça fazla",
+      "val": "4",
+      "active": false,
+      "display": true
+    },
+    "f": {
+      "ad": "Çok fazla",
+      "val": "5",
+      "active": false,
+      "display": true
+    }
+  },
+  {
+    "Soru": "18. Sessizce otururken bile ayaklarımı ya da ellerimi hareket ettiririm.",
+    "a": {
+      "ad": "Hiç değil",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Az",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Bir dereceye kadar",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Ortalama olarak",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "Oldukça fazla",
+      "val": "4",
+      "active": false,
+      "display": true
+    },
+    "f": {
+      "ad": "Çok fazla",
+      "val": "5",
+      "active": false,
+      "display": true
+    }
+  },
+  {
+    "Soru": "19. Grup çalışmalarında sıramın gelmesini beklemekte zorlanırım.",
+    "a": {
+      "ad": "Hiç değil",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Az",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Bir dereceye kadar",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Ortalama olarak",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "Oldukça fazla",
+      "val": "4",
+      "active": false,
+      "display": true
+    },
+    "f": {
+      "ad": "Çok fazla",
+      "val": "5",
+      "active": false,
+      "display": true
+    }
+  },
+  {
+    "Soru": "20. Zihnime işlevselliğini yitirecek kadar çok gereksiz şeyler dolar.",
+    "a": {
+      "ad": "Hiç değil",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Az",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Bir dereceye kadar",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Ortalama olarak",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "Oldukça fazla",
+      "val": "4",
+      "active": false,
+      "display": true
+    },
+    "f": {
+      "ad": "Çok fazla",
+      "val": "5",
+      "active": false,
+      "display": true
+    }
+  },
+  {
+    "Soru": "21. Düşüncelerim zihnimde topların duvara çarpması gibi çarpışarak dolaşır.",
+    "a": {
+      "ad": "Hiç değil",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Az",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Bir dereceye kadar",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Ortalama olarak",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "Oldukça fazla",
+      "val": "4",
+      "active": false,
+      "display": true
+    },
+    "f": {
+      "ad": "Çok fazla",
+      "val": "5",
+      "active": false,
+      "display": true
+    }
+  },
+  {
+    "Soru": "22. Beynim aynı anda birden çok kanalın gösterildiği bir televizyon ekranı gibidir.",
+    "a": {
+      "ad": "Hiç değil",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Az",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Bir dereceye kadar",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Ortalama olarak",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "Oldukça fazla",
+      "val": "4",
+      "active": false,
+      "display": true
+    },
+    "f": {
+      "ad": "Çok fazla",
+      "val": "5",
+      "active": false,
+      "display": true
+    }
+  },
+  {
+    "Soru": "23. Gündüz hayal görmeyi engelleyemiyorum.",
+    "a": {
+      "ad": "Hiç değil",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Az",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Bir dereceye kadar",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Ortalama olarak",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "Oldukça fazla",
+      "val": "4",
+      "active": false,
+      "display": true
+    },
+    "f": {
+      "ad": "Çok fazla",
+      "val": "5",
+      "active": false,
+      "display": true
+    }
+  },
+  {
+    "Soru": "24. Beynimin organize olamayan çalışma şeklinden dolayı stres yaşıyorum.",
+    "a": {
+      "ad": "Hiç değil",
+      "val": "0",
+      "active": false,
+      "display": true
+    },
+    "b": {
+      "ad": "Az",
+      "val": "1",
+      "active": false,
+      "display": true
+    },
+    "c": {
+      "ad": "Bir dereceye kadar",
+      "val": "2",
+      "active": false,
+      "display": true
+    },
+    "d": {
+      "ad": "Ortalama olarak",
+      "val": "3",
+      "active": false,
+      "display": true
+    },
+    "e": {
+      "ad": "Oldukça fazla",
+      "val": "4",
+      "active": false,
+      "display": true
+    },
+    "f": {
+      "ad": "Çok fazla",
+      "val": "5",
+      "active": false,
+      "display": true
+    }
+  }
+]

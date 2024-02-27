@@ -1,0 +1,50 @@
+﻿<div class="jumbotron" style="margin-bottom: 0px;margin-bottom: 0px;padding: 5px;z-index:100">
+    <form role="form">
+        <div class="form-group">
+            <label>Sevk Edilen Tarih</label>
+            <div class="input-group">
+                <input type="text" class="form-control" uib-datepicker-popup="dd.MMMM.yyyy" ng-init="PmC.Muayene.Sevk.BaslamaTarihi=PmC.Muayene.Sevk.BaslamaTarihi==null?PmC.dateNow:PmC.Muayene.Sevk.BaslamaTarihi" ng-model="PmC.Muayene.Sevk.BaslamaTarihi"
+                       is-open="popup1.opened" datepicker-options="dateOptions" close-text="Close" ng-click="open1()" alt-input-formats="altInputFormats" />
+                <span class="input-group-btn" style="z-index:100">
+                    <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="Hastane">Hastane/Sağlık Birimi</label>
+            <textarea class="form-control" ng-model="PmC.Muayene.Sevk.saglikBirimiAdi" id="Hastane" placeholder="Hastane Adını Giriniz" ng-required="true" uppercased></textarea>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="sevkBolumu">Sevk Edilen Bölüm</label>
+            <select class="form-control" ng-model="PmC.Muayene.Sevk.bolumu" ng-init="PmC.Muayene.Sevk.bolumu=PmC.HastaneBolumleri[0]" ng-options="t for t in PmC.HastaneBolumleri" id="sevkBolumu"></select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="sevkNedeni">Sevk İstem Nedeni</label>
+            <select class="form-control" ng-model="PmC.Muayene.Sevk.nedeni" ng-init="PmC.Muayene.Sevk.nedeni='Doktor Sevki'" ng-options="t for t in ['Doktor Sevki','Gece Vardiyası','Hafta Sonu','Kendi İsteği İle','İş Kazası','Kontrol Muayenesi İçin Sevk']"
+                    id="sevkNedeni"></select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="sevkAraci">Sevk Edilen Araç</label>
+            <select class="form-control" ng-model="PmC.Muayene.Sevk.sekli" ng-init="PmC.Muayene.Sevk.sekli='Normal'" ng-options="t for t in ['Normal','Ambulans','Kendi Aracı İle','Şirket Aracı İle']" id="sevkAraci"></select>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <button class="btn btn-success btn-sm" ng-if="PmC.personelMuayene.Protokol!=null" ng-click="PmC.sevkRaporu()">Sevk</button>
+                <button class="btn btn-warning btn-sm" ng-if="PmC.personelMuayene.Protokol!=null" ng-click="PmC.konsRaporu()">Konsültasyon</button>               
+            </div>
+            <div class="col-sm-3">
+                <button class="btn btn-info btn-sm" ng-if="PmC.personelMuayene.Protokol!=null" ng-click="PmC.sevkSMS()"><i class="fa fa-comment-o"></i>&nbsp;SMS</button>
+                <button class="btn btn-odnoklassniki btn-sm" ng-if="PmC.personelMuayene.Protokol!=null&&PmC.Muayene.Ikbilgisi!=null" ng-click="PmC.isKazasiRaporu()">İş Kazası Raporu</button>
+            </div>
+            <div class="col-sm-3">
+                <button class="btn btn-sm pull-right" ng-class="{'btn-success':PmC.Renjk,'btn-primary':!PmC.Renjk,'btn-rounded':PmC.Renjk}" ng-click="PmC.SevkMuayeneKaydet()"><i class="fa fa-cog fa-spin fa-2x fa-fw" ng-show="PmC.Renjk"></i>{{message}}</button>
+            </div>
+        </div>
+    </form>
+</div>
+<datetimepicker ng-init="PmC.Muayene.Sevk.BaslamaTarihi=PmC.Muayene.Sevk.BaslamaTarihi==null?PmC.dateNow:PmC.Muayene.Sevk.BaslamaTarihi" ng-model="PmC.Muayene.Sevk.BaslamaTarihi"
+                ng-show="false"
+                date-format="dd-MMM-yyyy" class="form-control"
+                date-options="dateOptions"
+                date-disabled="isDisabledDate(date, mode)">
+</datetimepicker>

@@ -1,0 +1,73 @@
+﻿<div ng-controller="boyKiloCtrl  as Bkc" style="width:100%">
+    <div class="col-sm-12">
+        <div class="col-sm-9">
+            <table datatable="ng" id="boyKilo" style="cursor:pointer"
+                   dt-options="dtOptionsBkc" dt-column-defs="dtColumnDefsBkc" class="table table-responsive  table-striped table-bordered table-hover dataTables-example row-border hover">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>No</th>
+                        <th>Boy</th>
+                        <th>Kilo</th>
+                        <th>Bel</th>
+                        <th>Kalca</th>
+                        <th>BKI</th>
+                        <th>BKO</th>
+                        <th>Tarih</th>
+                        <th>Protokol</th>
+                        <th>Muayene Türü</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="boyKilo in BoyKilolari">
+                        <td ng-bind="boyKilo.BoyKilo_Id"></td>
+                        <td ng-bind="boyKilo.$id"></td>
+                        <td ng-bind="Vurgusu(boyKilo.Boy,' Cm')"></td>
+                        <td ng-bind="Vurgusu(boyKilo.Kilo,' Kg')"></td>
+                        <td ng-bind="Vurgusu(boyKilo.Bel,' Cm')"></td>
+                        <td ng-bind="Vurgusu(boyKilo.Kalca,' Cm')"></td>
+                        <td ng-bind="Vurgusu(boyKilo.BKI,' Kg/m²')"></td>
+                        <td ng-bind="boyKilo.BKO"></td>
+                        <td ng-bind="boyKilo.Tarih|date:'dd/MM/yyyy'"></td>
+                        <td ng-bind="boyKilo.Protokol"></td>
+                        <td ng-bind="boyKilo.MuayeneTuru"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>       
+        <div class="col-sm-3">
+            <canvas barchart options="Bkc.barOptions" data="Bkc.barData" width="200" height=heightx responsive=true></canvas>
+        </div>
+    </div>
+    <div uib-collapse="isCollapsed"  class="m-t-n-lg col-sm-12">
+            <form ng-submit="Bkc.onSubmit()" novalidate>
+                <formly-form model="Bkc.model" fields="Bkc.fields" form="Bkc.form">
+                    <button type="submit" class="btn btn-primary submit-button" ng-disabled="Bkc.form.$invalid">Kaydet</button>
+                    <button type="button" class="btn btn-success" ng-disabled="!Bkc.form.$valid" ng-click="yeniBkc()">Yeni</button>
+                    <button type="button" class="btn btn-danger" ng-disabled="!Bkc.form.$valid" ng-click="silBkc()">Sil</button>
+                    <button class="btn btn btn-warning" ngf-select="uploadFiles($files)" multiple
+                            accept="image/*,application/pdf,application/msword,application/vnd.ms-excel,
+application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ng-if="Bkc.model.BoyKilo_Id!=null">
+                        Rapor Ekle
+                    </button>
+                    <div class="pull-right">
+                        <label for="slc">Protokol Verilsin mi?</label>
+                        <select class="form-control" style="width:90px" ng-model="Bkc.protokolGirisi" name="slc" ng-options="opsiyon.adi for opsiyon in opsiyonlar"></select>
+                    </div>
+                </formly-form>
+            </form>
+        </div>
+    <div ng-show="!isCollapsed">
+        <span ng-if="BKIyorum.length>0?true:false">Durumu: </span><span>{{BKIyorum}}</span>&nbsp;<span>{{BKOyorum}}</span>
+    </div>   
+    <row>
+        <ul style="list-style-type: none;overflow: hidden;" ng-show="dosyaList">
+            <li style="font:medium;color: mediumvioletred;float: left;margin-left:20px" ng-if="files.length>0?true:false">Eklenen Dosyalar :</li>
+            <li ng-repeat="f in files" style="font:normal;float: left;margin-left:20px">
+                <a ng-click="download(f)" ng-bind="f.FileName" tooltip-placement="bottom" uib-tooltip="İndir" tooltip-popup-delay="2500"></a>
+                <i class="fa fa-remove" ng-click="deleten(f.GenericName , $index)" tooltip-placement="bottom" uib-tooltip="Sil" tooltip-popup-delay="2500"> </i>
+            </li>
+        </ul>
+    </row>
+    <span style="color:red">{{message}}</span>      
+</div>
