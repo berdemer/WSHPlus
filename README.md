@@ -1,4 +1,4 @@
-![Workplace Safety and Health Plus](https://github.com/berdemer/WSHPlus/assets/10169071/13e442d4-93d8-4ea7-809d-3bfaba0f678c){:height="50%" width="50%"}
+![Workplace Safety and Health Plus](https://github.com/berdemer/WSHPlus/assets/10169071/13e442d4-93d8-4ea7-809d-3bfaba0f678c?s=200)
 
  Workplace Safety and Health Plus
 
