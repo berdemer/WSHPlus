@@ -1,5 +1,7 @@
 ![image](https://github.com/berdemer/WSHPlus/assets/10169071/13e442d4-93d8-4ea7-809d-3bfaba0f678c)
 
+ Workplace Safety and Health Plus
+
 İŞYERİNİZİN · SAĞLIĞINA ·VE ·GÜVENLİĞİNE·ARTI ·KATAR
 
 🚀 WSHPlus: İş Sağlığı ve Güvenliği Yeniliği 
