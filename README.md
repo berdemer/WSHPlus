@@ -19,5 +19,7 @@
 WSH Plus ile iş yerinizde sağlık ve güvenliği en üst düzeye taşıyın! 🌈✨
 
 Web Sayfamız: www.wshplus.com
-YouTube Bilgilendirme Kanalı: www.youtube.com/@Wshplus
+![image](https://github.com/berdemer/WSHPlus/assets/10169071/fae9593c-d5bc-4200-b64e-674763c355e3): www.youtube.com/@Wshplus
+![image](https://github.com/berdemer/WSHPlus/assets/10169071/d24ebd16-9748-42f2-89a4-49416ece75fc)  https://twitter.com/wshplus
+
 
